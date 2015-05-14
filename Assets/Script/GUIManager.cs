@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GUIManager : MonoBehaviour {
 
-
+	public bool active = true;
 	public CursorScript cursor;
 	public List<ButtonScript> objectList; // listes des objet de la scene avec interactions possibles
 	List<ButtonScript> waitingObject = new List<ButtonScript>();
@@ -24,51 +24,54 @@ public class GUIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		ButtonScript firstObject = null ;
-		cursorAnim = false;
+		if (active) {
 
-		//on cherche l'objet survolé le plus hauit dans le layer
-		for (int i = 0; i < objectList.Count; i++) {
-			if (objectList [i].GetComponent<Collider2D> ().enabled && objectList [i].GetComponent<Collider2D> ().overlapMouse ()) {
-				//Gestion du curseur
-				cursorAnim = true;
-				//gestion des radialButton
-				if( objectList[i].transform.GetComponent<RadialButtonScript>() != null ){
-					if(objectList[i].transform.GetComponent<RadialButtonScript>().active == false)
-						break;
+			ButtonScript firstObject = null;
+			cursorAnim = false;
+
+			//on cherche l'objet survolé le plus hauit dans le layer
+			for (int i = 0; i < objectList.Count; i++) {
+				if (objectList [i].GetComponent<Collider2D> ().enabled && objectList [i].GetComponent<Collider2D> ().overlapMouse ()) {
+					//Gestion du curseur
+					cursorAnim = true;
+					//gestion des radialButton
+					if (objectList [i].transform.GetComponent<RadialButtonScript> () != null) {
+						if (objectList [i].transform.GetComponent<RadialButtonScript> ().active == false)
+							break;
+					}
+					//gestion du highlight
+					if (objectList [i].transform.GetComponentInChildren<Highlight> () != null)
+						objectList [i].transform.GetComponentInChildren<Highlight> ().overlap = true;
+					//gestion des jauges
+					if (objectList [i].transform.GetComponentInChildren<JaugeScript> () != null)
+						objectList [i].transform.GetComponentInChildren<JaugeScript> ().show = true;
+					firstObject = objectList [i];
+					break;
 				}
-				//gestion du highlight
-				if( objectList[i].transform.GetComponentInChildren<Highlight>() != null )
-					objectList[i].transform.GetComponentInChildren<Highlight>().overlap = true;
-				//gestion des jauges
-				if( objectList[i].transform.GetComponentInChildren<JaugeScript>()!= null )
-					objectList[i].transform.GetComponentInChildren<JaugeScript>().show = true;
-				firstObject = objectList[i];
-				break;
+
 			}
 
-		}
-
-		cursor.setInteractionAnim(cursorAnim);
+			cursor.setInteractionAnim (cursorAnim);
 
 				
-		//Gestion du clic dans le jeu pour chaque objets
-		if (Input.GetButtonDown ("Fire1")) {
-			//update des objets qui attendent un clic
-			if (waitingObject.Count > 0) {
-				while (waitingObject.Count > 0) {
-					if (! waitingObject [0].GetComponent<Collider2D> ().overlapMouse ()) {
-						waitingObject [0].GetComponent<ButtonScript> ().onClicAway.Invoke ();
+			//Gestion du clic dans le jeu pour chaque objets
+			if (Input.GetButtonDown ("Fire1")) {
+				//update des objets qui attendent un clic
+				if (waitingObject.Count > 0) {
+					while (waitingObject.Count > 0) {
+						if (! waitingObject [0].GetComponent<Collider2D> ().overlapMouse ()) {
+							waitingObject [0].GetComponent<ButtonScript> ().onClicAway.Invoke ();
+						}
+						waitingObject.RemoveAt (0);
 					}
-					waitingObject.RemoveAt (0);
 				}
-			}
-			//RAZ des objets en attentes
-			waitingObject.Clear ();
+				//RAZ des objets en attentes
+				waitingObject.Clear ();
 
-			//lancement de l'evenement clic de l'objet survolé
-			if(firstObject !=null)
-				firstObject.onClic.Invoke ();				
+				//lancement de l'evenement clic de l'objet survolé
+				if (firstObject != null)
+					firstObject.onClic.Invoke ();				
+			}
 		}
 	}
 

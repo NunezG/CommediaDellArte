@@ -52,7 +52,7 @@ public class PublicScript : MonoBehaviour {
 			//happy (1);
 			subValue (25);
 
-			GameObject.Find ("mario panneau").GetComponent<Animator> ().SetTrigger ("panneau");
+
 		}
 	}
 
