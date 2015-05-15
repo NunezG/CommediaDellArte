@@ -10,8 +10,7 @@ public class CharacterController : MonoBehaviour {
 	public Animator sprite;
 
 	private Vector3 goal;//vector ou le personnage doit se rendre
-	private AudioSource audioSource;
-
+	public AudioSource audioSource;
 
 
 	// Use this for initialization
@@ -46,12 +45,8 @@ public class CharacterController : MonoBehaviour {
 
 
 
-	public void goTo(Vector3 vec){
-		Vector3 newPostion = vec;
-		newPostion.y = this.transform.position.y;
-		newPostion.z = this.transform.position.z;
-
-		goal = newPostion;
+	public void goTo(Vector3 vec){		
+		goal = vec;
 		audioSource.Play();
 
 	}

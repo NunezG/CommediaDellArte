@@ -3,42 +3,55 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class SouffleurScript : MonoBehaviour {
 	
-	public Image UIimage;
+	public Image UIimage,UICursor;
 	public Text UIText;	
-
 	public float fadeSpeed = 4, maxAlpha = 1,minAlpha = 0, textSpeed = 1;
 	public GUIManager guimanager;
+	public bool talking = false;
 
-	private bool show = false, end = false;
+	private bool end = false;
 	private int index = 0;
 	private Animator animator;
 	private IEnumerator coroutineParagraph, coroutineText;
 	private CoroutineParameters param;
+	private List<string> textList;
+	
 
-	private bool saidOnce = false;
+	public List<string> textList1 = new List<string>{
+		"Bienvenue cher comedien ! Comme tu es nouveau dans la troupe, je vais te guider.", 
+		"Ton rôle est celui d’Arlecchino, un personnage bien celebre venu d’Italie. C’est un" +
+		"meneur d’intrigue, ruse, spirituel et railleur, qui brouille toujours les pistes. C’est" +
+		"egalement et avant tout un valet qui represente le peuple, qui l’adore." ,
+		"C’est un lourd rôle pour un debutant, j’en ai conscience, mais notre ancien Arlecchino" +
+		"s’est brise la jambe lors d’un tour et nous n’avons trouve personne d’autre. Cependant j’ai" +
+		"bonne foi que tu t’en sortes, avec mes conseils !"
+	};
 
-	public List<string> textList = new List<string>{
+	public List<string> textList2 = new List<string>{
+		"Allez, maintenant il faut que tu distraies ces braves gens si tu veux qu’ils s'amassent devant" +
+		"notre scène. Nous, les comediens itinerants, nous jouons chaque soir un peu notre survie.  Si l’on se " +
+		"debrouille bien, il n’est pas exclu qu’on nous donne à manger, à boire, voire parfois un logis pour le soir." +
+		"C’est toujours mieux que s’endormir affame dans une roulotte, non ?"
+	};
 
-		//1
-		"Bienvenue cher comedien ! Comme tu es nouveau dans la troupe, je vais te guider.",
-		//2
-		"Ton role est celui d’Arlecchino, un personnage bien celebre venu d’Italie. " +
-		"C’est un meneur d’intrigue, ruse, spirituel et railleur, qui brouille toujours les pistes.",
-		//3
-		"C’est egalement et avant tout un valet qui represente le peuple, qui l’adore. ",
-		//4
-		"C’est un lourd role pour un debutant, j’en ai conscience," +
-		"mais notre ancien Arlecchino s’est brise la jambe lors d’un tour et nous n’avons trouve personne d’autre." ,
-		//5
-		"Cependant j’ai bonne foi que tu t’en sortes, avec mes conseils !"};
+	public List<string> textList3 = new List<string>{
+		"Tu vois ce coffre, essaie de le fouiller pour voir si un accessoire ne peut pas t’aider…"
+	};
+
+	public List<string> textList4 = new List<string>{
+		"Mais que fais-tu ? Ce coffre n’est pas un comedien !"
+	};
+
 	
 
 	void Start () {
 		animator = this.GetComponent<Animator> ();
 		UIimage.color = new Color(1,1,1,0);
 		UIText.color = new Color(0,0,0,0);
+		UICursor.color = new Color(1,1,1,0);
 		param = new CoroutineParameters (textSpeed);
 		coroutineParagraph = updateParagraph (param);
 		coroutineText = updateText ();
@@ -46,7 +59,7 @@ public class SouffleurScript : MonoBehaviour {
 	
 	void Update () {
 
-		if (show) {
+		if (talking) {
 			UIimage.color = new Color(1,1,1,Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
 			UIText.color = new Color(0,0,0,Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
 		} 
@@ -55,31 +68,39 @@ public class SouffleurScript : MonoBehaviour {
 			UIText.color = new Color(0,0,0,Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
 		}
 	
-		if (Input.GetButtonDown ("Fire1")){
-		    if( !saidOnce) {
-				saidOnce = true;
-				saySomething (textList);
-			} 
-			else {
+		if (Input.GetButtonDown ("Fire1") && talking){
 				param.speedUp(4);
-			}
 		}
 	}
 
+
+
+	
+	public void saySomething(string s){
+		List<string> temp = new List<string>{s};
+		saySomething (temp);
+	}
+
+
 	public void saySomething(List<string> text){
 		appear ();
+		textList = text;
+		end = false;
+		talking = true;
+		coroutineParagraph = updateParagraph (param);
+		coroutineText = updateText ();
 		StartCoroutine (coroutineText);
 		StartCoroutine (coroutineParagraph);
 	}
 
 	public void disappear(){
-		show = false;
-		guimanager.active = false;
+		talking = false;
+		guimanager.active = true;
 		animator.SetBool ("show", false);
 	}
 	public void appear(){
-		show = true;
-		guimanager.active = true;
+		talking = true;
+		guimanager.active = false;
 		animator.SetBool ("show", true);
 	}
 
@@ -103,7 +124,10 @@ public class SouffleurScript : MonoBehaviour {
 		int charIndex = 0;
 
 		end = false;
+		UICursor.color = new Color (1, 1, 1, 0);
+
 		while (charIndex < text.Length) {
+
             timer += Time.deltaTime;
 			if(timer > 1/param.speed){
 				while(timer > 1/param.speed ){
@@ -121,8 +145,8 @@ public class SouffleurScript : MonoBehaviour {
 			else
 				yield return null;
 		}
-		Debug.Log ("fin de la coroutine paragrh");
 		end = true;
+		UICursor.color = new Color (1, 1, 1, 1);
 		yield break;
 	}
 
@@ -130,13 +154,14 @@ public class SouffleurScript : MonoBehaviour {
 
 		while (true) {
 			if (Input.GetButtonDown ("Fire1") && end == true) {
+				param.reset();
 				index++;
 				if (index == textList.Count) {
 					disappear ();		
 					index = 0;
+					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;
 				}
-				param.reset();
 				coroutineText = updateParagraph(param);
 				StartCoroutine (coroutineText);
 			}

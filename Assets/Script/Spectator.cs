@@ -8,9 +8,10 @@ public class Spectator : MonoBehaviour {
 
 	public int publicType;
 	public Direction walkAwayDirection;
+	public bool hereAtTheBeginning = true;
 
 	// Use this for initialization
-	void Start () {	
+	void OnEnable () {	
 
 		this.transform.GetChild (0).GetComponent<Animator> ().SetInteger ("type", publicType);
 
@@ -19,6 +20,9 @@ public class Spectator : MonoBehaviour {
 		else if(walkAwayDirection == Direction.right)
 			this.transform.GetChild (0).GetComponent<Animator> ().SetInteger ("walkDirection", 1);
 
+		if (!hereAtTheBeginning) {
+			this.transform.GetChild (0).GetComponent<Animator> ().SetBool("walkAway",true);
+		}
 	}
 	
 	// Update is called once per frame

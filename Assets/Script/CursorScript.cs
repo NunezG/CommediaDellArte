@@ -6,7 +6,6 @@ public class CursorScript : MonoBehaviour {
 
 
 	public Vector2 hotSpot = Vector2.zero;
-
 	private float planeDistance;
 
 	void Start(){
@@ -15,7 +14,7 @@ public class CursorScript : MonoBehaviour {
 		planeDistance = this.transform.parent.GetComponent<Canvas> ().planeDistance;
 	}
 
-	void LateUpdate(){
+	void Update(){
 
 		Vector3 newPos = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,planeDistance));
 		this.transform.position = new Vector3(newPos.x + hotSpot.x, newPos.y + hotSpot.y,this.transform.position.z) ;

@@ -11,8 +11,9 @@ public class PublicScript : MonoBehaviour {
 	public List<AudioClip> laughtClips = new List<AudioClip>();//liste des son de rires
 	public List<AudioClip> clapClips = new List<AudioClip>();//liste des sons d'applaudissements
 	public List<publicEvent> EventList;
-			
-	private float time, value = 100;
+	public float value = 0;
+
+	private float time;
 	private int index = 0,publicSize = 0;
 	private AudioSource audioSource;
 
@@ -26,8 +27,7 @@ public class PublicScript : MonoBehaviour {
 		presentSpectator = new List<Animator> ();
 		goneSpectator = new List<Animator> ();
 		audioSource = this.GetComponent<AudioSource>();
-
-		index = EventList.Count-1;
+		index = 0;
 
 		for (int i = 0; i < this.transform.childCount; i++) {
 			AnimatorList.Insert(AnimatorList.Count , this.transform.GetChild (i).transform.GetChild (0).GetComponent<Animator>());	
@@ -40,20 +40,23 @@ public class PublicScript : MonoBehaviour {
 				goneSpectator.Add(AnimatorList[i]);
 			}
 		}
-		publicSize = AnimatorList.Count;
+		publicSize = presentSpectator.Count;
+
+		addValue (0);
+		subValue (0);
+		
 	}
 
 	void Update () {
 
-		if (Input.GetButtonDown ("Fire1")) {
+		/*if (Input.GetButtonDown ("Fire1")) {
 			for (int i = 0; i < this.transform.childCount; i++) {
 				//walkAway(i);
 			}
 			//happy (1);
 			subValue (25);
-
-
 		}
+		*/
 	}
 
 
@@ -65,11 +68,14 @@ public class PublicScript : MonoBehaviour {
 				presentSpectator.Insert(0,goneSpectator[rand]);
 				goneSpectator[rand].SetBool("walkAway", false);
 				goneSpectator.RemoveAt(rand);
+				publicSize++;
 			}
-			if( (index < EventList.Count))
+			if( (index < EventList.Count-1)){
 				index++;
-			else
-				break;
+			}
+			else{
+				return;
+			}
 		}
 	}
 	public void subValue(float val){

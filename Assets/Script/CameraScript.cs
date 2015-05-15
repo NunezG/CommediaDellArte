@@ -57,7 +57,7 @@ public class CameraScript : MonoBehaviour {
 		Vector3 newpos = new Vector3 ();
 		newpos.x = nextPosition.x;
 		newpos.y = nextPosition.y;
-		newpos.z = cParams.position.z;
+		newpos.z = nextPosition.z;
 		cParams.position = newpos;
 		cParams.speed = speed;
 	}	
