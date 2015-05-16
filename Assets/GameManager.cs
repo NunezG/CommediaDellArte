@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator event1(){
 
-		Vector3 moveEvent1 =  new Vector3(-16,7,28);
+		Vector3 moveEvent1 =  new Vector3(-16,7,30);
 		character.goTo (moveEvent1);
 
 		while (character.transform.position != moveEvent1) {

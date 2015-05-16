@@ -141,6 +141,7 @@ public class PublicScript : MonoBehaviour {
 				for (int i = 0; i < AnimatorList.Count; i++) {
 					AnimatorList[i].SetBool("happy", false);
 					audioSource.Stop ();
+					AnimatorList[i].speed = 1;
 				}
 				yield break;
 			}
