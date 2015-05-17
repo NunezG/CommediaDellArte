@@ -10,6 +10,7 @@ public class SouffleurScript : MonoBehaviour {
 	public Text UIText;	
 	public float fadeSpeed = 4, maxAlpha = 1,minAlpha = 0, textSpeed = 1;
 	public GUIManager guimanager;
+	public Sprite avecPanneau, sansPanneau;
 	public Sprite good, bad, bide;
 	[HideInInspector]
 	public bool talking = false;
@@ -69,6 +70,7 @@ public class SouffleurScript : MonoBehaviour {
 		UIimage.color = new Color(1,1,1,0);
 		UIText.color = new Color(0,0,0,0);
 		UICursor.color = new Color(1,1,1,0);
+		UIPanneau.color = new Color (1, 1, 1, 0);
 		param = new CoroutineParameters (textSpeed);
 	}
 	
@@ -104,6 +106,8 @@ public class SouffleurScript : MonoBehaviour {
 	}
 
 	public void giveFeedback(float time, int imageIndex){
+		this.GetComponent<Image>().sprite = avecPanneau;
+		this.GetComponent<Image> ().color = new Color (1, 1, 1, 1);
 		setPanneau (imageIndex);
 		StartCoroutine (feedbackCoroutine (time));
 	}
@@ -116,6 +120,7 @@ public class SouffleurScript : MonoBehaviour {
 
 
 	public void saySomething(List<string> text, bool reactiveGUI = true){
+		this.GetComponent<Image>().sprite = sansPanneau;
 		appear ();
 		textList = text;
 		end = false;
@@ -197,6 +202,8 @@ public class SouffleurScript : MonoBehaviour {
 		appear ();
 		yield return new WaitForSeconds(time);
 		disappear ();
+		yield return new WaitForSeconds(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+		this.GetComponent<Image> ().color = new Color (1, 1, 1, 0);
 		yield break;
 	}
 
