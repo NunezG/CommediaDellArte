@@ -102,5 +102,6 @@ public class CapitaineScript : MonoBehaviour {
 
 	IEnumerator goAway(){
 
+		yield break;
 	}
 }
