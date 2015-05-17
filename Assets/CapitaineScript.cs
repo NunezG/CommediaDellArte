@@ -4,8 +4,7 @@ using System.Collections;
 public class CapitaineScript : MonoBehaviour {
 
 	public GameManager gameManager;
-
-
+	
 	private int scaryValue = 0;
 	private bool talkDone = false, touchDone = false;
 
@@ -51,7 +50,7 @@ public class CapitaineScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 				
 		if (type == 1) {
-			gameManager.capitaine.GetComponent<CharacterController>().sprite.SetTrigger("peur");
+			this.GetComponent<CharacterController>().sprite.SetTrigger("peur");
 			//feed back du souffleur
 		}
 
@@ -102,6 +101,8 @@ public class CapitaineScript : MonoBehaviour {
 
 	IEnumerator goAway(){
 
+		this.GetComponent<CharacterController>().goTo(new Vector3(30,0,0));
+		StartCoroutine (gameManager.event3 ());
 		yield break;
 	}
 }

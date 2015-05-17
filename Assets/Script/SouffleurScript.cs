@@ -22,48 +22,48 @@ public class SouffleurScript : MonoBehaviour {
 	private CoroutineParameters param;
 	private List<string> textList;
 	
-
+	
 	public List<string> textList1 = new List<string>{
-		"Bienvenue cher comedien ! Comme tu es nouveau dans la troupe, je vais te guider.", 
-		"Ton rôle est celui d’Arlecchino, un personnage bien celebre venu d’Italie. C’est un" +
-		"meneur d’intrigue, ruse, spirituel et railleur, qui brouille toujours les pistes. C’est" +
-		"egalement et avant tout un valet qui represente le peuple, qui l’adore." ,
-		"C’est un lourd rôle pour un debutant, j’en ai conscience, mais notre ancien Arlecchino" +
-		"s’est brise la jambe lors d’un tour et nous n’avons trouve personne d’autre. Cependant j’ai" +
-		"bonne foi que tu t’en sortes, avec mes conseils !"
+		"Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !",
+		"Ton rôle est celui d’Arlecchino, un personnage bien célèbre venu d’Italie. C’est un meneur d’intrigue, rusé, " +
+		"spirituel et railleur, qui brouille toujours les pistes. C’est également — et avant tout — un valet qui représente" +
+		"le peuple, qui l’adore. ",
+		"C’est un lourd rôle pour un débutant, j’en ai conscience, mais notre ancien Arlecchino s’est brisé la jambe lors" +
+		"d’un tour et... nous n’avons trouvé personne d’autre. Cependant, j’ai bonne foi que tu t’en sortes, avec mes conseils bien sûr !"
 	};
-
+	
 	public List<string> textList2 = new List<string>{
-		"Allez, maintenant il faut que tu distraies ces braves gens si tu veux qu’ils s'amassent devant" +
-		"notre scène. Nous, les comediens itinerants, nous jouons chaque soir un peu notre survie.  Si l’on se " +
-		"debrouille bien, il n’est pas exclu qu’on nous donne à manger, à boire, voire parfois un logis pour le soir." +
-		"C’est toujours mieux que s’endormir affame dans une roulotte, non ?"
+		"Allez, maintenant il faut que tu distraies ces braves gens si tu veux qu’ils" +
+		"s'amassent devant notre scène. Nous, comédiens itinérants, nous jouons chaque soir un peu notre survie. " +
+		"Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne à manger, à boire, voire parfois un logis" +
+		"pour le soir ! C’est toujours mieux que s’endormir affamé dans une roulotte, non ?"
 	};
-
+	
 	public List<string> textList3 = new List<string>{
-		"Tu vois ce coffre, essaie de le fouiller pour voir si un accessoire ne peut pas t’aider…"
+		"Tu vois ce coffre, là-bas, essaie de le fouiller pour voir si un accessoire ne peut pas t’aider…"
 	};
-
+	
 	public List<string> textList4 = new List<string>{
 		"Mais que fais-tu ? Ce coffre n’est pas un comedien !"
 	};
-
+	
 	public List<string> textList5 = new List<string>{
-	"Ce personnage, c’est le Capitan. C’est un soldat. Il peut faire peur a première vue, " +
-	"mais en vérité c’est un poltron qui a peur de son ombre. Il n’est bon qu’a fanfaronner," +
-	"tu vas sûrement pouvoir aisement trouver un moyen de t’en debarrasser, pour le bonheur de " +
-	"notre public… enfin si on peut appeler cela ainsi ! (zoom sur l’avant scène, seules trois personnes" +
-	"assistent au spectacle, bruit de vent) ",
-	"Mais j’ai confiance en toi, petit ! Si tu accomplis plusieurs actions pour l’effrayer, il finira par s’en aller pleurer dans les jupons de sa mere ! Essaie donc !"
+		"Ce personnage, c’est le Capitan. C’est un soldat. Il peut faire peur à première vue, mais " +
+		"en vérité c’est un poltron qui a peur de son ombre. Il n’est bon qu’à fanfaronner, tu vas sûrement" +
+		"pouvoir trouver un moyen de t’en débarrasser, pour la joie de notre public… enfin si on peut appeler " +
+		"cela ainsi !",
+		"Mais j’ai confiance en toi, petit ! Si tu accomplis plusieurs actions pour l’effrayer, il finira par s’en" +
+		"aller pleurer dans les jupons de sa mère ! Essaie donc !"
 	};
 	
-    public List<string> textList6 = new List<string>{
-   "Bon. Maintenant que nous avons un public, il faut le garder ! Pour ce faire, il va falloir l’ecouter." +
-   "Sois attentif à leurs demandes et fais avancer l’intrigue. ",
-    "Dans cette situation, nous avons Pantalone (zoom sur lui), il possede toutes les tares du vieux privilegie :" +
-    "avarice, credulite, libertinage… Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, a" +
-    "l’esprit vif. Je ne t’en dis pas plus, il est temps de te debrouiller. Vas-y je te regarde !"
-    };
+	public List<string> textList6 = new List<string>{
+		"Bon. Maintenant que nous avons du public, il faut le garder ! Pour ce faire, il va falloir l'écouter." +
+		"Sois attentif à leurs demandes et fais avancer l’intrigue en essayant de les satisfaire. ",
+		"Dans cette situation, nous avons Pantalone (zoom sur lui), qio possède toutes les tares du vieux privilégié" +
+		": avarice, crédulité, libertinage… Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, à l’esprit vif. ",
+		"Je ne t’en dis pas plus, il est temps de te débrouiller. Moi, je te donnerai juste des indications sur les effets" +
+		"de tes actions sur le public. Vas-y je te regarde !"
+	};
 
 	void Start () {
 		animator = this.GetComponent<Animator> ();
@@ -90,6 +90,9 @@ public class SouffleurScript : MonoBehaviour {
 		}
 	}
 
+	public int getIndex(){
+		return index;
+	}
 
 	public void setPanneau(int imageIndex){
 		switch (imageIndex) {

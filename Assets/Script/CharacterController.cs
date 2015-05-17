@@ -48,8 +48,12 @@ public class CharacterController : MonoBehaviour {
 	public void goTo(Vector3 vec){		
 		goal = vec;
 		audioSource.Play();
-
 	}
+	public void setPositionAndGoal(Vector3 pos){
+		this.transform.position = pos;
+		goal = pos;
+	}
+
 
 
 }
