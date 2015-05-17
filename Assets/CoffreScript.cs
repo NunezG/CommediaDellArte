@@ -52,6 +52,7 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length + 0.2f);
 
 		//retour negatif du souffleur
+		gameManager.souffleur.giveFeedback (2, 1);
 
 		gameManager.character.goTo (moveToChestEvent);
 		while (gameManager.character.transform.position !=  moveToChestEvent) {

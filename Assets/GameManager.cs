@@ -4,7 +4,8 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	public CharacterController character;
-	public CharacterController capitaine;
+	public CapitaineScript capitaine;
+	public PantaloneScript pantalone;
 	public SouffleurScript souffleur;
 	public PublicScript publicOnScene;
 	public CameraScript camera;
@@ -80,13 +81,13 @@ public class GameManager : MonoBehaviour {
 		guiManager.active = false;
 
 		Vector3 moveEvent1 =  new Vector3(-16,7,30);
-		capitaine.goTo (moveEvent1);
+		capitaine.GetComponent<CharacterController>().goTo (moveEvent1);
 
 		while (capitaine.transform.position !=  moveEvent1) {
 			yield return null;
 		}
 
-		capitaine.sprite.SetTrigger ("moquerie");
+		capitaine.GetComponent<CharacterController>().sprite.SetTrigger ("moquerie");
 
 		souffleur.saySomething (souffleur.textList5, false);
 		while (souffleur.talking == true) {
@@ -99,5 +100,25 @@ public class GameManager : MonoBehaviour {
 		yield break;
 		
 	}
+
+    //Arrivé de pantalone et colombine
+    public IEnumerator event3(){
+        
+        guiManager.active = false;
+
+        souffleur.saySomething (souffleur.textList6, false);
+        while (souffleur.talking == true) {
+            yield return null;
+        }
+
+		pantalone.GetComponentInChildren<Animator> ().SetTrigger("asking");
+         //bulle aide pantalone
+		yield return new WaitForSeconds(pantalone.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+
+        guiManager.active = true;
+        
+        yield break;
+        
+    }
 
 }

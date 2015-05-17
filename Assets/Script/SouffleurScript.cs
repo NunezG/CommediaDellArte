@@ -6,10 +6,12 @@ using UnityEngine.UI;
 [System.Serializable]
 public class SouffleurScript : MonoBehaviour {
 	
-	public Image UIimage,UICursor;
+	public Image UIimage,UICursor,UIPanneau;
 	public Text UIText;	
 	public float fadeSpeed = 4, maxAlpha = 1,minAlpha = 0, textSpeed = 1;
 	public GUIManager guimanager;
+	public Sprite good, bad, bide;
+	[HideInInspector]
 	public bool talking = false;
 
 	private bool end = false;
@@ -54,6 +56,13 @@ public class SouffleurScript : MonoBehaviour {
 	"Mais j’ai confiance en toi, petit ! Si tu accomplis plusieurs actions pour l’effrayer, il finira par s’en aller pleurer dans les jupons de sa mere ! Essaie donc !"
 	};
 	
+    public List<string> textList6 = new List<string>{
+   "Bon. Maintenant que nous avons un public, il faut le garder ! Pour ce faire, il va falloir l’ecouter." +
+   "Sois attentif à leurs demandes et fais avancer l’intrigue. ",
+    "Dans cette situation, nous avons Pantalone (zoom sur lui), il possede toutes les tares du vieux privilegie :" +
+    "avarice, credulite, libertinage… Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, a" +
+    "l’esprit vif. Je ne t’en dis pas plus, il est temps de te debrouiller. Vas-y je te regarde !"
+    };
 
 	void Start () {
 		animator = this.GetComponent<Animator> ();
@@ -80,6 +89,24 @@ public class SouffleurScript : MonoBehaviour {
 	}
 
 
+	public void setPanneau(int imageIndex){
+		switch (imageIndex) {
+			case (0):
+				UIPanneau.sprite = good;
+				break;
+			case (1):
+				UIPanneau.sprite = bad;
+				break;
+			case (2):
+				UIPanneau.sprite = bide;
+				break;
+        }
+	}
+
+	public void giveFeedback(float time, int imageIndex){
+		setPanneau (imageIndex);
+		StartCoroutine (feedbackCoroutine (time));
+	}
 
 	
 	public void saySomething(string s, bool reactiveGUI = true){
@@ -99,13 +126,14 @@ public class SouffleurScript : MonoBehaviour {
 		StartCoroutine (coroutineParagraph);
 	}
 
-	public void disappear(bool reactiveGUI = true){
-		talking = false;
+	public void disappear(bool reactiveGUI ){
 		guimanager.active = reactiveGUI;
 		animator.SetBool ("show", false);
 	}
+	public void disappear(){
+		animator.SetBool ("show", false);
+	}
 	public void appear(){
-		talking = true;
 		guimanager.active = false;
 		animator.SetBool ("show", true);
 	}
@@ -152,7 +180,8 @@ public class SouffleurScript : MonoBehaviour {
 				param.reset();
 				index++;
 				if (index == textList.Count) {
-					disappear (reactiveGUI);		
+					disappear (reactiveGUI);
+					talking = false;
 					index = 0;
 					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;
@@ -162,6 +191,13 @@ public class SouffleurScript : MonoBehaviour {
 			}
 			yield return null;
 		}
+	}
+
+	IEnumerator feedbackCoroutine(float time){
+		appear ();
+		yield return new WaitForSeconds(time);
+		disappear ();
+		yield break;
 	}
 
 	public class CoroutineParameters{
