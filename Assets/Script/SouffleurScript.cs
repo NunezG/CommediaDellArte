@@ -45,6 +45,14 @@ public class SouffleurScript : MonoBehaviour {
 		"Mais que fais-tu ? Ce coffre n’est pas un comedien !"
 	};
 
+	public List<string> textList5 = new List<string>{
+	"Ce personnage, c’est le Capitan. C’est un soldat. Il peut faire peur a première vue, " +
+	"mais en vérité c’est un poltron qui a peur de son ombre. Il n’est bon qu’a fanfaronner," +
+	"tu vas sûrement pouvoir aisement trouver un moyen de t’en debarrasser, pour le bonheur de " +
+	"notre public… enfin si on peut appeler cela ainsi ! (zoom sur l’avant scène, seules trois personnes" +
+	"assistent au spectacle, bruit de vent) ",
+	"Mais j’ai confiance en toi, petit ! Si tu accomplis plusieurs actions pour l’effrayer, il finira par s’en aller pleurer dans les jupons de sa mere ! Essaie donc !"
+	};
 	
 
 	void Start () {
@@ -53,8 +61,6 @@ public class SouffleurScript : MonoBehaviour {
 		UIText.color = new Color(0,0,0,0);
 		UICursor.color = new Color(1,1,1,0);
 		param = new CoroutineParameters (textSpeed);
-		coroutineParagraph = updateParagraph (param);
-		coroutineText = updateText ();
 	}
 	
 	void Update () {
@@ -76,26 +82,26 @@ public class SouffleurScript : MonoBehaviour {
 
 
 	
-	public void saySomething(string s){
+	public void saySomething(string s, bool reactiveGUI = true){
 		List<string> temp = new List<string>{s};
-		saySomething (temp);
+		saySomething (temp, reactiveGUI);
 	}
 
 
-	public void saySomething(List<string> text){
+	public void saySomething(List<string> text, bool reactiveGUI = true){
 		appear ();
 		textList = text;
 		end = false;
 		talking = true;
 		coroutineParagraph = updateParagraph (param);
-		coroutineText = updateText ();
+		coroutineText = updateText (reactiveGUI);
 		StartCoroutine (coroutineText);
 		StartCoroutine (coroutineParagraph);
 	}
 
-	public void disappear(){
+	public void disappear(bool reactiveGUI = true){
 		talking = false;
-		guimanager.active = true;
+		guimanager.active = reactiveGUI;
 		animator.SetBool ("show", false);
 	}
 	public void appear(){
@@ -103,18 +109,7 @@ public class SouffleurScript : MonoBehaviour {
 		guimanager.active = false;
 		animator.SetBool ("show", true);
 	}
-
-	private void nextParagrah(){
-
-		if(index == textList.Count){
-			disappear();		
-			animator.SetBool ("show", false);
-			index = 0;
-			guimanager.active = true;
-			return;
-		}
-		index++;
-	}
+	
 
 	IEnumerator updateParagraph(CoroutineParameters param){
 
@@ -150,14 +145,14 @@ public class SouffleurScript : MonoBehaviour {
 		yield break;
 	}
 
-	IEnumerator updateText(){
+	IEnumerator updateText(bool reactiveGUI){
 
 		while (true) {
 			if (Input.GetButtonDown ("Fire1") && end == true) {
 				param.reset();
 				index++;
 				if (index == textList.Count) {
-					disappear ();		
+					disappear (reactiveGUI);		
 					index = 0;
 					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;

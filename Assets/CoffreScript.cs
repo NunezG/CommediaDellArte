@@ -25,6 +25,9 @@ public class CoffreScript : MonoBehaviour {
 	public void talk(int type){
 		StartCoroutine (talkCoroutine (type));
 	}
+	public void touch(int type){
+		StartCoroutine (touchCoroutine (type));
+	}
 
 
 	IEnumerator juggleCoroutine(){
@@ -85,6 +88,8 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length - 0.2f);
 
 		gameManager.guiManager.active = true;
+
+		StartCoroutine (gameManager.event2 ());
 		
 		yield break;
 	}
@@ -101,6 +106,8 @@ public class CoffreScript : MonoBehaviour {
 			yield return null;
 		}
 
+		gameManager.character.transform.Rotate (0, 180, 0);
+
 		if(type == 0)
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
 		else if (type == 1)
@@ -108,9 +115,48 @@ public class CoffreScript : MonoBehaviour {
 
 
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
-		gameManager.souffleur.saySomething ("Mais ques fais tu , Ce coffre n'est pas un comedien !");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
+		gameManager.souffleur.saySomething ("Mais ques fais tu , Ce coffre n'est pas un comedien !", false);
 
+		while (gameManager.souffleur.talking == true) {
+			yield return null;
+		}
+
+		gameManager.character.transform.Rotate (0, 180, 0);
+
+
+		gameManager.guiManager.active = true;
+
+		yield break;
+	}
+
+	IEnumerator touchCoroutine(int type){
+		
+		gameManager.guiManager.active = false;
+		
+		Vector3 moveEvent = new Vector3 (13, 7, 30);
+		gameManager.character.goTo (moveEvent);
+		
+		while (gameManager.character.transform.position !=  moveEvent) {
+			yield return null;
+		}
+
+		gameManager.character.transform.Rotate (0, 180, 0);
+		if(type == 0)
+			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
+		else if (type == 1)
+			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
+		
+		
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
+		gameManager.souffleur.saySomething ("Mais ques fais tu , Ce coffre n'est pas un comedien !", false);
+
+		while (gameManager.souffleur.talking == true) {
+			yield return null;
+		}
+		gameManager.character.transform.Rotate (0, 180, 0);
+
+		gameManager.guiManager.active = true;
+		
 		yield break;
 	}
 
