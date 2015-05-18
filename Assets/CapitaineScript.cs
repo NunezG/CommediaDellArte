@@ -115,7 +115,7 @@ public class CapitaineScript : MonoBehaviour {
 		this.GetComponent<CharacterController>().goTo(moveEvent);
 		yield return new WaitForSeconds(1.5f);
 		gameManager.publicOnScene.addValue(20);
-		//StartCoroutine (gameManager.event3 ());
+		StartCoroutine (gameManager.event3 ());
 		yield break;
 	}
 }

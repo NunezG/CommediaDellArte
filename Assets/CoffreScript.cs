@@ -51,7 +51,10 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("juggling");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length + 0.2f);
+		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Juggling") ){
+			yield return null;
+		}
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
 
 		//retour negatif du souffleur
 		gameManager.souffleur.giveFeedback (2, 1);
@@ -87,7 +90,11 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
 		
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("eggJuggling");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Egg Juggling") ){
+			yield return null;
+		}
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("brokenEggs");
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 

@@ -33,8 +33,8 @@ public class SouffleurScript : MonoBehaviour {
 	};
 	
 	public List<string> textList2 = new List<string>{
-		"Allez, maintenant il faut que tu distraies ces braves gens si tu veux qu’ils" +
-		"s'amassent devant notre scène. Nous, comédiens itinérants, nous jouons chaque soir un peu notre survie. " +
+		"Allez, maintenant il faut que tu distraies ces braves gens si tu veux qu’ils " +
+		"s'amassent devant notre scène. Nous, comédiens itinérants, nous jouons chaque soir un peu notre survie. ",
 		"Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne à manger, à boire, voire parfois un logis" +
 		"pour le soir ! C’est toujours mieux que s’endormir affamé dans une roulotte, non ?"
 	};
@@ -61,7 +61,7 @@ public class SouffleurScript : MonoBehaviour {
 		"Sois attentif à leurs demandes et fais avancer l’intrigue en essayant de les satisfaire. ",
 		"Dans cette situation, nous avons Pantalone, qui possède toutes les tares du vieux privilégié" +
 		": avarice, crédulité, libertinage…",
-		"Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, à l’esprit vif. ",
+		"Et nous avons aussi Colombina, servante hardie et insolente, à l’esprit vif. ",
 		"Je ne t’en dis pas plus, il est temps de te débrouiller. Moi, je te donnerai juste des indications sur les effets" +
 		"de tes actions sur le public. Vas-y je te regarde !"
 	};
@@ -103,6 +103,10 @@ public class SouffleurScript : MonoBehaviour {
 
 	public int getIndex(){
 		return index;
+	}
+
+	public bool getEnd(){
+		return end;
 	}
 
 	public void setPanneau(int imageIndex){

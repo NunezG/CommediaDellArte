@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour {
 	public PantaloneScript pantalone;
 	public ColombineScript colombine;
 	public SouffleurScript souffleur;
+	public PierrotScript pierrot;
 	public CoffreScript coffre;
 	public PublicScript publicOnScene;
+	public BoxCollider2D cloche;
 	public CameraScript camera;
 	public GUIManager guiManager;
 	public FadeBlackScript fadeBlack;
@@ -27,6 +29,10 @@ public class GameManager : MonoBehaviour {
 		if(test)
 			StartCoroutine (event3 ());
 		test = false;
+	}
+
+	public void launchEndEvent(){
+		StartCoroutine (eventFinTuto());
 	}
 
 	//Intro avec le souffleur
@@ -123,25 +129,22 @@ public class GameManager : MonoBehaviour {
 
 		Vector3 zoomPantaloneEvent = new Vector3(-15,12,11);
 		Vector3 zoomColombineEvent = new Vector3(17,10,16);
+		bool eventPantaloneDone = false, eventColombineDone = false;
 
         souffleur.saySomething (souffleur.textList6, false);
 
         while (souffleur.talking == true) {
 
+			if(!eventPantaloneDone && souffleur.getIndex() == 1){
 				camera.moveTo (zoomPantaloneEvent);
-				yield return new WaitForSeconds(2f);
-				camera.moveTo (zoomColombineEvent);
-				yield return new WaitForSeconds(2f);
-
-				break;
-
+			}
+			if(!eventColombineDone && souffleur.getIndex() == 2){
+				camera.moveTo (zoomColombineEvent);				
+            }
             yield return null;
-		}   
-		while (souffleur.talking == true) {
-			yield return null;
-
 		}
-		camera.resetPosition ();
+
+        camera.resetPosition ();
 		yield return new WaitForSeconds (2.0f);
 
 		pantalone.GetComponentInChildren<Animator> ().SetTrigger("asking");
@@ -159,14 +162,89 @@ public class GameManager : MonoBehaviour {
 
 		guiManager.active = false;
 
+		publicOnScene.subValue (100);
+
 		souffleur.saySomething (souffleur.textList7, false);
 
+		Vector3 zoomClocheEvent = new Vector3 (20, 23, 27);
+		
 		while (souffleur.talking == true) {
+			if(souffleur.getIndex() == 1){
+				camera.moveTo(zoomClocheEvent);
+				cloche.enabled = true;
+				break;
+			}
 			yield return null;
 		}
+		while (souffleur.talking == true) {
+			yield return null;			
+		}
+		camera.resetPosition();
+		
+		guiManager.active = true;
+
+		yield break;
+	}
+
+
+	IEnumerator eventFinTuto(){
+		
+		guiManager.active = false;
+
+		Vector3 goToCenterEvent = new Vector3 (-1.5f, 10, 30);
+		Vector3 zoomLazziEvent = new Vector3 (0, 13, 5);
+		
+		pierrot.GetComponent<CharacterController>().goTo (goToCenterEvent);
+		while (pierrot.transform.position !=  goToCenterEvent) {
+			yield return null;
+		}
+		
+		//zoom
+		camera.moveTo (zoomLazziEvent);
+		
+		pierrot.GetComponentInChildren<Animator> ().SetTrigger ("juggling");
+		while(pierrot.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("pierrot_jongle") ){
+			yield return null;
+		}
+		yield return new WaitForSeconds(pierrot.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+		
+		publicOnScene.setValue (75);
+				
+		Vector3 goTalkToTpantalone = new Vector3 (-8, 7, 30);
+		character.goTo (goTalkToTpantalone);
+		while (character.transform.position !=  goTalkToTpantalone) {
+			yield return null;
+		}	
+
+		pantalone.GetComponentInChildren<Animator> ().SetTrigger ("dispute");
+		character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
+		yield return new WaitForSeconds(pantalone.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+
+		Vector3 moveToColombine = new Vector3 (11, 10, 30);
+		pierrot.GetComponent<CharacterController>().goTo (moveToColombine);
+		while (pierrot.transform.position !=  moveToColombine) {
+			yield return null;
+		}
+		pierrot.GetComponentInChildren<Animator> ().SetTrigger ("range");
+		colombine.gameObject.SetActive (false);
+
+		while(pierrot.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash != Animator.StringToHash("pierrot_range_colombine") ){
+			yield return null;
+		}
+		yield return new WaitForSeconds(pierrot.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
 		guiManager.active = true;
 
+		Vector3 goAwayEvent = new Vector3 (50f, 10, 30);
+		pierrot.GetComponent<CharacterController>().goTo (goAwayEvent);
+		while (pierrot.transform.position !=  goAwayEvent) {
+			yield return null;
+		}
+
+		// compte rendu 
+		fadeBlack.fadeToBlack (Mathf.Infinity);
+		GameObject.Find ("Gazette").GetComponent<Image>().color = new Color (1, 1, 1, 1);
+		
 		yield break;
 	}
 

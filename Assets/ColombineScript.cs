@@ -4,7 +4,7 @@ using System.Collections;
 public class ColombineScript : MonoBehaviour {
 	
 	public GameManager gameManager;
-	private int actionCount = 0;
+	private int actionCount = 3;
 
 
 	public void talk(int type){
@@ -15,16 +15,10 @@ public class ColombineScript : MonoBehaviour {
 	}
 	
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start () {}
 	
 	// Update is called once per frame
-	void Update () {
-		
-
-		
-	}
+	void Update () {}
 	
 	IEnumerator talkCoroutine(int type){
 		
@@ -58,6 +52,8 @@ public class ColombineScript : MonoBehaviour {
 		gameManager.character.transform.Rotate (0, 180, 0);
 
 		gameManager.guiManager.active = true;
+
+		actionCount++;
 
 		if (actionCount >= 4) {
 			StartCoroutine(gameManager.lazziEvent());
@@ -99,6 +95,8 @@ public class ColombineScript : MonoBehaviour {
 		}
 
 		gameManager.guiManager.active = true;
+
+		actionCount++;
 
 		if (actionCount >= 4) {
 			StartCoroutine(gameManager.lazziEvent());

@@ -61,7 +61,7 @@ public class PublicScript : MonoBehaviour {
 
 
 	public void addValue(float val){
-		value += val;
+		value = Mathf.Min( value+val,100);
 		while(value >= EventList[index].value ){
 			while(publicSize <  EventList[index].publicSize && goneSpectator.Count > 0){
 				int rand = Random.Range(0, goneSpectator.Count-1);
@@ -79,7 +79,7 @@ public class PublicScript : MonoBehaviour {
 		}
 	}
 	public void subValue(float val){
-		value -= val;
+		value = Mathf.Max( value-val,0);
 		while(value <= EventList[index].value ){
 			while(publicSize >  EventList[index].publicSize && presentSpectator.Count > 0){
 				int rand = Random.Range(0, presentSpectator.Count-1);
