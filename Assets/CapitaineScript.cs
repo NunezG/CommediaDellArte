@@ -22,12 +22,7 @@ public class CapitaineScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		if (scaryValue >= 50) {
-			StartCoroutine(goAway());
-		}
-	
+	void Update () {	
 	}
 
 	IEnumerator talkCoroutine(int type){
@@ -50,20 +45,24 @@ public class CapitaineScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 				
 		if (type == 1) {
-			this.GetComponent<CharacterController>().sprite.SetTrigger("peur");
+			this.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
 			gameManager.souffleur.giveFeedback (2, 0);
-			yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
-		}
-
-		if (!talkDone) {
-			scaryValue+=50;
-			talkDone = true;
+			if (!talkDone) {
+				scaryValue += 50;
+				gameManager.publicOnScene.addValue (30);
+				talkDone = true;
+			}
+			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);
 		}
 
 		gameManager.guiManager.active = true;
-		
+
+		if (scaryValue >= 100) {
+			StartCoroutine(goAway());
+		}
+
 		yield break;
 	}
 	
@@ -88,19 +87,24 @@ public class CapitaineScript : MonoBehaviour {
 
 
 		if (type == 1) {
-			gameManager.capitaine.GetComponent<CharacterController>().sprite.SetTrigger("peur");
+			gameManager.capitaine.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
 			gameManager.souffleur.giveFeedback (2, 0);
-			yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
-		}
-
-		if (!touchDone) {
-			scaryValue+=50;
-			touchDone = true;
+			
+			if (!touchDone) {
+				scaryValue += 50;
+				gameManager.publicOnScene.addValue (30);
+				touchDone = true;
+			}
+			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);	
 		}
 
 		gameManager.guiManager.active = true;
-		
+
+		if (scaryValue >= 100) {
+			StartCoroutine(goAway());
+		}
+
 		yield break;
 	}
 
@@ -109,7 +113,8 @@ public class CapitaineScript : MonoBehaviour {
 		Vector3 moveEvent = new Vector3 (-20, 7, 50);
 
 		this.GetComponent<CharacterController>().goTo(moveEvent);
-
+		yield return new WaitForSeconds(1.5f);
+		gameManager.publicOnScene.addValue(20);
 		//StartCoroutine (gameManager.event3 ());
 		yield break;
 	}

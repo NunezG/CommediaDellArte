@@ -59,10 +59,21 @@ public class SouffleurScript : MonoBehaviour {
 	public List<string> textList6 = new List<string>{
 		"Bon. Maintenant que nous avons du public, il faut le garder ! Pour ce faire, il va falloir l'écouter." +
 		"Sois attentif à leurs demandes et fais avancer l’intrigue en essayant de les satisfaire. ",
-		"Dans cette situation, nous avons Pantalone (zoom sur lui), qio possède toutes les tares du vieux privilégié" +
-		": avarice, crédulité, libertinage… Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, à l’esprit vif. ",
+		"Dans cette situation, nous avons Pantalone, qui possède toutes les tares du vieux privilégié" +
+		": avarice, crédulité, libertinage…",
+		"Et nous avons aussi Colombina (zoom sur elle), servante hardie et insolente, à l’esprit vif. ",
 		"Je ne t’en dis pas plus, il est temps de te débrouiller. Moi, je te donnerai juste des indications sur les effets" +
 		"de tes actions sur le public. Vas-y je te regarde !"
+	};
+
+	public List<string> textList7 = new List<string>{
+
+	"Oh non, on dirait que la taverne vient d’ouvrir ! On va perdre notre public, bon sang de bonsoir ! ",
+	"Vite, il nous faut utiliser notre botte secrète, un lazzi, autrement dit un numéro acrobatique " +
+	"exécuté par un comédien appelé en renfort. Le public en raffole. Utilise-le si tu es en difficulté," +
+	"mais rapelle-toi, tu ne peux en user qu’une fois et cela aura un impact sur le partage de nos gains éventuels." +
+	"Tire vite sur la clochette maintenant pour appeler un lazzi !"
+	
 	};
 
 	void Start () {
@@ -111,10 +122,17 @@ public class SouffleurScript : MonoBehaviour {
 	public void giveFeedback(float time, int imageIndex){
 		this.GetComponent<Image>().sprite = avecPanneau;
 		UIPanneau.color = new Color (1, 1, 1, 1);
+		UIText.color = new Color (1, 1, 1, 0);
 		setPanneau (imageIndex);
 		StartCoroutine (feedbackCoroutine (time));
 	}
-
+	public void giveFeedback(float time, string text){
+		this.GetComponent<Image>().sprite = avecPanneau;
+		UIPanneau.color = new Color (1, 1, 1, 0);
+		UIText.color = new Color (1, 1, 1, 0);
+		UIText.text = text;
+		StartCoroutine (feedbackCoroutine (time));
+	}
 	
 	public void saySomething(string s, bool reactiveGUI = true){
 		List<string> temp = new List<string>{s};

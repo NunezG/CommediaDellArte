@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public CharacterController character;
@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour {
 	public PublicScript publicOnScene;
 	public CameraScript camera;
 	public GUIManager guiManager;
+	public FadeBlackScript fadeBlack;
 
-	
 	bool test = true;
 	// Use this for initialization
 	void Start () {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 
 		if(test)
-			StartCoroutine (event1 ());
+			StartCoroutine (event3 ());
 		test = false;
 	}
 
@@ -108,42 +108,44 @@ public class GameManager : MonoBehaviour {
         
         guiManager.active = false;
 
-
 		//fondu noir 
+		fadeBlack.fadeToBlack (1.0f);
+		yield return new WaitForSeconds (1/fadeBlack.fadeSpeed);
+		yield return new WaitForSeconds (1);
 
 		coffre.gameObject.SetActive (false);
 		pantalone.transform.position = new Vector3 (-16, 7, 30);
 		character.setPositionAndGoal (new Vector3 (-8, 7, 30));
 		colombine.transform.position = new Vector3 (16, 7, 30);
 
+		yield return new WaitForSeconds (1/fadeBlack.fadeSpeed);
+		yield return new WaitForSeconds (0.5f);
 
 		Vector3 zoomPantaloneEvent = new Vector3(-15,12,11);
 		Vector3 zoomColombineEvent = new Vector3(17,10,16);
 
         souffleur.saySomething (souffleur.textList6, false);
+
         while (souffleur.talking == true) {
 
-			if(souffleur.getIndex() == 1 && Input.GetButtonDown("Fire1")){
 				camera.moveTo (zoomPantaloneEvent);
 				yield return new WaitForSeconds(2f);
 				camera.moveTo (zoomColombineEvent);
 				yield return new WaitForSeconds(2f);
-				camera.resetPosition ();
+
 				break;
-			}
+
             yield return null;
 		}   
 		while (souffleur.talking == true) {
 			yield return null;
-		}
 
+		}
 		camera.resetPosition ();
 		yield return new WaitForSeconds (2.0f);
 
 		pantalone.GetComponentInChildren<Animator> ().SetTrigger("asking");
 		pantalone.GetComponentInChildren<bulleInfoScript> ().showBubble (1.5f);
-		yield return new WaitForSeconds(pantalone.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
-		pantalone.GetComponentInChildren<Animator> ().SetTrigger("asking");
 		yield return new WaitForSeconds(pantalone.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
         guiManager.active = true;
@@ -151,5 +153,21 @@ public class GameManager : MonoBehaviour {
         yield break;
         
     }
+
+	//Arrivé du lazzi
+	public IEnumerator lazziEvent(){
+
+		guiManager.active = false;
+
+		souffleur.saySomething (souffleur.textList7, false);
+
+		while (souffleur.talking == true) {
+			yield return null;
+		}
+
+		guiManager.active = true;
+
+		yield break;
+	}
 
 }

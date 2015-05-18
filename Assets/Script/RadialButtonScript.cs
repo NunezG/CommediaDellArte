@@ -68,6 +68,9 @@ public class RadialButtonScript :  MonoBehaviour {
 		}
 	}
 
+	public void setActive(bool b){
+		active = b;
+	}
 	
 
 
