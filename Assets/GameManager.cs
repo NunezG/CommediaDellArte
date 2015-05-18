@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 
 		if(test)
-			StartCoroutine (event3 ());
+			StartCoroutine (event1 ());
 		test = false;
 	}
 

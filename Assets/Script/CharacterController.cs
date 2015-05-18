@@ -42,9 +42,6 @@ public class CharacterController : MonoBehaviour {
 		//goTo(goal);
 	}
 
-
-
-
 	public void goTo(Vector3 vec){		
 		goal = vec;
 		audioSource.Play();

@@ -41,7 +41,9 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		//animation prendre;
-
+		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length -0.1f );
+		
 		Vector3 goToCenterEvent = new Vector3 (-1.5f, 7, 30);
 		gameManager.character.goTo (goToCenterEvent);
 		while (gameManager.character.transform.position !=  goToCenterEvent) {
@@ -60,6 +62,9 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		//animation reposer
+		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+
 
 		gameManager.guiManager.active = true;
 
@@ -78,6 +83,9 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		//animation prendre
+		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
+		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+		
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("eggJuggling");
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("brokenEggs");

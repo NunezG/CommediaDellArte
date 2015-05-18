@@ -110,7 +110,7 @@ public class SouffleurScript : MonoBehaviour {
 
 	public void giveFeedback(float time, int imageIndex){
 		this.GetComponent<Image>().sprite = avecPanneau;
-		this.GetComponent<Image> ().color = new Color (1, 1, 1, 1);
+		UIPanneau.color = new Color (1, 1, 1, 1);
 		setPanneau (imageIndex);
 		StartCoroutine (feedbackCoroutine (time));
 	}
@@ -206,7 +206,7 @@ public class SouffleurScript : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		disappear ();
 		yield return new WaitForSeconds(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-		this.GetComponent<Image> ().color = new Color (1, 1, 1, 0);
+		UIPanneau.color = new Color (1, 1, 1, 0);
 		yield break;
 	}
 

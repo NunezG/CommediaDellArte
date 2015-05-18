@@ -18,13 +18,13 @@ public class CapitaineScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (scaryValue >= 100) {
+		if (scaryValue >= 50) {
 			StartCoroutine(goAway());
 		}
 	
@@ -52,6 +52,9 @@ public class CapitaineScript : MonoBehaviour {
 		if (type == 1) {
 			this.GetComponent<CharacterController>().sprite.SetTrigger("peur");
 			//feed back du souffleur
+			gameManager.souffleur.giveFeedback (2, 0);
+			yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+
 		}
 
 		if (!talkDone) {
@@ -87,6 +90,8 @@ public class CapitaineScript : MonoBehaviour {
 		if (type == 1) {
 			gameManager.capitaine.GetComponent<CharacterController>().sprite.SetTrigger("peur");
 			//feed back du souffleur
+			gameManager.souffleur.giveFeedback (2, 0);
+			yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 		}
 
 		if (!touchDone) {
@@ -101,8 +106,11 @@ public class CapitaineScript : MonoBehaviour {
 
 	IEnumerator goAway(){
 
-		this.GetComponent<CharacterController>().goTo(new Vector3(30,0,0));
-		StartCoroutine (gameManager.event3 ());
+		Vector3 moveEvent = new Vector3 (-20, 7, 50);
+
+		this.GetComponent<CharacterController>().goTo(moveEvent);
+
+		//StartCoroutine (gameManager.event3 ());
 		yield break;
 	}
 }
