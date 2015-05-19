@@ -42,12 +42,12 @@ public class PausePanel : MonoBehaviour
         if (canvas.enabled)
         {
             gui.active = false;
-            transform.FindChild("Text").GetComponent<Text>().text = goalList[0];
+            transform.GetChild(2).GetComponent<Text>().text = goalList[0];
         }
         else
         {
             gui.active = true;
-            transform.FindChild("Text").GetComponent<Text>().text = "";
+            transform.GetChild(2).GetComponent<Text>().text = "";
         }
     
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
