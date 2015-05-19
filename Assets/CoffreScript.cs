@@ -4,7 +4,9 @@ using System.Collections;
 public class CoffreScript : MonoBehaviour {
 
 	public GameManager gameManager;
-	
+
+	public AudioClip juggle_sound;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,7 +14,7 @@ public class CoffreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 
 
@@ -54,6 +56,9 @@ public class CoffreScript : MonoBehaviour {
 		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Juggling") ){
 			yield return null;
 		}
+
+		gameManager.character.GetComponent<AudioSource> ().PlayOneShot (juggle_sound,1);
+
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
 
 		//retour negatif du souffleur
@@ -99,6 +104,8 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("disappointed");
+		gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().depit,1);
+
 		yield return new WaitForSeconds (0.2f);
 		gameManager.publicOnScene.happy (2, 2);
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length - 0.2f);
@@ -131,7 +138,7 @@ public class CoffreScript : MonoBehaviour {
 
 
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
-		gameManager.souffleur.saySomething ("Mais ques fais tu , Ce coffre n'est pas un comedien !", false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !", false);
 
 		while (gameManager.souffleur.talking == true) {
 			yield return null;
@@ -157,14 +164,16 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		gameManager.character.transform.Rotate (0, 180, 0);
-		if(type == 0)
+		if (type == 0)
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
-		else if (type == 1)
+		else if (type == 1) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
+			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+		}
 		
 		
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
-		gameManager.souffleur.saySomething ("Mais ques fais tu , Ce coffre n'est pas un comedien !", false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !", false);
 
 		while (gameManager.souffleur.talking == true) {
 			yield return null;

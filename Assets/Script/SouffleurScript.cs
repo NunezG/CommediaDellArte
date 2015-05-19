@@ -12,6 +12,7 @@ public class SouffleurScript : MonoBehaviour {
 	public GUIManager guimanager;
 	public Sprite avecPanneau, sansPanneau;
 	public Sprite good, bad, bide;
+	public AudioClip sound;
 	[HideInInspector]
 	public bool talking = false;
 
@@ -147,6 +148,7 @@ public class SouffleurScript : MonoBehaviour {
 	public void saySomething(List<string> text, bool reactiveGUI = true){
 		this.GetComponent<Image>().sprite = sansPanneau;
 		appear ();
+		this.GetComponent<AudioSource> ().PlayOneShot (sound);
 		textList = text;
 		end = false;
 		talking = true;

@@ -25,9 +25,8 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		if(test)
-			StartCoroutine (event3 ());
+			StartCoroutine (event1 ());
 		test = false;
 	}
 
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator event2(){
 
 		guiManager.active = false;
-
+		
 		Vector3 moveEvent1 =  new Vector3(-16,7,30);
 		capitaine.GetComponent<CharacterController>().goTo (moveEvent1);
 
@@ -97,11 +96,15 @@ public class GameManager : MonoBehaviour {
 
 		capitaine.GetComponent<CharacterController>().sprite.SetTrigger ("moquerie");
 
+		capitaine.GetComponent<AudioSource> ().PlayOneShot (capitaine.moquerie,1);
+
 		souffleur.saySomething (souffleur.textList5, false);
 		while (souffleur.talking == true) {
 			yield return null;
 		}
 
+		//activation du capitaine
+		capitaine.GetComponent<Collider2D> ().enabled = true;
 
 		guiManager.active = true;
 
@@ -232,8 +235,7 @@ public class GameManager : MonoBehaviour {
 			yield return null;
 		}
 		yield return new WaitForSeconds(pierrot.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
-
-		guiManager.active = true;
+		
 
 		Vector3 goAwayEvent = new Vector3 (50f, 10, 30);
 		pierrot.GetComponent<CharacterController>().goTo (goAwayEvent);
@@ -242,9 +244,17 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// compte rendu 
-		fadeBlack.fadeToBlack (Mathf.Infinity);
+		//fadeBlack.fadeToBlack (Mathf.Infinity);
 		GameObject.Find ("Gazette").GetComponent<Image>().color = new Color (1, 1, 1, 1);
-		
+
+		while (true) {
+			if(Input.GetButtonDown("Fire1")){
+				Application.LoadLevel("saynete_1");
+				break;
+			}
+			yield return null;
+		}
+
 		yield break;
 	}
 

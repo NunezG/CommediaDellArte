@@ -13,7 +13,6 @@ public class RadialButtonScript :  MonoBehaviour {
 	public float fadeSpeed = 0.2f, moveSpeed = 0.2f;
 	//vrai si l'action est débloquée
 	public bool active = true;
-	
 
 	//permet de recuperer la position dans le script RadialMenu
 	[HideInInspector] public int index;
@@ -40,6 +39,7 @@ public class RadialButtonScript :  MonoBehaviour {
 			else{
 				GetComponent<SpriteRenderer> ().color = new Color(0.5f,0.5f,0.5f,Mathf.Lerp (GetComponent<SpriteRenderer> ().color.a, 1, fadeSpeed * Time.deltaTime));
 			}
+
 			//gestion du mouvement lors de l'apparition
 			this.transform.position = Vector3.Lerp( this.transform.position, parentObject.transform.position + positionOffset, moveSpeed * Time.deltaTime);
 		}
@@ -48,8 +48,10 @@ public class RadialButtonScript :  MonoBehaviour {
 				GetComponent<SpriteRenderer> ().color = new Color(1,1,1,Mathf.Lerp (GetComponent<SpriteRenderer> ().color.a, 0, fadeSpeed * Time.deltaTime));
 			}
 			else{
-				GetComponent<SpriteRenderer> ().color = new Color(0.5f,0.5f,0.5f,Mathf.Lerp (GetComponent<SpriteRenderer> ().color.a, 0, fadeSpeed * Time.deltaTime));
+				Debug.Log("fade non active");
+				GetComponent<SpriteRenderer> ().color = new Color(1,1,1,Mathf.Lerp (GetComponent<SpriteRenderer> ().color.a, 0, fadeSpeed * Time.deltaTime));
 			}
+
 			this.transform.position = Vector3.Lerp( this.transform.position, parentObject.transform.position ,  moveSpeed *Time.deltaTime);
 		}
 

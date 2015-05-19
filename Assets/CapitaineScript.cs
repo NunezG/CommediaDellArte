@@ -4,7 +4,8 @@ using System.Collections;
 public class CapitaineScript : MonoBehaviour {
 
 	public GameManager gameManager;
-	
+	public AudioClip moquerie;
+
 	private int scaryValue = 0;
 	private bool talkDone = false, touchDone = false;
 
@@ -44,17 +45,19 @@ public class CapitaineScript : MonoBehaviour {
 		
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 				
-		if (type == 1) {
+		if (type == 1) {			
+			this.GetComponent<Collider2D>().enabled = false;
 			this.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
 			gameManager.souffleur.giveFeedback (2, 0);
 
 			if (!talkDone) {
 				scaryValue += 50;
-				gameManager.publicOnScene.addValue (30);
+				gameManager.publicOnScene.addValue (20);
 				talkDone = true;
 			}
 			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);
+			this.GetComponent<Collider2D>().enabled = true;
 		}
 
 		gameManager.guiManager.active = true;
@@ -77,26 +80,30 @@ public class CapitaineScript : MonoBehaviour {
 			yield return null;
 		}
 		
-		if(type == 0)
+		if (type == 0)
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
-		else if (type == 1)
+		else if (type == 1) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
-		
-		
+			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+		}
+				
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);	
 
 
 		if (type == 1) {
+			this.GetComponent<Collider2D>().enabled = false;
 			gameManager.capitaine.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
 			gameManager.souffleur.giveFeedback (2, 0);
 			
 			if (!touchDone) {
 				scaryValue += 50;
-				gameManager.publicOnScene.addValue (30);
+				gameManager.publicOnScene.addValue (20);
 				touchDone = true;
 			}
-			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);	
+			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);
+			this.GetComponent<Collider2D>().enabled = true;
+
 		}
 
 		gameManager.guiManager.active = true;
@@ -112,8 +119,13 @@ public class CapitaineScript : MonoBehaviour {
 
 		Vector3 moveEvent = new Vector3 (-20, 7, 50);
 
+		this.GetComponent<Collider2D> ().enabled = false;
+
 		this.GetComponent<CharacterController>().goTo(moveEvent);
 		yield return new WaitForSeconds(1.5f);
+
+		//desactiver le capitaine
+
 		gameManager.publicOnScene.addValue(20);
 		StartCoroutine (gameManager.event3 ());
 		yield break;

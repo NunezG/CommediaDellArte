@@ -22,16 +22,15 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-		if (Vector3.Distance (this.transform.position, goal) < Time.deltaTime * moveSpeed) {
-			this.transform.position = goal;
-			audioSource.Stop();
-		}
-		else {
-			this.transform.position += Time.deltaTime * ((goal - this.transform.position).normalized) * moveSpeed;
-		}
-
+	
 		if (this.transform.position != goal) {
+			if (Vector3.Distance (this.transform.position, goal) < Time.deltaTime * moveSpeed) {
+				this.transform.position = goal;
+				audioSource.Stop();
+			}
+			else {
+				this.transform.position += Time.deltaTime * ((goal - this.transform.position).normalized) * moveSpeed;
+			}
 			sprite.SetBool ("move", true);
 		} else {
 			sprite.SetBool ("move", false);
@@ -44,7 +43,10 @@ public class CharacterController : MonoBehaviour {
 
 	public void goTo(Vector3 vec){		
 		goal = vec;
-		audioSource.Play();
+
+		if (this.transform.position != goal) {
+			audioSource.Play ();
+		}
 	}
 	public void setPositionAndGoal(Vector3 pos){
 		this.transform.position = pos;

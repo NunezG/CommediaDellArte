@@ -4,7 +4,7 @@ using System.Collections;
 public class ColombineScript : MonoBehaviour {
 	
 	public GameManager gameManager;
-	private int actionCount = 3;
+	private int actionCount = 0;
 
 
 	public void talk(int type){
@@ -33,11 +33,18 @@ public class ColombineScript : MonoBehaviour {
 				
 		gameManager.character.transform.Rotate (0, 180, 0);
 
-		if(type == 0)
+		if (type == 0) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
-		else if (type == 1)
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Nice Talking") ){
+				yield return null;
+			}
+		}
+		else if (type == 1) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
-		
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Angry Talking") ){
+				yield return null;
+			}
+		}
 		
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
@@ -75,12 +82,21 @@ public class ColombineScript : MonoBehaviour {
 
 		gameManager.character.transform.Rotate (0, 180, 0);
 		
-		if (type == 0)
+		if (type == 0) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
-		else if (type == 1)
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("poke") ){
+				yield return null;
+			}
+		}
+		else if (type == 1) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
-		
-		
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("frappe") ){
+				yield return null;
+			}
+			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+		}
+
+
 		yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length);		
 
 		gameManager.character.transform.Rotate (0, 180, 0);
