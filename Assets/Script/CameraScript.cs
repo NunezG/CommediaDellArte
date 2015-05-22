@@ -5,8 +5,8 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour {
 
-
-	public float moveSmoothTime = 1;
+	public float moveSmoothTime = 1, speed;
+	public Vector3 next = Vector3.zero, velocity;
 
 	private IEnumerator moveCoroutine;	
 	//Variables pour la gestion du deplacement et le zoom
@@ -22,14 +22,16 @@ public class CameraScript : MonoBehaviour {
 		
 		//initialisation des variables pour les coroutines
 		nextPosition = this.transform.position;
-		
+
+		next = nextPosition;
+
 		cParams = new CoroutineParameters ();
 		cParams.position = nextPosition;
 		cParams.speed = moveSmoothTime;
 		
 		//initialisation des coroutines
-		moveCoroutine = updatePosition (cParams);
-		StartCoroutine (moveCoroutine);
+		//moveCoroutine = updatePosition (cParams);
+		//StartCoroutine (moveCoroutine);
 		
 	}
 	
@@ -50,16 +52,24 @@ public class CameraScript : MonoBehaviour {
 			moveTo(nextPosition);
 			
 		}*/
+
+
+		transform.position = Vector3.SmoothDamp(transform.position, next,ref velocity, speed * Time.deltaTime);
+
 	}
 	
 	//deplacement
 	public void moveTo(Vector3 nextPosition, float speed  ){
-		Vector3 newpos = new Vector3 ();
+
+	/*	Vector3 newpos = new Vector3 ();
 		newpos.x = nextPosition.x;
 		newpos.y = nextPosition.y;
 		newpos.z = nextPosition.z;
 		cParams.position = newpos;
-		cParams.speed = speed;
+		cParams.speed = speed;*/
+		next = nextPosition;
+
+
 	}	
 	public void moveTo(Vector3 nextPosition ){
 		moveTo(nextPosition, moveSmoothTime);
@@ -75,6 +85,7 @@ public class CameraScript : MonoBehaviour {
 	public void resetPosition(float speed){
 		cParams.position = originalPosition;
 		cParams.speed = speed;
+		next = originalPosition;
 	}
 	public void resetPosition(){
 		resetPosition(moveSmoothTime);

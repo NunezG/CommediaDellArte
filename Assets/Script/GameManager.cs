@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 	public GUIManager guiManager;
 	public FadeBlackScript fadeBlack;
 
-	bool test = true;
+	bool test = false;
 	// Use this for initialization
 	void Start () {
 	
