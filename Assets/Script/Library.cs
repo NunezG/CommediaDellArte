@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public static class  Library{
+public static class Library{
 
 	//return the x and y of a vector3
 	public static Vector2 toVector2(this Vector3 vector3){
@@ -16,6 +17,7 @@ public static class  Library{
 		Vector3 position = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, collider.transform.position.z - Camera.main.transform.position.z);
 		return collider.OverlapPoint ( (Camera.main.ScreenToWorldPoint (position)).toVector2 ());
 	}
+
 
 	//return the position of the mouse on a Z plane
 	public static Vector2 getMousePosition(float z){

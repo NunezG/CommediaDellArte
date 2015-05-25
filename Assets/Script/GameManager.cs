@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Xml;
+using System.Text;
+using System.IO;
+
 public class GameManager : MonoBehaviour {
 
 	public CharacterController character;
@@ -16,12 +22,28 @@ public class GameManager : MonoBehaviour {
 	public GUIManager guiManager;
 	public FadeBlackScript fadeBlack;
 
+    public TextAsset GameAsset;
+
+    private List<Character> characterList;
+    private List<IEnumerator> eventTest;
+
+    private bool nextAction = false;
+
 	bool test = false;
 	// Use this for initialization
 	void Start () {
-	
+        characterList = new List<Character>();
+        eventTest = new List<IEnumerator>();
 
-	}
+        characterList.Add(new Character(character.gameObject, "Arlequin"));
+        characterList.Add(new Character(capitaine.gameObject, "Capitaine"));
+        characterList.Add(new Character(pantalone.gameObject, "Pantalone"));
+        characterList.Add(new Character(colombine.gameObject, "Colombine"));
+        characterList.Add(new Character(pierrot.gameObject, "Pierrot"));
+
+        loadEvent();
+        StartCoroutine( startEvent(0));
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -33,6 +55,193 @@ public class GameManager : MonoBehaviour {
 	public void launchEndEvent(){
 		StartCoroutine (eventFinTuto());
 	}
+
+    
+    IEnumerator startEvent(int id)
+    {
+        nextAction = true;
+        int i = 0;
+
+        while (i < eventTest.Count)
+        {
+            if (nextAction)
+            {
+                nextAction = false;
+                Debug.Log("Execution de l'action n°" + i + ".");
+                StartCoroutine(eventTest[i]);
+                i++;
+            }
+            yield return null;
+        }
+        yield break;
+    }
+
+    //permet de recuperer le gameobject d'un personnage a partir de son nom
+    private GameObject getCharacterGameobject(string name){
+        
+        for (int i = 0; i < characterList.Count; i++){
+            Debug.Log("research : " + name + " , actually this is :" + characterList[i]._characterName);
+            if (name == characterList[i]._characterName){
+                Debug.Log("Found");
+                return characterList[i]._characterGameobject;
+            }
+        }
+        Debug.Log("Not Found");
+        return null;
+    }
+
+    //Chargment deun event a partir d'un fichier xml
+    void loadEvent()
+    {
+
+        XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
+        xmlDoc.LoadXml(GameAsset.text); // load the file.
+
+        XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements
+
+        Debug.Log("Il y a " + eventList.Count + " node d'evenements a charger.");
+
+        //test avec le premier event
+        XmlNodeList actionsList = eventList[0].ChildNodes;
+        Debug.Log("Il y a " + actionsList.Count + " node d'actions a charger dans l'event n° 0");
+
+        for (int i = 0; i < actionsList.Count; i++)
+        {
+            Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
+
+            if (actionsList.Item(i).Name == "character")
+            {
+                Debug.Log("On cible le personnage " + actionsList.Item(i).Attributes["name"].Value + ".");
+
+                XmlNodeList characterActionsList = actionsList.Item(i).ChildNodes;
+                for (int j = 0; j < characterActionsList.Count; j++)
+                {
+
+                    if (characterActionsList.Item(j).Name == "deplacement")
+                    {
+                        Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
+                                  characterActionsList[j].Attributes["y"].Value + ", " +
+                                  characterActionsList[j].Attributes["z"].Value + " .");
+                        IEnumerator action = deplacementCoroutine(actionsList.Item(i).Attributes["name"].Value,
+                         new Vector3(
+                         float.Parse(characterActionsList[j].Attributes["x"].Value),
+                         float.Parse(characterActionsList[j].Attributes["y"].Value),
+                         float.Parse(characterActionsList[j].Attributes["z"].Value)));
+
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                    else if (characterActionsList.Item(j).Name == "animation")
+                    {
+                        Debug.Log("Activation de l'animation d'un personnage : " + characterActionsList[j].Attributes["name"].Value);
+                        IEnumerator action = animationCoroutine(actionsList.Item(i).Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value);
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                    else if (characterActionsList.Item(j).Name == "rotation")
+                    {
+                        Debug.Log("Rotation du personnage de : " + characterActionsList[j].Attributes["x"].Value + ", " +
+                                  characterActionsList[j].Attributes["y"].Value + ", " +
+                              characterActionsList[j].Attributes["z"].Value + " .");
+
+                        IEnumerator action = rotationCoroutine(actionsList.Item(i).Attributes["name"].Value,
+                        new Vector3(
+                            float.Parse( characterActionsList[j].Attributes["x"].Value),
+                            float.Parse( characterActionsList[j].Attributes["y"].Value),
+                            float.Parse( characterActionsList[j].Attributes["z"].Value)));
+
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                }
+            }
+            if (actionsList.Item(i).Name == "guiManager")
+            {
+                Debug.Log("Modification du GUIManager en " + actionsList[i].Attributes["active"].Value + ".");
+            }
+            if (actionsList.Item(i).Name == "souffleur")
+            {
+                Debug.Log("On cible le souffleur ");
+
+                XmlNodeList characterActionsList = actionsList.Item(i).ChildNodes;
+                for (int j = 0; j < characterActionsList.Count; j++)
+                {
+                    if (characterActionsList.Item(j).Name == "talk")
+                    {
+                        Debug.Log("Le souffleur veut dire : " + characterActionsList[j].Attributes["text"].Value + ". ");
+                    }
+                    else if (characterActionsList.Item(j).Name == "feedback")
+                    {
+                        Debug.Log("Le souffleur envoie un feedback de type : " + characterActionsList[j].Attributes["type"].Value +
+                                  " d'une durée de " + characterActionsList[j].Attributes["time"].Value + "s.");
+                        IEnumerator action = feedbackCoroutine(characterActionsList[j].Attributes["type"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value));
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                }
+            }
+        }
+    }
+
+
+    IEnumerator deplacementCoroutine(string characterName, Vector3 position)
+    {
+        Debug.Log("Execution d'un deplacement de " + characterName + " en " + position + ".");
+        CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
+        character.goTo(position);
+
+        while (character.transform.position != position)
+        {
+            yield return null;
+        }
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator rotationCoroutine(string characterName, Vector3 rotation) 
+    {
+        Debug.Log("Execution d'une rotation de " + characterName + " en " + rotation + ".");
+        GameObject character = getCharacterGameobject(characterName);
+
+        character.transform.Rotate(rotation);
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator animationCoroutine(string characterName, string animationName)
+    {
+        Debug.Log("Execution d'une animation de " + characterName + " , qui est \"" + animationName + "\".");
+        Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
+
+        characterAnimator.SetTrigger (animationName);
+		while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
+        {
+				yield return null;
+		}		
+		yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator feedbackCoroutine( string type, float time)
+    {
+        Debug.Log("Envoie d'un feedback de type :" + type + " , de " + time + "s.");
+        if(type == "good")
+        {
+            souffleur.giveFeedback(time, 0);
+        }
+        else if(type == "bad")
+        {
+            souffleur.giveFeedback(time, 1);
+        }
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator talkCoroutine(string text)
+    {
+        Debug.Log("Le souffleur parle.");
+      
+        nextAction = true;
+        yield break;
+    }
+
 
 	//Intro avec le souffleur
 	public IEnumerator event1(){
@@ -189,7 +398,7 @@ public class GameManager : MonoBehaviour {
 		yield break;
 	}
 
-
+    //Event avec pierrot
 	IEnumerator eventFinTuto(){
 		
 		guiManager.active = false;
@@ -258,4 +467,15 @@ public class GameManager : MonoBehaviour {
 		yield break;
 	}
 
+}
+
+class Character
+{
+    public GameObject _characterGameobject;
+    public string _characterName;
+    public Character(GameObject g, string s )
+    {
+        _characterGameobject = g;
+        _characterName = s;
+    }
 }
