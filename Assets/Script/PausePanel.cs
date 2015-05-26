@@ -9,7 +9,7 @@ public class PausePanel : MonoBehaviour
     GUIManager gui;
     bool pause;
 
-    string[] goalList = new string[] {
+    public string[] goalList = new string[] {
 		"Objectif en cours: distraire le public",
 		"Objectif en cours: effrayer le Capitan",
 		"Objectif en cours: séduire Colombine" 
@@ -30,6 +30,17 @@ public class PausePanel : MonoBehaviour
             Pause();
         }
     }
+
+	public void setGoal(string goal)
+	{
+		transform.GetChild(2).GetComponent<Text>().text = goal;
+	}
+
+	public string getGoal()
+	{
+		return transform.GetChild(2).GetComponent<Text>().text;
+	}
+
     public void OnMouseOver()
     {
         transform.GetComponent<Highlight>().overlap = true;
@@ -42,12 +53,11 @@ public class PausePanel : MonoBehaviour
         if (canvas.enabled)
         {
             gui.active = false;
-            transform.GetChild(2).GetComponent<Text>().text = goalList[0];
+            setGoal(goalList[0]);
         }
         else
         {
             gui.active = true;
-            transform.GetChild(2).GetComponent<Text>().text = "";
         }
     
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
