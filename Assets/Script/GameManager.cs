@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour {
         characterList.Add(new Character(colombine.gameObject, "Colombine"));
         characterList.Add(new Character(pierrot.gameObject, "Pierrot"));
 
-        loadEvent();
-        StartCoroutine( startEvent(0));
+       // loadEvent();
+       // StartCoroutine( startEvent(0));
     }
 
 	// Update is called once per frame
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour {
                 }
             }
             //activation/desactivation du GUImanager
-            if (actionsList.Item(i).Name == "guiManager")
+            else if (actionsList.Item(i).Name == "guiManager")
             {
                 Debug.Log("Modification du GUIManager en " + actionsList[i].Attributes["active"].Value + ".");
                 bool temp = false;
@@ -172,16 +172,8 @@ public class GameManager : MonoBehaviour {
                 IEnumerator action = guiCoroutine(temp);
                 eventTest.Insert(eventTest.Count, action);
             }
-            if (actionsList.Item(i).Name == "wait")
-            {
-
-            }
-            if (actionsList.Item(i).Name == "fadetoblack")
-            {
-
-            }
             //action du souffleur
-            if (actionsList.Item(i).Name == "souffleur")
+            else if (actionsList.Item(i).Name == "souffleur")
             {
                 Debug.Log("On cible le souffleur ");
 
@@ -210,7 +202,7 @@ public class GameManager : MonoBehaviour {
                 }
             }
             //action du public
-            if (actionsList.Item(i).Name == "public")
+            else if (actionsList.Item(i).Name == "public")
             {
                 Debug.Log("On cible le public");
                 XmlNodeList publicActionsList = actionsList.Item(i).ChildNodes;
@@ -222,10 +214,25 @@ public class GameManager : MonoBehaviour {
                         IEnumerator action = laughCoroutine(float.Parse( publicActionsList.Item(j).Attributes["time"].Value));
                         eventTest.Insert(eventTest.Count, action);
                     }
+                    if (publicActionsList.Item(j).Name == "addvalue")
+                    {                      
+                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 0);
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                    if (publicActionsList.Item(j).Name == "subvalue")
+                    {
+                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 1);
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                    if (publicActionsList.Item(j).Name == "setvalue")
+                    {
+                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 2);
+                        eventTest.Insert(eventTest.Count, action);
+                    }
                 }
             }
             //action de la camera
-            if(actionsList.Item(i).Name == "camera")
+            else if(actionsList.Item(i).Name == "camera")
             {
                 Debug.Log("On cible la camera");
 
@@ -252,26 +259,33 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
+            else if (checkWaitNode(actionsList.Item(i))) { }
+            else if (checkFadeNode(actionsList.Item(i))) { }
         }
     }
 
 
-    void checkWaitNode(XmlNode node){
+    bool checkWaitNode(XmlNode node){
         if (node.Name == "wait")
         {
             Debug.Log("Attente de " +node.Attributes["time"].Value +"s.");
             IEnumerator action = waitCoroutine(float.Parse( node.Attributes["time"].Value));
             eventTest.Insert(eventTest.Count, action);
+            return true;
         }
+        return false;
     }
-    void checkFadeNode(XmlNode node)
+
+    bool checkFadeNode(XmlNode node)
     {
         if (node.Name == "fadetoblack")
         {
             Debug.Log("Fade de " + node.Attributes["time"].Value + "s.");
-            IEnumerator action = waitCoroutine(float.Parse(node.Attributes["time"].Value));
+            IEnumerator action = fadeCoroutine(float.Parse(node.Attributes["time"].Value));
             eventTest.Insert(eventTest.Count, action);
+            return true;
         }
+        return false;
     }
 
 
@@ -387,6 +401,30 @@ public class GameManager : MonoBehaviour {
     IEnumerator waitCoroutine(float time) 
     {
         yield return new WaitForSeconds(time);
+        yield break;
+    }
+
+    IEnumerator fadeCoroutine(float time)
+    {
+        fadeBlack.fadeToBlack(time);
+        yield return new WaitForSeconds( time + 2 / fadeBlack.fadeSpeed);
+        yield break;
+    }
+
+    IEnumerator publicValueCoroutine(float value, int type)
+    {
+        if (type == 0)
+        {
+            publicOnScene.addValue(value);
+        }
+        else if (type == 1)
+        {
+            publicOnScene.subValue(value);
+        }
+        else if (type == 2)
+        {
+            publicOnScene.setValue(value);
+        }
         yield break;
     }
 
