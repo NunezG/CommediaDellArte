@@ -80,13 +80,13 @@ public class GameManager : MonoBehaviour {
     private GameObject getCharacterGameobject(string name){
         
         for (int i = 0; i < characterList.Count; i++){
-            Debug.Log("research : " + name + " , actually this is :" + characterList[i]._characterName);
+           // Debug.Log("research : " + name + " , actually this is :" + characterList[i]._characterName);
             if (name == characterList[i]._characterName){
-                Debug.Log("Found");
+               // Debug.Log("Found");
                 return characterList[i]._characterGameobject;
             }
         }
-        Debug.Log("Not Found");
+        //Debug.Log("Not Found");
         return null;
     }
 
@@ -255,17 +255,32 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+
+    void checkWaitNode(XmlNode node){
+        if (node.Name == "wait")
+        {
+            Debug.Log("Attente de " +node.Attributes["time"].Value +"s.");
+            IEnumerator action = waitCoroutine(float.Parse( node.Attributes["time"].Value));
+            eventTest.Insert(eventTest.Count, action);
+        }
+    }
+    void checkFadeNode(XmlNode node)
+    {
+        if (node.Name == "fadetoblack")
+        {
+            Debug.Log("Fade de " + node.Attributes["time"].Value + "s.");
+            IEnumerator action = waitCoroutine(float.Parse(node.Attributes["time"].Value));
+            eventTest.Insert(eventTest.Count, action);
+        }
+    }
+
+
     IEnumerator guiCoroutine(bool active)
     {
         if (active)
-        {
             Debug.Log("Activation du GUImanager.");
-        }
-        else
-        {
+        else 
             Debug.Log("Desactivation du GUImanager.");
-
-        }
         guiManager.active = active;
         nextAction = true;
         yield break;
