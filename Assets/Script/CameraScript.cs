@@ -58,6 +58,7 @@ public class CameraScript : MonoBehaviour {
 
 	}
 	
+
 	//deplacement
 	public void moveTo(Vector3 nextPosition, float speed  ){
 
@@ -68,8 +69,6 @@ public class CameraScript : MonoBehaviour {
 		cParams.position = newpos;
 		cParams.speed = speed;*/
 		next = nextPosition;
-
-
 	}	
 	public void moveTo(Vector3 nextPosition ){
 		moveTo(nextPosition, moveSmoothTime);
@@ -90,6 +89,10 @@ public class CameraScript : MonoBehaviour {
 	public void resetPosition(){
 		resetPosition(moveSmoothTime);
 	}
+
+    public Vector3 getOriginalPosition(){
+        return originalPosition;
+    }
 	
 	//coroutine pour gerer le deplacement
 	IEnumerator updatePosition(CoroutineParameters param ){

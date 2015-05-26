@@ -108,15 +108,13 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < actionsList.Count; i++)
         {
             Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
-
+            //action des personnages
             if (actionsList.Item(i).Name == "character")
             {
                 Debug.Log("On cible le personnage " + actionsList.Item(i).Attributes["name"].Value + ".");
-
                 XmlNodeList characterActionsList = actionsList.Item(i).ChildNodes;
                 for (int j = 0; j < characterActionsList.Count; j++)
                 {
-
                     if (characterActionsList.Item(j).Name == "deplacement")
                     {
                         Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
@@ -152,10 +150,37 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
+            //activation/desactivation du GUImanager
             if (actionsList.Item(i).Name == "guiManager")
             {
                 Debug.Log("Modification du GUIManager en " + actionsList[i].Attributes["active"].Value + ".");
+                bool temp = false;
+                if (actionsList[i].Attributes["active"].Value == "true" ||
+                    actionsList[i].Attributes["active"].Value == "True" ||
+                    actionsList[i].Attributes["active"].Value == "Vrai" ||
+                    actionsList[i].Attributes["active"].Value == "vrai")
+                {
+                    temp = true;
+                }
+                else if (actionsList[i].Attributes["active"].Value == "false" ||
+                    actionsList[i].Attributes["active"].Value == "False" ||
+                    actionsList[i].Attributes["active"].Value == "Faux" ||
+                    actionsList[i].Attributes["active"].Value == "faux")
+                {
+                    temp = false;
+                }
+                IEnumerator action = guiCoroutine(temp);
+                eventTest.Insert(eventTest.Count, action);
             }
+            if (actionsList.Item(i).Name == "wait")
+            {
+
+            }
+            if (actionsList.Item(i).Name == "fadetoblack")
+            {
+
+            }
+            //action du souffleur
             if (actionsList.Item(i).Name == "souffleur")
             {
                 Debug.Log("On cible le souffleur ");
@@ -165,7 +190,15 @@ public class GameManager : MonoBehaviour {
                 {
                     if (characterActionsList.Item(j).Name == "talk")
                     {
-                        Debug.Log("Le souffleur veut dire : " + characterActionsList[j].Attributes["text"].Value + ". ");
+                        Debug.Log("Le souffleur veut dire un truc ");
+                        XmlNodeList souffleurText = characterActionsList.Item(j).ChildNodes;
+                        List<string> text = new List<string>();
+                        for (int k = 0; k < souffleurText.Count; k++)
+                        {
+                            text.Add(souffleurText[k].InnerText);
+                        }
+                        IEnumerator action = talkCoroutine(text);
+                        eventTest.Insert(eventTest.Count, action);
                     }
                     else if (characterActionsList.Item(j).Name == "feedback")
                     {
@@ -176,9 +209,67 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
+            //action du public
+            if (actionsList.Item(i).Name == "public")
+            {
+                Debug.Log("On cible le public");
+                XmlNodeList publicActionsList = actionsList.Item(i).ChildNodes;
+                for (int j = 0; j < publicActionsList.Count; j++)
+                {
+                    if (publicActionsList.Item(j).Name == "laugh")
+                    {
+                        Debug.Log("Le public rigole pendant "+publicActionsList.Item(j).Attributes["time"].Value+"s.");
+                        IEnumerator action = laughCoroutine(float.Parse( publicActionsList.Item(j).Attributes["time"].Value));
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                }
+            }
+            //action de la camera
+            if(actionsList.Item(i).Name == "camera")
+            {
+                Debug.Log("On cible la camera");
+
+                XmlNodeList cameraActionsList = actionsList.Item(i).ChildNodes;
+                for (int j = 0; j < cameraActionsList.Count; j++)
+                {
+                    if (cameraActionsList.Item(j).Name == "deplacement")
+                    {
+                        Debug.Log("Deplacement de la camera en : " + cameraActionsList[j].Attributes["x"].Value + ", " +
+                                  cameraActionsList[j].Attributes["y"].Value + ", " +
+                                  cameraActionsList[j].Attributes["z"].Value + " .");
+                        IEnumerator action = deplacementCameraCoroutine(  new Vector3(
+                         float.Parse(cameraActionsList[j].Attributes["x"].Value),
+                         float.Parse(cameraActionsList[j].Attributes["y"].Value),
+                         float.Parse(cameraActionsList[j].Attributes["z"].Value)));
+
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                    if (cameraActionsList.Item(j).Name == "reset")
+                    {
+                        Debug.Log("Reset de la position de la camera.");
+                        IEnumerator action = resetCameraCoroutine();
+                        eventTest.Insert(eventTest.Count, action);
+                    }
+                }
+            }
         }
     }
 
+    IEnumerator guiCoroutine(bool active)
+    {
+        if (active)
+        {
+            Debug.Log("Activation du GUImanager.");
+        }
+        else
+        {
+            Debug.Log("Desactivation du GUImanager.");
+
+        }
+        guiManager.active = active;
+        nextAction = true;
+        yield break;
+    }
 
     IEnumerator deplacementCoroutine(string characterName, Vector3 position)
     {
@@ -234,14 +325,55 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator talkCoroutine(string text)
+    IEnumerator talkCoroutine(List<string> text)
     {
         Debug.Log("Le souffleur parle.");
-      
+        souffleur.saySomething(text, false);
+        while (souffleur.talking == true)
+        {
+            yield return null;
+        }
         nextAction = true;
         yield break;
     }
 
+    IEnumerator laughCoroutine(float time)
+    {
+        Debug.Log("Le public rigole.");
+        publicOnScene.happy(time);
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator deplacementCameraCoroutine(Vector3 position)
+    {
+        Debug.Log("La camera se deplace en :" + position + ".");
+        camera.moveTo(position);
+        while ( (position - camera.transform.position).magnitude > 1)
+        {
+            yield return null;
+        }
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator resetCameraCoroutine()
+    {
+        Debug.Log("On reset la position de la camera");
+        camera.resetPosition();
+        while ((camera.getOriginalPosition() - camera.transform.position).magnitude > 1)
+        {
+            yield return null;
+        }
+        nextAction = true;
+        yield break;
+    }
+
+    IEnumerator waitCoroutine(float time) 
+    {
+        yield return new WaitForSeconds(time);
+        yield break;
+    }
 
 	//Intro avec le souffleur
 	public IEnumerator event1(){

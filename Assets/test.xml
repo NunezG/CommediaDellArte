@@ -1,14 +1,40 @@
 <event>
-	<guiManager active="false"></guiManager>
+	<guiManager active="false"/>
 
 	<character name="Arlequin">
-		<deplacement x="1" y="6" z="30"></deplacement>
-		<animation name="juggling"></animation>
-		<rotation x="0" y="180" z="0"></rotation>
+		<deplacement x="1" y="6" z="30"/>
+		<animation name="juggling"/>
+		<rotation x="0" y="180" z="0"/>
 	</character>
+	
+	<camera>
+		<deplacement  x="0" y="10" z="0"/>
+		<reset/>
+	</camera>
+	
 	<souffleur>
-		<feedback type="good" time="5"></feedback>
+		<feedback type="good" time="5"/>
+		<talk>
+			<paragraph>
+				texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
+				texttexttexttexttexttexttexttexttexttexttextjhsdfjhgdsjksdfnhsd
+			</paragraph>
+			<paragraph>
+				text2text2text2text2text2text2text2text2text2text2text2text2text2text2text2text2
+				text2text2text2text2text2text2text2text2text2text2text2text2text2
+			</paragraph>
+		</talk>
 	</souffleur>
 	
-	<guiManager active="true"></guiManager>
+	<wait time="1"/>
+	<fadetoblack time="5"/>
+	
+	<public>
+		<laugh time="5"/>
+		<addvalue value="15"/>
+	</public>
+	
+	
+	<guiManager active="true"/>
 </event>
+
