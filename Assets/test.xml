@@ -1,5 +1,13 @@
-<event>
+<event id="1">
 	<guiManager active="false"/>
+
+	<multiple>
+		<camera>
+			<deplacement  x="0" y="10" z="0"/>
+		</camera>
+		<fadetoblack time="5"/>
+	</multiple>
+	
 
 	<character name="Arlequin">
 		<deplacement x="1" y="6" z="30"/>
@@ -16,12 +24,12 @@
 		<feedback type="good" time="5"/>
 		<talk>
 			<paragraph>
-				texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
-				texttexttexttexttexttexttexttexttexttexttextjhsdfjhgdsjksdfnhsd
+				texttexttexttexttexttexttexttextt exttexttexttexttexttexttexttexttext
+				texttexttexttexttexttexttexttextt exttexttextjhsdfjhgdsjksdfnhsd
 			</paragraph>
 			<paragraph>
-				text2text2text2text2text2text2text2text2text2text2text2text2text2text2text2text2
-				text2text2text2text2text2text2text2text2text2text2text2text2text2
+				text2text2text2text2text2text2text2t ext2text2text2text2text2text2text2text2text2
+				text2text2text2text2text2text2text2 text2text2text2text2text2text2
 			</paragraph>
 		</talk>
 	</souffleur>
@@ -33,7 +41,6 @@
 		<laugh time="5"/>
 		<addvalue value="15"/>
 	</public>
-	
 	
 	<guiManager active="true"/>
 </event>

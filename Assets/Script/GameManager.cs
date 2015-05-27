@@ -25,15 +25,14 @@ public class GameManager : MonoBehaviour {
     public TextAsset GameAsset;
 
     private List<Character> characterList;
-    private List<IEnumerator> eventTest;
+    private List<Evenement> eventList;
+    private CoroutineParameter param;
 
-    private bool nextAction = false;
 
-	bool test = false;
+	bool test = true;
 	// Use this for initialization
 	void Start () {
         characterList = new List<Character>();
-        eventTest = new List<IEnumerator>();
 
         characterList.Add(new Character(character.gameObject, "Arlequin"));
         characterList.Add(new Character(capitaine.gameObject, "Capitaine"));
@@ -41,8 +40,10 @@ public class GameManager : MonoBehaviour {
         characterList.Add(new Character(colombine.gameObject, "Colombine"));
         characterList.Add(new Character(pierrot.gameObject, "Pierrot"));
 
-       // loadEvent();
-       // StartCoroutine( startEvent(0));
+        param = new CoroutineParameter();
+
+       // eventList = loadEvent(GameAsset);
+       // startEvent("1");
     }
 
 	// Update is called once per frame
@@ -56,19 +57,30 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (eventFinTuto());
 	}
 
-    
-    IEnumerator startEvent(int id)
+    //Lance un evenement dans le jeu
+    public void startEvent(string id)
     {
-        nextAction = true;
+        for (int i = 0; i < eventList.Count; i++ )
+        {
+            if (id == eventList[i]._id)
+            {
+                StartCoroutine(launchEvent(eventList[i]._event));  
+            }
+        }
+    }
+
+    IEnumerator launchEvent(List<IEnumerator> list)
+    {
+        param._count += 1;
         int i = 0;
 
-        while (i < eventTest.Count)
+        while (i < list.Count)
         {
-            if (nextAction)
+            if (param._count > 0)
             {
-                nextAction = false;
+                param._count = 0;
                 Debug.Log("Execution de l'action n°" + i + ".");
-                StartCoroutine(eventTest[i]);
+                StartCoroutine(list[i]);
                 i++;
             }
             yield return null;
@@ -90,217 +102,280 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
-    //Chargment deun event a partir d'un fichier xml
-    void loadEvent()
+    //Chargment d'un event a partir d'un fichier xml
+    private List<Evenement> loadEvent(TextAsset GameAsset)
     {
-
         XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
         xmlDoc.LoadXml(GameAsset.text); // load the file.
 
         XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements
-
-        Debug.Log("Il y a " + eventList.Count + " node d'evenements a charger.");
+        //Debug.Log("Il y a " + eventList.Count + " node d'evenements a charger.");
 
         //test avec le premier event
         XmlNodeList actionsList = eventList[0].ChildNodes;
-        Debug.Log("Il y a " + actionsList.Count + " node d'actions a charger dans l'event n° 0");
+        //Debug.Log("Il y a " + actionsList.Count + " node d'actions a charger dans l'event n° 0");
+
+        List<Evenement> evenementList = new List<Evenement>();
+        List<IEnumerator> coroutineList = new List<IEnumerator>();
+
+        Evenement event_1 = new Evenement(coroutineList, eventList[0].Attributes["id"].Value);
+        evenementList.Add(event_1);
 
         for (int i = 0; i < actionsList.Count; i++)
         {
-            Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
-            //action des personnages
-            if (actionsList.Item(i).Name == "character")
+            //Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
+            //analyse de la node
+            if (checkNode(actionsList[i],coroutineList, param )) { }
+            else if (actionsList.Item(i).Name == "multiple")
             {
-                Debug.Log("On cible le personnage " + actionsList.Item(i).Attributes["name"].Value + ".");
-                XmlNodeList characterActionsList = actionsList.Item(i).ChildNodes;
-                for (int j = 0; j < characterActionsList.Count; j++)
-                {
-                    if (characterActionsList.Item(j).Name == "deplacement")
-                    {
-                        Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
-                                  characterActionsList[j].Attributes["y"].Value + ", " +
-                                  characterActionsList[j].Attributes["z"].Value + " .");
-                        IEnumerator action = deplacementCoroutine(actionsList.Item(i).Attributes["name"].Value,
-                         new Vector3(
-                         float.Parse(characterActionsList[j].Attributes["x"].Value),
-                         float.Parse(characterActionsList[j].Attributes["y"].Value),
-                         float.Parse(characterActionsList[j].Attributes["z"].Value)));
+                //Debug.Log("Node multiple detecté ");
+                CoroutineParameter paramMultiple = new CoroutineParameter();
+                List<IEnumerator> multipleCoroutineList = new List<IEnumerator>();
+                IEnumerator action = multipleCoroutine(multipleCoroutineList, paramMultiple, param);
+                coroutineList.Insert(coroutineList.Count, action);
 
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    else if (characterActionsList.Item(j).Name == "animation")
-                    {
-                        Debug.Log("Activation de l'animation d'un personnage : " + characterActionsList[j].Attributes["name"].Value);
-                        IEnumerator action = animationCoroutine(actionsList.Item(i).Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value);
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    else if (characterActionsList.Item(j).Name == "rotation")
-                    {
-                        Debug.Log("Rotation du personnage de : " + characterActionsList[j].Attributes["x"].Value + ", " +
-                                  characterActionsList[j].Attributes["y"].Value + ", " +
-                              characterActionsList[j].Attributes["z"].Value + " .");
-
-                        IEnumerator action = rotationCoroutine(actionsList.Item(i).Attributes["name"].Value,
-                        new Vector3(
-                            float.Parse( characterActionsList[j].Attributes["x"].Value),
-                            float.Parse( characterActionsList[j].Attributes["y"].Value),
-                            float.Parse( characterActionsList[j].Attributes["z"].Value)));
-
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                }
-            }
-            //activation/desactivation du GUImanager
-            else if (actionsList.Item(i).Name == "guiManager")
-            {
-                Debug.Log("Modification du GUIManager en " + actionsList[i].Attributes["active"].Value + ".");
-                bool temp = false;
-                if (actionsList[i].Attributes["active"].Value == "true" ||
-                    actionsList[i].Attributes["active"].Value == "True" ||
-                    actionsList[i].Attributes["active"].Value == "Vrai" ||
-                    actionsList[i].Attributes["active"].Value == "vrai")
-                {
-                    temp = true;
-                }
-                else if (actionsList[i].Attributes["active"].Value == "false" ||
-                    actionsList[i].Attributes["active"].Value == "False" ||
-                    actionsList[i].Attributes["active"].Value == "Faux" ||
-                    actionsList[i].Attributes["active"].Value == "faux")
-                {
-                    temp = false;
-                }
-                IEnumerator action = guiCoroutine(temp);
-                eventTest.Insert(eventTest.Count, action);
-            }
-            //action du souffleur
-            else if (actionsList.Item(i).Name == "souffleur")
-            {
-                Debug.Log("On cible le souffleur ");
-
-                XmlNodeList characterActionsList = actionsList.Item(i).ChildNodes;
-                for (int j = 0; j < characterActionsList.Count; j++)
-                {
-                    if (characterActionsList.Item(j).Name == "talk")
-                    {
-                        Debug.Log("Le souffleur veut dire un truc ");
-                        XmlNodeList souffleurText = characterActionsList.Item(j).ChildNodes;
-                        List<string> text = new List<string>();
-                        for (int k = 0; k < souffleurText.Count; k++)
-                        {
-                            text.Add(souffleurText[k].InnerText);
-                        }
-                        IEnumerator action = talkCoroutine(text);
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    else if (characterActionsList.Item(j).Name == "feedback")
-                    {
-                        Debug.Log("Le souffleur envoie un feedback de type : " + characterActionsList[j].Attributes["type"].Value +
-                                  " d'une durée de " + characterActionsList[j].Attributes["time"].Value + "s.");
-                        IEnumerator action = feedbackCoroutine(characterActionsList[j].Attributes["type"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value));
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                }
-            }
-            //action du public
-            else if (actionsList.Item(i).Name == "public")
-            {
-                Debug.Log("On cible le public");
-                XmlNodeList publicActionsList = actionsList.Item(i).ChildNodes;
-                for (int j = 0; j < publicActionsList.Count; j++)
-                {
-                    if (publicActionsList.Item(j).Name == "laugh")
-                    {
-                        Debug.Log("Le public rigole pendant "+publicActionsList.Item(j).Attributes["time"].Value+"s.");
-                        IEnumerator action = laughCoroutine(float.Parse( publicActionsList.Item(j).Attributes["time"].Value));
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    if (publicActionsList.Item(j).Name == "addvalue")
-                    {                      
-                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 0);
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    if (publicActionsList.Item(j).Name == "subvalue")
-                    {
-                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 1);
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    if (publicActionsList.Item(j).Name == "setvalue")
-                    {
-                        IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 2);
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                }
-            }
-            //action de la camera
-            else if(actionsList.Item(i).Name == "camera")
-            {
-                Debug.Log("On cible la camera");
-
-                XmlNodeList cameraActionsList = actionsList.Item(i).ChildNodes;
-                for (int j = 0; j < cameraActionsList.Count; j++)
-                {
-                    if (cameraActionsList.Item(j).Name == "deplacement")
-                    {
-                        Debug.Log("Deplacement de la camera en : " + cameraActionsList[j].Attributes["x"].Value + ", " +
-                                  cameraActionsList[j].Attributes["y"].Value + ", " +
-                                  cameraActionsList[j].Attributes["z"].Value + " .");
-                        IEnumerator action = deplacementCameraCoroutine(  new Vector3(
-                         float.Parse(cameraActionsList[j].Attributes["x"].Value),
-                         float.Parse(cameraActionsList[j].Attributes["y"].Value),
-                         float.Parse(cameraActionsList[j].Attributes["z"].Value)));
-
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                    if (cameraActionsList.Item(j).Name == "reset")
-                    {
-                        Debug.Log("Reset de la position de la camera.");
-                        IEnumerator action = resetCameraCoroutine();
-                        eventTest.Insert(eventTest.Count, action);
-                    }
-                }
-            }
-            else if (checkWaitNode(actionsList.Item(i))) { }
-            else if (checkFadeNode(actionsList.Item(i))) { }
+                //remplir la liste des coroutines multiples
+                 XmlNodeList multipleActionsList = actionsList.Item(i).ChildNodes;
+                 for (int j = 0; j < multipleActionsList.Count; j++)
+                 {
+                     checkNode(multipleActionsList[j], multipleCoroutineList, paramMultiple);
+                 }
+            }       
         }
+        return evenementList;
     }
 
+    bool checkNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (checkCharacterNode(node, coroutineList, param)) { return true; }
+        //activation/desactivation du GUImanager
+        else if (checkGUIManagerNode(node, coroutineList, param)) { return true; }
+        //action du souffleur
+        else if (checkSouffleurNode(node, coroutineList, param)) { return true; }
+        //action du public
+        else if (checkPublicNode(node, coroutineList, param)) { return true; }
+        //action de la camera
+        else if (checkCameraNode(node, coroutineList, param)) { return true; }
+        //wait coroutine
+        else if (checkWaitNode(node, coroutineList, param)) { return true; }
+        //fadetoblack coroutine
+        else if (checkFadeNode(node, coroutineList, param)) { return true; }
+        else
+            return false;
+    }
 
-    bool checkWaitNode(XmlNode node){
+    bool checkWaitNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
         if (node.Name == "wait")
         {
-            Debug.Log("Attente de " +node.Attributes["time"].Value +"s.");
-            IEnumerator action = waitCoroutine(float.Parse( node.Attributes["time"].Value));
-            eventTest.Insert(eventTest.Count, action);
+            //Debug.Log("Attente de " +node.Attributes["time"].Value +"s.");
+            IEnumerator action = waitCoroutine(float.Parse(node.Attributes["time"].Value), param);
+            coroutineList.Insert(coroutineList.Count, action);
             return true;
         }
         return false;
     }
 
-    bool checkFadeNode(XmlNode node)
+    bool checkFadeNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
     {
         if (node.Name == "fadetoblack")
         {
-            Debug.Log("Fade de " + node.Attributes["time"].Value + "s.");
-            IEnumerator action = fadeCoroutine(float.Parse(node.Attributes["time"].Value));
-            eventTest.Insert(eventTest.Count, action);
+            //Debug.Log("Fade de " + node.Attributes["time"].Value + "s.");
+            IEnumerator action = fadeCoroutine(float.Parse(node.Attributes["time"].Value), param);
+            coroutineList.Insert(coroutineList.Count, action);
             return true;
         }
         return false;
     }
 
+    bool checkPublicNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "public")
+        {
+           // Debug.Log("On cible le public");
+            XmlNodeList publicActionsList = node.ChildNodes;
+            for (int j = 0; j < publicActionsList.Count; j++)
+            {
+                if (publicActionsList.Item(j).Name == "laugh")
+                {
+                    //Debug.Log("Le public rigole pendant " + publicActionsList.Item(j).Attributes["time"].Value + "s.");
+                    IEnumerator action = laughCoroutine(float.Parse(publicActionsList.Item(j).Attributes["time"].Value), param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                if (publicActionsList.Item(j).Name == "addvalue")
+                {
+                    IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 0, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                if (publicActionsList.Item(j).Name == "subvalue")
+                {
+                    IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 1, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                if (publicActionsList.Item(j).Name == "setvalue")
+                {
+                    IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 2, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
-    IEnumerator guiCoroutine(bool active)
+    bool checkCameraNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "camera")
+        {
+            //Debug.Log("On cible la camera");
+
+            XmlNodeList cameraActionsList = node.ChildNodes;
+            for (int j = 0; j < cameraActionsList.Count; j++)
+            {
+                if (cameraActionsList.Item(j).Name == "deplacement")
+                {
+                    /*Debug.Log("Deplacement de la camera en : " + cameraActionsList[j].Attributes["x"].Value + ", " +
+                              cameraActionsList[j].Attributes["y"].Value + ", " +
+                              cameraActionsList[j].Attributes["z"].Value + " .");*/
+                    IEnumerator action = deplacementCameraCoroutine(new Vector3(
+                     float.Parse(cameraActionsList[j].Attributes["x"].Value),
+                     float.Parse(cameraActionsList[j].Attributes["y"].Value),
+                     float.Parse(cameraActionsList[j].Attributes["z"].Value)), param);
+
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                if (cameraActionsList.Item(j).Name == "reset")
+                {
+                    //Debug.Log("Reset de la position de la camera.");
+                    IEnumerator action = resetCameraCoroutine(param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    bool checkSouffleurNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "souffleur")
+        {
+           // Debug.Log("On cible le souffleur ");
+
+            XmlNodeList characterActionsList = node.ChildNodes;
+            for (int j = 0; j < characterActionsList.Count; j++)
+            {
+                if (characterActionsList.Item(j).Name == "talk")
+                {
+                   // Debug.Log("Le souffleur veut dire un truc ");
+                    XmlNodeList souffleurText = characterActionsList.Item(j).ChildNodes;
+                    List<string> text = new List<string>();
+                    for (int k = 0; k < souffleurText.Count; k++)
+                    {
+                        text.Add(souffleurText[k].InnerText);
+                    }
+                    IEnumerator action = talkCoroutine(text, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                else if (characterActionsList.Item(j).Name == "feedback")
+                {
+                    /*Debug.Log("Le souffleur envoie un feedback de type : " + characterActionsList[j].Attributes["type"].Value +
+                              " d'une durée de " + characterActionsList[j].Attributes["time"].Value + "s.");*/
+                    IEnumerator action = feedbackCoroutine(characterActionsList[j].Attributes["type"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value), param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    bool checkGUIManagerNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "guimanager")
+        {
+            //Debug.Log("Modification du GUIManager en " + node.Attributes["active"].Value + ".");
+            bool temp = false;
+            if (node.Attributes["active"].Value == "true" ||
+                node.Attributes["active"].Value == "True" ||
+                node.Attributes["active"].Value == "Vrai" ||
+                node.Attributes["active"].Value == "vrai")
+            {
+                temp = true;
+            }
+            else if (node.Attributes["active"].Value == "false" ||
+                node.Attributes["active"].Value == "False" ||
+                node.Attributes["active"].Value == "Faux" ||
+                node.Attributes["active"].Value == "faux")
+            {
+                temp = false;
+            }
+            IEnumerator action = guiCoroutine(temp, param);
+            coroutineList.Insert(coroutineList.Count, action);
+            return true;
+        }
+        return false;
+    }
+
+    bool checkCharacterNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "character")
+        {
+           // Debug.Log("On cible le personnage " +node.Attributes["name"].Value + ".");
+            XmlNodeList characterActionsList = node.ChildNodes;
+            for (int j = 0; j < characterActionsList.Count; j++)
+            {
+                if (characterActionsList.Item(j).Name == "deplacement")
+                {
+                    /*Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
+                              characterActionsList[j].Attributes["y"].Value + ", " +
+                              characterActionsList[j].Attributes["z"].Value + " .");*/
+                    IEnumerator action = deplacementCoroutine(node.Attributes["name"].Value,
+                     new Vector3(
+                     float.Parse(characterActionsList[j].Attributes["x"].Value),
+                     float.Parse(characterActionsList[j].Attributes["y"].Value),
+                     float.Parse(characterActionsList[j].Attributes["z"].Value)), param);
+
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                else if (characterActionsList.Item(j).Name == "animation")
+                {
+                    //Debug.Log("Activation de l'animation d'un personnage : " + characterActionsList[j].Attributes["name"].Value);
+                    IEnumerator action = animationCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                else if (characterActionsList.Item(j).Name == "rotation")
+                {
+                   /*Debug.Log("Rotation du personnage de : " + characterActionsList[j].Attributes["x"].Value + ", " +
+                              characterActionsList[j].Attributes["y"].Value + ", " +
+                          characterActionsList[j].Attributes["z"].Value + " .");*/
+
+                    IEnumerator action = rotationCoroutine(node.Attributes["name"].Value,
+                    new Vector3(
+                        float.Parse(characterActionsList[j].Attributes["x"].Value),
+                        float.Parse(characterActionsList[j].Attributes["y"].Value),
+                        float.Parse(characterActionsList[j].Attributes["z"].Value)), param);
+
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    IEnumerator guiCoroutine(bool active, CoroutineParameter param )
     {
         if (active)
             Debug.Log("Activation du GUImanager.");
         else 
             Debug.Log("Desactivation du GUImanager.");
         guiManager.active = active;
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator deplacementCoroutine(string characterName, Vector3 position)
+    IEnumerator deplacementCoroutine(string characterName, Vector3 position, CoroutineParameter param )
     {
         Debug.Log("Execution d'un deplacement de " + characterName + " en " + position + ".");
         CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
@@ -310,21 +385,21 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator rotationCoroutine(string characterName, Vector3 rotation) 
+    IEnumerator rotationCoroutine(string characterName, Vector3 rotation, CoroutineParameter param ) 
     {
         Debug.Log("Execution d'une rotation de " + characterName + " en " + rotation + ".");
         GameObject character = getCharacterGameobject(characterName);
 
         character.transform.Rotate(rotation);
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator animationCoroutine(string characterName, string animationName)
+    IEnumerator animationCoroutine(string characterName, string animationName, CoroutineParameter param )
     {
         Debug.Log("Execution d'une animation de " + characterName + " , qui est \"" + animationName + "\".");
         Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
@@ -335,11 +410,11 @@ public class GameManager : MonoBehaviour {
 				yield return null;
 		}		
 		yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator feedbackCoroutine( string type, float time)
+    IEnumerator feedbackCoroutine(string type, float time, CoroutineParameter param)
     {
         Debug.Log("Envoie d'un feedback de type :" + type + " , de " + time + "s.");
         if(type == "good")
@@ -350,11 +425,11 @@ public class GameManager : MonoBehaviour {
         {
             souffleur.giveFeedback(time, 1);
         }
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator talkCoroutine(List<string> text)
+    IEnumerator talkCoroutine(List<string> text, CoroutineParameter param )
     {
         Debug.Log("Le souffleur parle.");
         souffleur.saySomething(text, false);
@@ -362,19 +437,19 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator laughCoroutine(float time)
+    IEnumerator laughCoroutine(float time, CoroutineParameter param)
     {
         Debug.Log("Le public rigole.");
         publicOnScene.happy(time);
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator deplacementCameraCoroutine(Vector3 position)
+    IEnumerator deplacementCameraCoroutine(Vector3 position, CoroutineParameter param )
     {
         Debug.Log("La camera se deplace en :" + position + ".");
         camera.moveTo(position);
@@ -382,11 +457,11 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator resetCameraCoroutine()
+    IEnumerator resetCameraCoroutine( CoroutineParameter param )
     {
         Debug.Log("On reset la position de la camera");
         camera.resetPosition();
@@ -394,24 +469,27 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
-        nextAction = true;
+        param._count++;
         yield break;
     }
 
-    IEnumerator waitCoroutine(float time) 
+    IEnumerator waitCoroutine(float time, CoroutineParameter param ) 
     {
         yield return new WaitForSeconds(time);
+        param._count++;
         yield break;
     }
 
-    IEnumerator fadeCoroutine(float time)
+    IEnumerator fadeCoroutine(float time, CoroutineParameter param )
     {
+        Debug.Log("Fadetoblack de " + time + "s.");
         fadeBlack.fadeToBlack(time);
         yield return new WaitForSeconds( time + 2 / fadeBlack.fadeSpeed);
+        param._count++;
         yield break;
     }
 
-    IEnumerator publicValueCoroutine(float value, int type)
+    IEnumerator publicValueCoroutine(float value, int type, CoroutineParameter param)
     {
         if (type == 0)
         {
@@ -425,8 +503,32 @@ public class GameManager : MonoBehaviour {
         {
             publicOnScene.setValue(value);
         }
+        param._count++;
         yield break;
     }
+
+    IEnumerator multipleCoroutine(List<IEnumerator> list, CoroutineParameter multipleParam, CoroutineParameter param)
+    {
+        //On demarre toute les coroutines
+        for (int i = 0; i < list.Count; i++)
+        {
+            StartCoroutine(list[i]);
+        }
+        //Ojn attend la fin de chaque coroutine
+        while (multipleParam._count != list.Count)
+        {
+            Debug.Log(multipleParam._count);
+            yield return null;
+        }
+        Debug.Log(multipleParam._count);
+        param._count++;
+        yield break;
+    }
+
+    
+    
+
+
 
 	//Intro avec le souffleur
 	public IEnumerator event1(){
@@ -662,5 +764,24 @@ class Character
     {
         _characterGameobject = g;
         _characterName = s;
+    }
+}
+class Evenement
+{
+    public List<IEnumerator> _event;
+    public string _id;
+    public Evenement(List<IEnumerator> i, string s)
+    {
+        _event = i;
+        _id = s;
+    }
+}
+
+class CoroutineParameter
+{
+    public int _count;
+    public CoroutineParameter()
+    {
+        _count = 0;
     }
 }
