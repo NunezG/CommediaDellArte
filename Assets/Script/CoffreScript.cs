@@ -53,7 +53,7 @@ public class CoffreScript : MonoBehaviour {
 		}
 
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("juggling");
-		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Juggling") ){
+		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("juggling") ){
 			yield return null;
 		}
 

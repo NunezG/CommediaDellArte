@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour {
     private CoroutineParameter param;
 
 
-	bool test = true;
+	bool test = false;
+
 	// Use this for initialization
 	void Start () {
         characterList = new List<Character>();
@@ -42,15 +43,17 @@ public class GameManager : MonoBehaviour {
 
         param = new CoroutineParameter();
 
-       // eventList = loadEvent(GameAsset);
-       // startEvent("1");
+        eventList = loadEvent(GameAsset);
+        startEvent("Tutorial_1");
     }
 
 	// Update is called once per frame
 	void Update () {
+
 		if(test)
 			StartCoroutine (event1 ());
 		test = false;
+
 	}
 
 	public void launchEndEvent(){
@@ -103,46 +106,58 @@ public class GameManager : MonoBehaviour {
     }
 
     //Chargment d'un event a partir d'un fichier xml
-    private List<Evenement> loadEvent(TextAsset GameAsset)
+    public List<Evenement> loadEvent(TextAsset GameAsset)
     {
         XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
         xmlDoc.LoadXml(GameAsset.text); // load the file.
 
-        XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements
-        //Debug.Log("Il y a " + eventList.Count + " node d'evenements a charger.");
+        XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements en xml
+        List<Evenement> evenementList = new List<Evenement>(); // liste des evenements
+        
+         for (int temp = 0; temp < eventList.Count; temp++)
+         {
+             XmlNodeList actionsList = eventList[temp].ChildNodes;
+             List<IEnumerator> coroutineList = new List<IEnumerator>();
+             Evenement event_1 = new Evenement(coroutineList, eventList[temp].Attributes["id"].Value);
+             evenementList.Add(event_1);
 
-        //test avec le premier event
-        XmlNodeList actionsList = eventList[0].ChildNodes;
-        //Debug.Log("Il y a " + actionsList.Count + " node d'actions a charger dans l'event n° 0");
-
-        List<Evenement> evenementList = new List<Evenement>();
-        List<IEnumerator> coroutineList = new List<IEnumerator>();
-
-        Evenement event_1 = new Evenement(coroutineList, eventList[0].Attributes["id"].Value);
-        evenementList.Add(event_1);
-
-        for (int i = 0; i < actionsList.Count; i++)
-        {
-            //Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
-            //analyse de la node
-            if (checkNode(actionsList[i],coroutineList, param )) { }
-            else if (actionsList.Item(i).Name == "multiple")
-            {
-                //Debug.Log("Node multiple detecté ");
-                CoroutineParameter paramMultiple = new CoroutineParameter();
-                List<IEnumerator> multipleCoroutineList = new List<IEnumerator>();
-                IEnumerator action = multipleCoroutine(multipleCoroutineList, paramMultiple, param);
-                coroutineList.Insert(coroutineList.Count, action);
-
-                //remplir la liste des coroutines multiples
-                 XmlNodeList multipleActionsList = actionsList.Item(i).ChildNodes;
-                 for (int j = 0; j < multipleActionsList.Count; j++)
+             for (int i = 0; i < actionsList.Count; i++)
+             {
+                 //Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
+                 //analyse de la node
+                 if (checkNode(actionsList[i], coroutineList, param)) { }
+                 else if (actionsList.Item(i).Name == "multiple")
                  {
-                     checkNode(multipleActionsList[j], multipleCoroutineList, paramMultiple);
+                     //Debug.Log("Node multiple detecté ");
+                     CoroutineParameter paramMultiple = new CoroutineParameter();
+                     List<IEnumerator> multipleCoroutineList = new List<IEnumerator>();
+                     IEnumerator action = multipleCoroutine(multipleCoroutineList, paramMultiple, param);
+                     coroutineList.Insert(coroutineList.Count, action);
+
+                     //remplir la liste des coroutines multiples
+                     XmlNodeList multipleActionsList = actionsList.Item(i).ChildNodes;
+                     for (int j = 0; j < multipleActionsList.Count; j++)
+                     {
+                         checkNode(multipleActionsList[j], multipleCoroutineList, paramMultiple);
+                     }
                  }
-            }       
-        }
+             }
+
+         }
         return evenementList;
+    }
+
+    bool checkWaitAttribute(XmlNode node)
+    {
+        bool wait = true;
+        if (node != null)
+        {
+            if (node.Value == "false" || node.Value == "False")
+            {
+                wait = false;
+            }
+        }
+        return wait;
     }
 
     bool checkNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
@@ -237,17 +252,22 @@ public class GameManager : MonoBehaviour {
                     /*Debug.Log("Deplacement de la camera en : " + cameraActionsList[j].Attributes["x"].Value + ", " +
                               cameraActionsList[j].Attributes["y"].Value + ", " +
                               cameraActionsList[j].Attributes["z"].Value + " .");*/
+
+              
+                    bool wait = checkWaitAttribute( cameraActionsList[j].Attributes["wait"]);
+
                     IEnumerator action = deplacementCameraCoroutine(new Vector3(
                      float.Parse(cameraActionsList[j].Attributes["x"].Value),
                      float.Parse(cameraActionsList[j].Attributes["y"].Value),
-                     float.Parse(cameraActionsList[j].Attributes["z"].Value)), param);
+                     float.Parse(cameraActionsList[j].Attributes["z"].Value)), wait, param);
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
                 if (cameraActionsList.Item(j).Name == "reset")
                 {
                     //Debug.Log("Reset de la position de la camera.");
-                    IEnumerator action = resetCameraCoroutine(param);
+                    bool wait = checkWaitAttribute(cameraActionsList[j].Attributes["wait"]);
+                    IEnumerator action = resetCameraCoroutine(wait, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
             }
@@ -330,18 +350,21 @@ public class GameManager : MonoBehaviour {
                     /*Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
                               characterActionsList[j].Attributes["y"].Value + ", " +
                               characterActionsList[j].Attributes["z"].Value + " .");*/
+                    bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+
                     IEnumerator action = deplacementCoroutine(node.Attributes["name"].Value,
                      new Vector3(
                      float.Parse(characterActionsList[j].Attributes["x"].Value),
                      float.Parse(characterActionsList[j].Attributes["y"].Value),
-                     float.Parse(characterActionsList[j].Attributes["z"].Value)), param);
+                     float.Parse(characterActionsList[j].Attributes["z"].Value)), wait, param);
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
                 else if (characterActionsList.Item(j).Name == "animation")
                 {
                     //Debug.Log("Activation de l'animation d'un personnage : " + characterActionsList[j].Attributes["name"].Value);
-                    IEnumerator action = animationCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, param);
+                    bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+                    IEnumerator action = animationCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, wait, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
                 else if (characterActionsList.Item(j).Name == "rotation")
@@ -349,12 +372,12 @@ public class GameManager : MonoBehaviour {
                    /*Debug.Log("Rotation du personnage de : " + characterActionsList[j].Attributes["x"].Value + ", " +
                               characterActionsList[j].Attributes["y"].Value + ", " +
                           characterActionsList[j].Attributes["z"].Value + " .");*/
-
+                    bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
                     IEnumerator action = rotationCoroutine(node.Attributes["name"].Value,
                     new Vector3(
                         float.Parse(characterActionsList[j].Attributes["x"].Value),
                         float.Parse(characterActionsList[j].Attributes["y"].Value),
-                        float.Parse(characterActionsList[j].Attributes["z"].Value)), param);
+                        float.Parse(characterActionsList[j].Attributes["z"].Value)) , param);
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
@@ -375,15 +398,18 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator deplacementCoroutine(string characterName, Vector3 position, CoroutineParameter param )
+    IEnumerator deplacementCoroutine(string characterName, Vector3 position, bool wait, CoroutineParameter param )
     {
         Debug.Log("Execution d'un deplacement de " + characterName + " en " + position + ".");
         CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
         character.goTo(position);
 
-        while (character.transform.position != position)
+        if (wait)
         {
-            yield return null;
+            while (character.transform.position != position)
+            {
+                yield return null;
+            }
         }
         param._count++;
         yield break;
@@ -399,17 +425,19 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator animationCoroutine(string characterName, string animationName, CoroutineParameter param )
+    IEnumerator animationCoroutine(string characterName, string animationName, bool wait, CoroutineParameter param )
     {
         Debug.Log("Execution d'une animation de " + characterName + " , qui est \"" + animationName + "\".");
         Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
 
         characterAnimator.SetTrigger (animationName);
-		while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
-        {
-				yield return null;
-		}		
-		yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
+        if (wait) { 
+		    while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
+            {
+				    yield return null;
+		    }		
+		    yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
+         }
         param._count++;
         yield break;
     }
@@ -449,25 +477,31 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator deplacementCameraCoroutine(Vector3 position, CoroutineParameter param )
+    IEnumerator deplacementCameraCoroutine(Vector3 position, bool wait,  CoroutineParameter param )
     {
         Debug.Log("La camera se deplace en :" + position + ".");
         camera.moveTo(position);
-        while ( (position - camera.transform.position).magnitude > 1)
+        if (wait)
         {
-            yield return null;
+            while ((position - camera.transform.position).magnitude > 1)
+            {
+                yield return null;
+            }
         }
         param._count++;
         yield break;
     }
 
-    IEnumerator resetCameraCoroutine( CoroutineParameter param )
+    IEnumerator resetCameraCoroutine(bool wait, CoroutineParameter param )
     {
         Debug.Log("On reset la position de la camera");
         camera.resetPosition();
-        while ((camera.getOriginalPosition() - camera.transform.position).magnitude > 1)
+        if (wait)
         {
-            yield return null;
+            while ((camera.getOriginalPosition() - camera.transform.position).magnitude > 1)
+            {
+                yield return null;
+            }
         }
         param._count++;
         yield break;
@@ -526,9 +560,6 @@ public class GameManager : MonoBehaviour {
     }
 
     
-    
-
-
 
 	//Intro avec le souffleur
 	public IEnumerator event1(){
@@ -766,7 +797,7 @@ class Character
         _characterName = s;
     }
 }
-class Evenement
+public class Evenement
 {
     public List<IEnumerator> _event;
     public string _id;

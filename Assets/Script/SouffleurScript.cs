@@ -17,7 +17,7 @@ public class SouffleurScript : MonoBehaviour {
 	public bool talking = false;
 
 	private bool end = false;
-	private int index = 0;
+	private int index = 0, charIndex = 0;
 	private Animator animator;
 	private IEnumerator coroutineParagraph, coroutineText;
 	private CoroutineParameters param;
@@ -79,11 +79,14 @@ public class SouffleurScript : MonoBehaviour {
 
 	void Start () {
 		animator = this.GetComponent<Animator> ();
+        UIText.supportRichText = true;
+
 		UIimage.color = new Color(1,1,1,0);
 		UIText.color = new Color(0,0,0,0);
 		UICursor.color = new Color(1,1,1,0);
 		UIPanneau.color = new Color (1, 1, 1, 0);
 		param = new CoroutineParameters (textSpeed);
+        
 	}
 	
 	void Update () {
@@ -131,6 +134,7 @@ public class SouffleurScript : MonoBehaviour {
 		setPanneau (imageIndex);
 		StartCoroutine (feedbackCoroutine (time));
 	}
+
 	public void giveFeedback(float time, string text){
 		this.GetComponent<Image>().sprite = avecPanneau;
 		UIPanneau.color = new Color (1, 1, 1, 0);
@@ -143,7 +147,6 @@ public class SouffleurScript : MonoBehaviour {
 		List<string> temp = new List<string>{s};
 		saySomething (temp, reactiveGUI);
 	}
-
 
 	public void saySomething(List<string> text, bool reactiveGUI = true){
 		this.GetComponent<Image>().sprite = sansPanneau;
@@ -169,17 +172,70 @@ public class SouffleurScript : MonoBehaviour {
 		guimanager.active = false;
 		animator.SetBool ("show", true);
 	}
-	
+
+
+    IEnumerator updateWord(CoroutineParameters param, string openingTag , string closingTag, string text ) {
+
+        float timer = 0;
+        UIText.text = UIText.text.Insert( charIndex,openingTag+closingTag);
+        int wordIndex = 0;
+        charIndex += openingTag.Length;
+        string paragraph = UIText.text;
+
+        while (wordIndex < text.Length)
+        {
+            timer += Time.deltaTime;
+            if (timer > 1 / param.speed)
+            {
+                while (timer > 1 / param.speed)
+                {
+                    timer -= 1 / param.speed;
+                    if (text[wordIndex] == '<' && text[wordIndex + 1] != '/')
+                    {
+                        string openingTag2 = "", textInside = "", closingTag2 = "";
+                        getTag(wordIndex, text.ToCharArray(), ref openingTag2, ref closingTag2, ref textInside);
+                        CoroutineParameters co = new CoroutineParameters(param.speed);
+                        StartCoroutine(updateWord(co, openingTag2, closingTag2, textInside));
+                        while (!co.finished)
+                        {
+                            yield return null;
+                        }
+                        wordIndex += openingTag2.Length + closingTag2.Length + textInside.Length;
+                        if (wordIndex >= text.Length)
+                            break;
+                    }
+                    else
+                    {
+                        string s = "" + text[wordIndex];
+                        paragraph = paragraph.Insert(charIndex, s);
+                        UIText.text = paragraph;
+                        charIndex++;
+                        wordIndex++;
+
+                        if (wordIndex >= text.Length)
+                            break;
+                    }
+                }
+                yield return null;
+            }
+            else
+                yield return null;
+        }
+        charIndex += closingTag.Length;
+        param.finished = true;
+        yield break;
+    }
+
 
 	IEnumerator updateParagraph(CoroutineParameters param){
 
 		float timer = 0;
 		string paragraph = "";
 		char[] text = textList [index].ToCharArray();
-		int charIndex = 0;
 
 		end = false;
 		UICursor.color = new Color (1, 1, 1, 0);
+        charIndex = 0;
 
 		while (charIndex < text.Length) {
 
@@ -187,6 +243,20 @@ public class SouffleurScript : MonoBehaviour {
 			if(timer > 1/param.speed){
 				while(timer > 1/param.speed ){
 					timer -= 1/param.speed;
+
+                    if (text[charIndex] == '<' && text[charIndex+1] != '/')
+                    {
+                        string openingTag = "", textInside = "", closingTag = "";
+                        getTag(charIndex, text, ref openingTag, ref closingTag, ref textInside);   
+                        CoroutineParameters co = new CoroutineParameters(param.speed);
+                        StartCoroutine(updateWord(co, openingTag, closingTag, textInside));
+                        while (!co.finished)
+                        {
+                            yield return null;
+                        }
+                        paragraph = UIText.text;
+                    }
+
 					string s =""+text[charIndex];
 					paragraph = paragraph.Insert(paragraph.Length ,s);
 					UIText.text = paragraph;
@@ -204,6 +274,74 @@ public class SouffleurScript : MonoBehaviour {
 		UICursor.color = new Color (1, 1, 1, 1);
 		yield break;
 	}
+
+    private void getTag(int charIndex, char[] text, ref string openingTag, ref string closingTag, ref string textInside)
+    {
+        int i = charIndex;
+        openingTag = ""; textInside = ""; closingTag = "";
+        string tagName = "";
+
+        //recuperation de la balise ouvrante
+        bool done = false;
+        while (text[i] != '>')
+        {
+            Debug.Log("index : " + i + " char : " + text[i]);
+
+            string temp = "" + text[i];
+            openingTag = openingTag.Insert(openingTag.Length, temp);
+            if (!done)
+            {
+                if (text[i] == '>' || text[i] == '=')
+                    done = true;
+                else if (text[i] !='<')
+                    tagName = tagName.Insert(tagName.Length, temp);
+            }
+            i++;
+        }
+        openingTag = openingTag.Insert(openingTag.Length, ">");
+        i++;
+        Debug.Log("opening tag :" + openingTag + " tag name : " + tagName);
+
+        //recuperation du texte a l"interieur de la balise               
+
+        done = false;
+        while (!done)
+        {
+            if (text[i] != '<')
+            {
+                string temp = "" + text[i];
+                textInside = textInside.Insert(textInside.Length, temp);
+                i++;
+            }
+            else
+            {
+                char[] name = tagName.ToCharArray();
+                done = true;
+                for (int j = 0; j < tagName.Length; j++)
+                {
+                    if (text[i + j + 2] != name[j])
+                    {
+                        string temp = "" + text[i];
+                        textInside = textInside.Insert(textInside.Length, temp);
+                        i++;
+                        done = false; 
+                        break;
+                    }
+                }       
+            }
+        }
+        Debug.Log(" text inside :" + textInside);
+
+        //recuperation de la balise fermante
+        while (text[i] != '>')
+        {
+            string temp = "" + text[i];
+            closingTag = closingTag.Insert(closingTag.Length, temp);
+            i++;
+        }
+        closingTag = closingTag.Insert(closingTag.Length, ">");
+        Debug.Log(" closing tag :" + closingTag);
+    }
 
 	IEnumerator updateText(bool reactiveGUI){
 
@@ -234,11 +372,17 @@ public class SouffleurScript : MonoBehaviour {
 		yield break;
 	}
 
-	public class CoroutineParameters{
+	private class CoroutineParameters{
 
 		public float speed;
+        public bool finished = false;
 		private float baseSpeed;
 
+        public CoroutineParameters()
+        {
+            this.baseSpeed = 1;
+            this.speed = 1;
+        }
 		public CoroutineParameters(float s){
 			this.baseSpeed = s;
 			this.speed = s;
