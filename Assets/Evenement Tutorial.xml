@@ -6,7 +6,7 @@
 	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30"/>
 	</character>
-	=
+	
 	<souffleur>
 		<talk>
 			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
@@ -29,8 +29,10 @@
 	</multiple>
 	
 	<camera>
-			<reset/>	
+			<reset wait="false"/>	
 	</camera>
+	<wait time="0.5"/>
+
 	
 	<multiple>
 		<souffleur>
@@ -46,7 +48,6 @@
 	<camera>
 			<reset wait="false"/>	
 	</camera>
-	<wait time="0.5"/>
 	
 	<guiManager active="true"/>
 </event>
@@ -122,14 +123,19 @@
 				</talk>
 		</souffleur>
 	</multiple>	
-	<character name="Pantalone">
-		<animation name="asking"/>
-	</character>
 	
+	<multiple>
+		<character name="Pantalone">
+			<animation name="asking"/>
+		</character>
+		<character name="Pantalone">
+			<bubble name="Pantalone_love_Colombine" time="3"/>
+		</character>
+	</multiple>
+	
+	<guiManager active="true"/>
+	<guiManager active="true"/>
 
-	<guiManager active="true"/>
-	
-	<guiManager active="true"/>
 
 </event>
 

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
 
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_3", eventList);
+		startEvent("Tutorial_1", eventList);
     }
 
 	// Update is called once per frame
@@ -93,6 +93,11 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
+
+    public List<Evenement> getEventList()
+    {
+        return eventList;
+    }
     //permet de recuperer le gameobject d'un personnage a partir de son nom
     private GameObject getCharacterGameobject(string name){
         
@@ -396,6 +401,11 @@ public class GameManager : MonoBehaviour {
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
+                else if (characterActionsList.Item(j).Name == "bubble")
+                {
+                    IEnumerator action = bubbleCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value), param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
             }
             return true;
         }
@@ -460,8 +470,8 @@ public class GameManager : MonoBehaviour {
 				    yield return null;
 		    }
             Debug.Log("trouvé");
-
 		    yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
+            Debug.Log("attente finie");
          }
         param._count++;
         yield break;
@@ -582,6 +592,14 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
+    IEnumerator bubbleCoroutine(string characterName, string bubbleName, float time, CoroutineParameter param)
+    {
+        Debug.Log("Affichage de la bubble :"+bubbleName+ "  pendant :  "+time+".");
+        CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
+        character.bubble.showBubble(time, bubbleName);
+        param._count++;
+        yield break;
+    }
     
 
 	//Intro avec le souffleur
@@ -673,9 +691,9 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 
 		coffre.gameObject.SetActive (false);
-		pantalone.transform.position = new Vector3 (-16, 7, 30);
+        pantalone.GetComponent<CharacterController>().setPositionAndGoal (new Vector3(-16, 7, 30));
 		character.setPositionAndGoal (new Vector3 (-8, 7, 30));
-		colombine.transform.position = new Vector3 (16, 7, 30);
+        colombine.GetComponent<CharacterController>().setPositionAndGoal (new Vector3(16, 7, 30));
 
 		yield return new WaitForSeconds (1/fadeBlack.fadeSpeed);
 		yield return new WaitForSeconds (0.5f);
@@ -701,7 +719,7 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (2.0f);
 
 		pantalone.GetComponentInChildren<Animator> ().SetTrigger("asking");
-		pantalone.GetComponentInChildren<bulleInfoScript> ().showBubble (1.5f);
+        pantalone.GetComponentInChildren<bulleInfoScript>().showBubble(1.5f, "Pantalone_love_Colombine");
 		yield return new WaitForSeconds(pantalone.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
         guiManager.active = true;
@@ -724,7 +742,6 @@ public class GameManager : MonoBehaviour {
 		while (souffleur.talking == true) {
 			if(souffleur.getIndex() == 1){
 				camera.moveTo(zoomClocheEvent);
-				cloche.enabled = true;
 				break;
 			}
 			yield return null;
@@ -733,6 +750,7 @@ public class GameManager : MonoBehaviour {
 			yield return null;			
 		}
 		camera.resetPosition();
+        cloche.enabled = true;
 		
 		guiManager.active = true;
 

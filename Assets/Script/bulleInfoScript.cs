@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class bulleInfoScript : MonoBehaviour {
 
 
 	public float fadeSpeed;
+    public List<Bubble> spriteList;
 
 	private SpriteRenderer _spriteRenderer;
 	// Use this for initialization
@@ -14,14 +16,19 @@ public class bulleInfoScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	
-	}
+	void Update () {}
 
 
-	public void showBubble(float time){
-		StartCoroutine (showBubbleCoroutine (time));
+	public void showBubble(float time, string name){
+        _spriteRenderer.sprite = null;
+        for (int i = 0; i < spriteList.Count; i++)
+        {
+            if (name == spriteList[i]._name)
+                _spriteRenderer.sprite = spriteList[i]._sprite;
+        }
+        if (_spriteRenderer.sprite == null)
+            return;
+        StartCoroutine(showBubbleCoroutine(time));
 	}
 
 	IEnumerator showBubbleCoroutine(float time){
@@ -49,5 +56,16 @@ public class bulleInfoScript : MonoBehaviour {
 		yield break;
 	}
 
+    [System.Serializable]
+    public class Bubble
+    {
+        public Sprite _sprite;
+        public string _name;
+        public Bubble(string st, Sprite sp){
+            _sprite = sp;
+            _name = st;
+        }
+
+    }
 
 }

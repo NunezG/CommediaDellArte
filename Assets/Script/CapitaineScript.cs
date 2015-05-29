@@ -127,7 +127,9 @@ public class CapitaineScript : MonoBehaviour {
 		//desactiver le capitaine
 
 		gameManager.publicOnScene.addValue(20);
-		StartCoroutine (gameManager.event3 ());
+
+		//StartCoroutine (gameManager.event3 ());
+        gameManager.startEvent("Tutorial_3", gameManager.getEventList());
 		yield break;
 	}
 }

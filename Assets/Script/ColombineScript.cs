@@ -63,6 +63,7 @@ public class ColombineScript : MonoBehaviour {
 		actionCount++;
 
 		if (actionCount >= 2) {
+            yield return new WaitForSeconds(3);
 			StartCoroutine(gameManager.lazziEvent());
 		}
 
@@ -115,6 +116,7 @@ public class ColombineScript : MonoBehaviour {
 		actionCount++;
 
 		if (actionCount >= 2) {
+            yield return new WaitForSeconds(3);
 			StartCoroutine(gameManager.lazziEvent());
 		}
 

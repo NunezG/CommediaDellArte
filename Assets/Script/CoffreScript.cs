@@ -112,8 +112,13 @@ public class CoffreScript : MonoBehaviour {
 
 		gameManager.guiManager.active = true;
 
-		StartCoroutine (gameManager.event2 ());
-		
+        
+		//StartCoroutine (gameManager.event2 ());
+        gameManager.startEvent("Tutorial_2", gameManager.getEventList());
+
+        yield return new WaitForSeconds(5f);
+        gameManager.capitaine.GetComponent<Collider2D>().enabled = true;
+
 		yield break;
 	}
 

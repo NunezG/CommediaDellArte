@@ -8,8 +8,10 @@ public class CharacterController : MonoBehaviour {
 
 	public float moveSpeed = 1.0f;	
 	public Animator sprite;
+    public bulleInfoScript bubble;
 
 	private Vector3 goal;//vector ou le personnage doit se rendre
+    [HideInInspector]
 	public AudioSource audioSource;
 
 
@@ -21,8 +23,6 @@ public class CharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-	
 		if (this.transform.position != goal) {
 			if (Vector3.Distance (this.transform.position, goal) < Time.deltaTime * moveSpeed) {
 				this.transform.position = goal;
