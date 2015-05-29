@@ -77,4 +77,61 @@
 	<guiManager active="true"/>
 </event>
 
+
+<event id="Tutorial_3">
+	<guiManager active="false"/>
+	
+	
+	<fadetoblack time = "1"/>
+	
+	<souffleur>
+		<talk>
+			<paragraph>Tes frasques ont réussi à nous attirer plus de public, il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à ses demandes pour adapter les actions de la pièce avec l’intention qui le satisfera.</paragraph>
+		</talk>
+	</souffleur>
+	
+	<multiple>	
+		<camera>
+			<deplacement x="-15" y="12" z="11" />	
+		</camera>
+		<souffleur>
+			<talk>
+				<paragraph>Dans cette nouvelle situation nous avons Pantalone. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+
+	
+	<multiple>	
+		<camera>
+			<deplacement x="17" y="10" z="16" />	
+		</camera>
+		<souffleur>
+			<talk>
+				<paragraph>À l’opposé se présente Colombina. Elle est la servante hardie et insolente dont l’esprit vif suscite du désir chez Pantalone.</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	
+	<camera>
+			<reset wait="false"/>	
+	</camera>
+	<souffleur>
+			<talk>
+				<paragraph>Maintenant à toi de te débrouiller. Je t’aiderai seulement par des indications sur les effets de tes actions et des intentions que tu leurs donnent sur le public. Vas-y je te regarde !</paragraph>
+			</talk>
+	</souffleur>
+	
+	<character name="Pantalone">
+		<animation name="asking"/>
+	</character>
+	<character name="Pantalone">
+		<animation name="asking"/>
+	</character>
+	
+	
+	<guiManager active="true"/>
+</event>
+
 </EventList>

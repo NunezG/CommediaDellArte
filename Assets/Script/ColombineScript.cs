@@ -62,7 +62,7 @@ public class ColombineScript : MonoBehaviour {
 
 		actionCount++;
 
-		if (actionCount >= 4) {
+		if (actionCount >= 2) {
 			StartCoroutine(gameManager.lazziEvent());
 		}
 
@@ -114,7 +114,7 @@ public class ColombineScript : MonoBehaviour {
 
 		actionCount++;
 
-		if (actionCount >= 4) {
+		if (actionCount >= 2) {
 			StartCoroutine(gameManager.lazziEvent());
 		}
 

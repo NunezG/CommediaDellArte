@@ -357,7 +357,7 @@ public class GameManager : MonoBehaviour {
                      new Vector3(
                      float.Parse(characterActionsList[j].Attributes["x"].Value),
                      float.Parse(characterActionsList[j].Attributes["y"].Value),
-                     float.Parse(characterActionsList[j].Attributes["z"].Value)), wait, param);
+                     float.Parse(characterActionsList[j].Attributes["z"].Value)),false,  wait, param);
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
@@ -399,11 +399,18 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator deplacementCoroutine(string characterName, Vector3 position, bool wait, CoroutineParameter param )
+    IEnumerator deplacementCoroutine(string characterName, Vector3 position, bool instant, bool wait, CoroutineParameter param)
     {
         Debug.Log("Execution d'un deplacement de " + characterName + " en " + position + ".");
-        CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
-        character.goTo(position);
+        if (instant)
+        {
+            getCharacterGameobject(characterName).transform.position = position;
+        }
+        else
+        {
+            CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
+            character.goTo(position);
+        }
 
         if (wait)
         {

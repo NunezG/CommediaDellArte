@@ -353,6 +353,7 @@ public class SouffleurScript : MonoBehaviour {
 					disappear (reactiveGUI);
 					talking = false;
 					index = 0;
+                    charIndex = 0;
 					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;
 				}
