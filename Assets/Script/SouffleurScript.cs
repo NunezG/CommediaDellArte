@@ -164,9 +164,10 @@ public class SouffleurScript : MonoBehaviour {
 	public void disappear(bool reactiveGUI ){
 		guimanager.active = reactiveGUI;
 		animator.SetBool ("show", false);
+        UIText.text = "";
 	}
 	public void disappear(){
-		animator.SetBool ("show", false);
+        disappear(true);
 	}
 	public void appear(){
 		guimanager.active = false;
@@ -285,8 +286,6 @@ public class SouffleurScript : MonoBehaviour {
         bool done = false;
         while (text[i] != '>')
         {
-            Debug.Log("index : " + i + " char : " + text[i]);
-
             string temp = "" + text[i];
             openingTag = openingTag.Insert(openingTag.Length, temp);
             if (!done)
@@ -300,7 +299,6 @@ public class SouffleurScript : MonoBehaviour {
         }
         openingTag = openingTag.Insert(openingTag.Length, ">");
         i++;
-        Debug.Log("opening tag :" + openingTag + " tag name : " + tagName);
 
         //recuperation du texte a l"interieur de la balise               
 
@@ -330,8 +328,6 @@ public class SouffleurScript : MonoBehaviour {
                 }       
             }
         }
-        Debug.Log(" text inside :" + textInside);
-
         //recuperation de la balise fermante
         while (text[i] != '>')
         {
@@ -340,7 +336,6 @@ public class SouffleurScript : MonoBehaviour {
             i++;
         }
         closingTag = closingTag.Insert(closingTag.Length, ">");
-        Debug.Log(" closing tag :" + closingTag);
     }
 
 	IEnumerator updateText(bool reactiveGUI){

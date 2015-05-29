@@ -72,17 +72,16 @@
 	<guiManager active="false"/>
 	
 	
-	
-	
-	<guiManager active="true"/>
-</event>
-
-
-<event id="Tutorial_3">
-	<guiManager active="false"/>
-	
-	
 	<fadetoblack time = "1"/>
+	<character name="Pantalone">
+		<deplacement x="-16" y="7" z="30" instant="true"/>
+	</character>
+	<character name="Arlequin">
+		<deplacement x="-8" y="7" z="30" instant="true"/>
+	</character>
+	<character name="Colombine">
+		<deplacement x="16" y="7" z="30" instant="true"/>
+	</character>
 	
 	<souffleur>
 		<talk>
@@ -92,7 +91,7 @@
 	
 	<multiple>	
 		<camera>
-			<deplacement x="-15" y="12" z="11" />	
+			<deplacement x="-15" y="12" z="11" wait="false"/>	
 		</camera>
 		<souffleur>
 			<talk>
@@ -104,7 +103,7 @@
 	
 	<multiple>	
 		<camera>
-			<deplacement x="17" y="10" z="16" />	
+			<deplacement x="17" y="10" z="16" wait="false"/>	
 		</camera>
 		<souffleur>
 			<talk>
@@ -113,25 +112,25 @@
 		</souffleur>
 	</multiple>
 	
-	
-	<camera>
-			<reset wait="false"/>	
-	</camera>
-	<souffleur>
-			<talk>
-				<paragraph>Maintenant à toi de te débrouiller. Je t’aiderai seulement par des indications sur les effets de tes &#60;b&#62;&#60;color=blue&#62;actions&#60;/color&#62;&#60;/b&#62; et des &#60;b&#62;&#60;color=blue&#62;intentions&#60;/color&#62;&#60;/b&#62; que tu leurs donnent sur le public. Vas-y je te regarde !</paragraph>
-			</talk>
-	</souffleur>
-	
+	<multiple>	
+		<camera>
+				<reset wait="false"/>	
+		</camera>
+		<souffleur>
+				<talk>
+					<paragraph>Maintenant à toi de te débrouiller. Je t’aiderai seulement par des indications sur les effets de tes &#60;b&#62;&#60;color=blue&#62;actions&#60;/color&#62;&#60;/b&#62; et des &#60;b&#62;&#60;color=blue&#62;intentions&#60;/color&#62;&#60;/b&#62; que tu leurs donnent sur le public. Vas-y je te regarde !</paragraph>
+				</talk>
+		</souffleur>
+	</multiple>	
 	<character name="Pantalone">
 		<animation name="asking"/>
 	</character>
-	<character name="Pantalone">
-		<animation name="asking"/>
-	</character>
 	
+
+	<guiManager active="true"/>
 	
 	<guiManager active="true"/>
+
 </event>
 
 </EventList>

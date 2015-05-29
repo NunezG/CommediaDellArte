@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
 
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_1", eventList);
+		startEvent("Tutorial_3", eventList);
     }
 
 	// Update is called once per frame
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
     IEnumerator launchEvent(List<IEnumerator> list)
     {
         param._count += 1;
@@ -89,6 +88,8 @@ public class GameManager : MonoBehaviour {
             }
             yield return null;
         }
+        Debug.Log("Fin de l'event");
+
         yield break;
     }
 
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour {
              Evenement event_1 = new Evenement(coroutineList, eventList[temp].Attributes["id"].Value);
              evenementList.Add(event_1);
 
+             Debug.Log(actionsList.Count + " actions a charger.");
              for (int i = 0; i < actionsList.Count; i++)
              {
                  //Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
@@ -313,7 +315,7 @@ public class GameManager : MonoBehaviour {
 
     bool checkGUIManagerNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
     {
-        if (node.Name == "guimanager")
+        if (node.Name == "guimanager" || node.Name == "guiManager")
         {
             //Debug.Log("Modification du GUIManager en " + node.Attributes["active"].Value + ".");
             bool temp = false;
@@ -351,13 +353,25 @@ public class GameManager : MonoBehaviour {
                     /*Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
                               characterActionsList[j].Attributes["y"].Value + ", " +
                               characterActionsList[j].Attributes["z"].Value + " .");*/
+
                     bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+
+                    XmlNode instantNode = characterActionsList[j].Attributes["instant"];
+                    bool instant = false;
+                    if (instantNode != null)
+                    {
+                        instant = false;
+                        if (instantNode.Value == "true" || instantNode.Value == "True")
+                        {
+                            instant = true;
+                        }
+                    }
 
                     IEnumerator action = deplacementCoroutine(node.Attributes["name"].Value,
                      new Vector3(
                      float.Parse(characterActionsList[j].Attributes["x"].Value),
                      float.Parse(characterActionsList[j].Attributes["y"].Value),
-                     float.Parse(characterActionsList[j].Attributes["z"].Value)),false,  wait, param);
+                     float.Parse(characterActionsList[j].Attributes["z"].Value)), instant,  wait, param);
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
@@ -402,13 +416,13 @@ public class GameManager : MonoBehaviour {
     IEnumerator deplacementCoroutine(string characterName, Vector3 position, bool instant, bool wait, CoroutineParameter param)
     {
         Debug.Log("Execution d'un deplacement de " + characterName + " en " + position + ".");
+        CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
         if (instant)
         {
-            getCharacterGameobject(characterName).transform.position = position;
+            character.setPositionAndGoal(position);
         }
         else
         {
-            CharacterController character = getCharacterGameobject(characterName).GetComponent<CharacterController>();
             character.goTo(position);
         }
 
@@ -439,11 +453,14 @@ public class GameManager : MonoBehaviour {
         Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
 
         characterAnimator.SetTrigger (animationName);
-        if (wait) { 
+        if (wait) {
 		    while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
             {
+                 Debug.Log("recherche du state");
 				    yield return null;
-		    }		
+		    }
+            Debug.Log("trouvé");
+
 		    yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
          }
         param._count++;
@@ -559,10 +576,8 @@ public class GameManager : MonoBehaviour {
         //Ojn attend la fin de chaque coroutine
         while (multipleParam._count != list.Count)
         {
-            Debug.Log(multipleParam._count);
             yield return null;
         }
-        Debug.Log(multipleParam._count);
         param._count++;
         yield break;
     }
