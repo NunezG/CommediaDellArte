@@ -10,7 +10,7 @@
 	<souffleur>
 		<talk>
 			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
-			<paragraph>Ton rôle est celui d’&#60;size=30&#62;&#60;color=blue&#62;Arlecchino&#60;/color&#62;&#60;/size&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et la ruse dont tu te sers pour mener des intrigues.</paragraph>
+			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=blue&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et la ruse dont tu te sers pour mener des intrigues.</paragraph>
 			<paragraph>Tu es encore débutant dans ce rôle essentiel mais je suis sûr que tu feras bien mieux que celui qui t’a précédé. Suis mes conseils, tu deviendras la coqueluche du peuple !</paragraph>
 		</talk>
 	</souffleur>
@@ -22,8 +22,8 @@
 		<public><addvalue value="20"/></public>
 		<souffleur>
 		<talk>
-			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;size=30&#62;&#60;color=blue&#62;comédiens itinérants&#60;/color&#62;&#60;/size&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
-			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;size=30&#62;&#60;color=blue&#62;à manger, à boire,&#60;/color&#62;&#60;/size&#62; voire même &#60;size=30&#62;&#60;color=blue&#62;un logis pour le soir&#60;/color&#62;&#60;/size&#62; ! Ce sera toujours mieux que d’être obligé de dormir &#60;size=30&#62;&#60;color=blue&#62;le ventre vide&#60;/color&#62;&#60;/size&#62; dans notre roulotte, non ?</paragraph>
+			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;b&#62;&#60;color=blue&#62;comédiens itinérants&#60;/color&#62;&#60;/b&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
+			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;b&#62;&#60;color=blue&#62;à manger, à boire,&#60;/color&#62;&#60;/b&#62; voire même &#60;b&#62;&#60;color=blue&#62;un logis pour le soir&#60;/color&#62;&#60;/b&#62; ! Ce sera toujours mieux que d’être obligé de dormir &#60;b&#62;&#60;color=blue&#62;le ventre vide&#60;/color&#62;&#60;/b&#62; dans notre roulotte, non ?</paragraph>
 		</talk>
 	</souffleur>
 	</multiple>
@@ -35,7 +35,7 @@
 	<multiple>
 		<souffleur>
 			<talk>
-				<paragraph>Tu vois ce coffre posé à droite ? &#60;size=30&#62;&#60;color=blue&#62;Fouille le&#60;/color&#62;&#60;/size&#62; pour voir si un &#60;size=30&#62;&#60;color=blue&#62;accessoire&#60;/color&#62;&#60;/size&#62; peut t’aider à capter l’attention des passants.</paragraph>
+				<paragraph>Tu vois ce coffre posé à droite ? &#60;b&#62;&#60;color=blue&#62;Fouille le&#60;/color&#62;&#60;/b&#62; pour voir si un &#60;b&#62;&#60;color=blue&#62;accessoire&#60;/color&#62;&#60;/b&#62; peut t’aider à capter l’attention des passants.</paragraph>
 			</talk>
 		</souffleur>		
 		<camera>
@@ -61,8 +61,8 @@
 	
 	<souffleur>
 		<talk>
-			<paragraph>Ce personnage scénique s’appelle le &#60;size=30&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/size&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;size=30&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/size&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
-			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;size=30&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/size&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
+			<paragraph>Ce personnage scénique s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
+			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
 		</talk>
 	</souffleur>
 	<guiManager active="true"/>
@@ -86,7 +86,7 @@
 	
 	<souffleur>
 		<talk>
-			<paragraph>Tes frasques ont réussi à nous attirer plus de public, il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à ses demandes pour adapter les actions de la pièce avec l’intention qui le satisfera.</paragraph>
+			<paragraph>Tes frasques ont réussi à nous attirer plus de public, il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à &#60;b&#62;&#60;color=blue&#62;ses demandes&#60;/color&#62;&#60;/b&#62; pour adapter les &#60;b&#62;&#60;color=blue&#62;actions&#60;/color&#62;&#60;/b&#62; de la pièce avec l’&#60;b&#62;&#60;color=blue&#62;intention&#60;/color&#62;&#60;/b&#62; qui le satisfera.</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -96,7 +96,7 @@
 		</camera>
 		<souffleur>
 			<talk>
-				<paragraph>Dans cette nouvelle situation nous avons Pantalone. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
+				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=blue&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -108,7 +108,7 @@
 		</camera>
 		<souffleur>
 			<talk>
-				<paragraph>À l’opposé se présente Colombina. Elle est la servante hardie et insolente dont l’esprit vif suscite du désir chez Pantalone.</paragraph>
+				<paragraph>À l’opposé se présente &#60;b&#62;&#60;color=blue&#62;Colombina&#60;/color&#62;&#60;/b&#62;, servante hardie et insolente à l’esprit vif.</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -119,7 +119,7 @@
 	</camera>
 	<souffleur>
 			<talk>
-				<paragraph>Maintenant à toi de te débrouiller. Je t’aiderai seulement par des indications sur les effets de tes actions et des intentions que tu leurs donnent sur le public. Vas-y je te regarde !</paragraph>
+				<paragraph>Maintenant à toi de te débrouiller. Je t’aiderai seulement par des indications sur les effets de tes &#60;b&#62;&#60;color=blue&#62;actions&#60;/color&#62;&#60;/b&#62; et des &#60;b&#62;&#60;color=blue&#62;intentions&#60;/color&#62;&#60;/b&#62; que tu leurs donnent sur le public. Vas-y je te regarde !</paragraph>
 			</talk>
 	</souffleur>
 	
