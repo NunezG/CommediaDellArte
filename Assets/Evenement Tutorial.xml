@@ -9,8 +9,8 @@
 	=
 	<souffleur>
 		<talk>
-			<paragraph>Bienvenue cher comédien ! Comme tu es &#60;size=30&#62;&#60;color=blue&#62;nouveau&#60;/color&#62;&#60;/size&#62; dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
-			<paragraph>Ton rôle est celui d’Arlecchino, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et la ruse dont tu te sers pour mener des intrigues.</paragraph>
+			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
+			<paragraph>Ton rôle est celui d’&#60;size=30&#62;&#60;color=blue&#62;Arlecchino&#60;/size&#62;&#60;/color&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et la ruse dont tu te sers pour mener des intrigues.</paragraph>
 			<paragraph>Tu es encore débutant dans ce rôle essentiel mais je suis sûr que tu feras bien mieux que celui qui t’a précédé. Suis mes conseils, tu deviendras la coqueluche du peuple !</paragraph>
 		</talk>
 	</souffleur>
@@ -22,8 +22,8 @@
 		<public><addvalue value="20"/></public>
 		<souffleur>
 		<talk>
-			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public.Nous sommes des comédiens itinérants : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
-			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne à manger, à boire, voire même un logis pour le soir ! Ce sera toujours mieux que d’être obligé de dormir le ventre vide dans notre roulotte, non ?</paragraph>
+			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;size=30&#62;&#60;color=blue&#62;comédiens itinérants&#60;/size&#62;&#60;/color&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
+			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;size=30&#62;&#60;color=blue&#62;à manger, à boire,&#60;/size&#62;&#60;/color&#62; voire même &#60;size=30&#62;&#60;color=blue&#62;un logis pour le soir&#60;/size&#62;&#60;/color&#62; ! Ce sera toujours mieux que d’être obligé de dormir &#60;size=30&#62;&#60;color=blue&#62;le ventre vide&#60;/size&#62;&#60;/color&#62; dans notre roulotte, non ?</paragraph>
 		</talk>
 	</souffleur>
 	</multiple>
@@ -35,7 +35,7 @@
 	<multiple>
 		<souffleur>
 			<talk>
-				<paragraph>Tu vois ce coffre posé à droite ? Fouille le pour voir si un accessoire peut t’aider à capter l’attention des passants.</paragraph>
+				<paragraph>Tu vois ce coffre posé à droite ? &#60;size=30&#62;&#60;color=blue&#62;Fouille le&#60;/size&#62;&#60;/color&#62; pour voir si un &#60;size=30&#62;&#60;color=blue&#62;accessoire&#60;/size&#62;&#60;/color&#62; peut t’aider à capter l’attention des passants.</paragraph>
 			</talk>
 		</souffleur>		
 		<camera>
@@ -46,7 +46,7 @@
 	<camera>
 			<reset wait="false"/>	
 	</camera>
-	<wait time="0.5">
+	<wait time="0.5"/>
 	
 	<guiManager active="true"/>
 </event>
@@ -61,8 +61,8 @@
 	
 	<souffleur>
 		<talk>
-			<paragraph>Ce personnage scénique s’appelle le Capitan. C’est un soldat. Il est intimidant à première vue, mais en vérité c’est un poltron qui a peur de son ombre. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
-			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis plusieurs actions pour l’effrayer, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
+			<paragraph>Ce personnage scénique s’appelle le &#60;size=30&#62;&#60;color=blue&#62;Capitan&#60;/size&#62;&#60;/color&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;size=30&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/size&#62;&#60;/color&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
+			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;size=30&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/size&#62;&#60;/color&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
 		</talk>
 	</souffleur>
 	<guiManager active="true"/>
