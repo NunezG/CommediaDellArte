@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour {
     private CoroutineParameter param;
 
 
-	bool test = false;
 
 	// Use this for initialization
 	void Start () {
@@ -50,10 +49,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(test)
-			StartCoroutine (event1 ());
-		test = false;
-
+		
 	}
 
 	public void launchEndEvent(){
@@ -601,9 +597,9 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
     
-
+    
 	//Intro avec le souffleur
-	public IEnumerator event1(){
+	/*public IEnumerator event1(){
 
 		guiManager.active = false;
 
@@ -648,10 +644,10 @@ public class GameManager : MonoBehaviour {
 
 		yield break;
 
-	}
+	}*/
 
 	//Arrivé du capitaine
-	public IEnumerator event2(){
+	/*public IEnumerator event2(){
 
 		guiManager.active = false;
 		
@@ -678,10 +674,10 @@ public class GameManager : MonoBehaviour {
 
 		yield break;
 		
-	}
+	}*/
 
     //Arrivé de pantalone et colombine
-    public IEnumerator event3(){
+   /* public IEnumerator event3(){
         
         guiManager.active = false;
 
@@ -726,7 +722,7 @@ public class GameManager : MonoBehaviour {
         
         yield break;
         
-    }
+    }*/
 
 	//Arrivé du lazzi
 	public IEnumerator lazziEvent(){
@@ -756,6 +752,7 @@ public class GameManager : MonoBehaviour {
 
 		yield break;
 	}
+    
 
     //Event avec pierrot
 	IEnumerator eventFinTuto(){
