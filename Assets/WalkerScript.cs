@@ -70,9 +70,9 @@ public class WalkerScript : MonoBehaviour {
         for (int i = 0; i < pathList.Count; i++)
         {
             Gizmos.color = new Color(1, 0, 0);
-            Gizmos.DrawSphere(pathList[i]._start, 2.5f);
+            Gizmos.DrawSphere(pathList[i]._start, 2f);
             Gizmos.color = new Color(0, 0, 1);
-            Gizmos.DrawSphere(pathList[i]._end, 2.5f);
+            Gizmos.DrawSphere(pathList[i]._end, 2f);
             Gizmos.color = new Color(0.5f, 0,0.5f );
             Gizmos.DrawLine(pathList[i]._start, pathList[i]._end);
         }
