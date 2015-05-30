@@ -1,4 +1,4 @@
-<EventList>
+﻿<EventList>
 
 <event id="Tutorial_1">
 	<guiManager active="false"/>
@@ -62,7 +62,7 @@
 	
 	<souffleur>
 		<talk>
-			<paragraph>Ce personnage scénique s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
+			<paragraph>Ce personnage s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
 			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
 		</talk>
 	</souffleur>
