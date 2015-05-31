@@ -46,9 +46,10 @@ public class WalkerScript : MonoBehaviour {
         Vector3 direction = (path._end - path._start).normalized;
         while (this.transform.position != path._end)
         {
-            if (Vector3.Distance(this.transform.position, path._end) < (direction * (Time.deltaTime * _moveSpeed)).magnitude)
+            if (Vector3.Distance(this.transform.position, path._end) <= (direction * (Time.deltaTime * _moveSpeed)).magnitude)
             {
                 this.transform.position = path._end;
+                break;
             }
             else {
                 this.transform.position += direction * (Time.deltaTime * _moveSpeed);

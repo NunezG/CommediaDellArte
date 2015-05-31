@@ -1,5 +1,6 @@
 ﻿<EventList>
 
+<!-- Introduction avec le souffleur -->
 <event id="Tutorial_1">
 	<guiManager active="false"/>
 	
@@ -52,37 +53,49 @@
 	<guiManager active="true"/>
 </event>
 
+<!-- Arrivée du capitaine -->
 <event id="Tutorial_2">
 	<guiManager active="false"/>
 	
 	<character name="Capitaine">
 		<deplacement x="-16" y="7" z="30"/>
-		<animation name="moquerie" wait="false"/>
 	</character>
 	
-	<souffleur>
-		<talk>
-			<paragraph>Ce personnage s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
-			<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
-		</talk>
-	</souffleur>
+	<multiple>
+		<character name="Capitaine">
+			<animation name="moquerie"/>
+		</character>
+		<souffleur>
+			<talk>
+				<paragraph>Ce personnage s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il est intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attireras les faveurs de notre public… enfin… notre premier public !</paragraph>
+				<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>	
+
+	<character name="Capitaine">
+		<interaction value="true"/>
+	</character>
+	
 	<guiManager active="true"/>
 </event>
 
+<!-- Introduction de la 3eme partie avec colombine et pantalone-->
 <event id="Tutorial_3">
 	<guiManager active="false"/>
 	
-	
-	<fadetoblack time = "1"/>
-	<character name="Pantalone">
-		<deplacement x="-16" y="7" z="30" instant="true"/>
-	</character>
-	<character name="Arlequin">
-		<deplacement x="-8" y="7" z="30" instant="true"/>
-	</character>
-	<character name="Colombine">
-		<deplacement x="16" y="7" z="30" instant="true"/>
-	</character>
+	<multiple>
+		<fadetoblack time = "1"/>
+		<character name="Pantalone">
+			<deplacement x="-16" y="7" z="30" instant="true"/>
+		</character>
+		<character name="Arlequin">
+			<deplacement x="-8" y="7" z="30" instant="true"/>
+		</character>
+		<character name="Colombine">
+			<deplacement x="16" y="7" z="30" instant="true"/>
+		</character>
+	</multiple>
 	
 	<souffleur>
 		<talk>
@@ -134,9 +147,99 @@
 	</multiple>
 	
 	<guiManager active="true"/>
-	<guiManager active="true"/>
-
-
 </event>
+
+<!-- Explication de la cloche -->
+<event id="Tutorial_4">
+	<guiManager active="false"/>
+
+	<wait time="3"/>
+	
+	<public>
+		<subvalue value="100"/>
+	</public>
+
+	<souffleur>
+		<talk>
+			<paragraph>Catastrophe ! La taverne vient d’ouvrir ! On va perdre notre public, palsambleu !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<multiple>
+		<camera>
+			<deplacement x="20" y="23" z = "27" wait = "false"/>
+		</camera>
+		<souffleur>
+			<talk>
+				<paragraph>Vite, il faut que tu appelles notre botte secrète : un lazzi. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole.</paragraph>
+				<paragraph>Utilise le si tu es &#60;b&#62;&#60;color=blue&#62;en difficulté&#60;/color&#62;&#60;/b&#62;, mais rappelle toi : tu ne peux en user &#60;b&#62;&#60;color=blue&#62;qu’une fois&#60;/color&#62;&#60;/b&#62; par situation et cela aura un &#60;b&#62;&#60;color=blue&#62;impact&#60;/color&#62;&#60;/b&#62; sur le &#60;b&#62;&#60;color=blue&#62;partage de nos gains. Tire vite&#60;/color&#62;&#60;/b&#62; sur &#60;b&#62;&#60;color=blue&#62;cette clochette&#60;/color&#62;&#60;/b&#62; maintenant pour appeler un lazzi !”</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<object	name="cloche">
+		<interaction  value="true"/>
+	</object>
+
+	<camera>
+		<reset wait="false"/>	
+	</camera>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Fin du tuto avec pierrot -->
+<event id="Tutorial_5">
+	<guiManager active="false"/>
+
+	<character name="Pierrot">
+		<deplacement x="-1.5" y="10" z="30"/>
+	</character>
+	
+	<camera>
+		<deplacement x="0" y="13" z="5" wait="false"/>
+	</camera>
+	
+	<multiple>
+		<character name="Pierrot">
+			<animation name="juggling" />
+		</character>	
+		<public>
+			<addvalue value="75"/>
+		</public>
+	</multiple>
+	
+	<character name="Arlequin">
+		<deplacement x="-8" y="7" z="30"/>
+		<animation name="angryTalking" wait = "false"/>
+	</character>
+	
+	<character name="Pantalone">
+		<animation name="dispute"/>
+	</character>
+	
+	<character name="Pierrot">
+		<deplacement x="11" y="10" z="30"/>
+	</character>
+	
+	<character name="Pierrot">
+		<animation name="range" wait="false"/>
+	</character>
+	
+	<wait time="0.7"/>
+	
+	<character name="Colombine">
+		<deplacement x="0" y="100" z="0" instant="true"/>
+	</character>
+	<wait time="4.7"/>
+	
+	<character name="Pierrot">
+			<deplacement x="50" y="10" z="30"/>
+	</character>
+
+	<fadetoblack time="10"/>
+	
+</event>
+
 
 </EventList>

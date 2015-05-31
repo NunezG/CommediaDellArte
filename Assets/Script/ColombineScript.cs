@@ -35,13 +35,13 @@ public class ColombineScript : MonoBehaviour {
 
 		if (type == 0) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Nice Talking") ){
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("niceTalking") ){
 				yield return null;
 			}
 		}
 		else if (type == 1) {
 			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Angry Talking") ){
+			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("angryTalking") ){
 				yield return null;
 			}
 		}
@@ -58,14 +58,15 @@ public class ColombineScript : MonoBehaviour {
 		}
 		gameManager.character.transform.Rotate (0, 180, 0);
 
-		gameManager.guiManager.active = true;
-
 		actionCount++;
 
 		if (actionCount >= 2) {
-            yield return new WaitForSeconds(3);
-			StartCoroutine(gameManager.lazziEvent());
+            //yield return new WaitForSeconds(3);
+			//StartCoroutine(gameManager.lazziEvent());
+            gameManager.startEvent("Tutorial_4", gameManager.getEventList());
 		}
+        else
+            gameManager.guiManager.active = true;
 
 		yield break;
 	}
@@ -111,14 +112,16 @@ public class ColombineScript : MonoBehaviour {
 			gameManager.publicOnScene.subValue(10);
 		}
 
-		gameManager.guiManager.active = true;
 
 		actionCount++;
 
 		if (actionCount >= 2) {
-            yield return new WaitForSeconds(3);
-			StartCoroutine(gameManager.lazziEvent());
+           // yield return new WaitForSeconds(3);
+			//StartCoroutine(gameManager.lazziEvent());
+            gameManager.startEvent("Tutorial_4", gameManager.getEventList());
 		}
+        else 
+            gameManager.guiManager.active = true;
 
 		yield break;
 	}

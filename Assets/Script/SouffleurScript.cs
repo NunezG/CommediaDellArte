@@ -22,19 +22,7 @@ public class SouffleurScript : MonoBehaviour {
 	private IEnumerator coroutineParagraph, coroutineText;
 	private CoroutineParameters param;
 	private List<string> textList;
-	
-	
 
-
-	public List<string> textList7 = new List<string>{
-
-	"Oh non, on dirait que la taverne vient d’ouvrir ! On va perdre notre public, bon sang de bonsoir ! ",
-	"Vite, il nous faut utiliser notre botte secrète, un lazzi, autrement dit un numéro acrobatique " +
-	"exécuté par un comédien appelé en renfort. Le public en raffole. Utilise-le si tu es en difficulté," +
-	"mais rapelle-toi, tu ne peux en user qu’une fois et cela aura un impact sur le partage de nos gains éventuels." +
-	"Tire vite sur la clochette maintenant pour appeler un lazzi !"
-	
-	};
 
 	void Start () {
 		animator = this.GetComponent<Animator> ();

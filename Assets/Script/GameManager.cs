@@ -15,13 +15,11 @@ public class GameManager : MonoBehaviour {
 	public ColombineScript colombine;
 	public SouffleurScript souffleur;
 	public PierrotScript pierrot;
-	public CoffreScript coffre;
 	public PublicScript publicOnScene;
-	public BoxCollider2D cloche;
 	public CameraScript camera;
 	public GUIManager guiManager;
 	public FadeBlackScript fadeBlack;
-
+    public List<InteractiveObject> objectList;
     public TextAsset GameAsset;
 
     private List<Character> characterList;
@@ -53,19 +51,26 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void launchEndEvent(){
-		StartCoroutine (eventFinTuto());
+        startEvent("Tutorial_5", eventList);
+       // (eventFinTuto());
 	}
 
     //Lance un evenement dans le jeu
     public void startEvent(string id, List<Evenement> eventList)
     {
+        bool found = false;
         for (int i = 0; i < eventList.Count; i++ )
         {
             if (id == eventList[i]._id)
             {
-                StartCoroutine(launchEvent(eventList[i]._event));  
+                StartCoroutine(launchEvent(eventList[i]._event)); 
+                found = true;
+                Debug.Log("Event found");
+                break;
             }
         }
+        if (!found)
+            Debug.Log("Event not found");
     }
 
     IEnumerator launchEvent(List<IEnumerator> list)
@@ -94,6 +99,7 @@ public class GameManager : MonoBehaviour {
     {
         return eventList;
     }
+
     //permet de recuperer le gameobject d'un personnage a partir de son nom
     private GameObject getCharacterGameobject(string name){
         
@@ -107,6 +113,20 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("Not Found");
         return null;
     }
+
+    //permet de recuperer un objet a partir de son nom
+    private GameObject getInteractiveObjectGameobject(string name)
+    {
+        for (int i = 0; i < objectList.Count; i++)
+        {
+            if (name == objectList[i]._name)
+            {
+                return objectList[i]._gameObject;
+            }
+        }
+        return null;
+    }
+
 
     //Chargment d'un event a partir d'un fichier xml
     public List<Evenement> loadEvent(TextAsset GameAsset)
@@ -179,6 +199,8 @@ public class GameManager : MonoBehaviour {
         else if (checkWaitNode(node, coroutineList, param)) { return true; }
         //fadetoblack coroutine
         else if (checkFadeNode(node, coroutineList, param)) { return true; }
+        //actions sur les objets 
+        else if (checkObjectNode(node, coroutineList, param)) { return true; }
         else
             return false;
     }
@@ -402,10 +424,87 @@ public class GameManager : MonoBehaviour {
                     IEnumerator action = bubbleCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value), param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
+                else if (characterActionsList.Item(j).Name == "interaction")
+                {
+                    bool temp = false;
+                    if (characterActionsList.Item(j).Attributes["value"].Value == "true" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "True" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "Vrai" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "vrai")
+                    {
+                        temp = true;
+                    }
+                    else if (characterActionsList.Item(j).Attributes["value"].Value == "false" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "False" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "Faux" ||
+                        characterActionsList.Item(j).Attributes["value"].Value == "faux")
+                    {
+                        temp = false;
+                    }
+                    IEnumerator action = characterInteractionCoroutine(node.Attributes["name"].Value, temp, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
             }
             return true;
         }
         return false;
+    }
+
+    bool checkObjectNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "object")
+        {
+              XmlNodeList objectActionsList = node.ChildNodes;
+              for (int j = 0; j < objectActionsList.Count; j++)
+              {
+                  if (objectActionsList.Item(j).Name == "interaction")
+                  {
+                      bool temp = false;
+                      if (objectActionsList.Item(j).Attributes["value"].Value == "true" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "True" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "Vrai" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "vrai")
+                      {
+                          temp = true;
+                      }
+                      else if (objectActionsList.Item(j).Attributes["value"].Value == "false" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "False" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "Faux" ||
+                          objectActionsList.Item(j).Attributes["value"].Value == "faux")
+                      {
+                          temp = false;
+                      }
+                      IEnumerator action = objectInteractionCoroutine(node.Attributes["name"].Value, temp, param);
+                      coroutineList.Insert(coroutineList.Count, action);                  
+                  }
+             }
+             return true;
+      }
+      return false;
+    }
+
+    IEnumerator objectInteractionCoroutine(string objectName, bool active, CoroutineParameter param)
+    {
+        if (active)
+            Debug.Log("Activation de l'objet : " + objectName +".");
+        else
+            Debug.Log("Desactivation de l'objet : " + objectName + ".");
+
+        getInteractiveObjectGameobject(objectName).GetComponent<Collider2D>().enabled = active;
+        param._count++;
+        yield break;
+    }
+
+    IEnumerator characterInteractionCoroutine(string characterName, bool active, CoroutineParameter param)
+    {
+        if (active)
+            Debug.Log("Activation du personnage : " + characterName + ".");
+        else
+            Debug.Log("Desactivation du personnage : " + characterName + ".");
+
+        getCharacterGameobject(characterName).GetComponent<Collider2D>().enabled = active;
+        param._count++;
+        yield break;
     }
 
     IEnumerator guiCoroutine(bool active, CoroutineParameter param )
@@ -725,7 +824,7 @@ public class GameManager : MonoBehaviour {
     }*/
 
 	//Arrivé du lazzi
-	public IEnumerator lazziEvent(){
+	/*public IEnumerator lazziEvent(){
 
 		guiManager.active = false;
 
@@ -751,11 +850,11 @@ public class GameManager : MonoBehaviour {
 		guiManager.active = true;
 
 		yield break;
-	}
+	}*/
     
 
     //Event avec pierrot
-	IEnumerator eventFinTuto(){
+	/*IEnumerator eventFinTuto(){
 		
 		guiManager.active = false;
 
@@ -821,7 +920,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		yield break;
-	}
+	}*/
 
 }
 
@@ -853,4 +952,11 @@ class CoroutineParameter
     {
         _count = 0;
     }
+}
+
+[System.Serializable]
+public class InteractiveObject
+{
+    public GameObject _gameObject;
+    public string _name;
 }
