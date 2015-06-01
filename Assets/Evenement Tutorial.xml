@@ -107,7 +107,7 @@
 		<camera>
 			<deplacement x="-15" y="12" z="11" wait="false"/>	
 		</camera>
-		<souffleur>
+		<souffleur position="milieu">
 			<talk>
 				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=blue&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
 			</talk>
@@ -142,7 +142,7 @@
 			<animation name="asking"/>
 		</character>
 		<character name="Pantalone">
-			<bubble name="Pantalone_love_Colombine" time="3"/>
+			<bubble name="Capitaine_love_Colombine" time="3"/>
 		</character>
 	</multiple>
 	
