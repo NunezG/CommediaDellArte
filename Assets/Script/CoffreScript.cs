@@ -62,7 +62,7 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
 
 		//retour negatif du souffleur
-		gameManager.souffleur.giveFeedback (2, 1);
+		gameManager.souffleur.giveFeedback (2,0, 1);
 
 		gameManager.character.goTo (moveToChestEvent);
 		while (gameManager.character.transform.position !=  moveToChestEvent) {
@@ -95,7 +95,7 @@ public class CoffreScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
 		
 		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("eggJuggling");
-		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("Egg Juggling") ){
+		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("eggJuggling") ){
 			yield return null;
 		}
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
@@ -142,9 +142,9 @@ public class CoffreScript : MonoBehaviour {
 
 
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
-		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !", false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0 , false);
 
-		while (gameManager.souffleur.talking == true) {
+		while (gameManager.souffleur.souffleurArray[0].talking == true) {
 			yield return null;
 		}
 
@@ -177,9 +177,10 @@ public class CoffreScript : MonoBehaviour {
 		
 		
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
-		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !", false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0, false);
 
-		while (gameManager.souffleur.talking == true) {
+        while (gameManager.souffleur.souffleurArray[0].talking == true)
+        {
 			yield return null;
 		}
 		gameManager.character.transform.Rotate (0, 180, 0);

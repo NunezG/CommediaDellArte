@@ -49,7 +49,7 @@ public class CapitaineScript : MonoBehaviour {
 			this.GetComponent<Collider2D>().enabled = false;
 			this.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
-			gameManager.souffleur.giveFeedback (2, 0);
+			gameManager.souffleur.giveFeedback (2,0, 0);
 
 			if (!talkDone) {
 				scaryValue += 50;
@@ -94,7 +94,7 @@ public class CapitaineScript : MonoBehaviour {
 			this.GetComponent<Collider2D>().enabled = false;
 			gameManager.capitaine.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
 			//feed back du souffleur
-			gameManager.souffleur.giveFeedback (2, 0);
+			gameManager.souffleur.giveFeedback (2,0, 0);
 			
 			if (!touchDone) {
 				scaryValue += 50;

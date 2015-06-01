@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public CapitaineScript capitaine;
 	public PantaloneScript pantalone;
 	public ColombineScript colombine;
-	public SouffleurScript souffleur;
+	//public SouffleurScript souffleur;
 	public PierrotScript pierrot;
 	public PublicScript publicOnScene;
 	public CameraScript camera;
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     public List<InteractiveObject> objectList;
     public TextAsset GameAsset;
 
+    public SouffleurManager souffleur;
     private List<Character> characterList;
     private List<Evenement> eventList;
     private CoroutineParameter param;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
 
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_1", eventList);
+		startEvent("Tutorial_3", eventList);
     }
 
 	// Update is called once per frame
@@ -222,7 +223,8 @@ public class GameManager : MonoBehaviour {
         if (node.Name == "fadetoblack")
         {
             //Debug.Log("Fade de " + node.Attributes["time"].Value + "s.");
-            IEnumerator action = fadeCoroutine(float.Parse(node.Attributes["time"].Value), param);
+            bool wait = checkWaitAttribute(node.Attributes["wait"]);
+            IEnumerator action = fadeCoroutine(float.Parse(node.Attributes["time"].Value),wait, param);
             coroutineList.Insert(coroutineList.Count, action);
             return true;
         }
@@ -306,8 +308,13 @@ public class GameManager : MonoBehaviour {
     {
         if (node.Name == "souffleur")
         {
-           // Debug.Log("On cible le souffleur ");
+            int position = 0;
+            if(node.Attributes["position"].Value == "milieu") position = 0;
+            else if(node.Attributes["position"].Value == "haut") position = 1;
+            else if(node.Attributes["position"].Value == "droite") position = 2;
+            else if (node.Attributes["position"].Value == "gauche") position = 3;
 
+           // Debug.Log("On cible le souffleur ");
             XmlNodeList characterActionsList = node.ChildNodes;
             for (int j = 0; j < characterActionsList.Count; j++)
             {
@@ -320,14 +327,14 @@ public class GameManager : MonoBehaviour {
                     {
                         text.Add(souffleurText[k].InnerText);
                     }
-                    IEnumerator action = talkCoroutine(text, param);
+                    IEnumerator action = talkCoroutine(text, position, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
                 else if (characterActionsList.Item(j).Name == "feedback")
                 {
                     /*Debug.Log("Le souffleur envoie un feedback de type : " + characterActionsList[j].Attributes["type"].Value +
                               " d'une durée de " + characterActionsList[j].Attributes["time"].Value + "s.");*/
-                    IEnumerator action = feedbackCoroutine(characterActionsList[j].Attributes["type"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value), param);
+                    IEnumerator action = feedbackCoroutine(characterActionsList[j].Attributes["type"].Value, float.Parse(characterActionsList[j].Attributes["time"].Value), position, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
             }
@@ -572,26 +579,26 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator feedbackCoroutine(string type, float time, CoroutineParameter param)
+    IEnumerator feedbackCoroutine(string type, float time, int position, CoroutineParameter param)
     {
         Debug.Log("Envoie d'un feedback de type :" + type + " , de " + time + "s.");
         if(type == "good")
         {
-            souffleur.giveFeedback(time, 0);
+            souffleur.giveFeedback(time, position, 0);
         }
         else if(type == "bad")
         {
-            souffleur.giveFeedback(time, 1);
+            souffleur.giveFeedback(time, position, 1);
         }
         param._count++;
         yield break;
     }
 
-    IEnumerator talkCoroutine(List<string> text, CoroutineParameter param )
+    IEnumerator talkCoroutine(List<string> text, int position, CoroutineParameter param)
     {
         Debug.Log("Le souffleur parle.");
-        souffleur.saySomething(text, false);
-        while (souffleur.talking == true)
+        souffleur.saySomething(text, position, false);
+        while (souffleur.souffleurArray[position].talking == true)
         {
             yield return null;
         }
@@ -644,11 +651,12 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
 
-    IEnumerator fadeCoroutine(float time, CoroutineParameter param )
+    IEnumerator fadeCoroutine(float time, bool wait, CoroutineParameter param )
     {
         Debug.Log("Fadetoblack de " + time + "s.");
         fadeBlack.fadeToBlack(time);
-        yield return new WaitForSeconds( time + 2 / fadeBlack.fadeSpeed);
+        if(wait)
+         yield return new WaitForSeconds( time + 2 / fadeBlack.fadeSpeed);
         param._count++;
         yield break;
     }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SouffleurScript : MonoBehaviour {
 	
 	public Image UIimage,UICursor,UIPanneau;
-	public Text UIText;	
+	public Text UIText;
 	public float fadeSpeed = 4, maxAlpha = 1,minAlpha = 0, textSpeed = 1;
 	public GUIManager guimanager;
 	public Sprite avecPanneau, sansPanneau;
@@ -37,7 +37,7 @@ public class SouffleurScript : MonoBehaviour {
 	}
 	
 	void Update () {
-
+/*
 		if (talking) {
 			UIimage.color = new Color(1,1,1,Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
 			UIText.color = new Color(0,0,0,Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
@@ -45,11 +45,12 @@ public class SouffleurScript : MonoBehaviour {
 		else {
 			UIimage.color = new Color(1,1,1,Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
 			UIText.color = new Color(0,0,0,Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
-		}
+		}*/
 	
 		if (Input.GetButtonDown ("Fire1") && talking){
 				param.speedUp(4);
 		}
+  
 	}
 
 	public int getIndex(){
@@ -101,6 +102,7 @@ public class SouffleurScript : MonoBehaviour {
 		this.GetComponent<AudioSource> ().PlayOneShot (sound);
 		textList = text;
 		end = false;
+        SouffleurManager.talking++;
 		talking = true;
 		coroutineParagraph = updateParagraph (param);
 		coroutineText = updateText (reactiveGUI);
@@ -293,6 +295,7 @@ public class SouffleurScript : MonoBehaviour {
 				index++;
 				if (index == textList.Count) {
 					disappear (reactiveGUI);
+                    SouffleurManager.talking--;
 					talking = false;
 					index = 0;
                     charIndex = 0;

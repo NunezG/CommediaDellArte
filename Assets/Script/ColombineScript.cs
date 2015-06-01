@@ -49,11 +49,11 @@ public class ColombineScript : MonoBehaviour {
 		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
 		if(type == 0){
-			gameManager.souffleur.giveFeedback (2, 0);
+			gameManager.souffleur.giveFeedback (2, 0, 0);
 			gameManager.publicOnScene.addValue(10);
 		}
 		else if (type == 1){
-			gameManager.souffleur.giveFeedback (2, 1);
+			gameManager.souffleur.giveFeedback (2, 0, 1);
 			gameManager.publicOnScene.subValue(10);
 		}
 		gameManager.character.transform.Rotate (0, 180, 0);
@@ -104,11 +104,11 @@ public class ColombineScript : MonoBehaviour {
 		gameManager.character.transform.Rotate (0, 180, 0);
 
 		if(type == 0){
-			gameManager.souffleur.giveFeedback (2, 0);
+			gameManager.souffleur.giveFeedback (2, 0, 0);
 			gameManager.publicOnScene.addValue(10);
 		}
 		else if (type == 1){
-			gameManager.souffleur.giveFeedback (2, 1);
+			gameManager.souffleur.giveFeedback (2, 0, 1);
 			gameManager.publicOnScene.subValue(10);
 		}
 
