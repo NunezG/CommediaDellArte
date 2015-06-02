@@ -194,7 +194,7 @@
 	<guiManager active="false"/>
 
 	<character name="Pierrot">
-		<deplacement x="-1.5" y="10" z="30"/>
+		<deplacement x="-1.5" y="9.3" z="30"/>
 	</character>
 	
 	<camera>
