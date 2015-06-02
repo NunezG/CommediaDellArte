@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
 
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_1", eventList);
+		//startEvent("Tutorial_1");
     }
 
 	// Update is called once per frame
@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void launchEndEvent(){
-        startEvent("Tutorial_5", eventList);
+        startEvent("Tutorial_5");
        // (eventFinTuto());
 	}
 
     //Lance un evenement dans le jeu
-    public void startEvent(string id, List<Evenement> eventList)
+    public void startEvent(string id)
     {
         bool found = false;
         for (int i = 0; i < eventList.Count; i++ )
