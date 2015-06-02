@@ -31,19 +31,20 @@ public class CapitaineScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (-10, 7, 30);
-		gameManager.character.goTo (moveEvent);
-		
-		while (gameManager.character.transform.position !=  moveEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
+
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveEvent)
+        {
 			yield return null;
 		}
 
 		if(type == 0)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("niceTalking");
 		else if (type == 1)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
-		
-		
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("angryTalking");
+
+
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 				
 		if (type == 1) {			
 			this.GetComponent<Collider2D>().enabled = false;
@@ -56,7 +57,7 @@ public class CapitaineScript : MonoBehaviour {
 				gameManager.publicOnScene.addValue (20);
 				talkDone = true;
 			}
-			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);
+            yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.3f);
 			this.GetComponent<Collider2D>().enabled = true;
 		}
 
@@ -74,25 +75,26 @@ public class CapitaineScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (-10, 7, 30);
-		gameManager.character.goTo (moveEvent);
-		
-		while (gameManager.character.transform.position !=  moveEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
+
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveEvent)
+        {
 			yield return null;
 		}
 		
 		if (type == 0)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
 		else if (type == 1) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
-			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
+            gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().coup, 1);
 		}
-				
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);	
+
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);	
 
 
 		if (type == 1) {
 			this.GetComponent<Collider2D>().enabled = false;
-			gameManager.capitaine.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
+            gameManager.getCharacterGameobject("Capitaine").GetComponent<CharacterController>().sprite.SetTrigger("peur");
 			//feed back du souffleur
 			gameManager.souffleur.giveFeedback (2,0, 0);
 			
@@ -101,7 +103,7 @@ public class CapitaineScript : MonoBehaviour {
 				gameManager.publicOnScene.addValue (20);
 				touchDone = true;
 			}
-			yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length+0.3f);
+            yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.3f);
 			this.GetComponent<Collider2D>().enabled = true;
 
 		}

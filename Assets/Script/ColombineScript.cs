@@ -25,28 +25,28 @@ public class ColombineScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (11, 7, 30);
-		gameManager.character.goTo (moveEvent);
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
 		
-		while (gameManager.character.transform.position !=  moveEvent) {
+		while (gameManager.getCharacterGameobject("Arlequin").transform.position !=  moveEvent) {
 			yield return null;
 		}
 				
-		gameManager.character.transform.Rotate (0, 180, 0);
+		gameManager.getCharacterGameobject("Arlequin").transform.Rotate (0, 180, 0);
 
 		if (type == 0) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("niceTalking") ){
+			gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
+			while(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("niceTalking") ){
 				yield return null;
 			}
 		}
 		else if (type == 1) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("angryTalking") ){
+			gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
+			while(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("angryTalking") ){
 				yield return null;
 			}
 		}
 		
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+		yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
 
 		if(type == 0){
 			gameManager.souffleur.giveFeedback (2, 0, 0);
@@ -56,7 +56,7 @@ public class ColombineScript : MonoBehaviour {
 			gameManager.souffleur.giveFeedback (2, 0, 1);
 			gameManager.publicOnScene.subValue(10);
 		}
-		gameManager.character.transform.Rotate (0, 180, 0);
+		gameManager.getCharacterGameobject("Arlequin").transform.Rotate (0, 180, 0);
 
 		actionCount++;
 
@@ -76,32 +76,32 @@ public class ColombineScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (11, 7, 30);
-		gameManager.character.goTo (moveEvent);
+		gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo (moveEvent);
 		
-		while (gameManager.character.transform.position !=  moveEvent) {
+		while (gameManager.getCharacterGameobject("Arlequin").transform.position !=  moveEvent) {
 			yield return null;
 		}
 
-		gameManager.character.transform.Rotate (0, 180, 0);
+		gameManager.getCharacterGameobject("Arlequin").transform.Rotate (0, 180, 0);
 		
 		if (type == 0) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("poke") ){
+			gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().SetTrigger ("poke");
+			while(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("poke") ){
 				yield return null;
 			}
 		}
 		else if (type == 1) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
-			while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("frappe") ){
+			gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().SetTrigger ("frappe");
+			while(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("frappe") ){
 				yield return null;
 			}
-			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+			gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource> ().PlayOneShot (gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().coup,1);
 		}
 
 
-		yield return new WaitForSeconds (gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length);		
+		yield return new WaitForSeconds (gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).length);		
 
-		gameManager.character.transform.Rotate (0, 180, 0);
+		gameManager.getCharacterGameobject("Arlequin").transform.Rotate (0, 180, 0);
 
 		if(type == 0){
 			gameManager.souffleur.giveFeedback (2, 0, 0);

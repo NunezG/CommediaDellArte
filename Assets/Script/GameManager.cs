@@ -9,21 +9,20 @@ using System.IO;
 
 public class GameManager : MonoBehaviour {
 
-	public CharacterController character;
-	public CapitaineScript capitaine;
-	public PantaloneScript pantalone;
-	public ColombineScript colombine;
-	//public SouffleurScript souffleur;
-	public PierrotScript pierrot;
+
 	public PublicScript publicOnScene;
 	public CameraScript camera;
 	public GUIManager guiManager;
 	public FadeBlackScript fadeBlack;
+
+
+    public List<Character> characterList;
     public List<InteractiveObject> objectList;
     public TextAsset GameAsset;
 
+
+
     public SouffleurManager souffleur;
-    private List<Character> characterList;
     private List<Evenement> eventList;
     private CoroutineParameter param;
 
@@ -31,18 +30,10 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        characterList = new List<Character>();
-
-        characterList.Add(new Character(character.gameObject, "Arlequin"));
-        characterList.Add(new Character(capitaine.gameObject, "Capitaine"));
-        characterList.Add(new Character(pantalone.gameObject, "Pantalone"));
-        characterList.Add(new Character(colombine.gameObject, "Colombine"));
-        characterList.Add(new Character(pierrot.gameObject, "Pierrot"));
-
         param = new CoroutineParameter();
 
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_3", eventList);
+		startEvent("Tutorial_1", eventList);
     }
 
 	// Update is called once per frame
@@ -102,7 +93,7 @@ public class GameManager : MonoBehaviour {
     }
 
     //permet de recuperer le gameobject d'un personnage a partir de son nom
-    private GameObject getCharacterGameobject(string name){
+    public GameObject getCharacterGameobject(string name){
         
         for (int i = 0; i < characterList.Count; i++){
            // Debug.Log("research : " + name + " , actually this is :" + characterList[i]._characterName);
@@ -932,16 +923,19 @@ public class GameManager : MonoBehaviour {
 
 }
 
-class Character
+[System.Serializable]
+public class Character
 {
     public GameObject _characterGameobject;
     public string _characterName;
+    public int _sceneNumber = 0;
     public Character(GameObject g, string s )
     {
         _characterGameobject = g;
         _characterName = s;
     }
 }
+
 public class Evenement
 {
     public List<IEnumerator> _event;

@@ -37,41 +37,45 @@ public class CoffreScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 
 		Vector3 moveToChestEvent = new Vector3 (13, 7, 30);
-		gameManager.character.goTo (moveToChestEvent);
-		while (gameManager.character.transform.position !=  moveToChestEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveToChestEvent);
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveToChestEvent)
+        {
 			yield return null;
 		}
 
 		//animation prendre;
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length -0.1f );
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length - 0.1f);
 		
 		Vector3 goToCenterEvent = new Vector3 (-1.5f, 7, 30);
-		gameManager.character.goTo (goToCenterEvent);
-		while (gameManager.character.transform.position !=  goToCenterEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(goToCenterEvent);
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != goToCenterEvent)
+        {
 			yield return null;
 		}
 
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("juggling");
-		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("juggling") ){
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("juggling");
+        while (gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("juggling"))
+        {
 			yield return null;
 		}
 
-		gameManager.character.GetComponent<AudioSource> ().PlayOneShot (juggle_sound,1);
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(juggle_sound, 1);
 
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
 		//retour negatif du souffleur
 		gameManager.souffleur.giveFeedback (2,0, 1);
 
-		gameManager.character.goTo (moveToChestEvent);
-		while (gameManager.character.transform.position !=  moveToChestEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveToChestEvent);
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveToChestEvent)
+        {
 			yield return null;
 		}
 
 		//animation reposer
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
 
 		gameManager.guiManager.active = true;
@@ -84,31 +88,33 @@ public class CoffreScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (13, 7, 30);
-		gameManager.character.goTo (moveEvent);
-		
-		while (gameManager.character.transform.position !=  moveEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
+
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveEvent)
+        {
 			yield return null;
 		}
 
 		//animation prendre
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("take");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
-		
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("eggJuggling");
-		while(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash("eggJuggling") ){
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
+
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("eggJuggling");
+        while (gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("eggJuggling"))
+        {
 			yield return null;
 		}
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length );
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("brokenEggs");
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length);
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("brokenEggs");
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
-		gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("disappointed");
-		gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().depit,1);
+        gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("disappointed");
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().depit, 1);
 
 		yield return new WaitForSeconds (0.2f);
 		gameManager.publicOnScene.happy (2, 2);
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length - 0.2f);
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length - 0.2f);
 
 		gameManager.guiManager.active = true;
 
@@ -127,28 +133,29 @@ public class CoffreScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (13, 7, 30);
-		gameManager.character.goTo (moveEvent);
-		
-		while (gameManager.character.transform.position !=  moveEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
+
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveEvent)
+        {
 			yield return null;
 		}
 
-		gameManager.character.transform.Rotate (0, 180, 0);
+        gameManager.getCharacterGameobject("Arlequin").transform.Rotate(0, 180, 0);
 
 		if(type == 0)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("niceTalking");
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("niceTalking");
 		else if (type == 1)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("angryTalking");
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("angryTalking");
 
 
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length / 2);
 		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0 , false);
 
 		while (gameManager.souffleur.souffleurArray[0].talking == true) {
 			yield return null;
 		}
 
-		gameManager.character.transform.Rotate (0, 180, 0);
+        gameManager.getCharacterGameobject("Arlequin").transform.Rotate(0, 180, 0);
 
 
 		gameManager.guiManager.active = true;
@@ -161,29 +168,30 @@ public class CoffreScript : MonoBehaviour {
 		gameManager.guiManager.active = false;
 		
 		Vector3 moveEvent = new Vector3 (13, 7, 30);
-		gameManager.character.goTo (moveEvent);
-		
-		while (gameManager.character.transform.position !=  moveEvent) {
+        gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveEvent);
+
+        while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveEvent)
+        {
 			yield return null;
 		}
 
-		gameManager.character.transform.Rotate (0, 180, 0);
+        gameManager.getCharacterGameobject("Arlequin").transform.Rotate(0, 180, 0);
 		if (type == 0)
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("poke");
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
 		else if (type == 1) {
-			gameManager.character.GetComponentInChildren<Animator> ().SetTrigger ("frappe");
-			gameManager.character.GetComponent<AudioSource> ().PlayOneShot (gameManager.character.GetComponent<ArlequinScript>().coup,1);
+            gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
+            gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().coup, 1);
 		}
-		
-		
-		yield return new WaitForSeconds(gameManager.character.GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).length/2);
+
+
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length / 2);
 		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0, false);
 
         while (gameManager.souffleur.souffleurArray[0].talking == true)
         {
 			yield return null;
 		}
-		gameManager.character.transform.Rotate (0, 180, 0);
+        gameManager.getCharacterGameobject("Arlequin").transform.Rotate(0, 180, 0);
 
 		gameManager.guiManager.active = true;
 		

@@ -11,6 +11,8 @@ public class SouffleurManager : MonoBehaviour {
     public Text UIText;
     public float fadeSpeed = 4, maxAlpha = 1, minAlpha = 0;
 
+    private Color textColor;
+
     /*Position
     milieu :0
     haut = 1
@@ -20,7 +22,11 @@ public class SouffleurManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        textColor = UIText.color;
+        UIText.supportRichText = true;
+        UIimage.color = new Color(1, 1, 1, 0);
+        UIText.color = new Color(textColor.r, textColor.g, textColor.b, 0);
+        UICursor.color = new Color(1, 1, 1, 0);
 	}
 	
 	// Update is called once per frame
@@ -29,12 +35,12 @@ public class SouffleurManager : MonoBehaviour {
         if (talking > 0)
         {
             UIimage.color = new Color(1, 1, 1, Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
-            UIText.color = new Color(0, 0, 0, Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
+            UIText.color = new Color(textColor.r, textColor.g, textColor.b, Mathf.Lerp(UIimage.color.a, maxAlpha, fadeSpeed * Time.deltaTime));
         }
         else
         {
             UIimage.color = new Color(1, 1, 1, Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
-            UIText.color = new Color(0, 0, 0, Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
+            UIText.color = new Color(textColor.r, textColor.g, textColor.b, Mathf.Lerp(UIimage.color.a, minAlpha, fadeSpeed * Time.deltaTime));
         }
 	
 

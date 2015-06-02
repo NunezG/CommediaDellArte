@@ -23,14 +23,12 @@ public class SouffleurScript : MonoBehaviour {
 	private CoroutineParameters param;
 	private List<string> textList;
 
-
 	void Start () {
 		animator = this.GetComponent<Animator> ();
-        UIText.supportRichText = true;
-
+       /* UIText.supportRichText = true;
 		UIimage.color = new Color(1,1,1,0);
-		UIText.color = new Color(0,0,0,0);
-		UICursor.color = new Color(1,1,1,0);
+        UIText.color = new Color(0,0, 0, 0);
+		UICursor.color = new Color(1,1,1,0);*/
 		UIPanneau.color = new Color (1, 1, 1, 0);
 		param = new CoroutineParameters (textSpeed);
         
