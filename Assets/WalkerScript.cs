@@ -8,14 +8,17 @@ public class WalkerScript : MonoBehaviour {
     [HideInInspector]
     public bool isWalking = false;
 
+	public List<Scream> _screamList;
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-
+	private AudioSource _audioSource;
+	private int screamIndex = 0;
 
     public void Initialisation(){
         _spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
         _animator = this.GetComponentInChildren<Animator>();
+		_audioSource = this.GetComponent<AudioSource> ();
     }
 
 	// Use this for initialization
@@ -26,8 +29,28 @@ public class WalkerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
     }
+	public void grab(){
+		screamIndex = Random.Range (0, _screamList.Count);
+		_audioSource.clip = _screamList[screamIndex]._grabSound;
+		_audioSource.loop = true;
+		_audioSource.Play ();
+	}
+
+	public void throwAway(Vector2 force){
+		_audioSource.Stop ();
+		_animator.SetTrigger ("thrown");
+		Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
+		body.fixedAngle = false;
+		body.gravityScale = 10;
+		body.AddForceAtPosition (force,  Vector2.zero);
+
+		_audioSource.loop = false;
+		_audioSource.PlayOneShot (_screamList[screamIndex]._throwSound);
+
+		Destroy (this, 3);
+	}
 
     public void setSprite(Sprite sprite)
     {
@@ -76,6 +99,10 @@ public class WalkerScript : MonoBehaviour {
         Destroy(this.gameObject);
         yield break;
     }
+}
 
-
+[System.Serializable]
+public class Scream{
+	public AudioClip _grabSound;
+	public AudioClip _throwSound;
 }

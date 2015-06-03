@@ -12,6 +12,8 @@ public class WalkerManager : MonoBehaviour {
     public int _maxWalker = 1;
     public float _timeBetweenSpawn = 1.0f;
 
+	public float throwForce = 1;
+
     private float _timer;
     [HideInInspector]
     public static List<WalkerScript> walkerList;
@@ -45,6 +47,7 @@ public class WalkerManager : MonoBehaviour {
                 if (walkerList[i] != null && walkerList[i].GetComponent<Collider2D>().overlapMouse())
                 {
                     dragWalker = walkerList[i];
+					dragWalker.grab();
                     oldMousePosition = Camera.main.ScreenToWorldPoint ( new Vector3 (Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
                     dragWalker.isWalking = false;
                     break;
@@ -54,8 +57,12 @@ public class WalkerManager : MonoBehaviour {
 
         if (Input.GetButtonUp("Fire1") && dragWalker!= null)
         {
-            dragWalker.isWalking = true;
+            //dragWalker.isWalking = true;
+			Vector3 newPos = Camera.main.ScreenToWorldPoint ( new Vector3 (Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
+			Vector3 temp = newPos - oldMousePosition;
+			dragWalker.throwAway(temp * throwForce);
             dragWalker = null;
+			currentWalker--;
         }
 
         if(dragWalker != null){
