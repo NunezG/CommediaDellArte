@@ -28,7 +28,7 @@ public class MenuPanel : MonoBehaviour {
     {
         anim.Play("Ouverture");
 
-        GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_1");
+        //GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_1");
         // animator.StopPlayback();
         gameObject.SetActive(false);
     }
@@ -37,7 +37,7 @@ public class MenuPanel : MonoBehaviour {
     {
         anim.Play("Ouverture");
 
-        GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_3");
+        //GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_3");
         gameObject.SetActive(false);
 
     }

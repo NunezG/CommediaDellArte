@@ -63,7 +63,7 @@ public class ColombineScript : MonoBehaviour {
 		if (actionCount >= 2) {
             //yield return new WaitForSeconds(3);
 			//StartCoroutine(gameManager.lazziEvent());
-            gameManager.startEvent("Tutorial_4");
+            gameManager.startEvent("Tutorial_4", gameManager.getEventList());
 		}
         else
             gameManager.guiManager.active = true;
@@ -118,7 +118,7 @@ public class ColombineScript : MonoBehaviour {
 		if (actionCount >= 2) {
            // yield return new WaitForSeconds(3);
 			//StartCoroutine(gameManager.lazziEvent());
-            gameManager.startEvent("Tutorial_4");
+            gameManager.startEvent("Tutorial_4", gameManager.getEventList());
 		}
         else 
             gameManager.guiManager.active = true;

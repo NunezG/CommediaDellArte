@@ -21,41 +21,42 @@ public class GameManager : MonoBehaviour {
     public TextAsset GameAsset;
 
 
-
     public SouffleurManager souffleur;
     private List<Evenement> eventList;
     private CoroutineParameter param;
 
 
-
 	// Use this for initialization
 	void Start () {
         param = new CoroutineParameter();
-
         eventList = loadEvent(GameAsset);
-		//startEvent("Tutorial_1");
+		//startEvent("Tutorial_1", eventList);
     }
 
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetButtonDown("Fire2")) { 
+             Debug.Log("yolo");
+             startEvent("Tutorial_1", eventList);
+        }
 
-		
 	}
 
 	public void launchEndEvent(){
-        startEvent("Tutorial_5");
+        startEvent("Tutorial_5", eventList);
        // (eventFinTuto());
 	}
 
     //Lance un evenement dans le jeu
-    public void startEvent(string id)
+    public void startEvent(string id, List<Evenement> eventList)
     {
+
         bool found = false;
         for (int i = 0; i < eventList.Count; i++ )
         {
             if (id == eventList[i]._id)
             {
-                StartCoroutine(launchEvent(eventList[i]._event)); 
+                StartCoroutine(launchEvent(eventList[i])); 
                 found = true;
                 Debug.Log("Event found");
                 break;
@@ -65,24 +66,32 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Event not found");
     }
 
-    IEnumerator launchEvent(List<IEnumerator> list)
+
+
+    IEnumerator launchEvent(Evenement evenement)
     {
         param._count += 1;
-        int i = 0;
-
-        while (i < list.Count)
+        int i = 0; 
+        while (i < evenement._event.Count)
         {
-            if (param._count > 0)
+           /* if (param._count > 0)
             {
+               // list[i].Reset();
                 param._count = 0;
                 Debug.Log("Execution de l'action n°" + i + ".");
+
                 StartCoroutine(list[i]);
                 i++;
-            }
+            }*/
+            yield return StartCoroutine( evenement._event[i]);
+           
+            i++;
             yield return null;
         }
         Debug.Log("Fin de l'event");
-
+        //on recharge l'event en memoire
+        evenement._event.Clear();
+        evenement._event = loadEvent(GameAsset, evenement._id);
         yield break;
     }
 
@@ -119,8 +128,51 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
-
     //Chargment d'un event a partir d'un fichier xml
+    public List<IEnumerator> loadEvent(TextAsset GameAsset, string id)
+    {
+        XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
+        xmlDoc.LoadXml(GameAsset.text); // load the file.
+
+        XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements en xml
+        List<IEnumerator> coroutineList = new List<IEnumerator>();
+        
+
+        for (int temp = 0; temp < eventList.Count; temp++)
+        {
+
+            if (eventList[temp].Attributes["id"].Value == id)
+            {
+                XmlNodeList actionsList = eventList[temp].ChildNodes;
+
+                Debug.Log(actionsList.Count + " actions a charger.");
+                for (int i = 0; i < actionsList.Count; i++)
+                {
+                    //Debug.Log(" nom de la node n°" + i + " :" + actionsList.Item(i).Name);
+                    //analyse de la node
+                    if (checkNode(actionsList[i], coroutineList, param)) { }
+                    else if (actionsList.Item(i).Name == "multiple")
+                    {
+                        //Debug.Log("Node multiple detecté ");
+                        CoroutineParameter paramMultiple = new CoroutineParameter();
+                        List<IEnumerator> multipleCoroutineList = new List<IEnumerator>();
+                        IEnumerator action = multipleCoroutine(multipleCoroutineList, paramMultiple, param);
+                        coroutineList.Insert(coroutineList.Count, action);
+
+                        //remplir la liste des coroutines multiples
+                        XmlNodeList multipleActionsList = actionsList.Item(i).ChildNodes;
+                        for (int j = 0; j < multipleActionsList.Count; j++)
+                        {
+                            checkNode(multipleActionsList[j], multipleCoroutineList, paramMultiple);
+                        }
+                    }
+                }
+                break;
+            }
+        }
+        return coroutineList;
+    }
+    //Chargment d'une liste event a partir d'un fichier xml
     public List<Evenement> loadEvent(TextAsset GameAsset)
     {
         XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
@@ -851,7 +903,6 @@ public class GameManager : MonoBehaviour {
 		yield break;
 	}*/
     
-
     //Event avec pierrot
 	/*IEnumerator eventFinTuto(){
 		
@@ -940,11 +991,16 @@ public class Evenement
 {
     public List<IEnumerator> _event;
     public string _id;
+    
     public Evenement(List<IEnumerator> i, string s)
     {
         _event = i;
         _id = s;
     }
+  /*  public IEnumerator getEvent(){
+
+
+    }*/
 }
 
 class CoroutineParameter
