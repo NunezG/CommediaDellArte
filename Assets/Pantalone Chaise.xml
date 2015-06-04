@@ -1,0 +1,51 @@
+﻿<EventList>
+
+
+<!-- Poser une question -->
+
+<event id="question">
+
+	<character name="Arlequin">
+		<deplacement x="11" y="7" z="31"/>
+		<rotation x="0" y="180" z="0"/>
+		<animation name="question"/>
+	</character>
+	
+	<wait time="0.5"/>
+
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+</event>
+
+<!-- Parler gentiment-->
+<event id="parler_gentiment">
+
+	<character name="Arlequin">
+		<deplacement x="11" y="7" z="31"/>
+		<rotation x="0" y="180" z="0"/>
+		<animation name="niceTalking"/>
+	</character>
+	
+	
+	<multiple>
+		<character name="Arlequin">
+			<animation name="disappointed"/>
+		</character>
+		
+		<character name="Pantalone_chaise">
+			<animation name="ennui"/>
+		</character>
+	</multiple>
+	
+</event>
+
+
+
+<event id="pousser_gentiment">
+
+	
+</event>
+
+</EventList>

@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour {
        // (eventFinTuto());
 	}
 
+
+
     //Lance un evenement dans le jeu
     public void startEvent(string id, List<Evenement> eventList)
     {
@@ -66,6 +68,27 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Event not found");
     }
 
+    public IEnumerator startEventCoroutine(string id, List<Evenement> eventList)
+    {
+        int j = 0;
+        while (id != eventList[j]._id)
+        {
+            j++;
+        }
+        param._count += 1;
+        int i = 0;
+        while (i < eventList[j]._event.Count)
+        {
+            yield return StartCoroutine(eventList[j]._event[i]);
+            i++;
+            yield return null;
+        }
+        Debug.Log("Fin de l'event");
+        //on recharge l'event en memoire
+        eventList[j]._event.Clear();
+        eventList[j]._event = loadEvent(GameAsset, eventList[j]._id);
+        yield break;        
+    }
 
 
     IEnumerator launchEvent(Evenement evenement)
@@ -73,18 +96,8 @@ public class GameManager : MonoBehaviour {
         param._count += 1;
         int i = 0; 
         while (i < evenement._event.Count)
-        {
-           /* if (param._count > 0)
-            {
-               // list[i].Reset();
-                param._count = 0;
-                Debug.Log("Execution de l'action n°" + i + ".");
-
-                StartCoroutine(list[i]);
-                i++;
-            }*/
-            yield return StartCoroutine( evenement._event[i]);
-           
+        {  
+            yield return StartCoroutine( evenement._event[i]);           
             i++;
             yield return null;
         }
@@ -175,6 +188,7 @@ public class GameManager : MonoBehaviour {
     //Chargment d'une liste event a partir d'un fichier xml
     public List<Evenement> loadEvent(TextAsset GameAsset)
     {
+        param = new CoroutineParameter();
         XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
         xmlDoc.LoadXml(GameAsset.text); // load the file.
 
@@ -612,7 +626,7 @@ public class GameManager : MonoBehaviour {
 		    while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
             {
                  Debug.Log("recherche du state");
-				    yield return null;
+				  yield return null;
 		    }
             Debug.Log("trouvé");
 		    yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
@@ -734,6 +748,7 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
+
         param._count++;
         yield break;
     }
@@ -979,7 +994,6 @@ public class Character
 {
     public GameObject _characterGameobject;
     public string _characterName;
-    public int _sceneNumber = 0;
     public Character(GameObject g, string s )
     {
         _characterGameobject = g;
