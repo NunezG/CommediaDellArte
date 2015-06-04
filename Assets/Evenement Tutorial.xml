@@ -243,4 +243,99 @@
 </event>
 
 
+
+  <!-- Actions déclanchées -->
+
+
+  <event id="Pantalone_gronde">
+    <guiManager active="false"/>
+
+    <multiple>
+
+      <character name="Pantalone">
+        <animation name="dispute"/>
+      </character>
+
+      <character name="Arlequin">
+        <animation name="disappointed"/>
+      </character>
+
+    </multiple>
+
+    <public>
+      <addvalue value="1"/>
+      <laugh time="5"/>
+    </public>
+
+    <guiManager active="true"/>
+  </event>
+
+
+  <event id="Pantalone_interloque">
+    <guiManager active="false"/>
+
+
+    <character name="Pantalone">
+      <animation name="asking"/>
+    </character>
+
+    <character name="Arlequin">
+      <animation name="question"/>
+    </character>
+
+    <character name="Capitaine">
+      <interaction value="true"/>
+    </character>
+
+    <guiManager active="true"/>
+  </event>
+
+
+  <event id="Capitan_dedagneux">
+    <guiManager active="false"/>
+
+     <character name="Capitaine">
+       <animation name="moquerie"/>
+     </character>
+    <public>
+      <subvalue value="1"/>
+    </public>
+
+
+    <guiManager active="true"/>
+  </event>
+
+  <event id="Capitan_vexe">
+    <guiManager active="false"/>
+    
+    <character name="Capitaine">
+      <animation name="peur"/>
+    </character>
+
+    <public>
+      <addvalue value="5"/>
+      <laugh time="5"/>
+    </public>
+
+
+    <guiManager active="true"/>
+  </event>
+
+
+  <event id="Capitan_frappe">
+    <guiManager active="false"/>
+
+    <character name="Capitaine">
+      <animation name="frappe"/>
+    </character>
+
+    <public>
+      <addvalue value="1"/>
+      <laugh time="5"/>
+    </public>
+
+    <guiManager active="true"/>
+  </event>
+
+
 </EventList>
