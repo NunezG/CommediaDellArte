@@ -1,0 +1,22 @@
+﻿<EventList>
+
+
+<!-- Toucher gentiment -->
+
+<event id="toucher_gentiment">
+
+
+	
+</event>
+
+<!-- Briser sur la le capitaine-->
+
+<event id="briser">
+
+	
+	
+</event>
+
+
+
+</EventList>

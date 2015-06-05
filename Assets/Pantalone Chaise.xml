@@ -4,6 +4,7 @@
 <!-- Poser une question -->
 
 <event id="question">
+	<guiManager active="false"/>
 
 	<character name="Arlequin">
 		<deplacement x="11" y="7" z="31"/>
@@ -17,6 +18,8 @@
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
+	<guiManager active="true"/>
+
 </event>
 
 <!-- Parler gentiment-->
@@ -45,50 +48,57 @@
 <!-- Pousser gentiment-->
 
 <event id="pousser_gentiment">
+	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<deplacement x="11" y="7" z="31"/>
-		<rotation x="0" y="180" z="0"/>
-		<animation name="niceTalking"/>
-	</character>
+
 	
-	
+	<guiManager active="true"/>
 </event>
 
 <!-- Pousser Mechamment-->
 
 <event id="pousser_mechamment">
+	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<deplacement x="10" y="0" z="31"/>
-	</character>
+
+	
+	<guiManager active="true"/>
+
 	
 </event>
 
 <!-- Soulever gentiment-->
 
 <event id="soulever_gentiment">
-<character name="Arlequin">
-		<deplacement x="10" y="0" z="31"/>
-	</character>
+	<guiManager active="false"/>
+
+
+	
+	<guiManager active="true"/>
+
 	
 </event>
 
 <!-- Soulever Mechamment-->
 
 <event id="soulever_mechamment">
-	<character name="Arlequin">
-		<deplacement x="10" y="0" z="31"/>
-	</character>
+	<guiManager active="false"/>
+
+
+	
+	<guiManager active="true"/>
+
 </event>
 
 <!-- S'asseoir -->
 
 <event id="assis">
+	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<deplacement x="10" y="0" z="31"/>
-	</character>
+
+	
+	<guiManager active="true"/>
+
 	
 </event>
 

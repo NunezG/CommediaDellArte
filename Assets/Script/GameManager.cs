@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
-		startEvent("Tutorial_1", eventList);
+		//startEvent("Tutorial_1", eventList);
     }
 
 	// Update is called once per frame

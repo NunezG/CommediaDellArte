@@ -24,6 +24,8 @@ public class PantaloneChaiseScript : MonoBehaviour {
 
     public void pantaloneEvent(string eventName){        
         XmlManager.launchEvent(eventName, "pantalone");
+
+        //StartCoroutine(gamemanager.startEventCoroutine(eventName, eventList, XmlDoc));
     }
 
 

@@ -14,11 +14,13 @@ public class XmlManager : MonoBehaviour {
 
     public static List<XmlAsset> _assetListStatic;
     public static GameManager _gameManagerStatic;
+    private static Object coroutineBase;
 
 
     void Start(){
         _assetListStatic = _assetList;
         _gameManagerStatic = _gameManager;
+        coroutineBase = new Object();
         //_assetList.Clear();
         //_gameManager = null;
     }
