@@ -11,7 +11,7 @@
 	<souffleur position="milieu">
 		<talk>
 			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
-			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=blue&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et la ruse dont tu te sers pour mener des intrigues.</paragraph>
+			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=blue&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et ta ruse.</paragraph>
 			<paragraph>Tu es encore débutant dans ce rôle essentiel mais je suis sûr que tu feras bien mieux que celui qui t’a précédé. Suis mes conseils, tu deviendras la coqueluche du peuple !</paragraph>
 		</talk>
 	</souffleur>
@@ -67,7 +67,8 @@
 		</character>
 		<souffleur position="gauche">
 			<talk>
-				<paragraph>Ce personnage s’appelle le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il semble intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;. Donner une bonne leçon à ce fanfaron t’attirera les faveurs de la fou… enfin… de notre premier public !</paragraph>
+				<paragraph>Ce personnage est le &#60;b&#62;&#60;color=blue&#62;Capitan&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il semble intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=blue&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;.</paragraph>
+				<paragraph>Donner une bonne leçon à ce fanfaron t’attirera les faveurs de la fou… enfin… de notre premier public !</paragraph>
 				<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=blue&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
 			</talk>
 		</souffleur>
