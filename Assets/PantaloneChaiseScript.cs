@@ -22,10 +22,17 @@ public class PantaloneChaiseScript : MonoBehaviour {
 	
 	}
 
+    public void pantaloneEvent(string eventName){        
+        XmlManager.launchEvent(eventName, "pantalone");
+    }
+
+
     public void parlerEvent()
     {
-        StartCoroutine(gamemanager.startEventCoroutine("parler_gentiment", eventList));
+        StartCoroutine(gamemanager.startEventCoroutine("parler_gentiment", eventList, XmlDoc));
+        //StartCoroutine(questionCoroutine());
     }
+
 
     public void questionEvent()
     {
@@ -35,7 +42,7 @@ public class PantaloneChaiseScript : MonoBehaviour {
     IEnumerator questionCoroutine()
     {
 
-        yield return StartCoroutine(gamemanager.startEventCoroutine("question", eventList));
+        yield return StartCoroutine(gamemanager.startEventCoroutine("question", eventList, XmlDoc));
 
         //explication de la scene
 

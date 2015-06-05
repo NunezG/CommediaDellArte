@@ -1,0 +1,39 @@
+﻿<EventList>
+
+
+<!-- Parler gentiment-->
+
+<event id="parler_gentiment">
+
+</event>
+
+<!-- Parler Mechamment-->
+
+<event id="parler_mechamment">
+
+</event>
+
+<!-- Parler Moqueur-->
+
+<event id="parler_moqueur">
+
+</event>
+
+
+<!-- Toucher gentiment-->
+
+<event id="parler_gentiment">
+
+</event>
+
+
+<!-- Toucher mechamment-->
+
+<event id="parler_gentiment">
+
+</event>
+
+
+</event>
+
+</EventList>

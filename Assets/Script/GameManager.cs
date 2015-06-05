@@ -44,10 +44,7 @@ public class GameManager : MonoBehaviour {
 
 	public void launchEndEvent(){
         startEvent("Tutorial_5", eventList);
-       // (eventFinTuto());
 	}
-
-
 
     //Lance un evenement dans le jeu
     public void startEvent(string id, List<Evenement> eventList)
@@ -58,7 +55,7 @@ public class GameManager : MonoBehaviour {
         {
             if (id == eventList[i]._id)
             {
-                StartCoroutine(launchEvent(eventList[i])); 
+                StartCoroutine(launchEvent(eventList[i], GameAsset)); 
                 found = true;
                 Debug.Log("Event found");
                 break;
@@ -68,8 +65,10 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Event not found");
     }
 
-    public IEnumerator startEventCoroutine(string id, List<Evenement> eventList)
+    public IEnumerator startEventCoroutine(string id, List<Evenement> eventList, TextAsset xmlAsset)
     {
+        Debug.Log("lancement de l'event :" + id);
+
         int j = 0;
         while (id != eventList[j]._id)
         {
@@ -81,30 +80,31 @@ public class GameManager : MonoBehaviour {
         {
             yield return StartCoroutine(eventList[j]._event[i]);
             i++;
-            yield return null;
+            //yield return null;
         }
         Debug.Log("Fin de l'event");
         //on recharge l'event en memoire
         eventList[j]._event.Clear();
-        eventList[j]._event = loadEvent(GameAsset, eventList[j]._id);
+        eventList[j] = loadEvent(xmlAsset, eventList[j]._id);
         yield break;        
     }
 
 
-    IEnumerator launchEvent(Evenement evenement)
+    public IEnumerator launchEvent(Evenement evenement, TextAsset xmlAsset)
     {
+        Debug.Log("lancement de l'event :" + evenement._id);
         param._count += 1;
         int i = 0; 
         while (i < evenement._event.Count)
         {  
             yield return StartCoroutine( evenement._event[i]);           
             i++;
-            yield return null;
+           // yield return null;
         }
         Debug.Log("Fin de l'event");
         //on recharge l'event en memoire
         evenement._event.Clear();
-        evenement._event = loadEvent(GameAsset, evenement._id);
+        evenement = loadEvent(xmlAsset, evenement._id);
         yield break;
     }
 
@@ -141,21 +141,25 @@ public class GameManager : MonoBehaviour {
         return null;
     }
 
+
+
     //Chargment d'un event a partir d'un fichier xml
-    public List<IEnumerator> loadEvent(TextAsset GameAsset, string id)
+    public Evenement loadEvent(TextAsset GameAsset, string id)
     {
+        Debug.Log("recherche de l'event : " + id + ".");
         XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
         xmlDoc.LoadXml(GameAsset.text); // load the file.
 
         XmlNodeList eventList = xmlDoc.GetElementsByTagName("event"); // liste des evenements en xml
         List<IEnumerator> coroutineList = new List<IEnumerator>();
-        
+        Evenement result = new Evenement(coroutineList, id);
 
         for (int temp = 0; temp < eventList.Count; temp++)
         {
 
             if (eventList[temp].Attributes["id"].Value == id)
             {
+                Debug.Log("event found");
                 XmlNodeList actionsList = eventList[temp].ChildNodes;
 
                 Debug.Log(actionsList.Count + " actions a charger.");
@@ -183,7 +187,7 @@ public class GameManager : MonoBehaviour {
                 break;
             }
         }
-        return coroutineList;
+        return result;
     }
     //Chargment d'une liste event a partir d'un fichier xml
     public List<Evenement> loadEvent(TextAsset GameAsset)
