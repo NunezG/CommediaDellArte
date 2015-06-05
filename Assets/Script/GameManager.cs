@@ -30,15 +30,15 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
-		//startEvent("Tutorial_1", eventList);
+        StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
     }
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire2")) { 
+       /* if (Input.GetButtonDown("Fire2")) { 
              Debug.Log("yolo");
-             startEventCoroutine("Tutorial_1", eventList, GameAsset);
-        }
+             StartCoroutine( startEventCoroutine("Tutorial_1", eventList, GameAsset));
+        }*/
 
 	}
 

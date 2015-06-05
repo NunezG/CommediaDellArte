@@ -5,6 +5,10 @@
 	<guiManager active="false"/>
 	
 	<character name="Arlequin">
+		<deplacement x="-16" y="7" z="45" instant="true"/>
+	</character>
+	
+	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30"/>
 	</character>
 	
@@ -58,6 +62,10 @@
 	<guiManager active="false"/>
 	
 	<character name="Capitaine">
+		<deplacement x="-16" y="7" z="45" instant="true"/>
+	</character>
+	
+	<character name="Capitaine">
 		<deplacement x="-16" y="7" z="30"/>
 	</character>
 	
@@ -84,6 +92,10 @@
 <!-- Introduction de la 3eme partie avec colombine et pantalone-->
 <event id="Tutorial_3">
 	<guiManager active="false"/>
+	
+	<object name="coffre">
+		<interaction value = "false"/>
+	</object>
 	
 	<fadetoblack time = "1" wait ="false"/>
 	<wait time="0.5"/>

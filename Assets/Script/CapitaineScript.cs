@@ -130,8 +130,8 @@ public class CapitaineScript : MonoBehaviour {
 
 		gameManager.publicOnScene.addValue(20);
 
-		//StartCoroutine (gameManager.event3 ());
-        gameManager.startEvent("Tutorial_3", gameManager.getEventList());
+        StartCoroutine( gameManager.startEventCoroutine("Tutorial_3", gameManager.getEventList(), gameManager.GameAsset));
+
 		yield break;
 	}
 }

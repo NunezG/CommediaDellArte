@@ -65,7 +65,7 @@ public class CoffreScript : MonoBehaviour {
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
 		//retour negatif du souffleur
-		gameManager.souffleur.giveFeedback (2,0, 1);
+		gameManager.souffleur.giveFeedback (2,1, 0);
 
         gameManager.getCharacterGameobject("Arlequin").GetComponent<CharacterController>().goTo(moveToChestEvent);
         while (gameManager.getCharacterGameobject("Arlequin").transform.position != moveToChestEvent)

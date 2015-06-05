@@ -53,7 +53,7 @@ public class ColombineScript : MonoBehaviour {
 			gameManager.publicOnScene.addValue(10);
 		}
 		else if (type == 1){
-			gameManager.souffleur.giveFeedback (2, 0, 1);
+			gameManager.souffleur.giveFeedback (2, 1, 0);
 			gameManager.publicOnScene.subValue(10);
 		}
 		gameManager.getCharacterGameobject("Arlequin").transform.Rotate (0, 180, 0);
@@ -108,7 +108,7 @@ public class ColombineScript : MonoBehaviour {
 			gameManager.publicOnScene.addValue(10);
 		}
 		else if (type == 1){
-			gameManager.souffleur.giveFeedback (2, 0, 1);
+			gameManager.souffleur.giveFeedback (2, 1, 0);
 			gameManager.publicOnScene.subValue(10);
 		}
 
