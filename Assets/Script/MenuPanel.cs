@@ -2,54 +2,49 @@
 using System.Collections;
 
 public class MenuPanel : MonoBehaviour {
-    Canvas canvas;
-    GUIManager gui;
+
     public Animator anim;
-   // public Texture2D curseur;
+    public string scene;
+    private AsyncOperation op;
 
 	// Use this for initialization
 	void Start () {
 
-       // Cursor.SetCursor(curseur, Vector2.zero, CursorMode.Auto);
+        DontDestroyOnLoad(transform.parent.gameObject);
 
-        gui = GameObject.Find("GUIManager").GetComponent<GUIManager>();
-        canvas = GetComponent<Canvas>();
-        anim.Play("Fermeture");
+      //  anim.Play("Fermeture");
 
-       // canvas.enabled = !canvas.enabled;
-           //  setGoal(goalList[0]);
-          //  gui.active = true;
-       // Time.timeScale = 0;
+        op = Application.LoadLevelAsync(scene);
+        op.allowSceneActivation = false;
 	}
 
-
-
     public void startGame()
+    {  
+        StartCoroutine("startScene");
+    }
+
+    IEnumerator startScene()
     {
+        transform.FindChild("MenuButtons").gameObject.SetActive(false);
+        op.allowSceneActivation = true;
+
         anim.Play("Ouverture");
 
-        //GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_1");
-        // animator.StopPlayback();
-        gameObject.SetActive(false);
+        while (!anim.GetCurrentAnimatorStateInfo(0).IsName("Wait"))
+        {
+            yield return null;
+        }
+
+       Destroy(transform.parent.gameObject);
     }
 
     public void restoreGame()
     {
-        anim.Play("Ouverture");
-
-        //GameObject.Find("GameManager").GetComponent<GameManager>().startEvent("Tutorial_3");
-        gameObject.SetActive(false);
-
+        StartCoroutine("startScene");
     }
 
     public void credits()
     {
-        anim.Play("Ouverture");
-
+        StartCoroutine("startScene");
     }
-
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
