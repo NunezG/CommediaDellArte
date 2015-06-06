@@ -21,6 +21,5 @@ public class CapitaineXmlScript : MonoBehaviour
     public void capitaineEvent(string eventName)
     {
         XmlManager.launchEvent(eventName, "capitaine");
-
     }
 }
