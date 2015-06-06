@@ -20,6 +20,10 @@ public class WalkerManager : MonoBehaviour {
     private WalkerScript dragWalker;
     private Vector3 oldMousePosition;
 
+
+    //debug
+    Vector3 from, to;
+
 	// Use this for initialization
 	void Start () {
         walkerList = new List<WalkerScript>();
@@ -27,8 +31,6 @@ public class WalkerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
 
         _timer -= Time.deltaTime;
         while (currentWalker != _maxWalker && _timer <= 0)
@@ -38,11 +40,24 @@ public class WalkerManager : MonoBehaviour {
             currentWalker++;
         }
 
-
-
         if (Input.GetButtonDown("Fire1"))
         {
-            for (int i = 0; i < walkerList.Count; i++ )
+            
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, 1000);
+
+
+            from = Camera.main.transform.position;
+            to = (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position) * 100;
+            Debug.Log("from" + Camera.main.transform.position + " to  " + (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position) * 100);
+            Debug.Log(hit.collider.gameObject.name);
+
+            dragWalker = hit.collider.gameObject.GetComponent<WalkerScript>();
+            dragWalker.grab();
+            oldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
+            dragWalker.isWalking = false;
+            /*for (int i = 0; i < walkerList.Count; i++ )
             {
                 if (walkerList[i] != null && walkerList[i].GetComponent<Collider2D>().overlapMouse())
                 {
@@ -52,7 +67,7 @@ public class WalkerManager : MonoBehaviour {
                     dragWalker.isWalking = false;
                     break;
                 }
-            }
+            }*/
         }
 
         if (Input.GetButtonUp("Fire1") && dragWalker!= null)
@@ -91,6 +106,17 @@ public class WalkerManager : MonoBehaviour {
 
     void OnDrawGizmos()
     {
+
+       // Gizmos.DrawRay(ray.origin, ray.direction);
+
+
+
+        Gizmos.DrawLine(Camera.main.transform.position, Camera.main.ScreenToWorldPoint ( new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 1000)) );
+        Gizmos.color = new Color(0, 0, 1);
+        Gizmos.DrawLine(from, to);
+
+
+
         for (int i = 0; i < _pathArray.Length; i++)
         {
             Gizmos.color = new Color(1, 0, 0);

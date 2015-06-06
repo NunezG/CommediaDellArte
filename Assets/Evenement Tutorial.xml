@@ -67,6 +67,7 @@
 	
 	<character name="Capitaine">
 		<deplacement x="-16" y="7" z="30"/>
+		<sound name="capitain_moque.ogg" wait="false" volume="1" />
 	</character>
 	
 	<multiple>

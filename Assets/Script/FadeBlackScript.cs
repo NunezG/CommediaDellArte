@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class FadeBlackScript : MonoBehaviour {
 
 	public float fadeSpeed;
+    public AudioClip _sound;
 	private Image _image;
+    private AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start () {
 		_image = this.GetComponent<Image> ();
 		_image.color = new Color (0, 0, 0, 0);
+        _audioSource = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +28,9 @@ public class FadeBlackScript : MonoBehaviour {
 	}
 
 	IEnumerator fadeCoroutine(float time){
-		
+
+        _audioSource.PlayOneShot(_sound);
+
 		while (	_image.color.a != 1) {
 
 			if(	_image.color.a>=0.9)

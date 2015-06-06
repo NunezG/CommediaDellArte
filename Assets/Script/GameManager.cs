@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
         //StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
+        //ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
 	// Update is called once per frame
@@ -435,16 +436,12 @@ public class GameManager : MonoBehaviour {
     {
         if (node.Name == "character")
         {
-           // Debug.Log("On cible le personnage " +node.Attributes["name"].Value + ".");
             XmlNodeList characterActionsList = node.ChildNodes;
             for (int j = 0; j < characterActionsList.Count; j++)
             {
                 if (characterActionsList.Item(j).Name == "deplacement")
                 {
-                    /*Debug.Log("Deplacement du personnage en : " + characterActionsList[j].Attributes["x"].Value + ", " +
-                              characterActionsList[j].Attributes["y"].Value + ", " +
-                              characterActionsList[j].Attributes["z"].Value + " .");*/
-
+                   
                     bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
 
                     XmlNode instantNode = characterActionsList[j].Attributes["instant"];
@@ -457,7 +454,6 @@ public class GameManager : MonoBehaviour {
                             instant = true;
                         }
                     }
-
                     IEnumerator action = deplacementCoroutine(node.Attributes["name"].Value,
                      new Vector3(
                      float.Parse(characterActionsList[j].Attributes["x"].Value),
@@ -466,18 +462,25 @@ public class GameManager : MonoBehaviour {
 
                     coroutineList.Insert(coroutineList.Count, action);
                 }
+                if (characterActionsList.Item(j).Name == "sound")
+                {
+                    bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+                    float volume = -1;
+                    XmlNode nodeTemp = characterActionsList.Item(j).Attributes["volume"];
+                    if(nodeTemp != null)
+                        volume =  float.Parse(nodeTemp.Value);
+                    
+                    IEnumerator action = playSoundCoroutine(node.Attributes["name"].Value,characterActionsList.Item(j).Attributes["name"].Value, volume, wait, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
                 else if (characterActionsList.Item(j).Name == "animation")
                 {
-                    //Debug.Log("Activation de l'animation d'un personnage : " + characterActionsList[j].Attributes["name"].Value);
                     bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
                     IEnumerator action = animationCoroutine(node.Attributes["name"].Value, characterActionsList[j].Attributes["name"].Value, wait, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
                 else if (characterActionsList.Item(j).Name == "rotation")
-                {
-                   /*Debug.Log("Rotation du personnage de : " + characterActionsList[j].Attributes["x"].Value + ", " +
-                              characterActionsList[j].Attributes["y"].Value + ", " +
-                          characterActionsList[j].Attributes["z"].Value + " .");*/
+                {              
                     bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
                     IEnumerator action = rotationCoroutine(node.Attributes["name"].Value,
                     new Vector3(
@@ -765,7 +768,23 @@ public class GameManager : MonoBehaviour {
         param._count++;
         yield break;
     }
-    
+    IEnumerator playSoundCoroutine(string characterName, string soundName, float volume, bool wait, CoroutineParameter param)
+    {
+        if (volume == -1)
+        {
+            volume = getCharacterGameobject(characterName).GetComponent<AudioSource>().volume;
+        }
+        Debug.Log("Emission d'un son :" + soundName + "  avec un volume de :  " + volume + ".");
+
+        SoundController soundC = getCharacterGameobject(characterName).GetComponent<SoundController>();
+        float duration = soundC.playSound(soundName, volume);
+
+        if (wait)
+            yield return new WaitForSeconds(duration);
+
+        param._count++;
+        yield break;
+    }
     
 	//Intro avec le souffleur
 	/*public IEnumerator event1(){
@@ -1015,10 +1034,7 @@ public class Evenement
         _event = i;
         _id = s;
     }
-  /*  public IEnumerator getEvent(){
 
-
-    }*/
 }
 
 class CoroutineParameter

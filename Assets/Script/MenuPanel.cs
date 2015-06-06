@@ -5,7 +5,9 @@ public class MenuPanel : MonoBehaviour {
 
     public Animator anim;
     public string scene;
+    public AudioClip _transitionSound;
     private AsyncOperation op;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +18,8 @@ public class MenuPanel : MonoBehaviour {
 
         op = Application.LoadLevelAsync(scene);
         op.allowSceneActivation = false;
+
+        ThemePlayerScript.instance.playTheme("Commedia dell'Arte Theme Principal");
 	}
 
     public void startGame()
@@ -25,6 +29,9 @@ public class MenuPanel : MonoBehaviour {
 
     IEnumerator startScene()
     {
+        this.GetComponent<AudioSource>().PlayOneShot(_transitionSound);
+        ThemePlayerScript.instance.smoothThemeChange("Commedia Theme Redux", 1.5f);
+
         transform.FindChild("MenuButtons").gameObject.SetActive(false);
         op.allowSceneActivation = true;
 

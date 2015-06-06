@@ -41,10 +41,15 @@ public class WalkerScript : MonoBehaviour {
 	public void throwAway(Vector2 force){
 		_audioSource.Stop ();
 		_animator.SetTrigger ("thrown");
-		Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
-		body.fixedAngle = false;
-		body.gravityScale = 10;
-		body.AddForceAtPosition (force,  Vector2.zero);
+
+        Rigidbody body = this.GetComponent<Rigidbody>();
+        body.constraints = RigidbodyConstraints.FreezeRotationZ;
+        body.useGravity = true;
+
+		//Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
+		//body.fixedAngle = false;
+		//body.gravityScale = 10;
+		body.AddForceAtPosition (force,  Vector3.zero);
 
 		_audioSource.loop = false;
 		_audioSource.PlayOneShot (_screamList[screamIndex]._throwSound);
