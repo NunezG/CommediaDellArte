@@ -2,15 +2,25 @@
 
 
 <!-- Toucher gentiment -->
-
 <event id="toucher_gentiment">
-
-
-	
+	<guiManager active="false"/>
+		<character name="Arlequin">
+			<deplacement x="-10.46" y="7" z="27"/>
+			<animation name="poke"/>
+		</character>
+		
+		<!-- le vase se brise -->
+		<public>
+			<addvalue value ="10"/>
+		</public>
+		
+		<character name="Pantalone_chaise">
+				<animation name="gronde"/>
+		</character>	
+	<guiManager active="true"/>
 </event>
 
 <!-- Briser sur la le capitaine-->
-
 <event id="briser">
 
 	

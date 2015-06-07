@@ -7,7 +7,7 @@
 
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.5" z="31"/>
+		<deplacement x="-8" y="7" z="31"/>
 		<animation name="niceTalking"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -25,7 +25,7 @@
 
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.5" z="31"/>
+		<deplacement x="-8" y="7" z="31"/>
 		<animation name="angryTalking"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -43,7 +43,7 @@
 
 	<character name="Arlequin">	
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.5" z="31"/>
+		<deplacement x="-8" y="7" z="31"/>
 		<animation name="moquer"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -62,7 +62,7 @@
 
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.5" z="31"/>
+		<deplacement x="-8" y="7" z="31"/>
 		<animation name="poke"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -81,7 +81,7 @@
 
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.5" z="31"/>
+		<deplacement x="-8" y="7" z="31"/>
 		<animation name="frappe"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>

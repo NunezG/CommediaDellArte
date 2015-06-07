@@ -7,13 +7,16 @@
 	<guiManager active="false"/>
 
 	<character name="Arlequin">
-		<deplacement x="11" y="7" z="31"/>
+		<deplacement x="5.67" y="7" z="31"/>
 		<rotation x="0" y="180" z="0"/>
 		<animation name="question"/>
 	</character>
 	
 	<wait time="0.5"/>
 
+	<!-- explication de la scene -->
+
+	
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -26,7 +29,7 @@
 <event id="parler_gentiment">
 
 	<character name="Arlequin">
-		<deplacement x="11" y="7" z="31"/>
+		<deplacement x="5.67" y="7" z="31"/>
 		<rotation x="0" y="180" z="0"/>
 		<animation name="niceTalking"/>
 	</character>
@@ -38,68 +41,92 @@
 		</character>
 		
 		<character name="Pantalone_chaise">
-			<animation name="ennui"/>
+			<animation name="gronde"/>
 		</character>
 	</multiple>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+	</character>
 	
 </event>
 
 
 <!-- Pousser gentiment-->
-
 <event id="pousser_gentiment">
 	<guiManager active="false"/>
-
-
+	
+		<character name="Arlequin">
+			<deplacement x="5.67" y="7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+				<animation name="pousser_gentil"/>
+			</character>
+			<character name="Pantalone_chaise">
+				<animation name="pousser_gentil"/>
+			</character>
+		</multiple>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
 	
 	<guiManager active="true"/>
 </event>
 
 <!-- Pousser Mechamment-->
-
 <event id="pousser_mechamment">
 	<guiManager active="false"/>
-
-
 	
-	<guiManager active="true"/>
-
+		<character name="Arlequin">
+			<deplacement x="5.67" y="7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+				<animation name="pousser_mechant"/>
+			</character>
+			<character name="Pantalone_chaise">
+				<animation name="pousser_mechant"/>
+			</character>
+		</multiple>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
 	
+	<guiManager active="true"/>	
 </event>
 
 <!-- Soulever gentiment-->
-
 <event id="soulever_gentiment">
 	<guiManager active="false"/>
 
 
 	
 	<guiManager active="true"/>
-
-	
 </event>
 
 <!-- Soulever Mechamment-->
-
 <event id="soulever_mechamment">
 	<guiManager active="false"/>
 
 
 	
 	<guiManager active="true"/>
-
 </event>
 
 <!-- S'asseoir -->
-
 <event id="assis">
 	<guiManager active="false"/>
 
 
 	
-	<guiManager active="true"/>
-
-	
+	<guiManager active="true"/>	
 </event>
 
 </EventList>
