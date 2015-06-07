@@ -105,8 +105,19 @@
 <!-- Soulever gentiment-->
 <event id="soulever_gentiment">
 	<guiManager active="false"/>
-
-
+	
+		<character name="Arlequin">
+			<deplacement x="15.75" y="7" z="31"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+				<animation name="soulever_rate"/>
+			</character>
+			<character name="Pantalone_chaise">
+				<animation name="soulever_rate"/>
+			</character>
+		</multiple>
 	
 	<guiManager active="true"/>
 </event>
@@ -115,7 +126,20 @@
 <event id="soulever_mechamment">
 	<guiManager active="false"/>
 
-
+		<character name="Arlequin">
+			<deplacement x="15.75" y="7" z="31"/>
+		</character>
+		
+		<multiple>
+		
+			<!--<character name="Arlequin">
+				<animation name="soulever_reussi"/>
+			</character> -->
+			
+			<character name="Pantalone_chaise">
+				<animation name="soulever_reussi"/>
+			</character>
+		</multiple>
 	
 	<guiManager active="true"/>
 </event>
@@ -124,7 +148,19 @@
 <event id="assis">
 	<guiManager active="false"/>
 
-
+		<camera>
+			<deplacement x="9.1" y="11.5" z="10.2" wait="false"/>
+		</camera>
+		
+		<character name="Arlequin">
+			<deplacement x="6.75" y="7" z="31"/>
+			<animation name="assis"/>
+		</character>
+		
+		<camera>
+			<reset/>
+		</camera>
+		
 	
 	<guiManager active="true"/>	
 </event>
