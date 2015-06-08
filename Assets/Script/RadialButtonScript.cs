@@ -55,7 +55,7 @@ public class RadialButtonScript :  MonoBehaviour {
 				_spriteRenderer.color = new Color(1,1,1,Mathf.Lerp (_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
 			}
 			else{
-				_spriteRenderer.color = new Color(1,1,1,Mathf.Lerp (_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
+                _spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, Mathf.Lerp(_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
 			}
 
 			//gestion du mouvement lors de la disparition

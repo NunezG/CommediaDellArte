@@ -54,9 +54,12 @@ public class WalkerManager : MonoBehaviour {
             Debug.Log(hit.collider.gameObject.name);
 
             dragWalker = hit.collider.gameObject.GetComponent<WalkerScript>();
-            dragWalker.grab();
-            oldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
-            dragWalker.isWalking = false;
+            if (dragWalker != null)
+            {
+                dragWalker.grab();
+                oldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
+                dragWalker.isWalking = false;
+            }
             /*for (int i = 0; i < walkerList.Count; i++ )
             {
                 if (walkerList[i] != null && walkerList[i].GetComponent<Collider2D>().overlapMouse())

@@ -558,12 +558,19 @@ public class GameManager : MonoBehaviour {
                       IEnumerator action = objectInteractionCoroutine(node.Attributes["name"].Value, temp, param);
                       coroutineList.Insert(coroutineList.Count, action);                  
                   }
-                  if (objectActionsList.Item(j).Name == "animation")
+                  else if (objectActionsList.Item(j).Name == "animation")
                   {
-
                       bool wait = checkWaitAttribute(objectActionsList[j].Attributes["wait"]);
 
                       IEnumerator action = objectAnimationCoroutine(node.Attributes["name"].Value, objectActionsList.Item(j).Attributes["name"].Value, wait, param);
+                      coroutineList.Insert(coroutineList.Count, action);
+                  }
+                  else if (objectActionsList.Item(j).Name == "deplacement")
+                  {
+                      IEnumerator action = objectDeplacementCoroutine(node.Attributes["name"].Value, new Vector3(
+                     float.Parse(objectActionsList[j].Attributes["x"].Value),
+                     float.Parse(objectActionsList[j].Attributes["y"].Value),
+                     float.Parse(objectActionsList[j].Attributes["z"].Value)), param);
                       coroutineList.Insert(coroutineList.Count, action);
                   }
              }
@@ -572,11 +579,19 @@ public class GameManager : MonoBehaviour {
       return false;
     }
 
+    IEnumerator objectDeplacementCoroutine(string objectName, Vector3 position, CoroutineParameter param)
+    {
+        getInteractiveObjectGameobject(objectName).transform.position = position;
+        param._count++;
+        yield break;
+    }
+
     IEnumerator objectAnimationCoroutine(string objectName, string animationName, bool wait, CoroutineParameter param)
     {
         Animator tempAnimator;
         tempAnimator = getInteractiveObjectGameobject(objectName).GetComponent<Animator>();
-        getInteractiveObjectGameobject(objectName).GetComponent<Animator>().SetTrigger(animationName);
+        tempAnimator.SetTrigger(animationName);
+
         if (wait)
         {
             while (tempAnimator.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash(animationName))
@@ -826,6 +841,7 @@ public class GameManager : MonoBehaviour {
         yield break;
     }
     
+
 	//Intro avec le souffleur
 	/*public IEnumerator event1(){
 

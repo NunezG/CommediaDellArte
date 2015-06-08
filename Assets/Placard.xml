@@ -13,15 +13,16 @@
 <!-- Prendre le drap -->
 <event id="prendre_drap">
 
-	<character name="Arlequin">	
-			<deplacement x="-10" y="7.47" z="34.4"/>
-			<animation name="prendre_drap"/>
-	</character>
-	
+
 	<object name="armoire">
 		<animation name = "prendre_drap" wait = "false"/>
 	</object>
 	
+	<character name="Arlequin">	
+			<deplacement x="-10" y="7.47" z="34.4"/>
+			<animation name="prendre_drap"/>
+	</character>
+		
 </event>
 
 

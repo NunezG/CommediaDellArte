@@ -3,6 +3,17 @@
 
 <!-- Poser une question -->
 
+
+<event id="faire_peur">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="5.67" y="7" z="31"/>
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
 <event id="question">
 	<guiManager active="false"/>
 

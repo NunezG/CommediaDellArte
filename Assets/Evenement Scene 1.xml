@@ -7,18 +7,32 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
-
-
-	<character name="Arlequin">
-			<deplacement x="-10" y="7.47" z="31" instant = "true"/>
-	</character>
-	<character name="Capitaine_2">
-			<deplacement x="-1.31" y="7.45" z="31" instant = "true"/>
-	</character>
-	<character name="Pantalone_chaise">
-			<deplacement x="11" y="9.78" z="31" instant = "true"/>
-	</character>
 	
+	
+	<!-- Placement des objets-->
+	<mutiple>
+		<object name="armoire">
+			<deplacement x="" y="" z="" />
+		</object>
+		<object name="vase_1">
+			<deplacement x="5" y="11.16" z="-14.33" />
+		</object>
+		<object name="vase_2">
+			<deplacement x="-12.12" y="15.92" z="-15.6" />
+		</object>
+
+
+		<!-- Placement des personnages -->
+		<character name="Arlequin">
+				<deplacement x="-10" y="7.47" z="31" instant = "true"/>
+		</character>
+		<character name="Capitaine_2">
+				<deplacement x="-1.31" y="7.45" z="31" instant = "true"/>
+		</character>
+		<character name="Pantalone_chaise">
+				<deplacement x="11" y="9.78" z="31" instant = "true"/>
+		</character>
+	</mutiple>
 	
 	<camera>
 		<deplacement x="9.3" y="13.6" z="9.1" wait = "true"/>
