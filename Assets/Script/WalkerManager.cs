@@ -51,11 +51,11 @@ public class WalkerManager : MonoBehaviour {
             from = Camera.main.transform.position;
             to = (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position) * 100;
             Debug.Log("from" + Camera.main.transform.position + " to  " + (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position) * 100);
-            Debug.Log(hit.collider.gameObject.name);
 
             dragWalker = hit.collider.gameObject.GetComponent<WalkerScript>();
             if (dragWalker != null)
             {
+                Debug.Log(hit.collider.gameObject.name);
                 dragWalker.grab();
                 oldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
                 dragWalker.isWalking = false;

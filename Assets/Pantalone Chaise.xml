@@ -8,7 +8,21 @@
 	<guiManager active="false"/>
 
 	<character name="Arlequin">
-		<deplacement x="5.67" y="7" z="31"/>
+			<deplacement x="15.75" y="7" z="31"/>
+			<animation name="faire_peur" wait="false"/>
+	</character>
+	
+	<wait time="0.5"/>
+	
+	 
+	<character name="Capitaine_2">
+			<animation name="peur" />
+	</character>
+	
+	
+	<character name="Arlequin">	
+			<deplacement x="-10" y="7.47" z="34.4"/>
+			<animation name="enlever_drap"/>
 	</character>
 	
 	<guiManager active="true"/>
