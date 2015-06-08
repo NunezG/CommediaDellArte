@@ -2,37 +2,95 @@
 
 
 <!-- Parler gentiment-->
-
 <event id="parler_gentiment">
+	<guiManager active="false"/>
 
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="niceTalking"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<public>
+		<subvalue value ="10"/>
+	</public>
+
+	<guiManager active="true"/>
 </event>
 
 <!-- Parler Mechamment-->
-
 <event id="parler_mechamment">
+	<guiManager active="false"/>
 
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="angryTalking"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<public>
+		<subvalue value ="10"/>
+	</public>
+
+	<guiManager active="true"/>
 </event>
 
 <!-- Parler Moqueur-->
-
 <event id="parler_moqueur">
+<guiManager active="false"/>
 
-
+	<character name="Arlequin">	
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="moquer"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
 	
+	<public>
+		<subvalue value ="10"/>
+	</public>
+
+	<guiManager active="true"/>
 </event>
 
 
 <!-- Toucher gentiment-->
+<event id="toucher_gentiment">
+	<guiManager active="false"/>
 
-<event id="parler_gentiment">
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="poke"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<public>
+		<addvalue value ="10"/>
+	</public>
 
+	<guiManager active="true"/>
 </event>
 
 
 <!-- Toucher mechamment-->
+<event id="toucher_mechamment">
+<guiManager active="false"/>
 
-<event id="parler_gentiment">
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="frappe"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
 
+	<public>
+		<addvalue value ="10"/>
+	</public>
+
+	<guiManager active="true"/>
 </event>
 
 
