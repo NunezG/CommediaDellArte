@@ -39,17 +39,26 @@ public class WalkerScript : MonoBehaviour {
 	}
 
 	public void throwAway(Vector2 force){
+        Debug.Log(force.magnitude);
+
+        if (force.magnitude < 500)
+        {
+            isWalking = true;
+            return;
+        }
+
 		_audioSource.Stop ();
 		_animator.SetTrigger ("thrown");
 
         Rigidbody body = this.GetComponent<Rigidbody>();
-        body.constraints = RigidbodyConstraints.FreezeRotationZ;
+        body.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
         body.useGravity = true;
 
 		//Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 		//body.fixedAngle = false;
 		//body.gravityScale = 10;
-		body.AddForceAtPosition (force,  Vector3.zero);
+
+        body.AddForceAtPosition(new Vector3( force.x * 20, force.y * 20 ,0), Vector3.zero);
 
 		_audioSource.loop = false;
 		_audioSource.PlayOneShot (_screamList[screamIndex]._throwSound);
@@ -73,7 +82,7 @@ public class WalkerScript : MonoBehaviour {
     private IEnumerator walkingCoroutine(Path path)
     {
         Vector3 direction = (path._end - path._start).normalized;
-        while (this.transform.position != path._end)
+        while ( (path._end - this.transform.position).magnitude > 5)
         {
             if (isWalking) {
                 //gravity
