@@ -28,7 +28,8 @@ public class XmlManager : MonoBehaviour {
         //_assetList.Clear();
         //_gameManager = null;
 
-		if (nomDuDocumentXml != "" && nomDeLEvenement!="") {
+        if (nomDuDocumentXml != null && nomDeLEvenement != null)
+        {
 			TextAsset temp = null;
 			for (int i = 0; i < _assetList.Count; i++) {
 				if (_assetList [i]._xmlAsset.name == nomDuDocumentXml)
@@ -44,17 +45,9 @@ public class XmlManager : MonoBehaviour {
 
 	public static void launchEvent(string eventName, TextAsset DocumentXml)
 	{
-		TextAsset xmltemp = DocumentXml;
-
-		if (xmltemp == null)
-		{
-			Debug.Log("event not found");
-			return;
-		}
-		
-		Evenement event_temp = _gameManagerStatic.loadEvent(xmltemp, eventName);
+        Evenement event_temp = _gameManagerStatic.loadEvent(DocumentXml, eventName);
 		Debug.Log(event_temp._id +" " + event_temp._event.Count);
-		_gameManagerStatic.StartCoroutine(_gameManagerStatic.launchEvent(event_temp, xmltemp));
+        _gameManagerStatic.StartCoroutine(_gameManagerStatic.launchEvent(event_temp, DocumentXml));
 		Debug.Log("done");
 	}
 

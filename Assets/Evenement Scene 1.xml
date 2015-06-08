@@ -7,18 +7,20 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
-	
+		<object name="cloche">
+			<interaction active="false"/>
+		</object>
 	
 	<!-- Placement des objets-->
-	<mutiple>
+	<multiple>
 		<object name="armoire">
-			<deplacement x="" y="" z="" />
+			<deplacement x="-12.1" y="10.89" z="34.76" />
 		</object>
 		<object name="vase_1">
-			<deplacement x="5" y="11.16" z="-14.33" />
+			<deplacement x="5" y="6.44" z="36.06" />
 		</object>
 		<object name="vase_2">
-			<deplacement x="-12.12" y="15.92" z="-15.6" />
+			<deplacement x="-16.8" y="7.07" z="26.95" />
 		</object>
 
 
@@ -31,8 +33,8 @@
 		</character>
 		<character name="Pantalone_chaise">
 				<deplacement x="11" y="9.78" z="31" instant = "true"/>
-		</character>
-	</mutiple>
+		</character>	
+	</multiple>
 	
 	<camera>
 		<deplacement x="9.3" y="13.6" z="9.1" wait = "true"/>

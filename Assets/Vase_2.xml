@@ -6,10 +6,14 @@
 	<guiManager active="false"/>
 		<character name="Arlequin">
 			<deplacement x="-10.46" y="7" z="27"/>
-			<animation name="poke"/>
+			<animation name="poke" wait ="false"/>
 		</character>
 		
-		<!-- le vase se brise -->
+		<wait time ="0.5"/>
+		<object name="vase_2">
+			<animation name = "briser" />
+		</object>	
+		
 		<public>
 			<addvalue value ="10"/>
 		</public>

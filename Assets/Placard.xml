@@ -3,8 +3,12 @@
 
 <!-- Se cacher -->
 <event id="se_cacher">
-
-	
+	<guiManager active="false"/>
+		<character name="Arlequin">
+				<deplacement x="-7.34" y="7.47" z="34.4"/>	
+				<animation name="se_cacher"/>
+		</character>	
+	<guiManager active="true"/>
 </event>
 
 
@@ -12,20 +16,30 @@
 
 <!-- Prendre le drap -->
 <event id="prendre_drap">
-
-
-	<object name="armoire">
-		<animation name = "prendre_drap" wait = "false"/>
-	</object>
-	
-	<character name="Arlequin">	
-			<deplacement x="-10" y="7.47" z="34.4"/>
-			<animation name="prendre_drap"/>
-	</character>
-		
+	<guiManager active="false"/>
+		<object name="armoire">
+			<animation name = "prendre_drap" wait = "false"/>
+		</object>	
+		<character name="Arlequin">	
+				<deplacement x="-10" y="7.47" z="34.4"/>
+				<animation name="prendre_drap"/>
+		</character>
+	<guiManager active="true"/>
 </event>
 
 
+
+<!--Surgir -->
+<event id="surgir">
+
+	<guiManager active="false"/>
+		<character name="Arlequin">	
+			<deplacement x="-8.68" y="7.47" z="34.4" instant="true" />
+			<animation name="surgir"/>
+			<deplacement x="-8.68" y="7.47" z="31" />
+		</character>			
+	<guiManager active="true"/>
+</event>
 
 
 

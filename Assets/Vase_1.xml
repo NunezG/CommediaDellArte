@@ -3,22 +3,37 @@
 
 <!-- Toucher gentiment -->
 <event id="toucher_gentiment">
+
 	<guiManager active="false"/>
 		<character name="Arlequin">	
 			<deplacement x="0" y="7" z="34.25"/>
-			<rotation x="0" y="180" z="0"/>
-			<animation name="poke"/>
-			<rotation x="0" y="180" z="0"/>
+			<rotation x="0" y="180" z="0"/>			
 		</character>
 		
-		<!-- le vase se brise -->
+		<character name="Arlequin">	
+			<animation name="poke" wait="false"/>
+		</character>
+		
+		<wait time ="0.5"/>
+
+		<object name="vase_1">
+			<animation name = "briser" />
+		</object>	
+		
 		<public>
 			<addvalue value ="10"/>
 		</public>
 		
+		<wait time="1"/>
+		
+		<character name="Arlequin">	
+			<rotation x="0" y="180" z="0"/>			
+		</character>
+		
 		<character name="Pantalone_chaise">
 				<animation name="gronde"/>
 		</character>	
+		
 	<guiManager active="true"/>
 </event>
 
