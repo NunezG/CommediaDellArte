@@ -104,6 +104,9 @@ public class CoffreScript : MonoBehaviour {
         {
 			yield return null;
 		}
+
+	    gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(juggle_sound, 1);
+		
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
         gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("brokenEggs");
