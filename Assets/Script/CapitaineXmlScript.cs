@@ -6,6 +6,8 @@ using System.Text;
 public class CapitaineXmlScript : MonoBehaviour
 {
 
+    private int _touchCount = 0;
+
 
     // Use this for initialization
     void Start()
@@ -20,6 +22,22 @@ public class CapitaineXmlScript : MonoBehaviour
 
     public void capitaineEvent(string eventName)
     {
-        XmlManager.launchEvent(eventName, "capitaine");
+
+        if (eventName == "toucher_gentiment")
+        {
+            _touchCount++;
+            if (_touchCount > 1)
+            {
+                XmlManager.launchEvent("toucher_gentiment_2", "capitaine");
+            }
+            else
+            {
+                XmlManager.launchEvent("toucher_gentiment", "capitaine");
+            }
+        }
+        else
+        {
+            XmlManager.launchEvent(eventName, "capitaine");
+        }
     }
 }

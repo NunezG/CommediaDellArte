@@ -77,13 +77,13 @@ public class ThemePlayerScript : MonoBehaviour {
         return;    
     }
 
-    public void smoothThemeChange(string name, float time)
+    public void smoothThemeChange(string name, float disappearTime = 1, float waitTime = 0, float appearTime = 1)
     {
-        StartCoroutine( smoothThemeChangeCoroutine( name,  time));
+        StartCoroutine( smoothThemeChangeCoroutine( name,  disappearTime ,  waitTime ,  appearTime));
     }
 
 
-    private IEnumerator smoothThemeChangeCoroutine(string name, float time)
+    private IEnumerator smoothThemeChangeCoroutine(string name, float disappearTime , float waitTime , float appearTime )
     {
         AudioClip temp = null;
 
@@ -98,17 +98,19 @@ public class ThemePlayerScript : MonoBehaviour {
 
         while (_audioSource.volume > 0)
         {
-            _audioSource.volume -= Time.deltaTime * _initialVolumeValue/time;
+            _audioSource.volume -= Time.deltaTime * _initialVolumeValue / disappearTime;
             yield return null;
         }
         _audioSource.volume = 0;
+
+        yield return new WaitForSeconds(waitTime);
 
         _audioSource.clip = temp;
         _audioSource.Play();
 
         while (_audioSource.volume < _initialVolumeValue)
         {
-            _audioSource.volume += Time.deltaTime * _initialVolumeValue / time;
+            _audioSource.volume += Time.deltaTime * _initialVolumeValue / appearTime;
             yield return null;
         }
         _audioSource.volume = _initialVolumeValue;

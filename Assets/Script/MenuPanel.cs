@@ -30,7 +30,7 @@ public class MenuPanel : MonoBehaviour {
     IEnumerator startScene()
     {
         this.GetComponent<AudioSource>().PlayOneShot(_transitionSound);
-        ThemePlayerScript.instance.smoothThemeChange("Commedia Theme Redux", 1.5f);
+        ThemePlayerScript.instance.smoothThemeChange("Commedia Theme Redux", 0.5f, 2f , 3.5f);
 
         transform.FindChild("MenuButtons").gameObject.SetActive(false);
         op.allowSceneActivation = true;

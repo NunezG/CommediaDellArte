@@ -109,8 +109,6 @@ public class WalkerManager : MonoBehaviour {
 
        // Gizmos.DrawRay(ray.origin, ray.direction);
 
-
-
         Gizmos.DrawLine(Camera.main.transform.position, Camera.main.ScreenToWorldPoint ( new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 1000)) );
         Gizmos.color = new Color(0, 0, 1);
         Gizmos.DrawLine(from, to);

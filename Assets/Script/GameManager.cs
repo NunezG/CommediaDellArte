@@ -43,8 +43,18 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	public void launchEndEvent(){
-        startEvent("Tutorial_5", eventList);
+    public void launchEndEvent()
+    {
+        StartCoroutine(endEventCoroutine());
+    }
+
+	public IEnumerator endEventCoroutine(){
+
+        yield return StartCoroutine( startEventCoroutine("Tutorial_5", eventList, GameAsset));
+
+        XmlManager.launchEvent("Introduction", "scene1");
+
+        yield break;
 	}
 
     //Lance un evenement dans le jeu

@@ -67,6 +67,10 @@
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
+	<character name="Capitaine_2">	
+		<animation name="se_vexe"/>
+	</character>
+	
 	<public>
 		<addvalue value ="10"/>
 	</public>
@@ -74,6 +78,28 @@
 	<guiManager active="true"/>
 </event>
 
+<!-- Toucher gentiment 2-->
+<event id="toucher_gentiment_2">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="poke_fort"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<character name="Capitaine_2">	
+		<animation name="se_vexe"/>
+	</character>
+	
+	
+	<public>
+		<addvalue value ="10"/>
+	</public>
+
+	<guiManager active="true"/>
+</event>
 
 <!-- Toucher mechamment-->
 <event id="toucher_mechamment">

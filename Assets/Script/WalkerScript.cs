@@ -43,6 +43,7 @@ public class WalkerScript : MonoBehaviour {
 
         if (force.magnitude < 500)
         {
+            _audioSource.Stop();
             isWalking = true;
             return;
         }
@@ -82,10 +83,17 @@ public class WalkerScript : MonoBehaviour {
     private IEnumerator walkingCoroutine(Path path)
     {
         Vector3 direction = (path._end - path._start).normalized;
-        while ( (path._end - this.transform.position).magnitude > 5)
+        while ( (path._end - this.transform.position).magnitude > 5 )
         {
+           // Debug.Log((path._end - this.transform.position).magnitude);
+
             if (isWalking) {
+
+                direction = (path._end - this.transform.position).normalized;
+
                 //gravity
+                //direction = (path._end - path._start).normalized;
+
                 if (this.transform.position.y > path._end.y)
                 {
                     if (this.transform.position.y - _gravity * Time.deltaTime < path._end.y)
@@ -98,6 +106,7 @@ public class WalkerScript : MonoBehaviour {
                     if (Vector3.Distance(this.transform.position, path._end) <= (direction * (Time.deltaTime * _moveSpeed)).magnitude)
                     {
                         this.transform.position = path._end;
+                        Debug.Log("break");
                         break;
                     }
                     else

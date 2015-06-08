@@ -246,21 +246,27 @@
 	<character name="Colombine">
 		<deplacement x="0" y="100" z="0" instant="true"/>
 	</character>
+	
 	<wait time="4.7"/>
 	
 	<character name="Pierrot">
-			<deplacement x="50" y="10" z="30"/>
+			<deplacement x="50" y="10" z="30" wait = "false"/>
 	</character>
-
-	<fadetoblack time="10"/>
 	
+	<camera>
+		<reset wait="false"/>	
+	</camera>
+	
+	<wait time = "2"/>
+
+	<fadetoblack time="1"/>
+	
+	<guiManager active="true"/>
 </event>
 
 
 
   <!-- Actions déclanchées -->
-
-
   <event id="Pantalone_gronde">
     <guiManager active="false"/>
 
@@ -348,7 +354,7 @@
       <laugh time="5"/>
     </public>
 
-    <guiManager active="true"/>
+    
   </event>
 
 

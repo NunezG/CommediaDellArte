@@ -1,8 +1,54 @@
 ﻿<EventList>
 
+
+
+
+
+
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
 
+
+	<character name="Arlequin">
+			<deplacement x="-10" y="7.47" z="31" instant = "true"/>
+	</character>
+	<character name="Capitaine_2">
+			<deplacement x="-1.31" y="7.45" z="31" instant = "true"/>
+	</character>
+	<character name="Pantalone_chaise">
+			<deplacement x="11" y="9.78" z="31" instant = "true"/>
+	</character>
+	
+	
+	<camera>
+		<deplacement x="9.3" y="13.6" z="9.1" wait = "true"/>
+	</camera>
+	
+	<character name="Capitaine_2">
+			<animation name="se_vante" wait="false"/>
+	</character>
+	 
+	<wait time = "0.5"/>
+	<character name="Pantalone_chaise">
+			<animation  name="ennui"/>
+	</character>
+	
+	<camera>
+		<reset wait = "false"/>
+	</camera>
+	
+	<wait time="1.5"/>
+	
+	<!-- bulle pantalone-->
+
+
+	<souffleur position="milieu">
+			<talk>
+				<paragraph>Appuie sur  &#60;b&#62;&#60;color=blue&#62;ESPACE&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=blue&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			</talk>
+	</souffleur>
+	
+	<guiManager active="true"/>
 </event>
 
 </EventList>
