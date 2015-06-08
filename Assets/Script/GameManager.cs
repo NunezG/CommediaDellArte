@@ -558,10 +558,39 @@ public class GameManager : MonoBehaviour {
                       IEnumerator action = objectInteractionCoroutine(node.Attributes["name"].Value, temp, param);
                       coroutineList.Insert(coroutineList.Count, action);                  
                   }
+                  if (objectActionsList.Item(j).Name == "animation")
+                  {
+
+                      bool wait = checkWaitAttribute(objectActionsList[j].Attributes["wait"]);
+
+                      IEnumerator action = objectAnimationCoroutine(node.Attributes["name"].Value, objectActionsList.Item(j).Attributes["name"].Value, wait, param);
+                      coroutineList.Insert(coroutineList.Count, action);
+                  }
              }
              return true;
       }
       return false;
+    }
+
+    IEnumerator objectAnimationCoroutine(string objectName, string animationName, bool wait, CoroutineParameter param)
+    {
+        Animator tempAnimator;
+        tempAnimator = getInteractiveObjectGameobject(objectName).GetComponent<Animator>();
+        getInteractiveObjectGameobject(objectName).GetComponent<Animator>().SetTrigger(animationName);
+        if (wait)
+        {
+            while (tempAnimator.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash(animationName))
+            {
+                Debug.Log("recherche du state");
+                yield return null;
+            }
+            Debug.Log("trouvé");
+            yield return new WaitForSeconds(tempAnimator.GetCurrentAnimatorStateInfo(0).length);
+            Debug.Log("attente finie");
+        }
+
+        param._count++;
+        yield break;
     }
 
     IEnumerator objectInteractionCoroutine(string objectName, bool active, CoroutineParameter param)
@@ -778,6 +807,7 @@ public class GameManager : MonoBehaviour {
         param._count++;
         yield break;
     }
+
     IEnumerator playSoundCoroutine(string characterName, string soundName, float volume, bool wait, CoroutineParameter param)
     {
         if (volume == -1)

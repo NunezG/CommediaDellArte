@@ -1,51 +1,31 @@
 ﻿<EventList>
 
 
-<!-- Poser une question -->
+<!-- Se cacher -->
+<event id="se_cacher">
 
-<event id="question">
-
-	<character name="Arlequin">
-		<deplacement x="11" y="7" z="31"/>
-		<rotation x="0" y="180" z="0"/>
-		<animation name="question"/>
-	</character>
-	
-	<wait time="0.5"/>
-
-	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
-	</character>
 	
 </event>
 
-<!-- Parler gentiment-->
-<event id="parler_gentiment">
 
-	<character name="Arlequin">
-		<deplacement x="11" y="7" z="31"/>
-		<rotation x="0" y="180" z="0"/>
-		<animation name="niceTalking"/>
+
+
+<!-- Prendre le drap -->
+<event id="prendre_drap">
+
+	<character name="Arlequin">	
+			<deplacement x="-10" y="7.47" z="34.4"/>
+			<animation name="prendre_drap"/>
 	</character>
 	
-	
-	<multiple>
-		<character name="Arlequin">
-			<animation name="disappointed"/>
-		</character>
-		
-		<character name="Pantalone_chaise">
-			<animation name="ennui"/>
-		</character>
-	</multiple>
+	<object name="armoire">
+		<animation name = "prendre_drap" wait = "false"/>
+	</object>
 	
 </event>
 
 
 
-<event id="pousser_gentiment">
 
-	
-</event>
 
 </EventList>
