@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
         StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
-        //ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
+        ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
 	// Update is called once per frame
