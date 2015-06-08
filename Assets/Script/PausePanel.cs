@@ -10,9 +10,11 @@ public class PausePanel : MonoBehaviour
     bool pause;
 
     public string[] goalList = new string[] {
-		"Objectif en cours: distraire le public",
-		"Objectif en cours: effrayer le Capitan",
-		"Objectif en cours: séduire Colombine" 
+		"Objectif en cours: Apprendre le métier de comédien",
+		"Objectif en cours: Effrayer le Capitan",
+		"Objectif en cours: Parler du Capitan à Colombina",
+		"Objectif en cours: Faire sortir le Capitan de chez Pantalone",
+		"Objectif en cours: Aider Colombina à se déguiser pour échapper au Capitan",
 };
 
     void Start()
