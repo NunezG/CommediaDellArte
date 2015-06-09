@@ -9,9 +9,7 @@
 <event id="Introduction">
 	<guiManager active="false"/>
 
-		<object name="cloche">
-			<interaction value="false"/>
-		</object>
+		
 	
 	<!-- Placement des objets-->
 	<multiple>

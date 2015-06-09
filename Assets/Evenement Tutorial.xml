@@ -237,16 +237,23 @@
 	<multiple>
 		<character name="Pierrot">
 			<animation name="juggling" />
-			<sound name="Jongle-Arlequin.ogg.ogg"/>
+		</character>
+		<wait time ="0.01"/>
+		<character name="Pierrot">
+			<sound name="Jongle-Arlequin.ogg" wait = "false" volume="1"/>
 		</character>	
 		<public>
+		
+		
+		
+		
 			<addvalue value="75"/>
 		</public>
 	</multiple>
 	
 	<character name="Arlequin">
 		<deplacement x="-8" y="7" z="30"/>
-		<animation name="angryTalking" wait = "false"/>
+		<animation name="angryTalking" />
 	</character>
 	
 	<character name="Pantalone">
@@ -259,7 +266,7 @@
 	
 	<character name="Pierrot">
 		<animation name="range" wait="false"/>
-		<sound name="Pliage Colombine 1.ogg"/>
+		<sound name="Pliage Colombine 1" wait="false"/>
 	</character>
 	
 	<wait time="0.7"/>
@@ -281,6 +288,16 @@
 	<wait time = "2"/>
 
 	<fadetoblack time="1"/>
+	
+	<object name="cloche">
+		<interaction value="false"/>
+	</object>
+	<object name="coffre">
+		<interaction value="false"/>
+	</object>
+	<character name="Pantalone">
+			<deplacement x="50" y="10" z="30" instant = "true"/>
+	</character>
 	
 	<guiManager active="true"/>
 </event>

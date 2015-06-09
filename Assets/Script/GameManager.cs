@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
-        StartCoroutine(startEventCoroutine("Tutorial_3", eventList, GameAsset));
+        StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
         ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
@@ -829,7 +829,7 @@ public class GameManager : MonoBehaviour {
         {
             volume = getCharacterGameobject(characterName).GetComponent<AudioSource>().volume;
         }
-        Debug.Log("Emission d'un son :" + soundName + "  avec un volume de :  " + volume + ".");
+        Debug.Log("Emission d'un son sur "+characterName+" :" + soundName + "  avec un volume de :  " + volume + ".");
 
         SoundController soundC = getCharacterGameobject(characterName).GetComponent<SoundController>();
         float duration = soundC.playSound(soundName, volume);
@@ -840,6 +840,24 @@ public class GameManager : MonoBehaviour {
         param._count++;
         yield break;
     }
+    IEnumerator objectPlaySoundCoroutine(string objectName, string soundName, float volume, bool wait, CoroutineParameter param)
+    {
+        if (volume == -1)
+        {
+            volume = getInteractiveObjectGameobject(objectName).GetComponent<AudioSource>().volume;
+        }
+        Debug.Log("Emission d'un son :" + soundName + "  avec un volume de :  " + volume + ".");
+
+        SoundController soundC = getInteractiveObjectGameobject(objectName).GetComponent<SoundController>();
+        float duration = soundC.playSound(soundName, volume);
+
+        if (wait)
+            yield return new WaitForSeconds(duration);
+
+        param._count++;
+        yield break;
+    }
+
     
 
 	//Intro avec le souffleur
