@@ -46,25 +46,33 @@ public class CapitaineScript : MonoBehaviour {
 
 
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
-				
-		if (type == 1) {			
-			this.GetComponent<Collider2D>().enabled = false;
-			this.GetComponent<CharacterController> ().sprite.SetTrigger ("peur");
-			//feed back du souffleur
-			gameManager.souffleur.giveFeedback (2,0, 0);
 
-			if (!talkDone) {
-				scaryValue += 50;
-				gameManager.publicOnScene.addValue (20);
-				talkDone = true;
-			}
+        if (type == 1)
+        {
+            this.GetComponent<Collider2D>().enabled = false;
+            this.GetComponent<CharacterController>().sprite.SetTrigger("peur");
+            //feed back du souffleur
+
+            gameManager.souffleur.giveFeedback(2, 0, 0);
+
+            if (!talkDone)
+            {
+                scaryValue += 50;
+                gameManager.publicOnScene.addValue(20);
+                talkDone = true;
+            }
             yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.3f);
-			this.GetComponent<Collider2D>().enabled = true;
-		}
+            this.GetComponent<Collider2D>().enabled = true;
+        }
+        else
+        {
+            gameManager.souffleur.giveFeedback(2, 1, 0);
+        }
 
 		gameManager.guiManager.active = true;
 
 		if (scaryValue >= 100) {
+            yield return new WaitForSeconds(2);
 			StartCoroutine(goAway());
 		}
 
@@ -87,31 +95,43 @@ public class CapitaineScript : MonoBehaviour {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
 		else if (type == 1) {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
-            gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().coup, 1);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Frappe");
 		}
 
-        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);	
+        yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
 
-		if (type == 1) {
-			this.GetComponent<Collider2D>().enabled = false;
+        if (type == 1)
+        {
+            this.GetComponent<Collider2D>().enabled = false;
             gameManager.getCharacterGameobject("Capitaine").GetComponent<CharacterController>().sprite.SetTrigger("peur");
-			//feed back du souffleur
-			gameManager.souffleur.giveFeedback (2,0, 0);
-			
-			if (!touchDone) {
-				scaryValue += 50;
-				gameManager.publicOnScene.addValue (20);
-				touchDone = true;
-			}
-            yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.3f);
-			this.GetComponent<Collider2D>().enabled = true;
+            //feed back du souffleur
+            gameManager.souffleur.giveFeedback(2, 0, 0);
 
-		}
+            if (!touchDone)
+            {
+                scaryValue += 50;
+                gameManager.publicOnScene.addValue(20);
+                touchDone = true;
+            }
+            yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.3f);
+            this.GetComponent<Collider2D>().enabled = true;
+
+        }
+        else
+        {
+            gameManager.souffleur.giveFeedback(2, 1, 0);
+
+        }
+
+       
+
 
 		gameManager.guiManager.active = true;
 
 		if (scaryValue >= 100) {
+            yield return new WaitForSeconds(2);
 			StartCoroutine(goAway());
 		}
 
@@ -120,13 +140,15 @@ public class CapitaineScript : MonoBehaviour {
 
 	IEnumerator goAway(){
 
-		Vector3 moveEvent = new Vector3 (-20, 7, 50);
+		Vector3 moveEvent = new Vector3 (-16.7f, -2.2f, -10.5f);
+        Vector3 moveEvent2 = new Vector3 (-16.7f, -2.2f, 23.32f);
 
 		this.GetComponent<Collider2D> ().enabled = false;
 
-		this.GetComponent<CharacterController>().goTo(moveEvent);
-		yield return new WaitForSeconds(1.5f);
+		this.GetComponent<CharacterController>().goTo(moveEvent2);
 
+		yield return new WaitForSeconds(1f);
+        this.GetComponent<CharacterController>().goTo(moveEvent);
 		//desactiver le capitaine
 
 		gameManager.publicOnScene.addValue(20);

@@ -308,6 +308,7 @@ public class SouffleurScript : MonoBehaviour {
 	}
 
 	IEnumerator feedbackCoroutine(float time){
+        this.GetComponent<AudioSource>().PlayOneShot(sound);
 		appear ();
 		yield return new WaitForSeconds(time);
 		disappear ();

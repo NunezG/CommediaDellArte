@@ -7,8 +7,10 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
+	<guiManager active="false"/>
+
 		<object name="cloche">
-			<interaction active="false"/>
+			<interaction value="false"/>
 		</object>
 	
 	<!-- Placement des objets-->

@@ -22,7 +22,7 @@ public class SoundController : MonoBehaviour {
 	
 	}
 
-    public float playSound(string name, float volume)
+    public float playSound(string name, float volume = -1)
     {
         AudioClip temp = null;
 
@@ -42,7 +42,8 @@ public class SoundController : MonoBehaviour {
         }
         else
         {
-            _audioSource.volume = volume;
+            if(volume != -1)
+                 _audioSource.volume = volume;
             _audioSource.PlayOneShot(temp);
         }
 

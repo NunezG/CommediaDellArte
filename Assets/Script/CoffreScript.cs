@@ -152,7 +152,7 @@ public class CoffreScript : MonoBehaviour {
 
 
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length / 2);
-		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0 , false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !", 0 , false);
 
 		while (gameManager.souffleur.souffleurArray[0].talking == true) {
 			yield return null;
@@ -183,12 +183,13 @@ public class CoffreScript : MonoBehaviour {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
 		else if (type == 1) {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
-            gameManager.getCharacterGameobject("Arlequin").GetComponent<AudioSource>().PlayOneShot(gameManager.getCharacterGameobject("Arlequin").GetComponent<ArlequinScript>().coup, 1);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Frappe");
 		}
 
 
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length / 2);
-		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre n'est pas un comedien !",0, false);
+		gameManager.souffleur.saySomething ("Mais que fais-tu ? Ce coffre ne t'as rien fait !",0, false);
 
         while (gameManager.souffleur.souffleurArray[0].talking == true)
         {
