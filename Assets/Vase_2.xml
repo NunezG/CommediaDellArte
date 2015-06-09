@@ -13,7 +13,7 @@
 		<wait time ="0.5"/>
 		<object name="vase_2">
 			<animation name = "briser" />
-			<sound name="Vase.ogg"/>
+			<sound name="Vase"/>
 		</object>	
 		
 		<public>
@@ -32,7 +32,7 @@
         <!-- <character name="Arlequin">	
 			<rotation x="X" y="X" z="X"/>	
 			<animation name="XXXXX"/>
-			<sound name="Vase.ogg"/>
+			<sound name="Vase"/>
 		</character> 
 		<character name="Capitaine_2">	
 			<animation name="XXXXX"/>		

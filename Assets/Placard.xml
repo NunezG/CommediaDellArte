@@ -7,7 +7,7 @@
 		<character name="Arlequin">
 				<deplacement x="-7.34" y="7.47" z="34.4"/>	
 				<animation name="se_cacher"/>
-				<sound name="Se cache.ogg"/>
+				<sound name="Se cache"/>
 		</character>	
 	<guiManager active="true"/>
 </event>
@@ -24,7 +24,7 @@
 		<character name="Arlequin">	
 				<deplacement x="-10" y="7.47" z="34.4"/>
 				<animation name="prendre_drap"/>
-				<sound name="Drap.ogg"/>
+				<sound name="Drap"/>
 		</character>
 	<guiManager active="true"/>
 </event>
@@ -38,7 +38,7 @@
 		<character name="Arlequin">	
 			<deplacement x="-8.68" y="7.47" z="34.4" instant="true" />
 			<animation name="surgir"/>
-			<sound name="Souffleur.ogg"/>
+			<sound name="Souffleur"/>
 			<animation name="disappointed"/>
 			<deplacement x="-8.68" y="7.47" z="31" />
 		</character>		

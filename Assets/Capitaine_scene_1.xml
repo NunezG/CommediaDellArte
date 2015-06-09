@@ -64,7 +64,7 @@
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="7" z="31"/>
 		<animation name="poke"/>
-		<sound name="Toucher gentiment.ogg"/>
+		<sound name="Toucher gentiment"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
@@ -87,7 +87,7 @@
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="7" z="31"/>
 		<animation name="poke_fort"/>
-		<sound name="Toucher gentiment 2.ogg"/>
+		<sound name="Toucher gentiment 2"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
@@ -111,7 +111,7 @@
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="7" z="31"/>
 		<animation name="frappe"/>
-		<sound name="Frappe.ogg"/>
+		<sound name="Frappe"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
 
