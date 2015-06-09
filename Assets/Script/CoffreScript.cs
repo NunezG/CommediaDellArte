@@ -45,8 +45,6 @@ public class CoffreScript : MonoBehaviour {
 
 		//animation prendre;
         gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
-        gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Prend");
-
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length - 0.1f);
 		
 		Vector3 goToCenterEvent = new Vector3 (-1.5f, 7, 30);
@@ -77,7 +75,6 @@ public class CoffreScript : MonoBehaviour {
 
 		//animation reposer
         gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
-        gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Prend");
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
 
@@ -100,7 +97,6 @@ public class CoffreScript : MonoBehaviour {
 
 		//animation prendre
         gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("take");
-        gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Prend");
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
         gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("eggJuggling");
@@ -183,19 +179,13 @@ public class CoffreScript : MonoBehaviour {
 		}
 
         gameManager.getCharacterGameobject("Arlequin").transform.Rotate(0, 180, 0);
-        if (type == 0)
-        {
+		if (type == 0)
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
-            yield return new WaitForSeconds(0.5f);
-            gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Toucher gentilment");
-        }
-
-        else if (type == 1)
-        {
+		else if (type == 1) {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
             yield return new WaitForSeconds(0.5f);
             gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Frappe");
-        }
+		}
 
 
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length / 2);
