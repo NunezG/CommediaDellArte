@@ -23,7 +23,7 @@
 	<character name="Arlequin">	
 			<deplacement x="-10" y="7.47" z="34.4"/>
 			<animation name="enlever_drap"/>
-			<sound name="Drap"/>
+			<sound name="Drap.ogg"/>
 	</character>
 	
 	<guiManager active="true"/>
@@ -90,7 +90,7 @@
 		<multiple>
 			<character name="Arlequin">
 				<animation name="pousser_gentil"/>
-				<sound name="Pousse Gentilment"/>
+				<sound name="Pousse Gentilment.ogg"/>
 			</character>
 			<character name="Pantalone_chaise">
 				<animation name="pousser_gentil"/>
@@ -116,7 +116,7 @@
 		<multiple>
 			<character name="Arlequin">
 				<animation name="pousser_mechant"/>
-				<sound name="Pousse Méchamment"/>
+				<sound name="Pousse Méchamment.ogg"/>
 			</character>
 			<character name="Pantalone_chaise">
 				<animation name="pousser_mechant"/>
@@ -162,7 +162,7 @@
 		
 			<character name="Arlequin">
 				<animation name="soulever_reussi"/>
-				<sound name="Se cache"/>
+				<sound name="Se cache.ogg"/>
 			</character>
 			
 			<character name="Pantalone_chaise">
@@ -184,7 +184,7 @@
 		<character name="Arlequin">
 			<deplacement x="6.75" y="7" z="31"/>
 			<animation name="assis"/>
-			<sound name="Souffleur"/>
+			<sound name="Souffleur.ogg"/>
 		</character>
 		
 		<camera>
