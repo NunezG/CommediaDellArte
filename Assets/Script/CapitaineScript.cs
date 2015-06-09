@@ -90,14 +90,20 @@ public class CapitaineScript : MonoBehaviour {
         {
 			yield return null;
 		}
-		
-		if (type == 0)
+
+        if (type == 0)
+        {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("poke");
-		else if (type == 1) {
+            yield return new WaitForSeconds(0.5f);
+            gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Toucher gentilment");
+        }
+
+        else if (type == 1)
+        {
             gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().SetTrigger("frappe");
             yield return new WaitForSeconds(0.5f);
             gameManager.getCharacterGameobject("Arlequin").GetComponent<SoundController>().playSound("Frappe");
-		}
+        }
 
         yield return new WaitForSeconds(gameManager.getCharacterGameobject("Arlequin").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
