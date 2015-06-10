@@ -4,7 +4,6 @@ using System.Collections;
 public class CoffreScript : MonoBehaviour {
 
 	public GameManager gameManager;
-
 	public AudioClip juggle_sound;
 
 	// Use this for initialization
@@ -17,7 +16,29 @@ public class CoffreScript : MonoBehaviour {
 		
 	}
 
+    public void coffreEvent(string eventName)
+    {
+        if (eventName == "prendre_oeufs")
+        {
+            StartCoroutine(eggCoroutine());
+        }
+        else
+        {
+            XmlManager.launchEvent(eventName, "coffre_tuto");
+        }
 
+    }
+
+    private IEnumerator eggCoroutine()
+    {
+
+        yield return StartCoroutine(XmlManager.launchEventCoroutine("prendre_oeufs", "coffre_tuto"));
+
+        StartCoroutine(XmlManager.launchEventCoroutine("Tutorial_2", "evenement_tuto"));
+
+        yield break;
+    }
+    /*
 	public void jugggle(){
 		StartCoroutine (juggleCoroutine ());
 	}
@@ -202,7 +223,7 @@ public class CoffreScript : MonoBehaviour {
 		yield break;
 	}
 
-
+    */
 
 }
 

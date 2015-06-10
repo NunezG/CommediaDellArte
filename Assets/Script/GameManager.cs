@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
-        StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
+        //StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
         ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
@@ -840,6 +840,7 @@ public class GameManager : MonoBehaviour {
         param._count++;
         yield break;
     }
+
     IEnumerator objectPlaySoundCoroutine(string objectName, string soundName, float volume, bool wait, CoroutineParameter param)
     {
         if (volume == -1)
