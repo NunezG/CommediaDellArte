@@ -110,7 +110,7 @@
 </event>
 
 <!-- Introduction de la 3eme partie avec colombine et pantalone-->
-<event id="Tutorial_3">
+<!--<event id="Tutorial_3">
 	<guiManager active="false"/>
 	
 	<object name="coffre">
@@ -181,10 +181,10 @@
 	</multiple>
 	
 	<guiManager active="true"/>
-</event>
+</event>-->
 
 <!-- Explication de la cloche -->
-<event id="Tutorial_4">
+<!--<event id="Tutorial_4">
 	<guiManager active="false"/>
 
 	<wait time="3"/>
@@ -220,10 +220,10 @@
 	</camera>
 	
 	<guiManager active="true"/>
-</event>
+</event>-->
 
 <!-- Fin du tuto avec pierrot -->
-<event id="Tutorial_5">
+<!--<event id="Tutorial_5">
 	<guiManager active="false"/>
 
 	<character name="Pierrot">
@@ -300,7 +300,7 @@
 	</character>
 	
 	<guiManager active="true"/>
-</event>
+</event>-->
 
 
 
