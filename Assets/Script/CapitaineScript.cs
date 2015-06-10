@@ -9,22 +9,63 @@ public class CapitaineScript : MonoBehaviour {
 	private int scaryValue = 0;
 	private bool talkDone = false, touchDone = false;
 
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    public void capitaineEvent(string eventName)
+    {
+
+        if (!talkDone && eventName == "parler_mechamment")
+        {
+            scaryValue++;
+        }
+        else if (!touchDone && eventName == "toucher_mechamment")
+        {
+            scaryValue++;
+        }
+
+
+        if (scaryValue >= 2)
+        {
+           StartCoroutine( goAwayCoroutine(eventName));
+        }
+        else
+        {
+            XmlManager.launchEvent(eventName, "capitaine_tuto");
+        }
+  
+       
+    }
+
+    private IEnumerator goAwayCoroutine(string eventName)
+    {
+        yield return StartCoroutine(XmlManager.launchEventCoroutine(eventName, "capitaine_tuto"));
+
+        yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine_tuto"));
+
+        XmlManager.launchEvent("Introduction", "scene_1");
+
+        yield break;
+    }
+
+
 	public void talk(int type){
 		StartCoroutine (talkCoroutine (type));
 	}
 	public void touch(int type){
 		StartCoroutine (touchCoroutine (type));
-	}
-
-
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	IEnumerator talkCoroutine(int type){

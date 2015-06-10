@@ -62,10 +62,9 @@ public class XmlManager : MonoBehaviour {
                 break;
             }
         }
-
         if (xmltemp == null)
         {
-            Debug.Log("event not found");
+            Debug.Log("xml doc not found");
             return;
         }
 

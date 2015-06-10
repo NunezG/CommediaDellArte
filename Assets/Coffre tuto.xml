@@ -143,7 +143,7 @@
 		</multiple>
 		
 		<souffleur position="milieu">
-			<feedback type="bas" time="1"/>
+			<feedback type="bad" time="1"/>
 		</souffleur>
 		
 		<character name="Arlequin">

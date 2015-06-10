@@ -1,0 +1,120 @@
+﻿<EventList>
+
+<!-- Toucher mechamment -->
+<event id="toucher_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<animation name="frappe"/>	
+			<sound name="Frappe" wait="false"/>		
+		</character>	
+		<character name="Capitaine">
+			<animation name="peur"/>	
+			<sound name="" wait="false"/>		
+		</character>
+	</multiple>
+	
+	<souffleur position="milieu">
+			<feedback type="good" time="1"/>
+	</souffleur>
+
+	<guiManager active="true"/>
+	
+</event>
+
+
+<!-- Toucher gentiment -->
+<event id="toucher_gentiment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<animation name="poke"/>	
+			<sound name="Toucher gentilment" wait="false"/>		
+		</character>	
+	</multiple>
+	
+	<souffleur position="milieu">
+			<feedback type="bad" time="1"/>
+	</souffleur>
+	
+	
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Parler mechamment -->
+<event id="parler_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<animation name="angryTalking"/>	
+			<sound name="" wait="false"/>
+		</character>
+		<character name="Capitaine">
+			<animation name="peur"/>	
+			<sound name="" wait="false"/>		
+		</character>			
+			
+	</multiple>
+	
+	<souffleur position="milieu">
+			<feedback type="good" time="1"/>
+	</souffleur>
+	
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler gentiment -->
+<event id="parler_gentiment">
+	<guiManager active="false"/>
+		<character name="Arlequin">
+			<deplacement x="-10" y="7" z="30"/>
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+				<animation name="niceTalking"/>	
+				<sound name="" wait="false"/>		
+			</character>	
+		</multiple>
+		
+		<souffleur position="milieu">
+			<feedback type="bad" time="1"/>
+		</souffleur>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Fuite du capitaine-->
+
+<event id="fuite">
+	<guiManager active="false"/>	
+		<character name="Capitaine">
+			<deplacement x="-16.7" y="-2.2" z="23.32"/>
+			<deplacement x="-16.7" y="-2.2" z="-10.5"/>
+		</character>	
+	<guiManager active="true"/>
+	
+	<fadetoblack time="1" />
+	
+</event>
+
+
+
+</EventList>
