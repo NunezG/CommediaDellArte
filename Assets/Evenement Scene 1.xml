@@ -60,7 +60,7 @@
 
 	<souffleur position="milieu">
 			<talk>
-				<paragraph>Appuie sur  &#60;b&#62;&#60;color=blue&#62;ESPACE&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=blue&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+				<paragraph>Appuie sur  &#60;b&#62;&#60;color=blue&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=blue&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
 			</talk>
 	</souffleur>
 	
