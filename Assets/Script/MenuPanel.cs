@@ -18,14 +18,15 @@ public class MenuPanel : MonoBehaviour {
 
       //  anim.Play("Fermeture");
 
-        StartCoroutine(displayLoadingScreen(scene));
+        //StartCoroutine(displayLoadingScreen(scene));
 
         ThemePlayerScript.instance.playTheme("Commedia dell'Arte Theme Principal");
 	}
 
     public void startGame()
     {  
-        StartCoroutine("startScene");
+       // StartCoroutine("startScene");
+        StartCoroutine(displayLoadingScreen(scene));
     }
 
     IEnumerator displayLoadingScreen(string levelName)
@@ -47,9 +48,9 @@ public class MenuPanel : MonoBehaviour {
 
             yield return null;
         }
-        transform.FindChild("MenuButtons").gameObject.SetActive(true);
+        transform.FindChild("MenuButtons").gameObject.SetActive(false);
+        Destroy(transform.parent.gameObject);
         GetComponent<Canvas>().worldCamera = Camera.main;
-
         loadingPercentage.SetActive(false);
     }
 
