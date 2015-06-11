@@ -162,7 +162,7 @@
 		<multiple>
 		
 			<character name="Arlequin">
-				<animation name="soulever_reussi"/>
+				<!-- <animation name="soulever_reussi"/>-->
 				<sound name="Se cache"/>
 			</character>
 			
