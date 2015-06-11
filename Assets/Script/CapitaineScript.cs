@@ -39,7 +39,7 @@ public class CapitaineScript : MonoBehaviour {
 
         if (scaryValue >= 2)
         {
-            XmlManager.launchEvent("fuite", "capitaine_tuto");
+            StartCoroutine(goAwayCoroutine(eventName));
         }
         else
         {
@@ -48,7 +48,7 @@ public class CapitaineScript : MonoBehaviour {
   
        
     }
-    /*
+    
     private IEnumerator goAwayCoroutine(string eventName)
     {
         yield return StartCoroutine(XmlManager.launchEventCoroutine(eventName, "capitaine_tuto"));
@@ -60,7 +60,7 @@ public class CapitaineScript : MonoBehaviour {
         yield break;
     }
 
-
+    /*
 	public void talk(int type){
 		StartCoroutine (talkCoroutine (type));
 	}
