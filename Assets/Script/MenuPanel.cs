@@ -49,7 +49,20 @@ public class MenuPanel : MonoBehaviour {
             yield return null;
         }
         transform.FindChild("MenuButtons").gameObject.SetActive(false);
+
+
+        anim.SetTrigger("open");
+        Destroy(this.gameObject);
+
+        while (anim.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("open"))
+        {
+            Debug.Log("wait");
+            yield return null;
+        }
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
         Destroy(transform.parent.gameObject);
+
         GetComponent<Canvas>().worldCamera = Camera.main;
         loadingPercentage.SetActive(false);
     }

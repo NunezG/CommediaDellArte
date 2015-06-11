@@ -1,9 +1,7 @@
 ﻿<EventList>
 
 
-<!-- Poser une question -->
-
-
+<!-- Faire peur -->
 <event id="faire_peur">
 	<guiManager active="false"/>
 
@@ -15,7 +13,7 @@
 	<wait time="0.5"/>
 	
 	 
-	<character name="Capitaine_2">
+	<character name="Arlequin">
 			<animation name="peur" />
 	</character>
 	

@@ -52,10 +52,10 @@ public class SouffleurManager : MonoBehaviour {
         souffleurArray[souffleurIndex].giveFeedback(time, imageIndex);
     }
 
-    public void giveFeedback(float time, string text, int souffleurIndex)
+    /*public void giveFeedback(float time, string text, int souffleurIndex)
     {
         souffleurArray[souffleurIndex].giveFeedback(time, text);
-    }
+    }*/
 
     public void saySomething(string s, int souffleurIndex, bool reactiveGUI = true)
     {

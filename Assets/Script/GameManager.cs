@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
         StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
+        //XmlManager.launchEvent("Introduction","scene_1" );
         ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
@@ -274,6 +275,8 @@ public class GameManager : MonoBehaviour {
         else if (checkFadeNode(node, coroutineList, param)) { return true; }
         //actions sur les objets 
         else if (checkObjectNode(node, coroutineList, param)) { return true; }
+        //choix des musiques
+        else if (checkMusiqueNode(node, coroutineList, param)) { return true; }
         else
             return false;
     }
@@ -330,6 +333,22 @@ public class GameManager : MonoBehaviour {
                 if (publicActionsList.Item(j).Name == "setvalue")
                 {
                     IEnumerator action = publicValueCoroutine(float.Parse(publicActionsList.Item(j).Attributes["value"].Value), 2, param);
+                    coroutineList.Insert(coroutineList.Count, action);
+                }
+                if (publicActionsList.Item(j).Name == "sound")
+                {
+                     bool wait;
+                     if (publicActionsList[j].Attributes["wait"] != null)
+                         wait = checkWaitAttribute(publicActionsList[j].Attributes["wait"]);
+                     else
+                         wait = false;
+
+                    float volume = -1;
+                    XmlNode nodeTemp = publicActionsList.Item(j).Attributes["volume"];
+                    if(nodeTemp != null)
+                        volume =  float.Parse(nodeTemp.Value);
+                    
+                    IEnumerator action = publicPlaySoundCoroutine(publicActionsList.Item(j).Attributes["name"].Value, volume, wait, param);
                     coroutineList.Insert(coroutineList.Count, action);
                 }
             }
@@ -474,7 +493,11 @@ public class GameManager : MonoBehaviour {
                 }
                 if (characterActionsList.Item(j).Name == "sound")
                 {
-                    bool wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+                    bool wait;
+                    if (characterActionsList[j].Attributes["wait"] != null)
+                        wait = checkWaitAttribute(characterActionsList[j].Attributes["wait"]);
+                    else
+                        wait = false;
                     float volume = -1;
                     XmlNode nodeTemp = characterActionsList.Item(j).Attributes["volume"];
                     if(nodeTemp != null)
@@ -577,6 +600,26 @@ public class GameManager : MonoBehaviour {
              return true;
       }
       return false;
+    }
+
+    bool checkMusiqueNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
+    {
+        if (node.Name == "musique")
+        {
+            IEnumerator action = musiqueCoroutine(node.Attributes["name"].Value, 
+                    float.Parse(node.Attributes["dissapearTime"].Value),
+                    float.Parse(node.Attributes["waitTime"].Value),
+                    float.Parse(node.Attributes["appearTime"].Value), param);
+            coroutineList.Insert(coroutineList.Count, action);
+        }
+        return false;
+    }
+
+    IEnumerator musiqueCoroutine(string musiqueName, float dissapearTime, float waitTime, float appearTime, CoroutineParameter param)
+    {
+        ThemePlayerScript.instance.smoothThemeChange(musiqueName, dissapearTime, waitTime, appearTime);
+        param._count++;
+        yield break;
     }
 
     IEnumerator objectDeplacementCoroutine(string objectName, Vector3 position, CoroutineParameter param)
@@ -702,11 +745,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Envoie d'un feedback de type :" + type + " , de " + time + "s.");
         if(type == "good")
         {
-            souffleur.giveFeedback(time, position, 0);
+            souffleur.giveFeedback(time, 0, position);
         }
         else if(type == "bad")
         {
-            souffleur.giveFeedback(time, position, 1);
+            souffleur.giveFeedback(time, 1, position);
         }
         param._count++;
         yield break;
@@ -858,6 +901,25 @@ public class GameManager : MonoBehaviour {
         param._count++;
         yield break;
     }
+
+    IEnumerator publicPlaySoundCoroutine( string soundName, float volume, bool wait, CoroutineParameter param)
+    {
+        if (volume == -1)
+        {
+            volume = publicOnScene.GetComponent<AudioSource>().volume;
+        }
+        Debug.Log("Emission d'un son :" + soundName + "  avec un volume de :  " + volume + ".");
+
+        SoundController soundC = publicOnScene.GetComponent<SoundController>();
+        float duration = soundC.playSound(soundName, volume);
+
+        if (wait)
+            yield return new WaitForSeconds(duration);
+
+        param._count++;
+        yield break;
+    }
+
 
     
 
