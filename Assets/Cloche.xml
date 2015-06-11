@@ -1,0 +1,47 @@
+﻿<EventList>
+
+
+<!-- lazzi -->
+<event id="lazzi">
+	<guiManager active="false"/>
+		
+	<character name="Pierrot">
+		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
+		<deplacement x="-16" y="9.3" z="30"/>
+		<deplacement x="-1.5" y="9.3" z="30"/>
+	</character>
+	
+	<camera>
+		<deplacement x="0" y="13" z="2" wait="false"/>
+	</camera>
+	
+	<multiple>
+		<character name="Pierrot">
+			<animation name="juggling" />
+		</character>
+		<wait time ="0.01"/>
+		<character name="Pierrot">
+			<sound name="Jongle-Arlequin.ogg" wait = "false" volume="1"/>
+		</character>	
+		
+		<public>
+			<addvalue value="75"/>
+		</public>
+	</multiple>
+		
+	<camera>
+		<reset wait="false"/>
+	</camera>
+	
+	<character name="Pierrot">
+		<deplacement x="-16" y="9.3" z="30"/>
+		<deplacement x="-16.7" y="-2.2" z="0" />
+	</character>
+		
+	<guiManager active="true"/>
+</event>
+
+
+
+
+</EventList>

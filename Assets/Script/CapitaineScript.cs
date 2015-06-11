@@ -39,7 +39,7 @@ public class CapitaineScript : MonoBehaviour {
 
         if (scaryValue >= 2)
         {
-           StartCoroutine( goAwayCoroutine(eventName));
+            XmlManager.launchEvent("fuite", "capitaine_tuto");
         }
         else
         {
@@ -48,7 +48,7 @@ public class CapitaineScript : MonoBehaviour {
   
        
     }
-
+    /*
     private IEnumerator goAwayCoroutine(string eventName)
     {
         yield return StartCoroutine(XmlManager.launchEventCoroutine(eventName, "capitaine_tuto"));
@@ -197,5 +197,5 @@ public class CapitaineScript : MonoBehaviour {
         StartCoroutine( gameManager.startEventCoroutine("Tutorial_3", gameManager.getEventList(), gameManager.GameAsset));
 
 		yield break;
-	}
+	}*/
 }

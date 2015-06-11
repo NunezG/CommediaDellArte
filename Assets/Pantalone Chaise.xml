@@ -9,14 +9,17 @@
 			<deplacement x="15.75" y="7" z="31"/>
 			<animation name="faire_peur" wait="false"/>
 	</character>
-	
-	<wait time="0.5"/>
-	
+		
 	 
 	<character name="Arlequin">
-			<animation name="peur" />
+			<animation name="faire_peur" wait="false"/>
 	</character>
-	
+	<wait time="0.5"/>
+	<character name="Capitaine_2">
+			<animation name="peur" />
+			<deplacement x="-16" y="9.3" z="30"/>
+			<deplacement x="-16.7" y="-2.2" z="0" />
+	</character>
 	
 	<character name="Arlequin">	
 			<deplacement x="-10" y="7.47" z="34.4"/>

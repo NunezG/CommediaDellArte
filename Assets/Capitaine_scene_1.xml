@@ -48,12 +48,41 @@
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
+	<character name="Capitaine_2">	
+		<animation name="se_vexe"/>
+	</character>
+	
 	<public>
 		<subvalue value ="10"/>
+		<sound name="Rire +5" duration="5"/>
 	</public>
 
 	<guiManager active="true"/>
 </event>
+
+<!-- Parler Moqueur fort-->
+<event id="parler_moqueur_2">
+<guiManager active="false"/>
+
+	<character name="Arlequin">	
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="moquer_fort"/>
+		<rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<character name="Capitaine_2">	
+		<animation name="se_vexe"/>
+	</character>
+	
+	<public>
+		<addvalue value ="10"/>
+		<sound name="Rire +5"/>
+	</public>
+
+	<guiManager active="true"/>
+</event>
+
 
 
 <!-- Toucher gentiment-->
@@ -123,5 +152,38 @@
 </event>
 
 
+<!-- Faire peur au capitaine-->
+<event id="faire_peur">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-8" y="7" z="31"/>
+		<animation name="faire_peur"/>		
+	</character>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+	</character>
+
+	<character name="Arlequin">	
+			<deplacement x="-10" y="7.47" z="34.4"/>
+			<animation name="enlever_drap"/>
+			<sound name="Drap"/>
+	</character>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Fuite du capitaine a la fin de cla scene -->
+<event id="fuite">
+	<guiManager active="false"/>
+		<character name="Capitaine_2">
+			<animation name="peur" />
+			<deplacement x="-16" y="9.3" z="30"/>
+			<deplacement x="-16.7" y="-2.2" z="0" />
+		</character>
+	<guiManager active="true"/>
+</event>
 
 </EventList>

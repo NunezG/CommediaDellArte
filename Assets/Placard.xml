@@ -38,7 +38,7 @@
 		<character name="Arlequin">	
 			<deplacement x="-8.68" y="7.47" z="34.4" instant="true" />
 			<animation name="surgir"/>
-			<sound name="Souffleur"/>
+			<sound name="Souffleur" wait="false"/>
 			<animation name="disappointed"/>
 			<deplacement x="-8.68" y="7.47" z="31" />
 		</character>		

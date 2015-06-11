@@ -7,10 +7,10 @@ public class CharacterController : MonoBehaviour {
 
 
 	public float moveSpeed = 1.0f;	
-	public Animator sprite;
     public bulleInfoScript bubble;
 
 	private Vector3 goal;//vector ou le personnage doit se rendre
+    private Animator _animator;
     [HideInInspector]
 	public AudioSource audioSource;
 
@@ -19,6 +19,7 @@ public class CharacterController : MonoBehaviour {
 	void Start () {
 		goal = this.transform.position;
 		audioSource = this.GetComponent<AudioSource>();
+        _animator = this.GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -31,9 +32,11 @@ public class CharacterController : MonoBehaviour {
 			else {
 				this.transform.position += Time.deltaTime * ((goal - this.transform.position).normalized) * moveSpeed;
 			}
-			sprite.SetBool ("move", true);
+            _animator.SetBool("move", true);
 		} else {
-			sprite.SetBool ("move", false);
+            _animator.SetBool("move", false);
+            _animator.speed = 1;
+            audioSource.pitch =1 ;
 		}
 	}
 
@@ -41,7 +44,9 @@ public class CharacterController : MonoBehaviour {
 		//goTo(goal);
 	}
 
-	public void goTo(Vector3 vec){		
+	public void goTo(Vector3 vec){
+        _animator.speed = moveSpeed / 10;
+        audioSource.pitch = moveSpeed / 10 ;
 		goal = vec;
 
 		if (this.transform.position != goal) {

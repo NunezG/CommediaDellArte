@@ -6,8 +6,8 @@ public class BellScript : MonoBehaviour {
 	public AudioClip sound;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () {	
+
 	}
 	
 	// Update is called once per frame
@@ -17,5 +17,6 @@ public class BellScript : MonoBehaviour {
 
 	public void ring(){
 		this.GetComponent<AudioSource> ().PlayOneShot (sound);
+        XmlManager.launchEvent("lazzi", "cloche");
 	}
 }
