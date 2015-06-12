@@ -108,9 +108,11 @@
 	<guiManager active="false"/>	
 		<character name="Capitaine">
 			<deplacement x="-16.7" y="-2.2" z="23.32"/>
-			<deplacement x="-16.7" y="-2.2" z="-10.5"/>
+			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
 		</character>	
 	<guiManager active="true"/>
+	
+	<wait time ="1.5"/>
 	
 	<fadetoblack time="1" />
 	
