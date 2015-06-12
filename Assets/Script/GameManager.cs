@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
         eventList = loadEvent(GameAsset);
         StartCoroutine(startEventCoroutine("Introduction", eventList, GameAsset));
         //XmlManager.launchEvent("Introduction","scene_1" );
-        ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
+        //ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }
 
 	// Update is called once per frame

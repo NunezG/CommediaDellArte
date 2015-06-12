@@ -17,9 +17,36 @@ public class PublicScript : MonoBehaviour {
 	private int index = 0,publicSize = 0;
 	private AudioSource audioSource;
 
-
 	private List<Animator> AnimatorList, presentSpectator, goneSpectator;
 
+    private static PublicScript _instance;
+
+    public static PublicScript instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<PublicScript>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+    }
 
 	void Start () {
 
