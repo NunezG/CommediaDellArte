@@ -1,7 +1,7 @@
 ﻿<EventList>
 
 <!-- Introduction avec le souffleur -->
-<event id="Tutorial_1">
+<event id="Introduction">
 	<guiManager active="false"/>
 	
 	<character name="Arlequin">

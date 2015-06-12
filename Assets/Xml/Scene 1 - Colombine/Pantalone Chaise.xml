@@ -6,7 +6,7 @@
 	<guiManager active="false"/>
 
 	<character name="Arlequin">
-			<deplacement x="15.75" y="7" z="31"/>
+			<deplacement x="15.75" y="6.7" z="31"/>
 			<animation name="faire_peur" wait="false"/>
 	</character>
 		
@@ -15,14 +15,14 @@
 			<animation name="faire_peur" wait="false"/>
 	</character>
 	<wait time="0.5"/>
-	<character name="Capitaine_2">
+	<character name="Capitaine">
 			<animation name="peur" />
 			<deplacement x="-16" y="9.3" z="30"/>
 			<deplacement x="-16.7" y="-2.2" z="0" />
 	</character>
 	
 	<character name="Arlequin">	
-			<deplacement x="-10" y="7.47" z="34.4"/>
+			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
 			<sound name="Drap"/>
 	</character>
@@ -34,7 +34,7 @@
 	<guiManager active="false"/>
 
 	<character name="Arlequin">
-		<deplacement x="5.67" y="7" z="31"/>
+		<deplacement x="5.67" y="6.7" z="31"/>
 		<rotation x="0" y="180" z="0"/>
 		<animation name="question"/>
 	</character>
@@ -56,7 +56,7 @@
 <event id="parler_gentiment">
 
 	<character name="Arlequin">
-		<deplacement x="5.67" y="7" z="31"/>
+		<deplacement x="5.67" y="6.7" z="31"/>
 		<rotation x="0" y="180" z="0"/>
 		<animation name="niceTalking"/>
 	</character>
@@ -67,7 +67,7 @@
 			<animation name="disappointed"/>
 		</character>
 		
-		<character name="Pantalone_chaise">
+		<character name="Pantalone">
 			<animation name="gronde"/>
 		</character>
 	</multiple>
@@ -84,7 +84,7 @@
 	<guiManager active="false"/>
 	
 		<character name="Arlequin">
-			<deplacement x="5.67" y="7" z="31"/>
+			<deplacement x="5.67" y="6.7" z="31"/>
 			<rotation x="0" y="180" z="0"/>
 		</character>
 		
@@ -93,7 +93,7 @@
 				<animation name="pousser_gentil"/>
 				<sound name="Pousse Gentilment"/>
 			</character>
-			<character name="Pantalone_chaise">
+			<character name="Pantalone">
 				<animation name="pousser_gentil"/>
 			</character>
 		</multiple>
@@ -110,7 +110,7 @@
 	<guiManager active="false"/>
 	
 		<character name="Arlequin">
-			<deplacement x="5.67" y="7" z="31"/>
+			<deplacement x="5.67" y="6.7" z="31"/>
 			<rotation x="0" y="180" z="0"/>
 		</character>
 		
@@ -119,7 +119,7 @@
 				<animation name="pousser_mechant"/>
 				<sound name="Pousse Méchamment"/>
 			</character>
-			<character name="Pantalone_chaise">
+			<character name="Pantalone">
 				<animation name="pousser_mechant"/>
 			</character>
 		</multiple>
@@ -136,14 +136,14 @@
 	<guiManager active="false"/>
 	
 		<character name="Arlequin">
-			<deplacement x="15.75" y="7" z="31"/>
+			<deplacement x="15.75" y="6.7" z="31"/>
 		</character>
 		
 		<multiple>
 			<character name="Arlequin">
 				<animation name="soulever_rate"/>
 			</character>
-			<character name="Pantalone_chaise">
+			<character name="Pantalone">
 				<animation name="soulever_rate"/>
 			</character>
 		</multiple>
@@ -156,7 +156,7 @@
 	<guiManager active="false"/>
 
 		<character name="Arlequin">
-			<deplacement x="15.75" y="7" z="31"/>
+			<deplacement x="15.75" y="6.7" z="31"/>
 		</character>
 		
 		<multiple>
@@ -166,7 +166,7 @@
 				<sound name="Se cache"/>
 			</character>
 			
-			<character name="Pantalone_chaise">
+			<character name="Pantalone">
 				<animation name="soulever_reussi"/>
 			</character>
 		</multiple>
@@ -183,7 +183,7 @@
 		</camera>
 		
 		<character name="Arlequin">
-			<deplacement x="6.75" y="7" z="31"/>
+			<deplacement x="6.75" y="6.7" z="31"/>
 			<animation name="assis"/>
 			<sound name="Souffleur"/>
 		</character>

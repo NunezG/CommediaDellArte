@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         param = new CoroutineParameter();
         eventList = loadEvent(GameAsset);
-        StartCoroutine(startEventCoroutine("Tutorial_1", eventList, GameAsset));
+        StartCoroutine(startEventCoroutine("Introduction", eventList, GameAsset));
         //XmlManager.launchEvent("Introduction","scene_1" );
         ThemePlayerScript.instance.playTheme("Commedia Theme Redux");
     }

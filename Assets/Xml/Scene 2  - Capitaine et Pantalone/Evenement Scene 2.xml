@@ -1,0 +1,11 @@
+﻿<EventList>
+
+<!-- Introduction de la scene 2 -->
+<event id="Introduction">
+	<guiManager active="false"/>
+	
+	<guiManager active="true"/>
+</event>
+
+
+</EventList>

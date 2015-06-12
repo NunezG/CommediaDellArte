@@ -5,7 +5,7 @@
 <event id="se_cacher">
 	<guiManager active="false"/>
 		<character name="Arlequin">
-				<deplacement x="-7.34" y="7.47" z="34.4"/>	
+				<deplacement x="-7.34" y="6.7" z="34.4"/>	
 				<animation name="se_cacher"/>
 				<sound name="Se cache"/>
 		</character>	
@@ -22,7 +22,7 @@
 			<animation name = "prendre_drap" wait = "false"/>
 		</object>	
 		<character name="Arlequin">	
-				<deplacement x="-10" y="7.47" z="34.4"/>
+				<deplacement x="-10" y="6.7" z="34.4"/>
 				<animation name="prendre_drap"/>
 				<sound name="Drap"/>
 		</character>
@@ -36,11 +36,11 @@
 
 	<guiManager active="false"/>
 		<character name="Arlequin">	
-			<deplacement x="-8.68" y="7.47" z="34.4" instant="true" />
+			<deplacement x="-8.68" y="6.7" z="34.4" instant="true" />
 			<animation name="surgir"/>
 			<sound name="Souffleur" wait="false"/>
 			<animation name="disappointed"/>
-			<deplacement x="-8.68" y="7.47" z="31" />
+			<deplacement x="-8.68" y="6.7" z="31" />
 		</character>		
 		
 	<guiManager active="true"/>

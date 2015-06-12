@@ -4,21 +4,47 @@ using UnityEngine.UI;
 
 public class LoadingScreen : MonoBehaviour {
 
-
-	public GameObject loadingScreen;
-	public GameObject loadingPercentage;
-
+	public Canvas loadingScreen;
+	public Text loadingPercentage;
 	private int percentage = 0;
+
+    private static LoadingScreen _instance;
+
+    public static LoadingScreen instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<LoadingScreen>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
-		loadingScreen.SetActive (false);
+		loadingScreen.gameObject.SetActive (false);
 	}
 
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public void loadLevel(string levelName){
@@ -28,7 +54,7 @@ public class LoadingScreen : MonoBehaviour {
 	 IEnumerator displayLoadingScreen(string levelName){
 
 		//affichage de l'ecran de chargement
-		loadingScreen.SetActive (true);
+         loadingScreen.gameObject.SetActive(true);
 		//Initialisation du poucentage a 0%
 		loadingPercentage.GetComponent<UnityEngine.UI.Text> ().text = percentage.ToString() + "%";
 
@@ -39,7 +65,6 @@ public class LoadingScreen : MonoBehaviour {
 			//on recupere la progression du la tache
 			percentage =  (int) ( async.progress * 100 );
 			loadingPercentage.GetComponent<UnityEngine.UI.Text> ().text = percentage.ToString() + "%";
-
 			yield return null;
 		}
 

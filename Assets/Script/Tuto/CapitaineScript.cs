@@ -55,7 +55,9 @@ public class CapitaineScript : MonoBehaviour {
 
         yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine_tuto"));
 
-        XmlManager.launchEvent("Introduction", "scene_1");
+        //XmlManager.launchEvent("Introduction", "scene_1");
+
+        LoadingScreen.instance.loadLevel("Scene 1 - Capitaine et Pantalone");
 
         yield break;
     }

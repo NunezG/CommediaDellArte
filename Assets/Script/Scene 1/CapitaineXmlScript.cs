@@ -6,6 +6,7 @@ using System.Text;
 public class CapitaineXmlScript : MonoBehaviour
 {
 
+    public int scaryValue = 0; 
     private int _touchCount = 0, _talkCount = 0;
 
     // Use this for initialization
@@ -17,6 +18,7 @@ public class CapitaineXmlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 
     }
 
@@ -53,5 +55,10 @@ public class CapitaineXmlScript : MonoBehaviour
         {
             XmlManager.launchEvent(eventName, "capitaine");
         }
+    }
+
+    public void goAway()
+    {
+        LoadingScreen.instance.loadLevel("Scene 2 - Colombine");
     }
 }
