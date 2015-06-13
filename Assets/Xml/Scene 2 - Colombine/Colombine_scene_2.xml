@@ -1,14 +1,26 @@
 ﻿<EventList>
 
 
-<!-- Question -->
+<!-- Poser une question à Colombina -->
 
 <event id="question">
 
+	<guiManager active="false"/>
 
+	<character name="Arlequin">
+		<deplacement x="-3.2" y="6.8" z="30"/>
+		<rotation x="0" y="180" z="0"/>
+		<animation name="question"/>
+		<sound name="8_poser_question"/>
+	</character>
+	
+	<wait time="0.5"/>
+
+	<character name="Colombina">
+		<sound name="1_explique"/>
+	</character>
 	
 </event>
-
-
-
+	
+	
 </EventList>

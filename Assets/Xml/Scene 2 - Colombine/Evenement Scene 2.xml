@@ -4,8 +4,36 @@
 <event id="Introduction">
 	<guiManager active="false"/>
 	
+
+
+		<!-- Arrivée et placement d'Arlequin -->
+
+		<camera>
+			<position x="0" y="11.1" z="8.4"/>	
+		</camera>
+
+		<camera>
+				<reset/>	
+		</camera>
+		
+		<character name="Arlequin">
+			<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
+		</character>
+		
+			<character name="Colombina">
+		<sound name="1_explique" wait="false"/>
+		</character>
+	
+		<!-- Explication par le souffleur -->
+	
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse Colombina à trouver un déguisement pour fuir cet odieux personnage.</paragraph>
+			
+			</talk>
+		</souffleur>
+
 	<guiManager active="true"/>
+	
 </event>
-
-
 </EventList>
