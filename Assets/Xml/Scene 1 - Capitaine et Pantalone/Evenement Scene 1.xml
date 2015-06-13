@@ -9,7 +9,7 @@
 	<!-- Placement des objets-->
 	<multiple>
 		<object name="armoire">
-			<deplacement x="-12.56" y="10" z="33.55" />
+			<deplacement x="-12.29" y="10.61" z="33.55" />
 		</object>
 		<object name="vase_1">
 			<deplacement x="5" y="6.44" z="36.06" />

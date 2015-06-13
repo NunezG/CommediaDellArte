@@ -15,10 +15,14 @@
 		<camera>
 				<reset/>	
 		</camera>
-		
-		<character name="Arlequin">
-			<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
-		</character>
+	
+	<character name="Arlequin">
+		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
+	</character>
+	
+	<character name="Arlequin">
+		<deplacement x="-16" y="7" z="30"/>
+	</character>
 		
 			<character name="Colombina">
 		<sound name="1_explique" wait="false"/>
