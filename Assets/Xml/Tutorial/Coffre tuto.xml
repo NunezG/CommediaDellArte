@@ -1,5 +1,45 @@
 ﻿<EventList>
 
+<!-- Toucher tres mechamment -->
+<event id="toucher_tres_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="13" y="7" z="30"/>
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<animation name="frappe"/>	
+			<sound name="Frappe" wait="false" volume="1"/>
+            <sound name="5_touche_mechant" wait="false" volume="1" />			
+		</character>	
+		
+		<object name="coffre">
+			<animation name = "frappe" wait = "false"/>
+		</object>
+		
+	</multiple>
+	
+	<character name="Capitaine">
+	        <sound name="3_peur_1" volume="1" />
+			<animation name="peur"/>			
+		</character>
+		
+	<public>
+		<sound name="Rire +5" duration="3"/>
+	</public>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+
+
 <!-- Toucher mechamment -->
 <event id="toucher_mechamment">
 	<guiManager active="false"/>

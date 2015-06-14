@@ -32,12 +32,16 @@ public class CoffreScript : MonoBehaviour {
     private IEnumerator eggCoroutine()
     {
 
+        this.GetComponent<RadialMenuScript>().buttonList[2].GetComponent<RadialMenuScript>().buttonList[2].setActive(true);
+
         yield return StartCoroutine(XmlManager.launchEventCoroutine("prendre_oeufs", "coffre_tuto"));
 
         StartCoroutine(XmlManager.launchEventCoroutine("Tutorial_2", "evenement_tuto"));
 
         yield break;
     }
+
+ 
     /*
 	public void jugggle(){
 		StartCoroutine (juggleCoroutine ());
