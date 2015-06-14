@@ -51,7 +51,10 @@ public class CapitaineScript : MonoBehaviour {
     
     private IEnumerator goAwayCoroutine(string eventName)
     {
+
         yield return StartCoroutine(XmlManager.launchEventCoroutine(eventName, "capitaine_tuto"));
+
+        this.GetComponent<CharacterController>().moveSpeed = 25;
 
         yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine_tuto"));
 
