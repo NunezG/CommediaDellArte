@@ -52,15 +52,20 @@ public class MenuPanel : MonoBehaviour {
 
 
         anim.SetTrigger("open");
-        Destroy(this.gameObject);
+      
 
         while (anim.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("open"))
         {
             Debug.Log("wait");
             yield return null;
         }
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
+        this.GetComponent<AudioSource>().PlayOneShot(_transitionSound);
+        Destroy(this.gameObject.GetComponent<Canvas>());
+
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+1);
+
+        Destroy(this.gameObject);
         Destroy(transform.parent.gameObject);
 
         GetComponent<Canvas>().worldCamera = Camera.main;
@@ -71,6 +76,7 @@ public class MenuPanel : MonoBehaviour {
     IEnumerator startScene()
     {
         this.GetComponent<AudioSource>().PlayOneShot(_transitionSound);
+
         ThemePlayerScript.instance.smoothThemeChange("Commedia Theme Redux", 0.5f, 2f , 3.5f);
 
         transform.FindChild("MenuButtons").gameObject.SetActive(false);
