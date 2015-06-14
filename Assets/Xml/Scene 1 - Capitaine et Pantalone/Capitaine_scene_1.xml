@@ -8,6 +8,7 @@
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="3_parle_gentil_2" wait="false" volume="0.7"/>
 		<animation name="niceTalking"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -26,6 +27,7 @@
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="4_parle_méchant" wait="false" volume="0.7"/>
 		<animation name="angryTalking"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -44,11 +46,13 @@
 	<character name="Arlequin">	
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="6_se_moque_1" wait="false" volume="0.7"/>
 		<animation name="moquer"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
-	<character name="Capitaine">	
+	<character name="Capitaine">
+        <sound name="3_peur_1" wait="false" volume="0.7"/>	
 		<animation name="se_vexe"/>
 	</character>
 	
@@ -67,11 +71,13 @@
 	<character name="Arlequin">	
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="7_se_moque_2" wait="false" volume="0.7"/>
 		<animation name="moquer_fort"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
-	<character name="Capitaine">	
+	<character name="Capitaine">
+        <sound name="4_peur_2" wait="false" volume="0.7"/>	
 		<animation name="se_vexe"/>
 	</character>
 	
@@ -89,17 +95,20 @@
 <event id="toucher_gentiment">
 	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.7" z="31"/>
-		<animation name="poke"/>
-		<sound name="Toucher gentiment"/>
-		<rotation x="0" y="180" z="0"/>
-	</character>
+	<multiple>
+	    <character name="Arlequin">
+		    <rotation x="0" y="180" z="0"/>
+		    <deplacement x="-8" y="6.7" z="31"/>
+			<sound name="Toucher gentiment" wait="false" volume="1"/>
+		    <animation name="poke"/>
+		    <rotation x="0" y="180" z="0"/>
+	    </character>
 	
-	<character name="Capitaine">	
-		<animation name="se_vexe"/>
-	</character>
+	    <character name="Capitaine">
+		    <sound name="17_se_fait_toucher_1" wait="false" volume="0.7"/>	
+		    <animation name="se_vexe"/>
+	    </character>
+	</multiple>	
 	
 	<public>
 		<addvalue value ="10"/>
@@ -112,18 +121,20 @@
 <event id="toucher_gentiment_2">
 	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.7" z="31"/>
-		<animation name="poke_fort"/>
-		<sound name="Toucher gentiment 2"/>
-		<rotation x="0" y="180" z="0"/>
-	</character>
+	<multiple>
+	    <character name="Arlequin">
+		    <rotation x="0" y="180" z="0"/>
+		    <deplacement x="-8" y="6.7" z="31"/>
+			<sound name="Toucher gentiment 2" wait="false" volume="1"/>
+		    <animation name="poke_fort"/>
+		    <rotation x="0" y="180" z="0"/>
+	    </character>
 	
-	<character name="Capitaine">	
-		<animation name="se_vexe"/>
-	</character>
-	
+	    <character name="Capitaine">	
+		    <sound name="8_se_fait_toucher_2" wait="false" volume="0.7"/>
+	      	<animation name="se_vexe"/>
+	    </character>
+	</multiple>
 	
 	<public>
 		<addvalue value ="10"/>
@@ -139,10 +150,17 @@
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
-		<animation name="frappe"/>
 		<sound name="Frappe"/>
+		<sound name="5_touche_mechant" wait="false" volume="1" />	
+		<animation name="frappe"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
+	
+	<character name="Capitaine">
+            <sound name="3_peur_1" wait="false" volume="0.7"/>	
+	      	<animation name="peur"/>
+	</character>
+	
 
 	<public>
 		<addvalue value ="10"/>
@@ -162,6 +180,12 @@
 		<animation name="faire_peur"/>		
 	</character>
 	
+	<character name="Capitaine">	
+	      	<animation name="peur"/>
+	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+	</character>
+	
+	
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 	</character>
@@ -180,6 +204,7 @@
 	<guiManager active="false"/>
 		<character name="Capitaine">
 			<animation name="peur" />
+			<sound name="11_fuit" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>
 			<deplacement x="-16" y="-2.2" z="0" />
 		</character>
