@@ -2,9 +2,9 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
-    <musique name="Thème du Capitan" disappearTime="0" waitTime="0" appearTime="5"/>
-	<musique name="Variation Capitan" disappearTime="0" waitTime="80" appearTime="0"/>
-	<musique name="Theme Tuto" disappearTime="1" waitTime="98"  appearTime="3"/>
+    <musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1"/>
+	<musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1"/>
+	<musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3"/>
 
 	<guiManager active="false"/>
 
@@ -65,10 +65,33 @@
 
 	<souffleur position="milieu">
 			<talk>
-			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=white&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois créatif et chasse ce géneur !</paragraph>
-				<paragraph>Appuie sur &#60;b&#62;&#60;color=white&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=white&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=white&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=white&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=white&#62;chasse ce géneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
+				<paragraph>Appuie sur &#60;b&#62;&#60;color=white&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou &#60;b&#62;&#60;color=white&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
 			</talk>
 	</souffleur>
+	
+	<multiple>
+		<camera>
+			<deplacement x="20" y="23" z = "27" wait = "false"/>
+		</camera>
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>N'oublie pas, tu peux à tout moment faire appel à un &#60;b&#62;&#60;color=white&#62;lazzi&#60;/color&#62;&#60;/b&#62; en sonnant &#60;b&#62;&#60;color=white&#62;cette cloche&#60;/color&#62;&#60;/b&#62;. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<multiple>
+	    <camera>
+		    <reset wait="false"/>	
+	    </camera>
+	    <souffleur position="milieu">
+	        <talk>
+	             <paragraph>(Enfin, je t'en conjure, occupe-toi d'essayer de nous attirer du public et ne perds pas ton temps à cliquer sur les passants en arrière plan, cela ne t'avancera à rien !)</paragraph>
+				
+	        </talk>
+	    </souffleur>
+	</multiple>
 	
 	<guiManager active="true"/>
 </event>

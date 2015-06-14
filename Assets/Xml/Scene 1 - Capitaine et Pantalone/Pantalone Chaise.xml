@@ -24,7 +24,7 @@
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
-			<sound name="Drap"/>
+			<sound name="Drap" volume="0.1"/>
 	</character>
 	
 	<guiManager active="true"/>

@@ -3,6 +3,7 @@
 <!-- Introduction de la scene 2 -->
 <event id="Introduction">
     <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1"/>
+	
 	<guiManager active="false"/>
 	
 
