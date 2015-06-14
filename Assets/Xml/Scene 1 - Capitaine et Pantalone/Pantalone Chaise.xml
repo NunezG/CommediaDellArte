@@ -8,6 +8,7 @@
 	<character name="Arlequin">
 			<deplacement x="15.75" y="6.7" z="31"/>
 			<animation name="faire_peur" wait="false"/>
+			<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
 	</character>
 		
 	 
@@ -17,29 +18,82 @@
 	<wait time="0.5"/>
 	<character name="Capitaine">
 			<animation name="peur" />
+			<sound name="" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>
-			<deplacement x="-16.7" y="-2.2" z="0" />
+			<deplacement x="-16.7" y="-2.2" z="0"/>
 	</character>
 	
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
-			<sound name="Drap" volume="0.1"/>
+			<sound name="Drap" volume="1"/>
+	</character>
+
+<event id="question">
+	<guiManager active="false"/>
+	
+	<character name="Arlequin">
+	    <deplacement x="4" y="6.7" z="31"/>
+	</character>
+
+	<multiple>
+	    <character name="Arlequin">
+		    <sound name="8_poser_question" wait="false" volume="1"/>
+			<rotation x="0" y="180" z="0"/>
+		    <animation name="question"/>
+    	</character>
+	
+	    <character name="Pantalone">
+	        <sound name="2_interloque" wait="false" volume="0.7"/>
+        </character>
+	</multiple>
+	
+	<wait time="1"/>
+	
+	<character name="Pantalone">
+	        <sound name="8_demande" wait="false" volume="0.5" />
+			<animation  name="ordre"/>
+	</character>
+	
+	<wait time="1"/>
+	
+	<souffleur position="milieu">
+			<talk>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=white&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=white&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=white&#62;chasse ce géneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
+				<paragraph>Appuie sur &#60;b&#62;&#60;color=white&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou &#60;b&#62;&#60;color=white&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			</talk>
+	</souffleur>
+	
+	<multiple>
+		<camera>
+			<deplacement x="20" y="23" z = "27" wait = "false"/>
+		</camera>
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>N'oublie pas, tu peux à tout moment faire appel à un &#60;b&#62;&#60;color=white&#62;lazzi&#60;/color&#62;&#60;/b&#62; en sonnant &#60;b&#62;&#60;color=white&#62;cette cloche&#60;/color&#62;&#60;/b&#62;. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<multiple>
+	    <camera>
+		    <reset wait="false"/>	
+	    </camera>
+	    <souffleur position="milieu">
+	        <talk>
+	             <paragraph>(Enfin, je t'en conjure, occupe-toi d'essayer de nous attirer du public et ne perds pas ton temps à &#60;b&#62;&#60;color=white&#62;cliquer sur les passants&#60;/color&#62;&#60;/b&#62; en arrière plan, cela ne t'avancera à rien !)</paragraph>
+				
+	        </talk>
+	    </souffleur>
+	</multiple>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<sound name="14_depit" wait="false" volume="1"/>
 	</character>
 	
 	<guiManager active="true"/>
 </event>
-
-<event id="question">
-	<guiManager active="false"/>
-
-	<character name="Arlequin">
-		<deplacement x="5.67" y="6.7" z="31"/>
-		<rotation x="0" y="180" z="0"/>
-		<animation name="question"/>
-	</character>
-	
-	<wait time="0.5"/>
 
 	<!-- explication de la scene -->
 
@@ -56,8 +110,9 @@
 <event id="parler_gentiment">
 
 	<character name="Arlequin">
-		<deplacement x="5.67" y="6.7" z="31"/>
+		<deplacement x="4" y="6.7" z="31"/>
 		<rotation x="0" y="180" z="0"/>
+		<sound name="3_parle_gentil_2" wait="false" volume="1"/>
 		<animation name="niceTalking"/>
 	</character>
 	
@@ -69,11 +124,13 @@
 		
 		<character name="Pantalone">
 			<animation name="gronde"/>
+			<sound name="1_gronde" wait="false" volume="0.7"/>
 		</character>
 	</multiple>
 	
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
+		<sound name="14_depit" wait="false" volume="1"/>
 	</character>
 	
 </event>
@@ -84,7 +141,7 @@
 	<guiManager active="false"/>
 	
 		<character name="Arlequin">
-			<deplacement x="5.67" y="6.7" z="31"/>
+			<deplacement x="4" y="6.7" z="31"/>
 			<rotation x="0" y="180" z="0"/>
 		</character>
 		
@@ -95,6 +152,7 @@
 			</character>
 			<character name="Pantalone">
 				<animation name="pousser_gentil"/>
+				<sound name="3_chaise_desequilibre" wait="false" volume="0.7"/>
 			</character>
 		</multiple>
 		
@@ -110,7 +168,7 @@
 	<guiManager active="false"/>
 	
 		<character name="Arlequin">
-			<deplacement x="5.67" y="6.7" z="31"/>
+			<deplacement x="4" y="6.7" z="31"/>
 			<rotation x="0" y="180" z="0"/>
 		</character>
 		
@@ -118,9 +176,11 @@
 			<character name="Arlequin">
 				<animation name="pousser_mechant"/>
 				<sound name="Pousse Méchamment"/>
+				<sound name="11_pousse_mechant" wait="false" volume="0.7"/>
 			</character>
 			<character name="Pantalone">
 				<animation name="pousser_mechant"/>
+				<sound name="4_chaise_tombe" wait="false" volume="0.7"/>
 			</character>
 		</multiple>
 		
@@ -142,6 +202,7 @@
 		<multiple>
 			<character name="Arlequin">
 				<animation name="soulever_rate"/>
+				<sound name="9_souleve_rate" wait="false" volume="0.7"/>
 			</character>
 			<character name="Pantalone">
 				<animation name="soulever_rate"/>
@@ -162,11 +223,15 @@
 		<multiple>
 		
 			<character name="Arlequin">
+			    <animation name="soulever_reussi"/>
+			    
 				<sound name="Se cache"/>
+				<sound name="10_souleve_reussi" wait="false" volume="0.7"/>
 			</character>
 			
 			<character name="Pantalone">
-				<animation name="soulever_reussi"/>
+			    <animation name="soulever_reussi"/>
+				<sound name="6_souleve" wait="false" volume="0.7"/>
 			</character>
 		</multiple>
 	
@@ -181,18 +246,28 @@
 			<deplacement x="9.1" y="11.5" z="10.2" wait="false"/>
 		</camera>
 		
+		<wait time="2"/>
+		<musique name="Berceuse" disappearTime="1" waitTime="0" appearTime="0.1"/>
+		
 		<character name="Arlequin">
+		<sound name="Prend" wait="false" volume="0.7"/>
 			<deplacement x="6.75" y="6.7" z="31"/>
 			<animation name="assis"/>
-			<sound name="Souffleur"/>
 		</character>
+		<character name="Arlequin">
+		    <deplacement x="4" y="6.7" z="31"/>
+		</character>	
+		<wait time="2"/>
+		<musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1"/>
+	    <musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1"/>
+	    <musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3"/>	
+		
+		<guiManager active="true"/>	
 		
 		<camera>
 			<reset/>
 		</camera>
-		
 	
-	<guiManager active="true"/>	
 </event>
 
 </EventList>

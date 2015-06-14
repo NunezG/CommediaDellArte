@@ -61,7 +61,13 @@
 	<wait time="1.5"/>
 	
 	<!-- bulle pantalone-->
-
+	
+	<character name="Pantalone">
+	        <sound name="8_demande" wait="false" volume="0.5" />
+			<animation  name="ordre"/>
+	</character>
+	
+	<wait time="1"/>
 
 	<souffleur position="milieu">
 			<talk>
