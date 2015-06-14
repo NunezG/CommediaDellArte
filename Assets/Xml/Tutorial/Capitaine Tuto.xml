@@ -22,6 +22,7 @@
 	</character>
 		
 	<public>
+		<addvalue value="15"/>
 		<sound name="Rire +1" duration="2"/>
 	</public>
 	
@@ -88,6 +89,7 @@
 		</character>
 		
 	<public>
+		<addvalue value="15"/>
 		<sound name="Rire +1" duration="2"/>
 	</public>
 	

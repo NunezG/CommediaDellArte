@@ -28,6 +28,7 @@
 		</character>
 		
 	<public>
+		<addvalue value="40"/>
 		<sound name="Rire +5" duration="3"/>
 	</public>
 	
@@ -58,6 +59,7 @@
 	</multiple>
 	
 	<public>
+		<addvalue value="10"/>
 		<sound name="Rire +1" duration="2"/>
 	</public>
 	
@@ -262,6 +264,7 @@
 		<wait time="0.5"/>
 		
 		<public>
+			<addvalue value="20"/>
 			<sound name="Rire +5" duration="5"/>
 		</public>
 	
