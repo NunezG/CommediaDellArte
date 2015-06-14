@@ -28,10 +28,10 @@ public class SoundController : MonoBehaviour {
 
         for (int i = 0; i < _clipList.Count; i++)
         {
-            Debug.Log(_clipList[i].name);
             if (name == _clipList[i].name)
             {
                 temp = _clipList[i];
+                Debug.Log("Sound " + name + " was found.");
                 break;
             }
         }
