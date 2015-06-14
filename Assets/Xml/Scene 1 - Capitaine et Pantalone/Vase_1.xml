@@ -12,14 +12,14 @@
 		
 		<character name="Arlequin">	
 			<animation name="poke" wait="false"/>
-			<sound name="Toucher gentilment"/>
+			<sound name="Toucher gentilment" wait="false" volume="1"/>
 		</character>
 		
 		<wait time ="0.5"/>
 
 		<object name="vase_1">
-			<animation name = "briser" />
-			<sound name="Vase"/>
+			<animation name = "briser"/>
+			<sound name="Vase" wait="false" volume="1"/>
 		</object>	
 		
 		<public>
@@ -32,7 +32,8 @@
 			<rotation x="0" y="180" z="0"/>			
 		</character>
 		
-		<character name="Pantalone_chaise">
+		<character name="Pantalone">
+		        <sound name="1_gronde" wait="false" volume="0.7"/>
 				<animation name="gronde"/>
 		</character>	
 		

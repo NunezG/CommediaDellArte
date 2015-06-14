@@ -3,26 +3,37 @@
 
 <!-- Toucher gentiment -->
 <event id="toucher_gentiment">
+
 	<guiManager active="false"/>
+	
 		<character name="Arlequin">
 			<deplacement x="-10.46" y="7" z="27"/>
 			<animation name="poke" wait ="false"/>
-			<sound name="Toucher gentilment"/>
+			<sound name="Toucher gentilment" wait="false" volume="1"/>
 		</character>
 		
 		<wait time ="0.5"/>
+		
 		<object name="vase_2">
 			<animation name = "briser" />
-			<sound name="Vase"/>
+			<sound name="Vase" wait="false" volume="1"/>
 		</object>	
 		
 		<public>
 			<addvalue value ="10"/>
 		</public>
 		
-		<character name="Pantalone_chaise">
+		<wait time="1"/>
+		
+		<character name="Arlequin">	
+			<rotation x="0" y="180" z="0"/>			
+		</character>
+		
+		<character name="Pantalone">
 				<animation name="gronde"/>
+				<sound name="1_gronde" wait="false" volume="0.7"/>
 		</character>	
+		
 	<guiManager active="true"/>
 </event>
 
