@@ -87,7 +87,7 @@
 	    </camera>
 	    <souffleur position="milieu">
 	        <talk>
-	             <paragraph>(Enfin, je t'en conjure, occupe-toi d'essayer de nous attirer du public et ne perds pas ton temps à cliquer sur les passants en arrière plan, cela ne t'avancera à rien !)</paragraph>
+	             <paragraph>(Enfin, je t'en conjure, occupe-toi d'essayer de nous attirer du public et ne perds pas ton temps à &#60;b&#62;&#60;color=white&#62;cliquer sur les passants&#60;/color&#62;&#60;/b&#62; en arrière plan, cela ne t'avancera à rien !)</paragraph>
 				
 	        </talk>
 	    </souffleur>
