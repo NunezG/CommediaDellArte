@@ -22,11 +22,33 @@ public class PantaloneChaiseScript : MonoBehaviour {
 	
 	}
 
-    public void pantaloneEvent(string eventName){        
-        XmlManager.launchEvent(eventName, "pantalone");
-
-        //StartCoroutine(gamemanager.startEventCoroutine(eventName, eventList, XmlDoc));
+    public void pantaloneEvent(string eventName)
+    {
+        StartCoroutine( pantaloneEventCoroutine( eventName));
     }
+
+
+    public IEnumerator pantaloneEventCoroutine(string eventName){
+
+        if (eventName == "soulever_mechamment")
+        {
+             yield return StartCoroutine( XmlManager.launchEventCoroutine("soulever_mechamment", "pantalone"));
+            CapitaineXmlScript.scaryValue += 100;
+            if (CapitaineXmlScript.scaryValue >= 100)
+            {
+                yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine"));
+                CapitaineXmlScript.goAway();
+            }
+        }
+        else
+        {
+            XmlManager.launchEvent(eventName, "pantalone");
+        }
+        yield break;
+    }
+
+
+
 
 
     public void parlerEvent()
