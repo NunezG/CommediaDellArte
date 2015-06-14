@@ -17,6 +17,10 @@
 		</character>	
 	</multiple>
 	
+	<public>
+		<sound name="Rire +1" duration="2"/>
+	</public>
+	
 	<souffleur position="milieu">
 		<talk>
 			<paragraph>Mais que fais-tu ? Ce coffre ne t'as rien fait !</paragraph>
@@ -46,6 +50,11 @@
 			<sound name="Toucher gentilment" wait="false" volume="1"/>		
 		</character>	
 	</multiple>
+	
+	<public>
+		<sound name="Boo -1" duration="3"/>
+	</public>
+	
 	
 	<souffleur position="milieu">
 		<talk>
@@ -77,6 +86,11 @@
 		</character>	
 	</multiple>
 	
+	<public>
+		<sound name="Boo -1" duration="3"/>
+	</public>
+	
+	
 	<souffleur position="milieu">
 		<talk>
 			<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
@@ -105,6 +119,11 @@
 			</character>	
 		</multiple>
 		
+	<public>
+		<sound name="Boo -1" duration="3"/>
+	</public>
+	
+	
 		<souffleur position="milieu">
 			<talk>
 				<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
@@ -147,6 +166,10 @@
 			<feedback type="bad" time="1"/>
 		</souffleur>
 		
+	<public>
+		<sound name="Boo -1" duration="5"/>
+	</public>
+	
 		<character name="Arlequin">
 			<deplacement x="13" y="7" z="30"/>
 		</character>
@@ -196,9 +219,12 @@
 			</character>
 		</multiple>
 		
+		<wait time="0.5"/>
+		
 		<public>
-			<laugh time="2"/>
+			<sound name="Rire +5" duration="5"/>
 		</public>
+	
 	
 	<guiManager active="true"/>
 </event>
