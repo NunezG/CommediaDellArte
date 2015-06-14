@@ -9,23 +9,30 @@
 
 	<multiple>
 	    <character name="Arlequin">
-	        <sound name="8_poser_question"/ volume="0.7">
+	        <sound name="8_poser_question" volume="0.7"/>
 		    <deplacement x="-5.2" y="6.8" z="30"/>
 		    <rotation x="0" y="180" z="0"/>
 		    <animation name="question"/>
 	    </character>
 	    <character name="Colombine">
-		    <sound name="2_interloque"/>
+		    <sound name="2_interloque" volume="1"/>
+	    </character>
+	</multiple>
+
+	<multiple>
+	    <character name="Arlequin">
+	        <deplacement x="-5.2" y="6.8" z="30"/>
+	    </character>
+		<character name="Colombine">
+		<sound name="1_explique" wait="false" volume="0.7"/>
 	    </character>
 	</multiple>
 	
-	<wait time="0.5"/>
-
-	<character name="Colombine">
-		<sound name="1_explique"/>
-	</character>
-	
 	<wait time="3"/>
+	
+	<camera>
+		<reset wait="false"/>	
+	</camera>
 	
 	<souffleur position="milieu">
 			<talk>
@@ -33,6 +40,8 @@
 			
 			</talk>
 		</souffleur>
+		
+	<guiManager active="true"/>
 	
 </event>
 	

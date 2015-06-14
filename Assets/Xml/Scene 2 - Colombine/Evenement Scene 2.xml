@@ -19,21 +19,23 @@
 	
 	<wait time="3"/>
 	
-	<camera>
-		    <position x="0" y="11.1" z="8.4"/>	
-	</camera>
-	
-	<character name="Arlequin">
-	    <deplacement x="-5.2" y="6.8" z="30"/>
-	</character>
-		
-	<character name="Colombine">
+	<multiple>
+	    <camera>
+		    <deplacement x="0" y="11.1" z="8.4"/>	
+	    </camera>
+	    <character name="Arlequin">
+	        <deplacement x="-5.2" y="6.8" z="30"/>
+	    </character>
+		<character name="Colombine">
 		<sound name="1_explique" wait="false" volume="0.7"/>
-	</character>
-
+	    </character>
+	</multiple>
+		
+    <camera>
+		<reset wait="false"/>	
+	</camera>	
 	
 		<!-- Explication par le souffleur -->
-	<wait time="3"/>
 	
 		<souffleur position="milieu">
 			<talk>
@@ -41,10 +43,6 @@
 			
 			</talk>
 		</souffleur>
-		
-	<camera>
-			<reset wait="false"/>	
-	</camera>	
 
 	<guiManager active="true"/>
 	
