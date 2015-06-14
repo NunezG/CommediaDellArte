@@ -11,11 +11,12 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="frappe"/>	
-			<sound name="Frappe" wait="false"/>		
+			<sound name="Frappe" wait="false" volume="1"/>	
+			<sound name="5_touche_mechant" wait="false" volume="1" />
 		</character>	
 		<character name="Capitaine">
-			<animation name="peur"/>	
-			<sound name="" wait="false"/>		
+			<animation name="peur"/>
+			<sound name="3_peur_1" wait="false" volume="1" />	
 		</character>
 	</multiple>
 	
@@ -40,9 +41,13 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="poke"/>	
-			<sound name="Toucher gentilment" wait="false"/>		
+			<sound name="Toucher gentilment" wait="false" volume="1"/>		
 		</character>	
 	</multiple>
+	
+	<character name="Capitaine">
+			<sound name="18_aucune_reaction" wait="false" volume="1" />		
+	</character>
 	
 	<souffleur position="milieu">
 			<feedback type="bad" time="1"/>
@@ -64,11 +69,11 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="angryTalking"/>	
-			<sound name="" wait="false"/>
+			<sound name="4_parle_mechant" wait="false" volume="1"/>
 		</character>
 		<character name="Capitaine">
 			<animation name="peur"/>	
-			<sound name="" wait="false"/>		
+			<sound name="3_peur_1"" wait="false" volume="1" />		
 		</character>			
 			
 	</multiple>
@@ -91,9 +96,13 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="niceTalking"/>	
-				<sound name="" wait="false"/>		
+				<sound name="2_parle_gentil_1" wait="false" volume="0.7"/>		
 			</character>	
 		</multiple>
+		
+		<character name="Capitaine">
+			<sound name="18_aucune_reaction" wait="false" volume="0.7" />		
+	    </character>
 		
 		<souffleur position="milieu">
 			<feedback type="bad" time="1"/>
@@ -107,6 +116,7 @@
 <event id="fuite">
 	<guiManager active="false"/>	
 		<character name="Capitaine">
+		    <sound name="4_peur_2"" wait="false" volume="0.7" />
 			<deplacement x="-16.7" y="-2.2" z="23.32"/>
 			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
 		</character>	

@@ -12,7 +12,8 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="frappe"/>	
-			<sound name="Frappe" wait="false"/>		
+			<sound name="Frappe" wait="false" volume="1"/>
+            <sound name="5_touche_mechant" wait="false" volume="1" />			
 		</character>	
 	</multiple>
 	
@@ -42,7 +43,7 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="poke"/>	
-			<sound name="Toucher gentilment" wait="false"/>		
+			<sound name="Toucher gentilment" wait="false" volume="1"/>		
 		</character>	
 	</multiple>
 	
@@ -72,7 +73,7 @@
 	<multiple>	
 		<character name="Arlequin">
 			<animation name="angryTalking"/>	
-			<sound name="" wait="false"/>		
+			<sound name="4_parle_mechant" wait="false" volume="0.7"/>		
 		</character>	
 	</multiple>
 	
@@ -100,7 +101,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="niceTalking"/>	
-				<sound name="" wait="false"/>		
+				<sound name="2_parle_gentil_1" wait="false" volume="0.7"/>		
 			</character>	
 		</multiple>
 		
@@ -127,7 +128,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="take"/>	
-				<sound name="Prend" wait="false"/>		
+				<sound name="Prend" wait="false" volume="1"/>		
 			</character>	
 		</multiple>
 		
@@ -138,7 +139,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="juggling"/>	
-				<sound name="Jongle-Arlequin.ogg" wait="false"/>		
+				<sound name="Jongle-Arlequin.ogg" wait="false" volume="1"/>		
 			</character>	
 		</multiple>
 		
@@ -153,7 +154,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="take"/>	
-				<sound name="Prend" wait="false"/>		
+				<sound name="Prend" wait="false" volume="1"/>		
 			</character>	
 		</multiple>		
 	
@@ -171,7 +172,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="take"/>	
-				<sound name="Prend" wait="false"/>		
+				<sound name="Prend" wait="false" volume="1"/>		
 			</character>	
 		</multiple>
 		
@@ -182,7 +183,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="eggJuggling" wait="false"/>	
-				<sound name="Jongle-Arlequin.ogg" wait="false"/>		
+				<sound name="Jongle-Arlequin.ogg" wait="false" volume="1"/>		
 			</character>
 		</multiple>
 		
@@ -191,7 +192,7 @@
 		<multiple>	
 			<character name="Arlequin">
 				<animation name="brokenEggs" wait="false"/>	
-				<sound name="Dépit_01" wait="false"/>	
+				<sound name="14_depit" wait="false" volume="1"/>	
 			</character>
 		</multiple>
 		

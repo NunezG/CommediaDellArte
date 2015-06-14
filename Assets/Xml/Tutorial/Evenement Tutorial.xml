@@ -10,8 +10,8 @@
 	
 	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30"/>
+		<sound name="1_entree" wait="false" volume="0.7" />
 	</character>
-	
 	
 	
 	<camera>
@@ -82,12 +82,13 @@
 		
 	<character name="Capitaine">
 		<deplacement x="-16" y="7" z="30"/>
-		<sound name="capitain_moque.ogg" wait="false" volume="0.3" />
+		<sound name="1_entree" wait="false" volume="0.7" />
 	</character>
 	
 	<multiple>
 		<character name="Capitaine">
 			<animation name="moquerie"/>
+			<sound name="2_ignore" wait="false" volume="0.7" />
 		</character>
 		<souffleur position="gauche">
 			<talk>
