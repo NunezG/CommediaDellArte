@@ -95,11 +95,13 @@ public class ThemePlayerScript : MonoBehaviour {
                 break;
             }
         }
-
-        while (_audioSource.volume > 0)
+        if (disappearTime > 0)
         {
-            _audioSource.volume -= Time.deltaTime * _initialVolumeValue / disappearTime;
-            yield return null;
+            while (_audioSource.volume > 0)
+            {
+                _audioSource.volume -= Time.deltaTime * _initialVolumeValue / disappearTime;
+                yield return null;
+            }
         }
         _audioSource.volume = 0;
 
@@ -108,11 +110,15 @@ public class ThemePlayerScript : MonoBehaviour {
         _audioSource.clip = temp;
         _audioSource.Play();
 
-        while (_audioSource.volume < _initialVolumeValue)
+        if (appearTime > 0)
         {
-            _audioSource.volume += Time.deltaTime * _initialVolumeValue / appearTime;
-            yield return null;
+            while (_audioSource.volume < _initialVolumeValue)
+            {
+                _audioSource.volume += Time.deltaTime * _initialVolumeValue / appearTime;
+                yield return null;
+            }
         }
+
         _audioSource.volume = _initialVolumeValue;
 
         yield break;
