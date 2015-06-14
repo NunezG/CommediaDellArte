@@ -156,6 +156,11 @@
 			</character>
 		</multiple>
 		
+		<public>
+			<sound name="Rire +5" duration="3"/>
+		</public>
+
+		
 		<character name="Arlequin">
 			<rotation x="0" y="180" z="0"/>
 		</character>
@@ -184,6 +189,10 @@
 			</character>
 		</multiple>
 		
+		<public>
+			<sound name="Rire +1" duration="3"/>
+		</public>
+
 		<character name="Arlequin">
 			<rotation x="0" y="180" z="0"/>
 		</character>
@@ -209,6 +218,10 @@
 			</character>
 		</multiple>
 	
+		<public>
+			<sound name="Boo -1" duration="3"/>
+		</public>
+
 	<guiManager active="true"/>
 </event>
 
@@ -223,8 +236,7 @@
 		<multiple>
 		
 			<character name="Arlequin">
-			    <animation name="soulever_reussi"/>
-			    
+			    <animation name="soulever_reussi"/> 
 				<sound name="Se cache"/>
 				<sound name="10_souleve_reussi" wait="false" volume="0.7"/>
 			</character>
@@ -234,6 +246,11 @@
 				<sound name="6_souleve" wait="false" volume="0.7"/>
 			</character>
 		</multiple>
+		
+		<public>
+			<sound name="Rire +5" duration="5"/>
+		</public>
+
 	
 	<guiManager active="true"/>
 </event>
@@ -242,6 +259,10 @@
 <event id="assis">
 	<guiManager active="false"/>
 
+	    <character name="Arlequin">
+			<deplacement x="6.75" y="6.7" z="31"/>
+		</character>
+		
 		<camera>
 			<deplacement x="9.1" y="11.5" z="10.2" wait="false"/>
 		</camera>
@@ -250,23 +271,26 @@
 		<musique name="Berceuse" disappearTime="1" waitTime="0" appearTime="0.1"/>
 		
 		<character name="Arlequin">
-		<sound name="Prend" wait="false" volume="0.7"/>
-			<deplacement x="6.75" y="6.7" z="31"/>
+			<sound name="Prend" wait="false" volume="0.7"/>
 			<animation name="assis"/>
 		</character>
+		
+		<camera>
+			<reset wait ="false"/>
+		</camera>
+		
 		<character name="Arlequin">
 		    <deplacement x="4" y="6.7" z="31"/>
-		</character>	
+		</character>
+		
 		<wait time="2"/>
+		
 		<musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1"/>
 	    <musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1"/>
 	    <musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3"/>	
 		
 		<guiManager active="true"/>	
 		
-		<camera>
-			<reset/>
-		</camera>
 	
 </event>
 
