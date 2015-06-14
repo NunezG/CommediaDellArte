@@ -7,18 +7,32 @@
 
 	<guiManager active="false"/>
 
-	<character name="Arlequin">
-		<deplacement x="-3.2" y="6.8" z="30"/>
-		<rotation x="0" y="180" z="0"/>
-		<animation name="question"/>
-		<sound name="8_poser_question"/>
-	</character>
+	<multiple>
+	    <character name="Arlequin">
+	        <sound name="8_poser_question"/ volume="0.7">
+		    <deplacement x="-5.2" y="6.8" z="30"/>
+		    <rotation x="0" y="180" z="0"/>
+		    <animation name="question"/>
+	    </character>
+	    <character name="Colombine">
+		    <sound name="2_interloque"/>
+	    </character>
+	</multiple>
 	
 	<wait time="0.5"/>
 
-	<character name="Colombina">
+	<character name="Colombine">
 		<sound name="1_explique"/>
 	</character>
+	
+	<wait time="3"/>
+	
+	<souffleur position="milieu">
+			<talk>
+				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse Colombina à trouver un déguisement pour fuir cet odieux personnage.</paragraph>
+			
+			</talk>
+		</souffleur>
 	
 </event>
 	

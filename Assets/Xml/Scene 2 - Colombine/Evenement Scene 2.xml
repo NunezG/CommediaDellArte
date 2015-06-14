@@ -2,34 +2,38 @@
 
 <!-- Introduction de la scene 2 -->
 <event id="Introduction">
-    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="1" appearTime="1"/>
+    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1"/>
 	<guiManager active="false"/>
 	
 
 
 		<!-- Arrivée et placement d'Arlequin -->
-
-		<camera>
-			<position x="0" y="11.1" z="8.4"/>	
-		</camera>
-
-		<camera>
-				<reset/>	
-		</camera>
 	
 	<character name="Arlequin">
 		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
 	</character>
 	
 	<character name="Arlequin">
-		<deplacement x="-16" y="7" z="30"/>
+		<deplacement x="-16" y="7" z="30" wait="false"/>
+	</character>
+	
+	<wait time="3"/>
+	
+	<camera>
+		    <position x="0" y="11.1" z="8.4"/>	
+	</camera>
+	
+	<character name="Arlequin">
+	    <deplacement x="-5.2" y="6.8" z="30"/>
 	</character>
 		
-			<character name="Colombina">
-		<sound name="1_explique" wait="false"/>
-		</character>
+	<character name="Colombine">
+		<sound name="1_explique" wait="false" volume="0.7"/>
+	</character>
+
 	
 		<!-- Explication par le souffleur -->
+	<wait time="3"/>
 	
 		<souffleur position="milieu">
 			<talk>
@@ -37,6 +41,10 @@
 			
 			</talk>
 		</souffleur>
+		
+	<camera>
+			<reset wait="false"/>	
+	</camera>	
 
 	<guiManager active="true"/>
 	
