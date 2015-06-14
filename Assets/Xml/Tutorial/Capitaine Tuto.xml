@@ -143,7 +143,11 @@
 		<sound name="Rire +10" duration="5"/>
 	</public>
 	
-	
+	<souffleur position="gauche">
+			<talk>
+				<paragraph>Bravissimo ! Un nouveau jour de fête pour une célébrité naissante !</paragraph>
+			</talk>
+	</souffleur>		
 	
 	<wait time ="1.5"/>
 	

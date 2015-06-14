@@ -3,6 +3,10 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
+    <musique name="Thème du Capitan" disappearTime="0" waitTime="0" appearTime="5"/>
+	<musique name="Variation Capitan" disappearTime="0" waitTime="80" appearTime="0"/>
+	<musique name="Theme Tuto" disappearTime="1" waitTime="98"  appearTime="3"/>
+
 	<guiManager active="false"/>
 
 			
@@ -42,10 +46,12 @@
 	
 	<character name="Capitaine">
 			<animation name="se_vante" wait="false"/>
+			<sound name="2_ignore" wait="false" volume="0.7" />
 	</character>
 	 
-	<wait time = "0.5"/>
+	<wait time = "2.5"/>
 	<character name="Pantalone">
+	        <sound name="7_ennui" wait="false" volume="0.7" />
 			<animation  name="ennui"/>
 	</character>
 	
@@ -60,7 +66,8 @@
 
 	<souffleur position="milieu">
 			<talk>
-				<paragraph>Appuie sur  &#60;b&#62;&#60;color=blue&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=blue&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare Pantalone. Sois créatif et chasse ce géneur !</paragraph>
+				<paragraph>Appuie sur &#60;b&#62;&#60;color=white&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou  &#60;b&#62;&#60;color=white&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
 			</talk>
 	</souffleur>
 	
