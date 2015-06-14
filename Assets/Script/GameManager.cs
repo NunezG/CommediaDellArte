@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         param = new CoroutineParameter();
+
+        //recherche du public
+        publicOnScene = GameObject.FindObjectOfType<PublicScript>();
+
         eventList = loadEvent(GameAsset);
         StartCoroutine(startEventCoroutine("Introduction", eventList, GameAsset));
         //XmlManager.launchEvent("Introduction","scene_1" );
