@@ -749,6 +749,8 @@ public class GameManager : MonoBehaviour {
         Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
 
         characterAnimator.SetTrigger (animationName);
+		characterAnimator.SetBool (animationName, true);
+
         if (wait) {
 		    while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )
             {

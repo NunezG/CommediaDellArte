@@ -22,6 +22,13 @@ public class SoundController : MonoBehaviour {
 	
 	}
 
+
+
+	public float playSound(string name)
+	{
+		return playSound (name, -1);
+	}
+
     public float playSound(string name, float volume = -1)
     {
         AudioClip temp = null;

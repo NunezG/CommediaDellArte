@@ -5,14 +5,27 @@ using System.Text;
 
 public class CapitaineXmlScript : MonoBehaviour
 {
-
     public static int scaryValue = 0; 
-    private int _touchCount = 0, _talkCount = 0;
+	public List<AudioClip> _clipList;
+	public bool forVoiceOnly = false;
+    private int _touchCount = 0, _talkCount = 0, _clipIndex = 0;
+	private SoundController _soundController;
+	private static Animator _animator;
+	private static AudioSource _audioSource;
+	private static IEnumerator resetCoroutine;
+	private static CapitaineXmlScript _instance;
+
 
     // Use this for initialization
     void Start()
-    {
-       
+	{
+		if (forVoiceOnly) {
+			_animator = this.GetComponent <Animator> ();
+			if (this.transform.parent != null){
+				_audioSource =  this.GetComponent<AudioSource> ();
+			}
+			_instance = this;
+		}
     }
 
     // Update is called once per frame
@@ -21,6 +34,32 @@ public class CapitaineXmlScript : MonoBehaviour
 
 
     }
+	public void interruptEvent(){
+		CapitaineXmlScript.interrupt ();
+	}
+
+
+	public static void interrupt(){
+		_instance.StopCoroutine (resetCoroutine);
+		_audioSource.Stop();
+	}
+
+	public void voiceEvent(){
+
+		_audioSource.PlayOneShot (_clipList[_clipIndex]);
+		resetCoroutine = resetAnim (_clipList [_clipIndex].length);
+		StartCoroutine (resetCoroutine);
+		_clipIndex++;
+		if (_clipIndex >= _clipList.Count)
+			_clipIndex = 0;
+	}
+
+	IEnumerator resetAnim(float time){
+	
+		yield return new WaitForSeconds (time);
+		_animator.SetTrigger ("end");
+	}
+
 
     public void capitaineEvent(string eventName)
     {
@@ -31,6 +70,7 @@ public class CapitaineXmlScript : MonoBehaviour
 
     public IEnumerator capitaineEventCoroutine(string eventName)
     {
+		//interrupt ();
 
         if (eventName == "toucher_gentiment")
         {
@@ -80,7 +120,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "faire_peur")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur", "capitaine"));
-            scaryValue += 0;
+            scaryValue += 100;
         }
 
         if (scaryValue >= 100)
