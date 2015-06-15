@@ -15,12 +15,12 @@
 	<character name="Arlequin">
 			<animation name="faire_peur" wait="false"/>
 	</character>
+	
 	<wait time="0.5"/>
+	
 	<character name="Capitaine">
 			<animation name="peur" />
-			<sound name="" wait="false" volume="0.7"/>
-			<deplacement x="-16" y="9.3" z="30"/>
-			<deplacement x="-16.7" y="-2.2" z="0"/>
+			<sound name="" wait="false" volume="0.7"/>			
 	</character>
 	
 	<character name="Arlequin">	
@@ -29,6 +29,7 @@
 			<sound name="Drap" volume="1"/>
 	</character>
 
+<!-- Question -->
 <event id="question">
 	<guiManager active="false"/>
 	

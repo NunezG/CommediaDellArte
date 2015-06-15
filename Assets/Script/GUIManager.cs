@@ -136,6 +136,7 @@ public class GUIManager : MonoBehaviour {
         else
         {
             cursor.setInteractionAnim(false);
+            cursor.wait();
         }
 	}
 

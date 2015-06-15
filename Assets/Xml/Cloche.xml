@@ -25,6 +25,7 @@
 		</character>	
 		
 		<public>
+			<sound name="Rire +5" duration="5"/>
 			<addvalue value="75"/>
 		</public>
 	</multiple>

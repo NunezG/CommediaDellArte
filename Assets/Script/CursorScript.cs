@@ -22,9 +22,13 @@ public class CursorScript : MonoBehaviour {
 	}
 
 	public void setInteractionAnim(bool anim){
+        this.GetComponent<Animator>().SetBool("wait", false);
 		this.GetComponent<Animator> ().SetBool ("interaction", anim);
 	}
 
-
+    public void wait()
+    {
+        this.GetComponent<Animator>().SetBool("wait", true);
+    }
 
 }

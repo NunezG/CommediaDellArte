@@ -2,17 +2,15 @@
 
 <!-- Introduction de la scene 2 -->
 <event id="Introduction">
-    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1"/>
-	
 	<guiManager active="false"/>
-	
-
-
-		<!-- Arrivée et placement d'Arlequin -->
-	
 	<character name="Arlequin">
 		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
 	</character>
+    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1"/>
+	
+
+	<!-- Arrivée et placement d'Arlequin -->
+
 	
 	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30" wait="false"/>

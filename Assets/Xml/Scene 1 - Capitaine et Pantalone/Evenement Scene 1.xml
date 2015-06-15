@@ -2,11 +2,12 @@
 
 <!-- Introduction de la scene 1 -->
 <event id="Introduction">
+	<guiManager active="false"/>
+	
     <musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1"/>
 	<musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1"/>
 	<musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3"/>
 
-	<guiManager active="false"/>
 
 			
 	<!-- Placement des objets-->

@@ -39,7 +39,7 @@ public class CapitaineXmlScript : MonoBehaviour
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment_2", "capitaine"));
                 this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].setActive(false);
-                scaryValue += 0;
+                scaryValue += 10;
             }
             else
             {
@@ -54,7 +54,7 @@ public class CapitaineXmlScript : MonoBehaviour
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_moqueur_2", "capitaine"));
                 this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[2].setActive(false);
-                scaryValue += 0;
+                scaryValue += 10;
             }
             else
             {
@@ -80,7 +80,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "faire_peur")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur", "capitaine"));
-            scaryValue += 50;
+            scaryValue += 0;
         }
 
         if (scaryValue >= 100)
