@@ -12,8 +12,11 @@
 	</character>
 	
 	<character name="Capitaine">	
-	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+		<animation name="idle" wait="false"/>
+	    <sound name="18_aucune_reaction" wait="false" volume="0.7"/>
 	</character>
+	
+	<wait time ="1"/>
 	
 	<public>
 	    <sound name="Boo -1" duration="3" volume="1"/>
@@ -35,6 +38,7 @@
 	</character>
 	
 	<character name="Capitaine">	
+			<animation name="idle" wait="false"/>
 	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
 	</character>
 	
@@ -189,6 +193,7 @@
 	</character>
 	
 	<character name="Capitaine">	
+			<animation name="idle" wait="false"/>
 	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
 	</character>
 		
