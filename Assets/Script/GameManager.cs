@@ -615,6 +615,22 @@ public class GameManager : MonoBehaviour {
                      float.Parse(objectActionsList[j].Attributes["z"].Value)), param);
                       coroutineList.Insert(coroutineList.Count, action);
                   }
+				 else if (objectActionsList.Item(j).Name == "sound")
+				{
+					bool wait;
+					if (objectActionsList[j].Attributes["wait"] != null)
+						wait = checkWaitAttribute(objectActionsList[j].Attributes["wait"]);
+					else
+						wait = false;
+					float volume = -1;
+					XmlNode nodeTemp = objectActionsList.Item(j).Attributes["volume"];
+					if(nodeTemp != null)
+						volume =  float.Parse(nodeTemp.Value);
+					
+					IEnumerator action = objectPlaySoundCoroutine(node.Attributes["name"].Value,objectActionsList.Item(j).Attributes["name"].Value, volume, wait, param);
+					coroutineList.Insert(coroutineList.Count, action);
+				}
+
              }
              return true;
       }
