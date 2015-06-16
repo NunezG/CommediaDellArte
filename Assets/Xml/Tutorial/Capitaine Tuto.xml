@@ -23,7 +23,7 @@
 		
 	<public>
 		<addvalue value="10"/>
-		<sound name="Rire +1" duration="2"/>
+		<sound name="Rire +1" duration="2" volume="1"/>
 	</public>
 	
 	<souffleur position="milieu">
@@ -56,7 +56,7 @@
 	</character>
 	
 	<public>
-		<sound name="Boo -1" duration="2"/>
+		<sound name="Boo -1" duration="2" volume="1"/>
 		<subvalue value="1"/>
 	</public>
 	
@@ -91,7 +91,7 @@
 		
 	<public>
 		<addvalue value="10"/>
-		<sound name="Rire +1" duration="2"/>
+		<sound name="Rire +1" duration="2" volume="1"/>
 	</public>
 	
 	<souffleur position="milieu">
@@ -121,7 +121,7 @@
 	    </character>
 		
 		<public>
-			<sound name="Boo -1" duration="2"/>
+			<sound name="Boo -1" duration="2" volume="1"/>
 			<subvalue value="1"/>
 		</public>
 	
@@ -144,7 +144,7 @@
 	<guiManager active="true"/>
 	
 	<public>
-		<sound name="Rire +10" duration="5"/>
+		<sound name="Rire +10" duration="5" volume="1"/>
 	</public>
 	
 	<souffleur position="gauche">

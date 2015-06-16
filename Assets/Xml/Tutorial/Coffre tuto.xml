@@ -24,7 +24,7 @@
 		
 	<public>
 		<addvalue value="20"/>
-		<sound name="Rire +10" duration="3"/>
+		<sound name="Rire +10" duration="3" volume="1"/>
 	</public>
 	
 	<character name="Arlequin">
@@ -55,7 +55,7 @@
 	
 	<public>
 		<addvalue value="10"/>
-		<sound name="Rire +1" duration="2"/>
+		<sound name="Rire +1" duration="2" volume="1"/>
 	</public>
 	
 	<souffleur position="milieu">
@@ -89,7 +89,7 @@
 	</multiple>
 	
 	<public>
-		<sound name="Boo -1" duration="3"/>
+		<sound name="Boo -1" duration="3" volume="1"/>
 	</public>
 	
 	
@@ -124,7 +124,7 @@
 	</multiple>
 	
 	<public>
-		<sound name="Boo -1" duration="3"/>
+		<sound name="Boo -1" duration="3" volume="1"/>
 	</public>
 	
 	
@@ -157,7 +157,7 @@
 		</multiple>
 		
 	<public>
-		<sound name="Boo -1" duration="3"/>
+		<sound name="Boo -1" duration="3" volume="1"/>
 	</public>
 	
 	
@@ -204,7 +204,7 @@
 		</souffleur>
 		
 	<public>
-		<sound name="Boo -1" duration="5"/>
+		<sound name="Boo -1" duration="5" volume="1"/>
 	</public>
 	
 		<character name="Arlequin">
@@ -260,7 +260,7 @@
 		
 		<public>
 			<addvalue value="20"/>
-			<sound name="Rire +5" duration="5"/>
+			<sound name="Rire +5" duration="5" volume="1"/>
 		</public>
 	
 	
