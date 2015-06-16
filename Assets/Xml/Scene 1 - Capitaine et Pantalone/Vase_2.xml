@@ -10,15 +10,15 @@
 		</character>
 		<character name="Arlequin">
 			<deplacement x="-10.46" y="7" z="27"/>
-			<animation name="poke" wait ="false"/>
 			<sound name="Toucher gentilment" wait="false" volume="1"/>
+			<animation name="poke" wait ="false"/>
 		</character>
 		
 		<wait time ="0.5"/>
 		
 		<object name="vase_2">
 			<animation name = "briser" />
-			<sound name="Vase" wait="false" volume="1"/>
+			<sound name="Vase" wait="false" volume="0.7"/>
 		</object>	
 		
 		<public>
@@ -32,8 +32,8 @@
 		</character>
 		
 		<character name="Pantalone">
+		        <sound name="1_gronde" wait="false" volume="0.7"/>
 				<animation name="gronde"/>
-				<sound name="1_gronde" wait="false" volume="0.7"/>
 		</character>	
 		
 	<guiManager active="true"/>

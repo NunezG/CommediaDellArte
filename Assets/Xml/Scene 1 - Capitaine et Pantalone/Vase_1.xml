@@ -11,15 +11,15 @@
 		</character>
 		
 		<character name="Arlequin">	
+		    <sound name="Toucher gentilment" wait="false" volume="1"/>
 			<animation name="poke" wait="false"/>
-			<sound name="Toucher gentilment" wait="false" volume="1"/>
 		</character>
 		
 		<wait time ="0.5"/>
 
 		<object name="vase_1">
 			<animation name = "briser"/>
-			<sound name="Vase" wait="false" volume="1"/>
+			<sound name="Vase" wait="false" volume="0.7"/>
 		</object>	
 		
 		<public>
