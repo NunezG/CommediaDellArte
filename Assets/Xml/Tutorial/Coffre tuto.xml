@@ -260,7 +260,7 @@
 		
 		<public>
 			<addvalue value="20"/>
-			<sound name="Rire +5" duration="5" volume="1"/>
+			<sound name="Rire +10" duration="5" volume="1"/>
 		</public>
 	
 	
