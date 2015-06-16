@@ -14,6 +14,7 @@
 	 
 	<character name="Arlequin">
 			<animation name="faire_peur" wait="false"/>
+			<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
 	</character>
 	
 	<wait time="0.5"/>

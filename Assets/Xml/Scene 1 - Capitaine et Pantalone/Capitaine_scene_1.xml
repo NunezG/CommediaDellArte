@@ -196,6 +196,7 @@
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
 		<animation name="faire_peur"/>		
 	</character>
 	
