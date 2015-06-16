@@ -21,11 +21,6 @@
 		</object>
 		
 	</multiple>
-	
-	<character name="Capitaine">
-	        <sound name="3_peur_1" volume="1" />
-			<animation name="peur"/>			
-		</character>
 		
 	<public>
 		<addvalue value="20"/>
