@@ -14,14 +14,14 @@
 	 
 	<character name="Arlequin">
 			<animation name="faire_peur" wait="false"/>
-			<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
+			<sound name="" wait="false" volume="0.7"/>
 	</character>
 	
 	<wait time="0.5"/>
 	
 	<character name="Capitaine">
 			<animation name="peur" />
-			<sound name="" wait="false" volume="0.7"/>			
+			<sound name="16_fait_peur_2" wait="false" volume="0.7"/>			
 	</character>
 	
 	<public>
@@ -46,7 +46,6 @@
 	<multiple>
 	    <character name="Arlequin">
 		    <sound name="8_poser_question" wait="false" volume="1"/>
-			<rotation x="0" y="180" z="0"/>
 		    <animation name="question"/>
     	</character>
 	
@@ -95,7 +94,6 @@
 	</multiple>
 	
 	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
 		<sound name="14_depit" wait="false" volume="1"/>
 	</character>
 	
@@ -118,7 +116,6 @@
 
 	<character name="Arlequin">
 		<deplacement x="4" y="6.7" z="31"/>
-		<rotation x="0" y="180" z="0"/>
 		<sound name="3_parle_gentil_2" wait="false" volume="1"/>
 		<animation name="niceTalking"/>
 	</character>
@@ -136,7 +133,6 @@
 	</multiple>
 	
 	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
 		<sound name="14_depit" wait="false" volume="1"/>
 	</character>
 	
@@ -149,7 +145,6 @@
 	
 		<character name="Arlequin">
 			<deplacement x="4" y="6.7" z="31"/>
-			<rotation x="0" y="180" z="0"/>
 		</character>
 		
 		<multiple>
@@ -170,7 +165,6 @@
 
 		
 		<character name="Arlequin">
-			<rotation x="0" y="180" z="0"/>
 		</character>
 	
 	<guiManager active="true"/>
@@ -182,7 +176,6 @@
 	
 		<character name="Arlequin">
 			<deplacement x="4" y="6.7" z="31"/>
-			<rotation x="0" y="180" z="0"/>
 		</character>
 		
 		<multiple>
@@ -203,7 +196,6 @@
 		</public>
 
 		<character name="Arlequin">
-			<rotation x="0" y="180" z="0"/>
 		</character>
 	
 	<guiManager active="true"/>	
@@ -215,6 +207,7 @@
 	
 		<character name="Arlequin">
 			<deplacement x="15.75" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
 		</character>
 		
 		<multiple>
@@ -231,6 +224,10 @@
 			<sound name="Boo -1" duration="3" volume="1"/>
 			<subvalue value ="5"/>
 		</public>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
 
 	<guiManager active="true"/>
 </event>
@@ -241,6 +238,7 @@
 
 		<character name="Arlequin">
 			<deplacement x="15.75" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
 		</character>
 		
 		<multiple>
@@ -261,6 +259,10 @@
 			<sound name="Rire +5" duration="5" volume="1"/>
 			<addvalue value ="15"/>
 		</public>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
 
 	
 	<guiManager active="true"/>
@@ -282,6 +284,7 @@
 		<musique name="Berceuse" disappearTime="1" waitTime="0" appearTime="0.1"/>
 		
 		<character name="Arlequin">
+	        <rotation x="0" y="180" z="0"/>
 			<sound name="Prend" wait="false" volume="0.7"/>
 			<animation name="assis"/>
 		</character>
@@ -292,6 +295,7 @@
 		
 		<character name="Arlequin">
 		    <deplacement x="4" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
 		</character>
 		
 		<wait time="2"/>

@@ -6,8 +6,7 @@
 
 	<guiManager active="false"/>
 		<character name="Arlequin">	
-			<deplacement x="0" y="7" z="34.25"/>
-			<rotation x="0" y="180" z="0"/>			
+			<deplacement x="0" y="7" z="34.25"/>		
 		</character>
 		
 		<character name="Arlequin">	
@@ -28,10 +27,6 @@
 		</public>
 		
 		<wait time="1"/>
-		
-		<character name="Arlequin">	
-			<rotation x="0" y="180" z="0"/>			
-		</character>
 		
 		<character name="Pantalone">
 		        <sound name="1_gronde" wait="false" volume="0.7"/>

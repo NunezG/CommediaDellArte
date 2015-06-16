@@ -31,6 +31,7 @@
 		<!-- Placement des personnages -->
 		<character name="Arlequin">
 				<deplacement x="-10" y="6.7" z="31" instant = "true"/>
+				<rotation x="0" y="180" z="0"/>	
 		</character>
 		<character name="Capitaine">
 				<deplacement x="-1.31" y="7.45" z="31" instant = "true"/>
