@@ -28,8 +28,8 @@
 		</character>
 		
 	<public>
-		<addvalue value="40"/>
-		<sound name="Rire +5" duration="3"/>
+		<addvalue value="20"/>
+		<sound name="Rire +10" duration="3"/>
 	</public>
 	
 	<character name="Arlequin">

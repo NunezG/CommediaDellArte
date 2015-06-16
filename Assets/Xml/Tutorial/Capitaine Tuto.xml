@@ -22,7 +22,7 @@
 	</character>
 		
 	<public>
-		<addvalue value="15"/>
+		<addvalue value="10"/>
 		<sound name="Rire +1" duration="2"/>
 	</public>
 	
@@ -57,6 +57,7 @@
 	
 	<public>
 		<sound name="Boo -1" duration="2"/>
+		<subvalue value="1"/>
 	</public>
 	
 	<souffleur position="milieu">
@@ -89,7 +90,7 @@
 		</character>
 		
 	<public>
-		<addvalue value="15"/>
+		<addvalue value="10"/>
 		<sound name="Rire +1" duration="2"/>
 	</public>
 	
@@ -121,6 +122,7 @@
 		
 		<public>
 			<sound name="Boo -1" duration="2"/>
+			<subvalue value="1"/>
 		</public>
 	
 		<souffleur position="milieu">
