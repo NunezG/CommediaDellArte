@@ -33,14 +33,12 @@ public class CapitaineXmlScript : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(timer);
 
         if (_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle") && _animator.GetBool("postIntro"))
         {
             timer += Time.deltaTime;
             if (timer > 2)
             {
-                Debug.Log("trigger set");
                 _animator.SetTrigger("voiceEvent");
                 timer = 0;
             }
