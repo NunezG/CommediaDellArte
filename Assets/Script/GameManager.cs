@@ -748,8 +748,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Execution d'une animation de " + characterName + " , qui est \"" + animationName + "\".");
         Animator characterAnimator = getCharacterGameobject(characterName).GetComponentInChildren<Animator>();
 
-        characterAnimator.SetTrigger (animationName);
-		characterAnimator.SetBool (animationName, true);
+        if( characterAnimator.GetBool(animationName) !=null )
+		    characterAnimator.SetBool (animationName, true);
+        else
+         characterAnimator.SetTrigger(animationName);
+
 
         if (wait) {
 		    while(characterAnimator.GetCurrentAnimatorStateInfo (0).shortNameHash !=  Animator.StringToHash(animationName) )

@@ -82,7 +82,6 @@ public class ThemePlayerScript : MonoBehaviour {
         StartCoroutine( smoothThemeChangeCoroutine( name,  disappearTime ,  waitTime ,  appearTime));
     }
 
-
     private IEnumerator smoothThemeChangeCoroutine(string name, float disappearTime , float waitTime , float appearTime )
     {
         AudioClip temp = null;
