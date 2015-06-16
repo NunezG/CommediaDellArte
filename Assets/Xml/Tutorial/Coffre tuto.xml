@@ -259,7 +259,7 @@
 		<wait time="0.5"/>
 		
 		<public>
-			<addvalue value="20"/>
+			<addvalue value="35"/>
 			<sound name="Rire +10" duration="5" volume="1"/>
 		</public>
 	

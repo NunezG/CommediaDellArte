@@ -26,7 +26,7 @@
 	
 	<public>
 	    <sound name="Rire +10" duration="10" volume="1"/>
-		<addvalue value ="10"/>
+		<addvalue value ="25"/>
 	</public>
 	
 	<character name="Arlequin">	
@@ -165,7 +165,7 @@
 		
 		<public>
 			<sound name="Rire +5" duration="3" volume="1"/>
-			<addvalue value ="5"/>
+			<addvalue value ="15"/>
 		</public>
 
 		
@@ -199,7 +199,7 @@
 		
 		<public>
 			<sound name="Rire +1" duration="3" volume="1"/>
-			<addvalue value ="1"/>
+			<addvalue value ="10"/>
 		</public>
 
 		<character name="Arlequin">
@@ -229,7 +229,7 @@
 	
 		<public>
 			<sound name="Boo -1" duration="3" volume="1"/>
-			<subvalue value ="1"/>
+			<subvalue value ="5"/>
 		</public>
 
 	<guiManager active="true"/>
@@ -259,7 +259,7 @@
 		
 		<public>
 			<sound name="Rire +5" duration="5" volume="1"/>
-			<addvalue value ="5"/>
+			<addvalue value ="15"/>
 		</public>
 
 	
