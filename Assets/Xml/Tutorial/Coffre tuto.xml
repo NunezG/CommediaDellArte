@@ -253,6 +253,7 @@
 			<character name="Arlequin">
 				<animation name="brokenEggs" wait="false"/>	
 				<sound name="14_depit" wait="false" volume="1"/>	
+				<sound name="oeufs" wait="false" volume="1"/>	
 			</character>
 		</multiple>
 		
