@@ -44,7 +44,7 @@
 		
 		<public>
 		<sound name="Boo -1" duration="2" volume="1"/>
-		<subvalue value="1"/>
+		<subvalue value="10"/>
 	    </public>
 			
 		<character name="Arlequin">	

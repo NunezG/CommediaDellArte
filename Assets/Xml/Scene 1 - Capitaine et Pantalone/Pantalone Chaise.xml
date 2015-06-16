@@ -222,7 +222,7 @@
 	
 		<public>
 			<sound name="Boo -1" duration="3" volume="1"/>
-			<subvalue value ="5"/>
+			<subvalue value ="10"/>
 		</public>
 		
 		<character name="Arlequin">
