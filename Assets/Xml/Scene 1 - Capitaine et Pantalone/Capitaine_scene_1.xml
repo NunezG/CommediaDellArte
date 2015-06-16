@@ -13,6 +13,11 @@
 		<rotation x="0" y="180" z="0"/>
 	</character>
 	
+	<public>
+	    <sound name="Boo -1" duration="3"/>
+		<subvalue value ="1"/>
+	</public>
+	
 
 	<guiManager active="true"/>
 </event>
@@ -28,6 +33,11 @@
 		<animation name="angryTalking"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
+	
+	<public>
+	    <sound name="Boo -1" duration="3"/>
+		<subvalue value ="1"/>
+	</public>
 	
 
 	<guiManager active="true"/>
@@ -52,6 +62,7 @@
 	
 	<public>
 		<sound name="Rire +5" duration="3"/>
+		<addvalue value ="5"/>
 	</public>
 
 	<guiManager active="true"/>
@@ -75,7 +86,7 @@
 	</character>
 	
 	<public>
-		<addvalue value ="10"/>
+		<addvalue value ="5"/>
 		<sound name="Rire +5" duration="5"/>
 	</public>
 
@@ -109,7 +120,10 @@
 			<rotation x="0" y="180" z="0"/>
 	</character>
 	
-	
+	<public>
+	    <sound name="Rire +5" duration="5"/>
+		<addvalue value ="5"/>
+	</public>
 
 	<guiManager active="true"/>
 </event>
@@ -141,7 +155,8 @@
 	</character>
 	
 	<public>
-		<addvalue value ="10"/>
+	    <sound name="Rire +5" duration="5"/>
+		<addvalue value ="5"/>
 	</public>
 
 	<guiManager active="true"/>
@@ -164,6 +179,11 @@
             <sound name="3_peur_1" wait="false" volume="0.7"/>	
 	      	<animation name="peur"/>
 	</character>
+	
+	<public>
+	    <sound name="Rire +1" duration="3"/>
+		<addvalue value ="1"/>
+	</public>
 
 	<guiManager active="true"/>
 </event>
@@ -193,11 +213,16 @@
 			<animation name="enlever_drap"/>
 			<sound name="Drap"/>
 	</character>
+	
+	<public>
+	    <sound name="Boo -5" duration="5"/>
+		<subvalue value ="5"/>
+	</public>
 
 	<guiManager active="true"/>
 </event>
 
-<!-- Fuite du capitaine a la fin de cla scene -->
+<!-- Fuite du capitaine a la fin de la scene -->
 <event id="fuite">
 	<guiManager active="false"/>
 		<character name="Capitaine">

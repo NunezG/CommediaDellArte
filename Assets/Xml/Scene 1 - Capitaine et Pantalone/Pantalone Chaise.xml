@@ -23,6 +23,11 @@
 			<sound name="" wait="false" volume="0.7"/>			
 	</character>
 	
+	<public>
+	    <sound name="Rire +10" duration="10"/>
+		<addvalue value ="10"/>
+	</public>
+	
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
@@ -159,6 +164,7 @@
 		
 		<public>
 			<sound name="Rire +5" duration="3"/>
+			<addvalue value ="5"/>
 		</public>
 
 		
@@ -192,6 +198,7 @@
 		
 		<public>
 			<sound name="Rire +1" duration="3"/>
+			<addvalue value ="1"/>
 		</public>
 
 		<character name="Arlequin">
@@ -221,6 +228,7 @@
 	
 		<public>
 			<sound name="Boo -1" duration="3"/>
+			<subvalue value ="1"/>
 		</public>
 
 	<guiManager active="true"/>
@@ -250,6 +258,7 @@
 		
 		<public>
 			<sound name="Rire +5" duration="5"/>
+			<addvalue value ="5"/>
 		</public>
 
 	

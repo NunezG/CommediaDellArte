@@ -22,7 +22,8 @@
 		</object>	
 		
 		<public>
-			<addvalue value ="10"/>
+		    <sound name="Rire +5" duration="3"/>
+			<addvalue value ="5"/>
 		</public>
 		
 		<wait time="1"/>
