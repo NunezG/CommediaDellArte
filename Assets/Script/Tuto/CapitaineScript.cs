@@ -4,7 +4,6 @@ using System.Collections;
 public class CapitaineScript : MonoBehaviour {
 
 	public GameManager gameManager;
-	public AudioClip moquerie;
 
 	private int scaryValue = 0;
 	private bool talkDone = false, touchDone = false;
@@ -23,6 +22,10 @@ public class CapitaineScript : MonoBehaviour {
 
     }
 
+    public void interruptEvent()
+    {
+      
+    }
 
     public void capitaineEvent(string eventName)
     {

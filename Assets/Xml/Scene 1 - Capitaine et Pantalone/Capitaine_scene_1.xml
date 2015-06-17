@@ -265,10 +265,10 @@
 			<sound name="11_fuit" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>
 			<deplacement x="-16" y="-2.2" z="0" />
-		</character>
-	<guiManager active="true"/>
-	
+		</character>	
 	<fadetoblack time="1" />
+	<guiManager active="true"/>
+
 </event>
 
 </EventList>

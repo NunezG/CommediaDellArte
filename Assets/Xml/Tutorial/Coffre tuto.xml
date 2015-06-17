@@ -229,7 +229,7 @@
 		
 		<multiple>	
 			<character name="Arlequin">
-			    <sound name="Jongle-Arlequin.ogg" wait="false" volume="1"/>	
+			   <sound name="Prend" wait="false" volume="1"/>	
 				<animation name="take"/>			
 			</character>	
 		</multiple>

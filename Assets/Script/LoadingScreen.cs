@@ -33,7 +33,8 @@ public class LoadingScreen : MonoBehaviour {
         else
         {
             if (this != _instance)
-                Destroy(this.gameObject);
+                Destroy(_instance.gameObject);
+            _instance = this;
         }
     }
 
@@ -48,13 +49,14 @@ public class LoadingScreen : MonoBehaviour {
 	}
 
 	public void loadLevel(string levelName){
+        loadingScreen.enabled = true;
 		StartCoroutine (displayLoadingScreen (levelName));
 	}
 
 	 IEnumerator displayLoadingScreen(string levelName){
 
 		//affichage de l'ecran de chargement
-         loadingScreen.gameObject.SetActive(true);
+        loadingScreen.gameObject.SetActive(true);
 		//Initialisation du poucentage a 0%
 		loadingPercentage.GetComponent<UnityEngine.UI.Text> ().text = percentage.ToString() + "%";
 

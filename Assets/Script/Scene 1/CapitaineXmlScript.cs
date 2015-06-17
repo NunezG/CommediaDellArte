@@ -109,7 +109,7 @@ public class CapitaineXmlScript : MonoBehaviour
             else
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment", "capitaine"));
-                scaryValue += 100;
+                scaryValue += 0;
             }
         }
         else if (eventName == "parler_moqueur")
