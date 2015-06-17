@@ -21,8 +21,10 @@ public class RadialButtonScript :  MonoBehaviour {
 	//permet de gerer la position de l'objet
 	[HideInInspector] public Vector3 positionOffset, parentOldPos;
 
+    private bool desactiveForever = false;
 	private Collider2D _collider;
 	private SpriteRenderer _spriteRenderer;
+
 
 	void Start () {
 		GetComponent<SpriteRenderer> ().color = new Color(1,1,1,0);
@@ -67,19 +69,31 @@ public class RadialButtonScript :  MonoBehaviour {
 
 	public void setDisplay(bool display){
 
-		if (display) {
-			this.GetComponent<Collider2D> ().enabled = true;
-			show = true;
-		}
-		else {
-			this.GetComponent<Collider2D> ().enabled = false;
-			show = false;
-		}
+            if (display)
+            {
+                this.GetComponent<Collider2D>().enabled = true;
+                show = true;
+            }
+            else
+            {
+                this.GetComponent<Collider2D>().enabled = false;
+                show = false;
+            }
+        
 	}
 
 	public void setActive(bool b){
-		active = b;
+        if (!desactiveForever)
+        {
+            active = b;
+        }
 	}
+
+    public void desactive()
+    {
+            active = false;
+            desactiveForever = true;      
+    }
 	
 
 

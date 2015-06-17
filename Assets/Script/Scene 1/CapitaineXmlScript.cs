@@ -103,7 +103,7 @@ public class CapitaineXmlScript : MonoBehaviour
             if (_touchCount > 1)
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment_2", "capitaine"));
-                this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].setActive(false);
+                this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].desactive();
                 scaryValue += 10;
             }
             else
@@ -118,7 +118,7 @@ public class CapitaineXmlScript : MonoBehaviour
             if (_talkCount > 1)
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_moqueur_2", "capitaine"));
-                this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[2].setActive(false);
+                this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[2].desactive();
                 scaryValue += 10;
             }
             else
