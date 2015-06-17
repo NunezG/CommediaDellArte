@@ -85,8 +85,8 @@
 	</multiple>
 	
 	<character name="Capitaine">
-			<animation name="peur"/>
-	        <sound name="3_peur_1" volume="1" />			
+	        <sound name="3_peur_1" volume="1" />	
+			<animation name="peur"/>		
 	</character>
 		
 	<public>
