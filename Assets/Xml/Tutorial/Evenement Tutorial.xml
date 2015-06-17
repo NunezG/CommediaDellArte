@@ -90,8 +90,8 @@
 	
 	<multiple>
 		<character name="Capitaine">
+			<sound name="2_ignore" wait="false" volume="0.7" />		    
 			<animation name="moquerie"/>
-			<sound name="2_ignore" wait="false" volume="0.7" />
 		</character>
 		<souffleur position="gauche">
 			<talk>

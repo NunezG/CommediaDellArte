@@ -10,9 +10,9 @@
 	
 	<multiple>	
 		<character name="Arlequin">
-			<animation name="frappe"/>	
 			<sound name="Frappe" volume="1"/>	
-			<sound name="5_touche_mechant" volume="1" />
+			<sound name="5_touche_mechant" volume="1" />		
+			<animation name="frappe"/>	
 		</character>	
 	</multiple>
 	
@@ -46,8 +46,8 @@
 	
 	<multiple>	
 		<character name="Arlequin">
-			<animation name="poke"/>	
-			<sound name="Toucher gentilment" volume="1"/>		
+			<sound name="Toucher gentilment" volume="1"/>			
+			<animation name="poke"/>		
 		</character>	
 	</multiple>
 	
@@ -79,15 +79,15 @@
 	
 	<multiple>	
 		<character name="Arlequin">
+			<sound name="4_parle_mechant" volume="1"/>		
 			<animation name="angryTalking"/>	
-			<sound name="4_parle_mechant" volume="1"/>
 		</character>			
 	</multiple>
 	
 	<character name="Capitaine">
-	        <sound name="3_peur_1" volume="1" />
-			<animation name="peur"/>			
-		</character>
+			<animation name="peur"/>
+	        <sound name="3_peur_1" volume="1" />			
+	</character>
 		
 	<public>
 		<addvalue value="10"/>
@@ -111,8 +111,8 @@
 		
 		<multiple>	
 			<character name="Arlequin">
-				<animation name="niceTalking"/>	
-				<sound name="2_parle_gentil_1" volume="0.7"/>		
+			    <sound name="2_parle_gentil_1" volume="0.7"/>	
+				<animation name="niceTalking"/>		
 			</character>	
 		</multiple>
 		
@@ -137,7 +137,7 @@
 <event id="fuite">
 	<guiManager active="false"/>	
 		<character name="Capitaine">
-		    <sound name="4_peur_2" volume="0.7" />
+		    <sound name="19_fuit_tuto" volume="0.7" />
 			<deplacement x="-16.7" y="-2.2" z="23.32"/>
 			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
 		</character>	
