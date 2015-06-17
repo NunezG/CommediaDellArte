@@ -32,7 +32,10 @@
 			<sound name="Drap" volume="1"/>
             <rotation x="0" y="180" z="0"/>
 	</character>
-
+	
+<guiManager active="true"/>
+</event>	
+	
 <!-- Question -->
 <event id="question">
 	<guiManager active="false"/>
@@ -71,16 +74,6 @@
 	<guiManager active="true"/>
 </event>
 
-	<!-- explication de la scene -->
-
-	
-	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
-	</character>
-	
-	<guiManager active="true"/>
-
-</event>
 
 <!-- Parler gentiment-->
 <event id="parler_gentiment">
@@ -283,8 +276,6 @@
 	    <musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3"/>	
 		
 		<guiManager active="true"/>	
-		
-	
 </event>
 
 </EventList>

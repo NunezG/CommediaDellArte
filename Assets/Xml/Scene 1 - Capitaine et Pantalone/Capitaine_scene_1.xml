@@ -185,6 +185,39 @@
 <event id="faire_peur">
 	<guiManager active="false"/>
 
+	
+	    <character name="Arlequin">
+			    <deplacement x="15.75" y="6.7" z="31"/>
+				<rotation x="0" y="180" z="0"/>
+		</character>
+	<multiple>	
+		<character name="Arlequin">
+		    	<animation name="faire_peur" wait="false"/>
+				<sound name="17_fait_peur_3" wait="false" volume="1"/>	
+	    </character>
+		<character name="Capitaine">
+		    <sound name="4_peur_2" wait="false" volume="1"/>	
+			<animation name="peur" />			
+	    </character>
+	</multiple>
+	
+	<public>
+	    <sound name="Rire +10" duration="5" volume="1"/>
+		<addvalue value ="25"/>
+	</public>
+	
+	<character name="Arlequin">	
+			<deplacement x="-10" y="6.7" z="34.4"/>
+			<animation name="enlever_drap"/>
+			<sound name="Drap" volume="1"/>
+            <rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<guiManager active="true"/>
+
+<!-- old version
+	<guiManager active="false"/>
+
 	<character name="Arlequin">
 		<deplacement x="-8" y="6.7" z="31"/>
 	</character>	
@@ -211,13 +244,14 @@
 			<rotation x="0" y="180" z="0"/>
 	</character>
 
-	<guiManager active="true"/>
+	<guiManager active="true"/>-->
 </event>
 
 <!-- Fuite du capitaine a la fin de la scene -->
 <event id="fuite">
 	<guiManager active="false"/>
 		<character name="Capitaine">
+			<sound name="4_peur_2" wait="false" volume="1"/>	
 			<animation name="peur" />
 			<sound name="11_fuit" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>

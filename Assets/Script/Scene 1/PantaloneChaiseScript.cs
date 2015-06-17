@@ -52,17 +52,6 @@ public class PantaloneChaiseScript : MonoBehaviour {
                 CapitaineXmlScript.goAway();
             }
         }
-        else if (eventName == "faire_peur")
-        {
-			CapitaineXmlScript.interrupt();
-            yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur", "pantalone"));
-            CapitaineXmlScript.scaryValue += 40;
-            if (CapitaineXmlScript.scaryValue >= 100)
-            {
-                yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine"));
-                CapitaineXmlScript.goAway();
-            }
-        }
         else
         {
             XmlManager.launchEvent(eventName, "pantalone");
