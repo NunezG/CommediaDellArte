@@ -10,6 +10,7 @@ public class ThemePlayerScript : MonoBehaviour {
     private AudioSource _audioSource;
     private float _initialVolumeValue;
 
+	private List<Music> _playlist;
 
     private static ThemePlayerScript _instance;
 
@@ -49,6 +50,31 @@ public class ThemePlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+
+	
+	public void resetList(){
+		_playlist.Clear ();
+	}
+
+	public void addMusic(string name, int repeatCount){
+		AudioClip temp = null;
+		
+		for (int i = 0; i < themeList.Count; i++){
+			if (name == themeList[i].name){
+				temp = themeList[i];
+				break;
+			}
+		}
+		
+		if (temp == null){
+			Debug.Log("Theme " + name + " was not found.");
+			return ;
+		}
+		else{
+			_playlist.Add(new Music(temp, repeatCount));
+		}
 	}
 
     public void playTheme(string name)
@@ -123,5 +149,16 @@ public class ThemePlayerScript : MonoBehaviour {
         yield break;
     }
 
+
+}
+
+
+public class Music{
+	public int _repeatCount = 1;
+	public AudioClip _audioClip;
+	public Music(AudioClip audioClip, int repeatCount){
+		_repeatCount = repeatCount;
+		_audioClip = audioClip;
+	}
 
 }
