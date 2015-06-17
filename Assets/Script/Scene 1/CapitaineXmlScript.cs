@@ -145,7 +145,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "faire_peur")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur", "capitaine"));
-            scaryValue += 100;
+            scaryValue += 0;
         }
 
         if (scaryValue >= 100)
