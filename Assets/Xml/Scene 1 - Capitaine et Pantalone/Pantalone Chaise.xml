@@ -5,21 +5,21 @@
 <event id="faire_peur">
 	<guiManager active="false"/>
 
-	<multiple>
+	
 	    <character name="Arlequin">
 			    <deplacement x="15.75" y="6.7" z="31"/>
-		     	<sound name="17_fait_peur_3" wait="false" volume="1"/>	
+				<rotation x="0" y="180" z="0"/>
+		</character>
+	<multiple>	
+		<character name="Arlequin">
 		    	<animation name="faire_peur" wait="false"/>
+				<sound name="17_fait_peur_3" wait="false" volume="1"/>	
 	    </character>
 		<character name="Capitaine">
-		    <sound name="4_peur_2" wait="false" volume="0.7"/>	
+		    <sound name="4_peur_2" wait="false" volume="1"/>	
 			<animation name="peur" />			
 	    </character>
 	</multiple>
-	 
-	<character name="Arlequin">
-			<animation name="faire_peur" wait="false"/>
-	</character>
 	
 	<public>
 	    <sound name="Rire +10" duration="10" volume="1"/>
@@ -30,6 +30,7 @@
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
 			<sound name="Drap" volume="1"/>
+            <rotation x="0" y="180" z="0"/>
 	</character>
 
 <!-- Question -->
@@ -154,12 +155,16 @@
 				<animation name="pousser_gentil"/>
 			</character>
 		</multiple>
-		
-		<public>
-			<sound name="Rire +5" duration="3" volume="1"/>
-			<addvalue value ="15"/>
-		</public>
-
+		<multiple>
+	        <character name="Capitaine">
+			     <animation name="peur"/>
+	            <sound name="5_inquiet_pantalone_1" volume="1" />			
+	        </character>
+		    <public>
+			    <sound name="Rire +5" duration="3" volume="1"/>
+			   <addvalue value ="15"/>
+		    </public>
+        </multiple>
 		
 		<character name="Arlequin">
 		</character>
@@ -191,9 +196,6 @@
 			<sound name="Rire +1" duration="3" volume="1"/>
 			<addvalue value ="10"/>
 		</public>
-
-		<character name="Arlequin">
-		</character>
 	
 	<guiManager active="true"/>	
 </event>
@@ -252,10 +254,16 @@
 			</character>
 		</multiple>
 		
-		<public>
-			<sound name="Rire +5" duration="5" volume="1"/>
-			<addvalue value ="15"/>
-		</public>
+		<multiple>
+	        <character name="Capitaine">
+			     <animation name="peur"/>
+	            <sound name="6_inquiet_pantalone_2" volume="1" />			
+	        </character>
+		    <public>
+			    <sound name="Rire +5" duration="3" volume="1"/>
+			   <addvalue value ="15"/>
+		    </public>
+        </multiple>
 		
 		<character name="Arlequin">
 			<rotation x="0" y="180" z="0"/>

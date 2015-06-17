@@ -186,8 +186,9 @@
 	<guiManager active="false"/>
 
 	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
 		<deplacement x="-8" y="6.7" z="31"/>
+	</character>	
+	<character name="Arlequin">	
 		<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
 		<animation name="faire_peur"/>		
 	</character>
@@ -196,21 +197,17 @@
 			<animation name="idle" wait="false"/>
 	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
 	</character>
-		
-	<character name="Arlequin">
-		<rotation x="0" y="180" z="0"/>
-	</character>
+	
+	<public>
+	    <sound name="Boo -5" duration="5" volume="1"/>
+		<subvalue value ="20"/>
+	</public>
 
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
 			<sound name="Drap"/>
 	</character>
-	
-	<public>
-	    <sound name="Boo -5" duration="5" volume="1"/>
-		<subvalue value ="20"/>
-	</public>
 
 	<guiManager active="true"/>
 </event>
