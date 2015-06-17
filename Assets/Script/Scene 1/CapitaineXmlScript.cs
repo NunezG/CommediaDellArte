@@ -145,7 +145,19 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "faire_peur")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur", "capitaine"));
+
             scaryValue += 50;
+
+            if (scaryValue >= 100)
+            {
+                yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine"));
+                goAway();
+            }
+            else
+            {
+                yield return StartCoroutine(XmlManager.launchEventCoroutine("faire_peur_suite", "capitaine"));
+                yield break;
+            }
         }
 
         if (scaryValue >= 100)
@@ -155,6 +167,9 @@ public class CapitaineXmlScript : MonoBehaviour
         }
         yield break;
     }
+
+
+
 
     public static void goAway()
     {

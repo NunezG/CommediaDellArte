@@ -186,10 +186,10 @@
 	<guiManager active="false"/>
 
 	
-	    <character name="Arlequin">
+	 <character name="Arlequin">
 			    <deplacement x="15.75" y="6.7" z="31"/>
 				<rotation x="0" y="180" z="0"/>
-		</character>
+	</character>
 	<multiple>	
 		<character name="Arlequin">
 		    	<animation name="faire_peur" wait="false"/>
@@ -206,6 +206,13 @@
 		<addvalue value ="25"/>
 	</public>
 	
+	<guiManager active="true"/>
+</event>
+
+<!-- range le drap si le capitaine reste-->
+<event id="faire_peur_suite">
+	<guiManager active="false"/>
+
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
 			<animation name="enlever_drap"/>
@@ -214,6 +221,8 @@
 	</character>
 	
 	<guiManager active="true"/>
+	
+</event>
 
 <!-- old version
 	<guiManager active="false"/>
@@ -245,7 +254,7 @@
 	</character>
 
 	<guiManager active="true"/>-->
-</event>
+
 
 <!-- Fuite du capitaine a la fin de la scene -->
 <event id="fuite">
