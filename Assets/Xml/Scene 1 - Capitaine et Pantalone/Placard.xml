@@ -24,6 +24,8 @@
 		</object>	
 		<character name="Arlequin">	
 				<deplacement x="-10" y="6.7" z="34.4"/>
+				<sound name="Prend" wait="false" volume="1"/>
+				<animation name="take"/>
 				<sound name="Drap" volume="1"/>
 				<animation name="prendre_drap"/>
 		</character>
@@ -41,17 +43,26 @@
 			<sound name="15_fait_peur_1" wait="false" volume="1" />	
 			<animation name="surgir"/>
 		</character>
+
+	<character name="Capitaine">	
+		<animation name="idle" wait="false"/>
+	    <sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+	</character>
 		
+	<multiple>
 		<public>
 		<sound name="Boo -1" duration="2" volume="1"/>
 		<subvalue value="10"/>
 	    </public>
-			
 		<character name="Arlequin">	
 			<sound name="14_depit" wait="false" volume="0.7" />
-			<animation name="disappointed"/>
-			<deplacement x="-8.68" y="6.7" z="31" />
-		</character>		
+			<animation name="disappointed"/>*
+        </character>			
+    </multiple>		
+	    <character name="Arlequin">
+		    <deplacement x="-8.68" y="6.7" z="31" />
+			<rotation x="0" y="180" z="0"/>	
+		</character>
 		
 	<guiManager active="true"/>
 </event>

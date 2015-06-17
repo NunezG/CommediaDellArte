@@ -205,8 +205,10 @@
 
 	<character name="Arlequin">	
 			<deplacement x="-10" y="6.7" z="34.4"/>
+			<rotation x="0" y="180" z="0"/>
 			<animation name="enlever_drap"/>
 			<sound name="Drap"/>
+			<rotation x="0" y="180" z="0"/>
 	</character>
 
 	<guiManager active="true"/>

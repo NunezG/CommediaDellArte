@@ -211,12 +211,10 @@
 			<deplacement x="13" y="7" z="30"/>
 		</character>
 		
-		<multiple>	
-			<character name="Arlequin">
-			    <sound name="Prend" wait="false" volume="1"/>
+		<character name="Arlequin">
+			<sound name="Prend" wait="false" volume="1"/>
 				<animation name="take"/>			
-			</character>	
-		</multiple>		
+		</character>		
 	
 	<guiManager active="true"/>
 </event>

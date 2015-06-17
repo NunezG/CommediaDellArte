@@ -17,7 +17,7 @@
 		<wait time ="0.5"/>
 		
 		<object name="vase_2">
-			<sound name="Vase" wait="false" volume="0.7"/>		
+			<sound name="Vase" wait="false" volume="0.5"/>		
 			<animation name = "briser" />
 		</object>	
 		
