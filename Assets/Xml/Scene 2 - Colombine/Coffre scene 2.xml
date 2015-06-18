@@ -3,8 +3,14 @@
 
 <!-- Enlaidir -->
 <event id="enlaidir">
-
-
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="13" y="7" z="30" wait="false"/>	
+		</character>
+		<wait time="1"/>
+		<fadetoblack time="1" wait="false"/>
+		<wait time="0.5"/>
 	
 </event>
 

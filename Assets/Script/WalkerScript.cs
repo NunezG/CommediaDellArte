@@ -64,7 +64,7 @@ public class WalkerScript : MonoBehaviour {
 		_audioSource.loop = false;
 		_audioSource.PlayOneShot (_screamList[screamIndex]._throwSound);
 
-		Destroy (this, 3);
+		//Destroy (this.gameObject, 3);
 	}
 
     public void setSprite(Sprite sprite)

@@ -77,6 +77,7 @@ public class WalkerManager : MonoBehaviour {
 			Vector3 newPos = Camera.main.ScreenToWorldPoint ( new Vector3 (Input.mousePosition.x, Input.mousePosition.y, dragWalker.transform.position.z));
 			Vector3 temp = newPos - oldMousePosition;
 			dragWalker.throwAway(temp * throwForce);
+            Destroy(dragWalker.gameObject, 1);
             dragWalker = null;
 			currentWalker--;
         }

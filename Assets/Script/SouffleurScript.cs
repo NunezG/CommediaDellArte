@@ -12,7 +12,7 @@ public class SouffleurScript : MonoBehaviour {
 	public GUIManager guimanager;
 	public Sprite avecPanneau, sansPanneau;
 	public Sprite good, bad, bide;
-	public AudioClip sound;
+	public AudioClip sound, _talkSound;
 	[HideInInspector]
 	public bool talking = false;
 

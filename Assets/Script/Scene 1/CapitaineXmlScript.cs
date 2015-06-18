@@ -7,7 +7,11 @@ public class CapitaineXmlScript : MonoBehaviour
 {
     public static int scaryValue = 0; 
 	public List<AudioClip> _clipList;
+
+
+    public Sprite _touchSprite2, _talkSprite2;
 	public bool forVoiceOnly = false;
+
     private int _touchCount = 0, _talkCount = 0, _clipIndex = 0;
 	private SoundController _soundController;
 	private static Animator _animator;
@@ -65,7 +69,8 @@ public class CapitaineXmlScript : MonoBehaviour
 	}
 
 	public static void interrupt(){
-		_instance.StopCoroutine (resetCoroutine);
+        if (resetCoroutine != null)
+		    _instance.StopCoroutine (resetCoroutine);
 		_audioSource.Stop();
 	}
 
@@ -109,7 +114,7 @@ public class CapitaineXmlScript : MonoBehaviour
             else
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment", "capitaine"));
-                scaryValue += 0;
+                this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].gameObject.GetComponent<SpriteRenderer>().sprite = _touchSprite2;
             }
         }
         else if (eventName == "parler_moqueur")
@@ -124,7 +129,7 @@ public class CapitaineXmlScript : MonoBehaviour
             else
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_moqueur", "capitaine"));
-
+                 this.GetComponent<RadialMenuScript>().buttonList[0].GetComponent<RadialMenuScript>().buttonList[2].gameObject.GetComponent<SpriteRenderer>().sprite = _talkSprite2;
             }
         }
         else if (eventName == "parler_mechamment")
