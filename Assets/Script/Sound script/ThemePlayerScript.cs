@@ -11,6 +11,7 @@ public class ThemePlayerScript : MonoBehaviour {
     private float _initialVolumeValue;
 
 	private List<Music> _playlist;
+    private float timer = 0;
 
     private static ThemePlayerScript _instance;
 
@@ -43,19 +44,39 @@ public class ThemePlayerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        _playlist = new List<Music>();
         _audioSource = this.GetComponent<AudioSource>();
         _initialVolumeValue = _audioSource.volume;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0 && _playlist.Count > 0)
+        {
+           smoothThemeChange(_playlist[0]._audioClip.name, _playlist[0].disappearTime, _playlist[0].waitTime, _playlist[0].appearTime);
+           float temp = 0;
+           if (_playlist.Count > 1)
+               temp = _playlist[1].disappearTime;
+           timer = _playlist[0]._audioClip.length - temp;
+            if (_playlist[0]._repeatCount != -1)
+            {
+                _playlist[0]._repeatCount--;
+                if (_playlist[0]._repeatCount <= 0)
+                {
+                    _playlist.RemoveAt(0);
+                }
+            }
+        }
 	}
 
 
 	
 	public void resetList(){
 		_playlist.Clear ();
+        timer = 0;
 	}
 
 	public void addMusic(string name, int repeatCount){
@@ -150,12 +171,12 @@ public class ThemePlayerScript : MonoBehaviour {
         yield break;
     }
 
-
 }
 
 
 public class Music{
 	public int _repeatCount = 1;
+    public float disappearTime = 1, waitTime = 0, appearTime = 1;
 	public AudioClip _audioClip;
 	public Music(AudioClip audioClip, int repeatCount){
 		_repeatCount = repeatCount;

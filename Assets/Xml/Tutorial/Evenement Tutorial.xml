@@ -2,8 +2,9 @@
 
 <!-- Introduction avec le souffleur -->
 <event id="Introduction">
+
     <musique name="Commedia Theme Redux" disappearTime="1" waitTime="0" appearTime="5"/>
-	<musique name="Theme Tuto" disappearTime="1" waitTime="50"  appearTime="1"/>
+	<musique name="Theme Tuto" disappearTime="1" waitTime="50"  appearTime="1" repeat="-1"/>
 	
 	<guiManager active="false"/>
 	

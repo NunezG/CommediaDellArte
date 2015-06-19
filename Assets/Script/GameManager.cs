@@ -639,21 +639,42 @@ public class GameManager : MonoBehaviour {
 
     bool checkMusiqueNode(XmlNode node, List<IEnumerator> coroutineList, CoroutineParameter param)
     {
+
         if (node.Name == "musique")
-        {
+        {  
+            int repeat = 1;
+            if(node.Attributes["repeat"] != null){
+                repeat = int.Parse(node.Attributes["repeat"].Value);
+            }
+            bool reset = false;
+            if (node.Attributes["reset"] != null)
+            {
+                if (node.Attributes["reset"].Value == "true" ||
+                        node.Attributes["reset"].Value == "True" ||
+                        node.Attributes["reset"].Value == "Vrai" ||
+                        node.Attributes["reset"].Value == "vrai")
+                {
+                    reset = true;
+                }
+            }
+
             IEnumerator action = musiqueCoroutine(node.Attributes["name"].Value, 
+                    repeat,
                     float.Parse(node.Attributes["disappearTime"].Value),
                     float.Parse(node.Attributes["waitTime"].Value),
-                    float.Parse(node.Attributes["appearTime"].Value), param);
+                    float.Parse(node.Attributes["appearTime"].Value), reset,  param);
             coroutineList.Insert(coroutineList.Count, action);
         }
         return false;
     }
 
-    IEnumerator musiqueCoroutine(string musiqueName, float dissapearTime, float waitTime, float appearTime, CoroutineParameter param)
+    IEnumerator musiqueCoroutine(string musiqueName, int repeat, float dissapearTime, float waitTime, float appearTime, bool reset , CoroutineParameter param)
     {
         Debug.Log("Changement du theme : " + musiqueName);
-        ThemePlayerScript.instance.smoothThemeChange(musiqueName, dissapearTime, waitTime, appearTime);
+        if(reset)
+             ThemePlayerScript.instance.resetList();
+        ThemePlayerScript.instance.addMusic(musiqueName, repeat);
+        //ThemePlayerScript.instance.smoothThemeChange(musiqueName, dissapearTime, waitTime, appearTime);
         param._count++;
         yield break;
     }
