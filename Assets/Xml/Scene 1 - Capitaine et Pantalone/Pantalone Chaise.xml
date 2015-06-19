@@ -66,8 +66,8 @@
 	
 	<souffleur position="milieu">
 			<talk>
-			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=white&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=white&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=white&#62;chasse ce gêneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
-				<paragraph>Appuie sur &#60;b&#62;&#60;color=white&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou &#60;b&#62;&#60;color=white&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=#0054ff&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=#0054ff&#62;chasse ce gêneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
+				<paragraph>Appuie sur &#60;b&#62;&#60;color=#0054ff&#62;Espace&#60;/color&#62;&#60;/b&#62; pour lire ton objectif ou &#60;b&#62;&#60;color=#0054ff&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
 			</talk>
 	</souffleur>
 	

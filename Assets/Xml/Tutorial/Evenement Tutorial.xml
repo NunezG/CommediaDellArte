@@ -25,7 +25,7 @@
 	<souffleur position="milieu">
 		<talk>
 			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
-			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=white&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et ta ruse.</paragraph>
+			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et ta ruse.</paragraph>
 			<paragraph>Tu es encore débutant dans ce rôle essentiel mais je suis sûr que tu feras bien mieux que celui qui t’a précédé. Suis mes conseils, tu deviendras la coqueluche du peuple !</paragraph>
 		</talk>
 	</souffleur>
@@ -41,8 +41,8 @@
 		<public><addvalue value="20"/></public>
 		<souffleur position="gauche">
 		<talk>
-			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;b&#62;&#60;color=white&#62;comédiens itinérants&#60;/color&#62;&#60;/b&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
-			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;b&#62;&#60;color=white&#62;à manger, à boire,&#60;/color&#62;&#60;/b&#62; voire même &#60;b&#62;&#60;color=white&#62;un logis pour le soir&#60;/color&#62;&#60;/b&#62; ! (Ce sera toujours mieux que d’être obligé de dormir &#60;b&#62;&#60;color=white&#62;le ventre vide&#60;/color&#62;&#60;/b&#62; dans notre roulotte, non ?)</paragraph>
+			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;b&#62;&#60;color=#0054ff&#62;comédiens itinérants&#60;/color&#62;&#60;/b&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
+			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;b&#62;&#60;color=#0054ff&#62;à manger, à boire,&#60;/color&#62;&#60;/b&#62; voire même &#60;b&#62;&#60;color=#0054ff&#62;un logis pour le soir&#60;/color&#62;&#60;/b&#62; ! (Ce sera toujours mieux que d’être obligé de dormir &#60;b&#62;&#60;color=#0054ff&#62;le ventre vide&#60;/color&#62;&#60;/b&#62; dans notre roulotte, non ?)</paragraph>
 		</talk>
 	</souffleur>
 	</multiple>
@@ -56,7 +56,7 @@
 	<multiple>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>Tu vois ce coffre posé à droite ? &#60;b&#62;&#60;color=white&#62;Fouille-le&#60;/color&#62;&#60;/b&#62; pour voir si un &#60;b&#62;&#60;color=white&#62;accessoire&#60;/color&#62;&#60;/b&#62; peut t’aider à capter l’attention des passants.</paragraph>
+				<paragraph>Tu vois ce coffre posé à droite ? &#60;b&#62;&#60;color=#0054ff&#62;Fouille-le&#60;/color&#62;&#60;/b&#62; pour voir si un &#60;b&#62;&#60;color=#0054ff&#62;accessoire&#60;/color&#62;&#60;/b&#62; peut t’aider à capter l’attention des passants.</paragraph>
 			</talk>
 		</souffleur>		
 		<camera>
@@ -96,9 +96,9 @@
 		</character>
 		<souffleur position="gauche">
 			<talk>
-				<paragraph>Ce personnage est le &#60;b&#62;&#60;color=white&#62;Capitano&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il semble intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=white&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;.</paragraph>
+				<paragraph>Ce personnage est le &#60;b&#62;&#60;color=#0054ff&#62;Capitano&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il semble intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=#0054ff&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;.</paragraph>
 				<paragraph>Donner une bonne leçon à ce fanfaron t’attirera les faveurs de notre premier public !</paragraph>
-				<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=white&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
+				<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=#0054ff&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>	
@@ -138,7 +138,7 @@
 	<wait time = "1.5"/>
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Bravo, tes frasques ont réussi à nous attirer plus de public ! Il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à &#60;b&#62;&#60;color=white&#62;ses demandes&#60;/color&#62;&#60;/b&#62; pour adapter les &#60;b&#62;&#60;color=white&#62;actions&#60;/color&#62;&#60;/b&#62; de la pièce avec l’&#60;b&#62;&#60;color=white&#62;intention&#60;/color&#62;&#60;/b&#62; qui le satisfera.</paragraph>
+			<paragraph>Bravo, tes frasques ont réussi à nous attirer plus de public ! Il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à &#60;b&#62;&#60;color=#0054ff&#62;ses demandes&#60;/color&#62;&#60;/b&#62; pour adapter les &#60;b&#62;&#60;color=#0054ff&#62;actions&#60;/color&#62;&#60;/b&#62; de la pièce avec l’&#60;b&#62;&#60;color=#0054ff&#62;intention&#60;/color&#62;&#60;/b&#62; qui le satisfera.</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -148,7 +148,7 @@
 		</camera>
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=white&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
+				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -160,7 +160,7 @@
 		</camera>
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>À l’opposé se présente &#60;b&#62;&#60;color=white&#62;Colombina&#60;/color&#62;&#60;/b&#62;, servante hardie et insolente à l’esprit vif.</paragraph>
+				<paragraph>À l’opposé se présente &#60;b&#62;&#60;color=#0054ff&#62;Colombina&#60;/color&#62;&#60;/b&#62;, servante hardie et insolente à l’esprit vif.</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -171,7 +171,7 @@
 		</camera>
 		<souffleur position="milieu">
 				<talk>
-					<paragraph>Maintenant à toi de te débrouiller. Je t’indiquerai seulement les effets de tes &#60;b&#62;&#60;color=white&#62;actions&#60;/color&#62;&#60;/b&#62; et de tes &#60;b&#62;&#60;color=white&#62;intentions de jeu&#60;/color&#62;&#60;/b&#62; sur le public. Vas-y je te regarde !</paragraph>
+					<paragraph>Maintenant à toi de te débrouiller. Je t’indiquerai seulement les effets de tes &#60;b&#62;&#60;color=#0054ff&#62;actions&#60;/color&#62;&#60;/b&#62; et de tes &#60;b&#62;&#60;color=#0054ff&#62;intentions de jeu&#60;/color&#62;&#60;/b&#62; sur le public. Vas-y je te regarde !</paragraph>
 				</talk>
 		</souffleur>
 	</multiple>	
@@ -211,7 +211,7 @@
 		<souffleur position="milieu">
 			<talk>
 				<paragraph>Vite, il faut faire appel à notre botte secrète : un lazzi. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
-				<paragraph>Utilise-le si tu es &#60;b&#62;&#60;color=white&#62;en difficulté&#60;/color&#62;&#60;/b&#62;, mais rappelle toi : tu ne peux en user &#60;b&#62;&#60;color=white&#62;qu’une fois&#60;/color&#62;&#60;/b&#62; et cela aura un &#60;b&#62;&#60;color=white&#62;impact&#60;/color&#62;&#60;/b&#62; sur le &#60;b&#62;&#60;color=white&#62;partage de nos gains. Tire vite&#60;/color&#62;&#60;/b&#62; sur &#60;b&#62;&#60;color=white&#62;cette clochette&#60;/color&#62;&#60;/b&#62; pour appeler un lazzi !”</paragraph>
+				<paragraph>Utilise-le si tu es &#60;b&#62;&#60;color=#0054ff&#62;en difficulté&#60;/color&#62;&#60;/b&#62;, mais rappelle toi : tu ne peux en user &#60;b&#62;&#60;color=#0054ff&#62;qu’une fois&#60;/color&#62;&#60;/b&#62; et cela aura un &#60;b&#62;&#60;color=#0054ff&#62;impact&#60;/color&#62;&#60;/b&#62; sur le &#60;b&#62;&#60;color=#0054ff&#62;partage de nos gains. Tire vite&#60;/color&#62;&#60;/b&#62; sur &#60;b&#62;&#60;color=#0054ff&#62;cette clochette&#60;/color&#62;&#60;/b&#62; pour appeler un lazzi !”</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
