@@ -81,7 +81,7 @@
 		<camera>
 			<deplacement x="20" y="23" z = "27" wait = "false"/>
 		</camera>
-		<souffleur position="milieu">
+		<souffleur position="droite">
 			<talk>
 				<paragraph>N'oublie pas, tu peux à tout moment faire appel à un &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; en sonnant &#60;b&#62;&#60;color=#0054ff&#62;cette cloche&#60;/color&#62;&#60;/b&#62;. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
 			</talk>
@@ -92,7 +92,7 @@
 	    <camera>
 		    <reset wait="false"/>	
 	    </camera>
-	    <souffleur position="milieu">
+	    <souffleur position="millieu">
 	        <talk>
 	             <paragraph>(Enfin, je t'en conjure, occupe-toi d'essayer de nous attirer du public et ne perds pas ton temps à &#60;b&#62;&#60;color=#0054ff&#62;cliquer sur les passants&#60;/color&#62;&#60;/b&#62; en arrière plan, cela ne t'avancera à rien !)</paragraph>
 				

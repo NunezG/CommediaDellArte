@@ -12,13 +12,15 @@ public class SouffleurScript : MonoBehaviour {
 	public GUIManager guimanager;
 	public Sprite avecPanneau, sansPanneau;
 	public Sprite good, bad, bide;
-	public AudioClip sound, _talkSound;
+	public AudioClip sound;
+	public List<AudioClip> _talkSound;
 	[HideInInspector]
 	public bool talking = false;
 
 	private bool end = false;
 	private int index = 0, charIndex = 0;
 	private Animator animator;
+	private AudioSource _audioSource;
 	private IEnumerator coroutineParagraph, coroutineText;
 	private CoroutineParameters param;
 	private List<string> textList;
@@ -31,7 +33,7 @@ public class SouffleurScript : MonoBehaviour {
 		UICursor.color = new Color(1,1,1,0);*/
 		UIPanneau.color = new Color (1, 1, 1, 0);
 		param = new CoroutineParameters (textSpeed);
-        
+		_audioSource = this.GetComponent<AudioSource>();
 	}
 	
 	void Update () {
@@ -97,6 +99,7 @@ public class SouffleurScript : MonoBehaviour {
 	public void saySomething(List<string> text, bool reactiveGUI = true){
 		this.GetComponent<Image>().sprite = sansPanneau;
 		appear ();
+		_audioSource.PlayOneShot (_talkSound[Random.Range(0, _talkSound.Count-1)]);
 		this.GetComponent<AudioSource> ().PlayOneShot (sound);
 		textList = text;
 		end = false;
@@ -300,6 +303,7 @@ public class SouffleurScript : MonoBehaviour {
 					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;
 				}
+				_audioSource.PlayOneShot (_talkSound[Random.Range(0, _talkSound.Count)]);
 				coroutineText = updateParagraph(param);
 				StartCoroutine (coroutineText);
 			}

@@ -55,7 +55,7 @@ public class PausePanel : MonoBehaviour
         if (canvas.enabled)
         {
             gui.active = false;
-            setGoal(goalList[0]);
+            //setGoal(goalList[0]);
         }
         else
         {

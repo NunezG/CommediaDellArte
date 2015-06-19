@@ -17,12 +17,14 @@
 		<sound name="1_entree" wait="false" volume="0.7" />
 	</character>
 	
+	<wait time="1"/>
 	
 	<camera>
 			<deplacement x="-0.6" y="20" z="15.5" wait="false"/>	
 	</camera>
 		
 	<souffleur position="milieu">
+		<sound name="1_salut" wait ="false"/>
 		<talk>
 			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
 			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et ta ruse.</paragraph>
