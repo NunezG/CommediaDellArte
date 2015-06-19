@@ -3,6 +3,7 @@ using System.Collections;
 
 public class endScene : MonoBehaviour {
 
+    public GameObject temp;
     public MovieTexture _end1, _end2;
     public float _duration;
     public string _scene;
@@ -21,6 +22,7 @@ public class endScene : MonoBehaviour {
     public void playEndScene(int scene)
     {
 
+        Camera.main.transform.Rotate(0,180,0);
         MovieTexture movie = null;
         if(scene == 1)
         {

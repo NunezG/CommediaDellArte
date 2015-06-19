@@ -93,6 +93,7 @@ public class ThemePlayerScript : MonoBehaviour {
         if (temp == null)
         {
             Debug.Log("Theme " + name + " was not found.");
+            _audioSource.Stop();
             return ;
         }
         else

@@ -10,7 +10,10 @@
 		</character>
 		<wait time="1"/>
 		<fadetoblack time="1" wait="false"/>
+		 <musique name="aucun" disappearTime="1" waitTime="0" appearTime="0.1"/>
+
 		<wait time="0.5"/>
+
 	
 </event>
 
