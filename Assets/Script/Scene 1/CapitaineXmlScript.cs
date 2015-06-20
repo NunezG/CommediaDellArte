@@ -38,7 +38,7 @@ public class CapitaineXmlScript : MonoBehaviour
     {
 
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle_base") && _animator.GetBool("postIntro"))
+		if ((_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle_base") || _animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle") )&& _animator.GetBool("postIntro"))
         {
             timer += Time.deltaTime;
             if (timer > 2)
