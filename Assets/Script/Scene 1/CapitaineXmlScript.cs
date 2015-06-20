@@ -109,12 +109,13 @@ public class CapitaineXmlScript : MonoBehaviour
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment_2", "capitaine"));
                 this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].desactive();
-                scaryValue += 20;
+                scaryValue += 10;
             }
             else
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_gentiment", "capitaine"));
                 this.GetComponent<RadialMenuScript>().buttonList[1].GetComponent<RadialMenuScript>().buttonList[0].gameObject.GetComponent<SpriteRenderer>().sprite = _touchSprite2;
+                scaryValue += 10;
             }
         }
         else if (eventName == "parler_moqueur")
@@ -124,18 +125,19 @@ public class CapitaineXmlScript : MonoBehaviour
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_moqueur_2", "capitaine"));
                 this.GetComponent<RadialMenuScript>().buttonList[0].GetComponent<RadialMenuScript>().buttonList[2].desactive();
-                scaryValue += 20;
+                scaryValue += 10;
             }
             else
             {
                 yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_moqueur", "capitaine"));
                  this.GetComponent<RadialMenuScript>().buttonList[0].GetComponent<RadialMenuScript>().buttonList[2].gameObject.GetComponent<SpriteRenderer>().sprite = _talkSprite2;
+                 scaryValue += 10;
             }
         }
         else if (eventName == "parler_mechamment")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_mechamment", "capitaine"));
-            scaryValue += 0;
+            scaryValue += 10;
         }
         else if (eventName == "parler_gentiment")
         {
@@ -145,7 +147,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "toucher_mechamment")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_mechamment", "capitaine"));
-            scaryValue += 0;
+            scaryValue += 10;
         }
         else if (eventName == "faire_peur")
         {
