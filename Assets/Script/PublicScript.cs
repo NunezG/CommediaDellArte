@@ -87,6 +87,52 @@ public class PublicScript : MonoBehaviour {
 	}
 
 
+	public void reaction(string soundName, float duration, float volume ){
+	
+		this.GetComponent<SoundController>().playRandomSoundPart(soundName,duration,volume);
+
+		switch (soundName) {
+		case("Rire +1"):
+			StartCoroutine(reactionCoroutine("Rire +1", duration));
+			break;
+		case("Rire +5"):
+			StartCoroutine(reactionCoroutine("Rire +5", duration));
+			break;
+		case("Rire +10"):
+			StartCoroutine(reactionCoroutine("Rire +10", duration));
+			break;
+		case("Boo -1"):
+			StartCoroutine(reactionCoroutine("Boo -1", duration));
+			break;
+		case("Boo -5"):
+			StartCoroutine(reactionCoroutine("Boo -5", duration));
+			break;
+		}
+	}
+
+	IEnumerator reactionCoroutine(string name, float time ){
+		
+
+		for (int i = 0; i < AnimatorList.Count; i++) {
+			AnimatorList[i].SetBool("happy", true);
+			AnimatorList[i].SetTrigger(name);
+		}
+		
+		while (true) {
+			if (time > 0) {
+				time -= Time.deltaTime;
+			}
+			else{
+				for (int i = 0; i < AnimatorList.Count; i++) {
+					AnimatorList[i].SetBool("happy", false);
+				}
+				yield break;
+			}
+			yield return null;
+		}
+	}
+
+
 	public void addValue(float val){
 		value = Mathf.Min( value+val,100);
 		while(value >= EventList[index].value ){
@@ -94,6 +140,7 @@ public class PublicScript : MonoBehaviour {
 				int rand = Random.Range(0, goneSpectator.Count-1);
 				presentSpectator.Insert(0,goneSpectator[rand]);
 				goneSpectator[rand].SetBool("walkAway", false);
+				//goneSpectator[rand].GetComponent<SpectatorEvent>().randomAnimationStart("idle");
 				goneSpectator.RemoveAt(rand);
 				publicSize++;
 			}

@@ -993,9 +993,10 @@ public class GameManager : MonoBehaviour {
         }
         Debug.Log("Emission d'un son :" + soundName + "  avec un volume de :  " + volume + ".");
 
-        SoundController soundC = publicOnScene.GetComponent<SoundController>();
+		//SoundController soundC = publicOnScene.GetComponent<SoundController> ();
+       // soundC.playRandomSoundPart(soundName, duration, volume);
 
-        soundC.playRandomSoundPart(soundName, duration, volume);
+		publicOnScene.reaction (soundName, duration, volume);
 
         if (wait)
             yield return new WaitForSeconds(duration);
