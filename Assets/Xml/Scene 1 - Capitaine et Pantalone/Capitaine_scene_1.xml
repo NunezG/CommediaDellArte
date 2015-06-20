@@ -266,8 +266,10 @@
 			<deplacement x="-16" y="9.3" z="30"/>
 			<deplacement x="-16" y="-2.2" z="0" />
 		</character>	
-	<fadetoblack time="1" wait = "false"/>
-	<wait time="0.5"/>
+		
+	<fadetoblack time="2" wait = "false"/>
+	<wait time="0.7"/>
+	
 	<guiManager active="true"/>
 </event>
 

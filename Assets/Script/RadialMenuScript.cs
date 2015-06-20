@@ -18,13 +18,34 @@ public class RadialMenuScript : MonoBehaviour {
 
 	//private GameObject[] buttonList;
 	private bool show = false;
-
+    private RadialButtonScript button;
 
     void Start () {
 		createRadialMenu ( buttonList);
+        button = this.GetComponent<RadialButtonScript>();
 	}
 	
-	void Update () {}
+	void Update () {
+        if (button != null && buttonList.Length > 0)
+        {
+            bool temp = true;
+            for (int i = 0; i < buttonList.Length; i++)
+            {
+                if (buttonList[i].desactiveForever != true)
+                {
+                    temp = false;
+                    break;
+                }
+            }
+
+            if (temp == true)
+            {
+                button.active = false;
+                button.desactiveForever = true;
+            }
+
+        }
+    }
 
 	public void openMenu(){
 		for (int i = 0; i < buttonList.Length; i ++) {

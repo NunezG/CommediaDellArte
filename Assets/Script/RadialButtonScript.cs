@@ -21,7 +21,7 @@ public class RadialButtonScript :  MonoBehaviour {
 	//permet de gerer la position de l'objet
 	[HideInInspector] public Vector3 positionOffset, parentOldPos;
 
-    private bool desactiveForever = false;
+    public bool desactiveForever = false;
 	private Collider2D _collider;
 	private SpriteRenderer _spriteRenderer;
 

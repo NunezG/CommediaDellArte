@@ -167,7 +167,7 @@ public class CapitaineXmlScript : MonoBehaviour
 
         if (scaryValue >= 100)
         {
-			GetComponent<Animator>().SetBool("postIntro", false);
+			GetComponentInChildren<Animator>().SetBool("postIntro", false);
             yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine"));
             goAway();
         }

@@ -11,6 +11,10 @@ public class SoundController : MonoBehaviour {
     private AudioSource _audioSource;
     private float initialVolumeValue;
 
+
+    private IEnumerator playSoundCoroutine;
+
+
 	// Use this for initialization
 	void Start () {
         _audioSource = this.GetComponent<AudioSource>();
@@ -62,6 +66,7 @@ public class SoundController : MonoBehaviour {
     {
         AudioClip temp = null;
 
+
         for (int i = 0; i < _clipList.Count; i++)
         {
             if (name == _clipList[i].name)
@@ -84,8 +89,12 @@ public class SoundController : MonoBehaviour {
            
         }
 
+        if (playSoundCoroutine !=null)
+            StopCoroutine(playSoundCoroutine);
+
         float startTime = Random.Range(0, temp.length - duration);
-        StartCoroutine(playPart(temp, startTime, duration, volume));
+        playSoundCoroutine = playPart(temp, startTime, duration, volume);
+        StartCoroutine(playSoundCoroutine);
 
         StartCoroutine(resetVolume(duration));
         return temp.length;

@@ -135,6 +135,8 @@ public class GUIManager : MonoBehaviour {
         }
         else
         {
+            if (firstObject != null)
+                 firstObject.overlapExitEvent();
             cursor.setInteractionAnim(false);
             cursor.wait();
         }

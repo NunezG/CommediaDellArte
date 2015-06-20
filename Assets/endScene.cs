@@ -21,7 +21,7 @@ public class endScene : MonoBehaviour {
 
     public void playEndScene(int scene)
     {
-
+        ThemePlayerScript.instance.GetComponent<AudioSource>().Stop();
         Camera.main.transform.Rotate(0,180,0);
         MovieTexture movie = null;
         if(scene == 1)

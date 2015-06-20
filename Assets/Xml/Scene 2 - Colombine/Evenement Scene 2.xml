@@ -6,7 +6,7 @@
 	<character name="Arlequin">
 		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
 	</character>
-    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1" repeat="-1"/>
+    <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1" repeat="-1" reset="true"/>
 	
 
 	<!-- Arrivée et placement d'Arlequin -->
@@ -38,8 +38,7 @@
 	
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse Colombina à trouver un déguisement pour fuir cet odieux personnage.</paragraph>
-			
+				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse Colombina à trouver un déguisement pour fuir cet odieux personnage.</paragraph>		
 			</talk>
 		</souffleur>
 

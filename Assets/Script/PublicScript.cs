@@ -15,8 +15,8 @@ public class PublicScript : MonoBehaviour {
 
 	private float time;
 	private int index = 0,publicSize = 0;
+    private IEnumerator reactionCo;
 	private AudioSource audioSource;
-
 	private List<Animator> AnimatorList, presentSpectator, goneSpectator;
 
     private static PublicScript _instance;
@@ -91,22 +91,35 @@ public class PublicScript : MonoBehaviour {
 	
 		this.GetComponent<SoundController>().playRandomSoundPart(soundName,duration,volume);
 
+        if(reactionCo != null){
+            Debug.Log("Reset");
+            for (int i = 0; i < AnimatorList.Count; i++) {
+					AnimatorList[i].SetBool("happy", false);
+				}
+            StopCoroutine(reactionCo);
+        }
+
 		switch (soundName) {
-		case("Rire +1"):
-			StartCoroutine(reactionCoroutine("Rire +1", duration));
-			break;
-		case("Rire +5"):
-			StartCoroutine(reactionCoroutine("Rire +5", duration));
-			break;
-		case("Rire +10"):
-			StartCoroutine(reactionCoroutine("Rire +10", duration));
-			break;
-		case("Boo -1"):
-			StartCoroutine(reactionCoroutine("Boo -1", duration));
-			break;
-		case("Boo -5"):
-			StartCoroutine(reactionCoroutine("Boo -5", duration));
-			break;
+		    case("Rire +1"):
+			    reactionCo = reactionCoroutine("Rire +1", duration);
+                StartCoroutine(reactionCo);
+			    break;
+		    case("Rire +5"):
+			    reactionCo = reactionCoroutine("Rire +5", duration);
+                StartCoroutine(reactionCo);
+			    break;
+		    case("Rire +10"):
+			     reactionCo = reactionCoroutine("Rire +10", duration);
+                 StartCoroutine(reactionCo);
+			    break;
+		    case("Boo -1"):
+			     reactionCo = reactionCoroutine("Boo -1", duration);
+                 StartCoroutine(reactionCo);
+			    break;
+		    case("Boo -5"):
+			     reactionCo = reactionCoroutine("Boo -5", duration);
+                 StartCoroutine(reactionCo);
+			    break;
 		}
 	}
 
@@ -115,7 +128,12 @@ public class PublicScript : MonoBehaviour {
 
 		for (int i = 0; i < AnimatorList.Count; i++) {
 			AnimatorList[i].SetBool("happy", true);
-			AnimatorList[i].SetTrigger(name);
+
+            AnimatorList[i].SetTrigger(name);
+
+            if (AnimatorList[i].GetBool("walkAway") == false)
+                AnimatorList[i].CrossFade(name, 0.5f, 0, ((float)Random.Range(0, 100)) / 100);          
+       
 		}
 		
 		while (true) {
