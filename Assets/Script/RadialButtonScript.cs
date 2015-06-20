@@ -44,6 +44,10 @@ public class RadialButtonScript :  MonoBehaviour {
 			if(active){
 				_spriteRenderer.color = new Color(1,1,1,Mathf.Lerp (_spriteRenderer.color.a, 1, fadeSpeed * Time.deltaTime));
 			}
+            else if (desactiveForever)
+            {
+                _spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f, Mathf.Lerp(_spriteRenderer.color.a, 1, fadeSpeed * Time.deltaTime));
+            }
 			else{
 				_spriteRenderer.color = new Color(0.5f,0.5f,0.5f,Mathf.Lerp (_spriteRenderer.color.a, 1, fadeSpeed * Time.deltaTime));
 			}
@@ -56,9 +60,14 @@ public class RadialButtonScript :  MonoBehaviour {
 			if(active){
 				_spriteRenderer.color = new Color(1,1,1,Mathf.Lerp (_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
 			}
-			else{
+            else if (desactiveForever)
+            {
+                _spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f, Mathf.Lerp(_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
+            }
+            else 
+            {
                 _spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, Mathf.Lerp(_spriteRenderer.color.a, 0, fadeSpeed * Time.deltaTime));
-			}
+            }
 
 			//gestion du mouvement lors de la disparition
 			this.transform.position = Vector3.Lerp( this.transform.position, parentObject.transform.position ,  moveSpeed *Time.deltaTime);
