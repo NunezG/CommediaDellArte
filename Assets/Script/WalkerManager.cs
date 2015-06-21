@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class WalkerManager : MonoBehaviour {
 
+    public GUIManager _GUImanager;
     public static int currentWalker = 0;
 
     public WalkerScript walkerPrefab;
@@ -40,7 +41,7 @@ public class WalkerManager : MonoBehaviour {
             currentWalker++;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _GUImanager.active == true)
         {
             
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1000)) - Camera.main.transform.position);
