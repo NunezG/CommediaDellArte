@@ -138,7 +138,6 @@
 <event id="fuite">
 	<guiManager active="false"/>	
 		<character name="Capitaine">
-		    <sound name="19_fuit_tuto" volume="0.7" />
 			<deplacement x="-16.7" y="-2.2" z="23.32"/>
 			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
 		</character>	
