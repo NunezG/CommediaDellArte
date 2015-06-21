@@ -11,7 +11,6 @@
 	    <character name="Arlequin">
 	        <sound name="8_poser_question" volume="0.7"/>
 		    <deplacement x="-5.2" y="6.8" z="30"/>
-		    <rotation x="0" y="180" z="0"/>
 		    <animation name="question"/>
 	    </character>
 	    <character name="Colombine">
@@ -36,7 +35,7 @@
 	
 	<souffleur position="milieu">
 			<talk>
-				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse Colombina à trouver un déguisement pour fuir cet odieux personnage.</paragraph>
+				<paragraph>Malheur ! Le Capitano a réussi à convaincre le cupide Pantalone de lui céder la main de sa fille. Aide la malicieuse &#60;b&#62;&#60;color=#0054ff&#62;Colombina&#60;/color&#62;&#60;/b&#62; à trouver un &#60;b&#62;&#60;color=#0054ff&#62;déguisement&#60;/color&#62;&#60;/b&#62; pour fuir cet odieux personnage.</paragraph>
 			
 			</talk>
 		</souffleur>
