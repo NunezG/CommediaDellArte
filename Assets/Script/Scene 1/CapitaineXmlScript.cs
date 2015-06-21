@@ -137,7 +137,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "parler_mechamment")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("parler_mechamment", "capitaine"));
-            scaryValue += 10;
+            scaryValue += 20;
         }
         else if (eventName == "parler_gentiment")
         {
@@ -147,7 +147,7 @@ public class CapitaineXmlScript : MonoBehaviour
         else if (eventName == "toucher_mechamment")
         {
             yield return StartCoroutine(XmlManager.launchEventCoroutine("toucher_mechamment", "capitaine"));
-            scaryValue += 10;
+            scaryValue += 20;
         }
         else if (eventName == "faire_peur")
         {

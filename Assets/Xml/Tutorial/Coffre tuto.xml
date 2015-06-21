@@ -23,8 +23,8 @@
 	</multiple>
 		
 	<public>
-		<addvalue value="20"/>
 		<sound name="Rire +10" duration="3" volume="1"/>
+		<addvalue value="20"/>
 	</public>
 	
 	<character name="Arlequin">
@@ -54,8 +54,8 @@
 	</multiple>
 	
 	<public>
-		<addvalue value="10"/>
 		<sound name="Rire +1" duration="2" volume="1"/>
+		<addvalue value="10"/>
 	</public>
 	
 	<souffleur position="milieu">
@@ -258,8 +258,8 @@
 		<wait time="0.5"/>
 		
 		<public>
-			<addvalue value="35"/>
 			<sound name="Rire +10" duration="5" volume="1"/>
+			<addvalue value="35"/>
 		</public>
 	
 	

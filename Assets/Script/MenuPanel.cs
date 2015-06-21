@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour {
 
+    public fadeAtStart _fadeObject;
+    public Text loadingText;
     public Animator anim;
     public string scene;
     public AudioClip _transitionSound;
@@ -10,7 +13,7 @@ public class MenuPanel : MonoBehaviour {
 
     public GameObject loadingPercentage;
     private int percentage = 0;
-
+    private bool done = false;
 	// Use this for initialization
 	void Start () {
 
@@ -26,7 +29,11 @@ public class MenuPanel : MonoBehaviour {
     public void startGame()
     {  
        // StartCoroutine("startScene");
-        StartCoroutine(displayLoadingScreen(scene));
+        if (!done)
+        {
+            StartCoroutine(displayLoadingScreen(scene));
+            done = true;
+        }
     }
 
     IEnumerator displayLoadingScreen(string levelName)
@@ -40,7 +47,8 @@ public class MenuPanel : MonoBehaviour {
         //op.allowSceneActivation = false;
 
         //tant que le chargement de la scene n'est pas finis
-        transform.FindChild("MenuButtons").gameObject.SetActive(false);
+        //transform.FindChild("MenuButtons").gameObject.SetActive(false);
+
         while (!op.isDone)
         {
             //on recupere la progression du la tache
@@ -49,9 +57,10 @@ public class MenuPanel : MonoBehaviour {
 
             yield return null;
         }
+        Destroy(loadingText.gameObject);
         //transform.FindChild("MenuButtons").gameObject.SetActive(false);
 
-
+        this.GetComponent<Canvas>().worldCamera = Camera.main;
         anim.SetTrigger("open");
 
         while (anim.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("open"))
@@ -61,16 +70,64 @@ public class MenuPanel : MonoBehaviour {
         }
 
         this.GetComponent<AudioSource>().PlayOneShot(_transitionSound);
+
+       //disparition progressive de l'UI
+
+       StartCoroutine( fade(_fadeObject, 0, 0, 1f, 2));
+       StartCoroutine(  fade(_fadeObject, 0, 1, 2));
+       StartCoroutine(  fade(_fadeObject, 0, 2, 2));
+
+       StartCoroutine(  fade(_fadeObject, 1, 0, 2));
+       StartCoroutine( fade(_fadeObject, 1, 1, 2));
+
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+5);
+
         Destroy(this.gameObject.GetComponent<Canvas>());
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+1);
-
         Destroy(this.gameObject);
         Destroy(transform.parent.gameObject);
 
         GetComponent<Canvas>().worldCamera = Camera.main;
         loadingPercentage.SetActive(false);
     }
+
+
+    public IEnumerator fade(fadeAtStart obj, int type, int index, float fadeSpeed, float delay = 0){
+
+
+        yield return new WaitForSeconds(delay);
+
+        if (type == 0)
+        {
+
+            while (obj.imageList[index].color.a > 0.1)
+            {
+                Debug.Log("doing");
+                obj.imageList[index].color = new Color(obj.imageList[index].color.r, obj.imageList[index].color.g, obj.imageList[index].color.b, Mathf.Lerp(obj.imageList[index].color.a, 0, fadeSpeed * Time.deltaTime));
+                yield return null;
+            }
+
+            obj.imageList[index].color = new Color(obj.imageList[index].color.r, obj.imageList[index].color.g, obj.imageList[index].color.b, 0);
+
+            yield break;
+        }
+        else if (type == 1)
+        {
+            while (obj.textList[index].color.a > 0.1)
+            {
+                obj.textList[index].color = new Color(obj.textList[index].color.r, obj.textList[index].color.g, obj.textList[index].color.b, Mathf.Lerp(obj.textList[index].color.a, 0, fadeSpeed * Time.deltaTime));
+                yield return null;
+            }
+
+            obj.textList[index].color = new Color(obj.textList[index].color.r, obj.textList[index].color.g, obj.textList[index].color.b, 0);
+
+            yield break;
+        }
+        yield break;
+}
+
+
+
+
 
 
     IEnumerator startScene()

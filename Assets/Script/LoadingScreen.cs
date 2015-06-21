@@ -27,13 +27,17 @@ public class LoadingScreen : MonoBehaviour {
     {
         if (_instance == null)
         {
+            Debug.Log("instance is null");
             _instance = this;
             DontDestroyOnLoad(this);
         }
         else
         {
             if (this != _instance)
-                Destroy(_instance.gameObject);
+            {
+                Debug.Log("instance is already defined");
+                StartCoroutine(disappear(_instance.gameObject));
+            }
             _instance = this;
         }
     }
@@ -52,6 +56,26 @@ public class LoadingScreen : MonoBehaviour {
         loadingScreen.enabled = true;
 		StartCoroutine (displayLoadingScreen (levelName));
 	}
+
+    IEnumerator disappear(GameObject obj) {
+
+        float fadeSpeed = 1.0f;
+        Image temp = obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Image>();
+        obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Text>().text = " ";
+        obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentsInChildren<Text>()[1].text = " ";
+
+        while (temp.color.a > 0.1)
+        {
+            Debug.Log("disappearing");
+            temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, Mathf.Lerp(temp.color.a, 0, fadeSpeed * Time.deltaTime));
+            yield return null;
+        }
+        
+        temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, 0);
+        Destroy(obj.GetComponent<LoadingScreen>().loadingScreen.gameObject);
+        Destroy(obj);
+    }
+
 
 	 IEnumerator displayLoadingScreen(string levelName){
 

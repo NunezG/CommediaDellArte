@@ -21,8 +21,8 @@
 			<animation name="peur"/>
 	</character>
 	<public>
-		<addvalue value="10"/>
 		<sound name="Rire +1" duration="2" volume="1"/>
+		<addvalue value="10"/>
 	</public>
 	</multiple>
 	
@@ -90,8 +90,8 @@
 			<animation name="peur"/>		
 	</character>
 	<public>
+		<sound name="Rire +1" duration="2" volume="1"/>	
 		<addvalue value="10"/>
-		<sound name="Rire +1" duration="2" volume="1"/>
 	</public>
 	</multiple>
 	
