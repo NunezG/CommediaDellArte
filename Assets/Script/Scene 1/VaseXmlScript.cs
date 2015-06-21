@@ -17,10 +17,37 @@ public class VaseXmlScript : MonoBehaviour {
 
     public void VaseEvent(string eventName)
     {
-        if(num == 0)
-             XmlManager.launchEvent(eventName, "vase0");
-        else if (num == 1)
-            XmlManager.launchEvent(eventName, "vase1");
 
+        StartCoroutine(vaseCoroutine(eventName, num));
+
+
+    }
+
+
+    public IEnumerator vaseCoroutine(string eventName, int vaseNum)
+    {
+        string target = null;
+
+        if (num == 0)
+            target = "vase0";
+        else if (num == 1)
+            target = "vase1";
+
+
+        if (eventName == "briser")
+        {
+            yield return StartCoroutine(XmlManager.launchEventCoroutine("briser", target));
+            CapitaineXmlScript.scaryValue += 20;
+            if (CapitaineXmlScript.scaryValue >= 100)
+            {
+                yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine"));
+                CapitaineXmlScript.goAway();
+            }
+        }
+        else 
+        {
+            yield return StartCoroutine(XmlManager.launchEventCoroutine(eventName, target));   
+        }
+        yield break;
     }
 }

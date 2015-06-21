@@ -187,7 +187,7 @@
 	
 		<public>
 			<sound name="Boo -1" duration="3" volume="1"/>
-			<subvalue value ="10"/>
+			<subvalue value ="20"/>
 		</public>
 		
 		<character name="Arlequin">
