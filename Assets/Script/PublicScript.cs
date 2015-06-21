@@ -87,6 +87,21 @@ public class PublicScript : MonoBehaviour {
 	}
 
 
+
+    public void reset()
+    {
+        audioSource.Stop();
+        if (reactionCo != null)
+        {
+            Debug.Log("Reset");
+            for (int i = 0; i < AnimatorList.Count; i++)
+            {
+                AnimatorList[i].SetBool("happy", false);
+            }
+            StopCoroutine(reactionCo);
+        }
+    }
+
 	public void reaction(string soundName, float duration, float volume ){
 	
 		this.GetComponent<SoundController>().playRandomSoundPart(soundName,duration,volume);

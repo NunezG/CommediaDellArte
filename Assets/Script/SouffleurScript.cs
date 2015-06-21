@@ -99,7 +99,7 @@ public class SouffleurScript : MonoBehaviour {
 	public void saySomething(List<string> text, bool reactiveGUI = true){
 		this.GetComponent<Image>().sprite = sansPanneau;
 		appear ();
-		_audioSource.PlayOneShot (_talkSound[Random.Range(0, _talkSound.Count-1)]);
+		_audioSource.PlayOneShot (_talkSound[Random.Range(0, _talkSound.Count)]);
 		this.GetComponent<AudioSource> ().PlayOneShot (sound);
 		textList = text;
 		end = false;

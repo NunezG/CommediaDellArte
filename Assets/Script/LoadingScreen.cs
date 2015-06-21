@@ -61,10 +61,11 @@ public class LoadingScreen : MonoBehaviour {
 
         float fadeSpeed = 1.0f;
         Image temp = obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Image>();
+        GameObject canvas = obj.GetComponent<LoadingScreen>().loadingScreen.gameObject;
         obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Text>().text = " ";
         obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentsInChildren<Text>()[1].text = " ";
 
-        while (temp.color.a > 0.1)
+        while (temp.color.a > 0.1f)
         {
             Debug.Log("disappearing");
             temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, Mathf.Lerp(temp.color.a, 0, fadeSpeed * Time.deltaTime));
@@ -72,7 +73,7 @@ public class LoadingScreen : MonoBehaviour {
         }
         
         temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, 0);
-        Destroy(obj.GetComponent<LoadingScreen>().loadingScreen.gameObject);
+        Destroy(canvas);
         Destroy(obj);
     }
 

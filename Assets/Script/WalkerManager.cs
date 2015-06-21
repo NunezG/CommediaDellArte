@@ -99,10 +99,15 @@ public class WalkerManager : MonoBehaviour {
     public void initializeWalker(int pathIndex, int spriteIndex)
     {
         WalkerScript walker = Instantiate(walkerPrefab, Vector3.zero, Quaternion.identity) as WalkerScript;
+        if(walker != null)
         walker.transform.parent = this.transform;
+        if (walker != null)
         walker.Initialisation();
+        if (walker != null)
         walker.setSprite(_spriteArray[spriteIndex]);
+        if (walker != null)
         walker.startWalking(_pathArray[pathIndex]);
+        if (walker != null)
         walkerList.Add(walker);
     }
 

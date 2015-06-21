@@ -38,8 +38,8 @@
 	</character>
 	
 	<character name="Capitaine">	
-			<animation name="idle" wait="false"/>
-	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+			 <sound name="3_peur_1" wait="false" volume="0.7"/>	
+	      	<animation name="peur"/>
 	</character>
 	
 	<public>

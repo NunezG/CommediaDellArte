@@ -3,7 +3,8 @@ using System.Collections;
 
 public class endScene : MonoBehaviour {
 
-    public GameObject temp;
+    public GUIManager gui;
+    public GameObject credit, cursor;
     public MovieTexture _end1, _end2;
     public float _duration;
     public string _scene;
@@ -22,6 +23,7 @@ public class endScene : MonoBehaviour {
     public void playEndScene(int scene)
     {
         ThemePlayerScript.instance.GetComponent<AudioSource>().Stop();
+        ThemePlayerScript.instance.resetList();
         Camera.main.transform.Rotate(0,180,0);
         MovieTexture movie = null;
         if(scene == 1)
@@ -43,6 +45,14 @@ public class endScene : MonoBehaviour {
     IEnumerator waitBeforeLoad()
     {
         yield return new WaitForSeconds(_duration);
-        LoadingScreen.instance.loadLevel(_scene);
+        ThemePlayerScript.instance.addMusic("Commedia dell'Arte Theme Principal", -1);
+        Destroy(GameObject.Find("MANAGER"));
+        //Destroy(GameObject.Find("CANVAS"));
+        Destroy(GameObject.Find("PUBLIC"));
+        Destroy(GameObject.Find("SCENE"));
+        cursor.SetActive(true);
+        credit.SetActive(true);
+        credit.GetComponent<CreditScript>().appear();
+        //LoadingScreen.instance.loadLevel(_scene);
     }
 }

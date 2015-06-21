@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour {
 
+    public GameObject menuCanvas, creditCanvas;
+
     public fadeAtStart _fadeObject;
     public Text loadingText;
+    public Image cursor;
     public Animator anim;
     public string scene;
     public AudioClip _transitionSound;
@@ -58,6 +61,7 @@ public class MenuPanel : MonoBehaviour {
             yield return null;
         }
         Destroy(loadingText.gameObject);
+        Destroy(cursor.gameObject);
         //transform.FindChild("MenuButtons").gameObject.SetActive(false);
 
         this.GetComponent<Canvas>().worldCamera = Camera.main;
@@ -149,13 +153,10 @@ public class MenuPanel : MonoBehaviour {
        Destroy(transform.parent.gameObject);
     }
 
-    public void restoreGame()
-    {
-        StartCoroutine("startScene");
-    }
-
     public void credits()
     {
-        StartCoroutine("startScene");
+        menuCanvas.gameObject.SetActive(false);
+        creditCanvas.SetActive(true);
+        creditCanvas.GetComponent<CreditScript>().appear();
     }
 }

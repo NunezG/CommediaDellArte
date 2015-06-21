@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 
         //recherche du public
         publicOnScene = GameObject.FindObjectOfType<PublicScript>();
+        publicOnScene.reset();
 
         eventList = loadEvent(GameAsset);
         StartCoroutine(startEventCoroutine("Introduction", eventList, GameAsset));
