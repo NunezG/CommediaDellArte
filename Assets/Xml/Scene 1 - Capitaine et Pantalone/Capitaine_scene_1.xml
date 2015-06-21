@@ -260,10 +260,11 @@
 
 
 <!-- Fuite du capitaine a la fin de la scene -->
+
 <event id="fuite">
 	<guiManager active="false"/>
 		<character name="Capitaine">
-			<sound name="4_peur_2" wait="false" volume="1"/>	
+			<!--<sound name="4_peur_2" wait="false" volume="1"/>-->	
 			<animation name="peur"/>
 			<sound name="11_fuit" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>
