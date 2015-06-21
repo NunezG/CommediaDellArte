@@ -110,7 +110,7 @@
 	
 	<multiple>
 	    <character name="Arlequin">
-			<sound name="Toucher gentiment" wait="false" volume="1"/>
+			<sound name="Toucher gentilment" wait="false" volume="1"/>
 		    <animation name="poke"/>
 	    </character>
 	    <character name="Capitaine">
@@ -138,7 +138,7 @@
 	
 	<multiple>
 	    <character name="Arlequin">
-			<sound name="8_se_fait_toucher_2" wait="false" volume="1"/>
+			<sound name="Toucher gentilment 2" wait="false" volume="1"/>
 		    <animation name="poke_fort"/>
 	    </character>
 	
