@@ -58,7 +58,7 @@
 	
 	<character name="Arlequin">
 		<rotation x="0" y="180" z="0"/>
-		<deplacement x="-8" y="6.7" z="31"/>
+		<deplacement x="-13" y="6.7" z="31"/>
 		<animation name="casse_vase" wait ="false"/>
 	</character>
 	

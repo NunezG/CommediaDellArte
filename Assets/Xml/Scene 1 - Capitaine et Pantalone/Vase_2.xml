@@ -60,7 +60,7 @@
 	<wait time="0.4"/>
 	
 	<character name="Arlequin">
-		<deplacement x="-8" y="6.7" z="31"/>
+		<deplacement x="-13" y="6.7" z="31"/>
 		<animation name="casse_vase" wait ="false"/>
 	</character>
 	

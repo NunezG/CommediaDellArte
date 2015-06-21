@@ -40,6 +40,7 @@ public class MenuPanel : MonoBehaviour {
         //op.allowSceneActivation = false;
 
         //tant que le chargement de la scene n'est pas finis
+        transform.FindChild("MenuButtons").gameObject.SetActive(false);
         while (!op.isDone)
         {
             //on recupere la progression du la tache
@@ -48,11 +49,10 @@ public class MenuPanel : MonoBehaviour {
 
             yield return null;
         }
-        transform.FindChild("MenuButtons").gameObject.SetActive(false);
+        //transform.FindChild("MenuButtons").gameObject.SetActive(false);
 
 
         anim.SetTrigger("open");
-      
 
         while (anim.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("open"))
         {
