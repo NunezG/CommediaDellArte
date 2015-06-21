@@ -61,6 +61,7 @@
 		<animation name="moquer"/>
 	</character>
 	
+	<multiple>
 	<character name="Capitaine">
         <sound name="3_peur_1" wait="false" volume="0.7"/>	
 		<animation name="se_vexe"/>
@@ -70,7 +71,7 @@
 		<sound name="Rire +5" duration="3" volume="1"/>
 		<addvalue value ="15"/>
 	</public>
-
+    </multiple>
 	<guiManager active="true"/>
 </event>
 
@@ -84,6 +85,7 @@
 		<animation name="moquer_fort"/>
 	</character>
 	
+	<multiple>
 	<character name="Capitaine">
         <sound name="4_peur_2" wait="false" volume="0.7"/>	
 		<animation name="se_vexe"/>
@@ -93,7 +95,7 @@
 		<sound name="Rire +5" duration="5" volume="1"/>
 		<addvalue value ="15"/>
 	</public>
-
+    </multiple>
 	<guiManager active="true"/>
 </event>
 
@@ -167,6 +169,7 @@
 		<animation name="frappe"/>
 	</character>
 	
+	<multiple>
 	<character name="Capitaine">
             <sound name="3_peur_1" wait="false" volume="0.7"/>	
 	      	<animation name="peur"/>
@@ -176,7 +179,7 @@
 	    <sound name="Rire +1" duration="3" volume="1"/>
 		<addvalue value ="10"/>
 	</public>
-
+    </multiple>
 	<guiManager active="true"/>
 </event>
 
@@ -261,7 +264,7 @@
 	<guiManager active="false"/>
 		<character name="Capitaine">
 			<sound name="4_peur_2" wait="false" volume="1"/>	
-			<animation name="peur" />
+			<animation name="peur"/>
 			<sound name="11_fuit" wait="false" volume="0.7"/>
 			<deplacement x="-16" y="9.3" z="30"/>
 			<deplacement x="-16" y="-2.2" z="0" />
