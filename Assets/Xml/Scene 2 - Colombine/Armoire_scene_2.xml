@@ -10,7 +10,6 @@
 		<character name="Arlequin">
 			<deplacement x="-10" y="6.7" z="34.4"/>
 		</character>
-		<wait time="1"/>
 		<fadetoblack time="1" wait="false"/>
 		<wait time="0.5"/>
 	

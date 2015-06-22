@@ -14,7 +14,7 @@ public class CapitaineXmlScript : MonoBehaviour
 
     private int _touchCount = 0, _talkCount = 0, _clipIndex = 0;
 	private SoundController _soundController;
-	private static Animator _animator;
+	private static Animator _animator = null;
 	private static AudioSource _audioSource;
 	private static IEnumerator resetCoroutine;
 	private static CapitaineXmlScript _instance;
@@ -38,7 +38,7 @@ public class CapitaineXmlScript : MonoBehaviour
     {
 
 
-		if ((_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle_base") || _animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle") )&& _animator.GetBool("postIntro"))
+        if (_animator != null && (_animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle_base") || _animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("idle")) && _animator.GetBool("postIntro"))
         {
             timer += Time.deltaTime;
             if (timer > 2)

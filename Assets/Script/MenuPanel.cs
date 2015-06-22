@@ -91,7 +91,7 @@ public class MenuPanel : MonoBehaviour {
         Destroy(transform.parent.gameObject);
 
         GetComponent<Canvas>().worldCamera = Camera.main;
-        loadingPercentage.SetActive(false);
+        //loadingPercentage.SetActive(false);
     }
 
 
@@ -104,8 +104,7 @@ public class MenuPanel : MonoBehaviour {
         {
 
             while (obj.imageList[index].color.a > 0.1)
-            {
-                Debug.Log("doing");
+            {   
                 obj.imageList[index].color = new Color(obj.imageList[index].color.r, obj.imageList[index].color.g, obj.imageList[index].color.b, Mathf.Lerp(obj.imageList[index].color.a, 0, fadeSpeed * Time.deltaTime));
                 yield return null;
             }

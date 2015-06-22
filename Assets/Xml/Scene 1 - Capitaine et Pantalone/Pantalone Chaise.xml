@@ -252,7 +252,7 @@
 		</camera>
 		
 		<wait time="2"/>
-		<musique name="Berceuse" disappearTime="1" waitTime="0" appearTime="0.1" reset="true"/>
+		<musique name="Berceuse" disappearTime="0" waitTime="0" appearTime="0.1" reset="true"/>
 		
 		<character name="Arlequin">
 	        <rotation x="0" y="180" z="0"/>

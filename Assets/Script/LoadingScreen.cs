@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 public class LoadingScreen : MonoBehaviour {
 
+    
 	public Canvas loadingScreen;
 	public Text loadingPercentage;
+
 	private int percentage = 0;
 
     private static LoadingScreen _instance;
@@ -25,21 +27,22 @@ public class LoadingScreen : MonoBehaviour {
 
     void Awake()
     {
-        if (_instance == null)
-        {
-            Debug.Log("instance is null");
-            _instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            if (this != _instance)
+            if (_instance == null)
             {
-                Debug.Log("instance is already defined");
-                StartCoroutine(disappear(_instance.gameObject));
+                Debug.Log("instance is null");
+                _instance = this;
+                DontDestroyOnLoad(this);
             }
-            _instance = this;
-        }
+            else
+            {
+                if (this != _instance)
+                {
+                   // Destroy(_instance);
+                    Debug.Log("instance is already defined");
+                    //StartCoroutine(disappear(_instance.gameObject));
+                    _instance = this;
+                }
+            }
     }
 
 	// Use this for initialization
@@ -60,19 +63,26 @@ public class LoadingScreen : MonoBehaviour {
     IEnumerator disappear(GameObject obj) {
 
         float fadeSpeed = 1.0f;
-        Image temp = obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Image>();
-        GameObject canvas = obj.GetComponent<LoadingScreen>().loadingScreen.gameObject;
-        obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Text>().text = " ";
-        obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentsInChildren<Text>()[1].text = " ";
+        Image temp = null;
+        GameObject canvas = null;
 
-        while (temp.color.a > 0.1f)
-        {
-            Debug.Log("disappearing");
-            temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, Mathf.Lerp(temp.color.a, 0, fadeSpeed * Time.deltaTime));
-            yield return null;
+        if (obj.GetComponent<LoadingScreen>().loadingScreen != null)
+        { 
+            temp = obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Image>();
+            canvas = obj.GetComponent<LoadingScreen>().loadingScreen.gameObject;
+            obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentInChildren<Text>().text = " ";
+            obj.GetComponent<LoadingScreen>().loadingScreen.GetComponentsInChildren<Text>()[1].text = " ";
         }
-        
-        temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, 0);
+
+        if (temp != null)
+        {
+            while (temp.color.a > 0.1f)
+            {
+                temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, Mathf.Lerp(temp.color.a, 0, fadeSpeed * Time.deltaTime));
+                yield return null;
+            }
+            temp.color = new Color(temp.color.r, temp.color.g, temp.color.b, 0);
+        }
         Destroy(canvas);
         Destroy(obj);
     }
@@ -94,7 +104,8 @@ public class LoadingScreen : MonoBehaviour {
 			loadingPercentage.GetComponent<UnityEngine.UI.Text> ().text = percentage.ToString() + "%";
 			yield return null;
 		}
-
+        StartCoroutine(disappear(this.gameObject));
+       // Destroy(this);
 	}
 
 	 

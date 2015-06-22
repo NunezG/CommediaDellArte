@@ -8,7 +8,7 @@
 		        <rotation x="0" y="180" z="0"/>	
 				<deplacement x="-7.34" y="6.7" z="34.4"/>
                 <sound name="Se cache" wait="false" volume="1" />			
-				<animation name="se_cacher" wait="false" volume="1" />
+				<animation name="se_cacher" volume="1" />
 		</character>	
 	<guiManager active="true"/>
 </event>
