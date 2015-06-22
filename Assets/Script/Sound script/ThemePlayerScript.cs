@@ -14,6 +14,8 @@ public class ThemePlayerScript : MonoBehaviour {
     private float timer = 0;
 
     private static ThemePlayerScript _instance;
+    private IEnumerator themeChange;
+
 
     public static ThemePlayerScript instance
     {
@@ -51,12 +53,17 @@ public class ThemePlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (_playlist.Count == 0)
+        {
+            timer = 0;
+        }
 
         timer -= Time.deltaTime;
 
         if (timer <= 0 && _playlist.Count > 0)
         {
-           smoothThemeChange(_playlist[0]._audioClip.name, _playlist[0].disappearTime, _playlist[0].waitTime, _playlist[0].appearTime);
+            themeChange = smoothThemeChangeCoroutine(_playlist[0]._audioClip.name, _playlist[0].disappearTime, _playlist[0].waitTime, _playlist[0].appearTime);
+           StartCoroutine(themeChange);
            float temp = 0;
            if (_playlist.Count > 1)
                temp = _playlist[1].disappearTime;
@@ -77,6 +84,8 @@ public class ThemePlayerScript : MonoBehaviour {
 	public void resetList(){
 		_playlist.Clear ();
         timer = 0;
+        if(themeChange != null)
+         StopCoroutine(themeChange);
 	}
 
 	public void addMusic(string name, int repeatCount){
