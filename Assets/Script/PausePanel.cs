@@ -54,12 +54,12 @@ public class PausePanel : MonoBehaviour
 
         if (canvas.enabled)
         {
-            gui.active = false;
+            //gui.active = false;
             //setGoal(goalList[0]);
         }
         else
         {
-            gui.active = true;
+            //gui.active = true;
         }
     
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;

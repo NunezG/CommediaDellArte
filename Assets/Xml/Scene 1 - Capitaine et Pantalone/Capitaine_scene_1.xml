@@ -196,7 +196,7 @@
 	<multiple>	
 		<character name="Arlequin">
 		    	<animation name="faire_peur" wait="false"/>
-				<sound name="17_fait_peur_3" wait="false" volume="1"/>	
+				<sound name="17_fait_peur_3" wait="false" volume="0.7"/>	
 	    </character>
 		<character name="Capitaine">
 		    <sound name="4_peur_2" wait="false" volume="1"/>	
