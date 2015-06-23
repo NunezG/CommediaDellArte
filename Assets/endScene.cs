@@ -68,6 +68,6 @@ public class endScene : MonoBehaviour {
         cursor.SetActive(true);
         credit.SetActive(true);
         credit.GetComponent<CreditScript>().appear();
-        LoadingScreen.instance.loadLevel("Menu");
+        //LoadingScreen.instance.loadLevel("Menu");
     }
 }
