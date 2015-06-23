@@ -4,8 +4,8 @@
 <event id="Introduction">
 	<guiManager active="false"/>
 	
-    <musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1" reset="true"/>
-	<musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1"/>
+    <musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1" repeat="1" eset="true"/>
+	<musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1" repeat="1"/>
 	<musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3" repeat="-1"/>
 
 			

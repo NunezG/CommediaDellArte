@@ -7,6 +7,7 @@
 		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
 		<rotation x="0" y="180" z="0"/>
 	</character>
+	
     <musique name="Arlecchino et Colombina" disappearTime="1" waitTime="0" appearTime="1" repeat="-1" reset="true"/>
 	
 

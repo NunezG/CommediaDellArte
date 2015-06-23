@@ -69,7 +69,6 @@ public class MenuPanel : MonoBehaviour {
 
         while (anim.GetCurrentAnimatorStateInfo(0).shortNameHash != Animator.StringToHash("open"))
         {
-            Debug.Log("wait");
             yield return null;
         }
 
@@ -77,14 +76,14 @@ public class MenuPanel : MonoBehaviour {
 
        //disparition progressive de l'UI
 
-       StartCoroutine( fade(_fadeObject, 0, 0, 1f, 2));
+       StartCoroutine( fade(_fadeObject, 0, 0, 1.3f, 2));
        StartCoroutine(  fade(_fadeObject, 0, 1, 2));
        StartCoroutine(  fade(_fadeObject, 0, 2, 2));
 
        StartCoroutine(  fade(_fadeObject, 1, 0, 2));
        StartCoroutine( fade(_fadeObject, 1, 1, 2));
 
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+5);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+6);
 
         Destroy(this.gameObject.GetComponent<Canvas>());
         Destroy(this.gameObject);
@@ -103,7 +102,7 @@ public class MenuPanel : MonoBehaviour {
         if (type == 0)
         {
 
-            while (obj.imageList[index].color.a > 0.1)
+            while (obj.imageList[index].color.a > 0.05)
             {   
                 obj.imageList[index].color = new Color(obj.imageList[index].color.r, obj.imageList[index].color.g, obj.imageList[index].color.b, Mathf.Lerp(obj.imageList[index].color.a, 0, fadeSpeed * Time.deltaTime));
                 yield return null;
@@ -115,7 +114,7 @@ public class MenuPanel : MonoBehaviour {
         }
         else if (type == 1)
         {
-            while (obj.textList[index].color.a > 0.1)
+            while (obj.textList[index].color.a > 0.05)
             {
                 obj.textList[index].color = new Color(obj.textList[index].color.r, obj.textList[index].color.g, obj.textList[index].color.b, Mathf.Lerp(obj.textList[index].color.a, 0, fadeSpeed * Time.deltaTime));
                 yield return null;

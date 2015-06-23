@@ -10,7 +10,7 @@ public class ThemePlayerScript : MonoBehaviour {
     private AudioSource _audioSource;
     private float _initialVolumeValue;
 
-	private List<Music> _playlist;
+	public  List<Music> _playlist;
     private float timer = 0;
 
     private static ThemePlayerScript _instance;
@@ -62,19 +62,27 @@ public class ThemePlayerScript : MonoBehaviour {
 
         if (timer <= 0 && _playlist.Count > 0)
         {
-            themeChange = smoothThemeChangeCoroutine(_playlist[0]._audioClip.name, _playlist[0].disappearTime, _playlist[0].waitTime, _playlist[0].appearTime);
-           StartCoroutine(themeChange);
-           float temp = 0;
-           if (_playlist.Count > 1)
-               temp = _playlist[1].disappearTime;
-           timer = _playlist[0]._audioClip.length - temp;
-            if (_playlist[0]._repeatCount != -1)
+            if (_playlist[0]._repeatCount <= 0 && _playlist[0]._repeatCount != -1)
             {
-                _playlist[0]._repeatCount--;
-                if (_playlist[0]._repeatCount <= 0)
+                _playlist.RemoveAt(0);
+            }
+
+            if (_playlist.Count > 0)
+            {
+                themeChange = smoothThemeChangeCoroutine(_playlist[0]._audioClip.name, _playlist[0].disappearTime, _playlist[0].waitTime, _playlist[0].appearTime);
+                StartCoroutine(themeChange);
+                float temp = 0;
+                if (_playlist.Count > 1)
+                    temp = _playlist[1].disappearTime;
+                timer = _playlist[0]._audioClip.length - temp;
+                if (_playlist[0]._repeatCount != -1)
                 {
-                    _playlist.RemoveAt(0);
+                    _playlist[0]._repeatCount--;
                 }
+            }
+            else
+            {
+                _audioSource.Stop();
             }
         }
 	}
@@ -103,6 +111,7 @@ public class ThemePlayerScript : MonoBehaviour {
 			return ;
 		}
 		else{
+            Debug.Log("Add " + name + ".");
 			_playlist.Add(new Music(temp, repeatCount));
 		}
 	}
@@ -182,7 +191,7 @@ public class ThemePlayerScript : MonoBehaviour {
 
 }
 
-
+[System.Serializable]
 public class Music{
 	public int _repeatCount = 1;
     public float disappearTime = 1, waitTime = 0, appearTime = 1;

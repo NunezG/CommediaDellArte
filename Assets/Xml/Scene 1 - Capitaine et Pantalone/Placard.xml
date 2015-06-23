@@ -56,9 +56,17 @@
 	    </public>
 		<character name="Arlequin">	
 			<sound name="14_depit" wait="false" volume="0.7" />
-			<animation name="disappointed"/>*
-        </character>			
-    </multiple>		
+			<animation name="disappointed"/>
+        </character>
+		<souffleur position="milieu">
+			<talk>
+			    <paragraph>J'appelle pas ça surgir, j'appelle ça sortir avec panache !</paragraph>
+			</talk>
+	</souffleur>		
+    </multiple>	
+
+
+	
 	    <character name="Arlequin">
 		    <deplacement x="-8.68" y="6.7" z="31" />
 			<rotation x="0" y="180" z="0"/>	
