@@ -23,7 +23,7 @@ public class PlayMovie : MonoBehaviour {
 	}
 
 	void Update(){
-		if(Input.GetButtonDown("Fire1") && !tooLate){
+		if(Input.GetKeyDown("escape") && !tooLate){
 			StopCoroutine(coroutine);
 			GetComponent<AudioSource>().Stop();
 			LoadingScreen.instance.loadLevel(scene);
