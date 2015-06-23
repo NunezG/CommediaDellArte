@@ -1,0 +1,165 @@
+﻿<EventList>
+
+<!-- Toucher mechamment -->
+<event id="toucher_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<sound name="Frappe" volume="1"/>	
+			<sound name="5_touche_mechant" volume="1" />		
+			<animation name="frappe"/>	
+		</character>	
+	</multiple>
+	<multiple>
+	<character name="Capitaine">
+	        <sound name="3_peur_1" volume="1" />	
+			<animation name="peur"/>
+	</character>
+	<public>
+		<sound name="Rire +1" duration="2" volume="1"/>
+		<addvalue value="10"/>
+	</public>
+	</multiple>
+	
+	<souffleur position="milieu">
+			<feedback type="good" time="1"/>
+	</souffleur>
+
+	<guiManager active="true"/>
+	
+</event>
+
+
+<!-- Toucher gentiment -->
+<event id="toucher_gentiment">
+	<guiManager active="false"/>
+	
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<sound name="Toucher gentilment" volume="1"/>			
+			<animation name="poke"/>		
+		</character>	
+	</multiple>
+	
+	<character name="Capitaine">
+			<sound name="18_aucune_reaction" volume="1" />		
+	</character>
+	
+	<public>
+		<sound name="Boo -1" duration="2" volume="1"/>
+		<subvalue value="10"/>
+	</public>
+	
+	<souffleur position="milieu">
+			<feedback type="bad" time="1"/>
+	</souffleur>
+	
+	
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Parler mechamment -->
+<event id="parler_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-10" y="7" z="30"/>
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<sound name="4_parle_mechant" volume="1"/>		
+			<animation name="angryTalking"/>	
+		</character>			
+	</multiple>
+	
+	<multiple>
+	<character name="Capitaine">
+	        <sound name="3_peur_1" volume="1" />	
+			<animation name="peur"/>		
+	</character>
+	<public>
+		<sound name="Rire +1" duration="2" volume="1"/>	
+		<addvalue value="10"/>
+	</public>
+	</multiple>
+	
+	<souffleur position="milieu">
+			<feedback type="good" time="1"/>
+	</souffleur>
+	
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler gentiment -->
+<event id="parler_gentiment">
+	<guiManager active="false"/>
+		<character name="Arlequin">
+			<deplacement x="-10" y="7" z="30"/>
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+			    <sound name="2_parle_gentil_1" volume="0.7"/>	
+				<animation name="niceTalking"/>		
+			</character>	
+		</multiple>
+		
+		<character name="Capitaine">
+			<sound name="18_aucune_reaction" volume="0.7" />		
+	    </character>
+		
+		<public>
+			<sound name="Boo -1" duration="2" volume="1"/>
+			<subvalue value="10"/>
+		</public>
+	
+		<souffleur position="milieu">
+			<feedback type="bad" time="1"/>
+		</souffleur>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Fuite du capitaine-->
+
+<event id="fuite">
+	<guiManager active="false"/>	
+		<character name="Capitaine">
+		   <!--  <sound name="19_fuit_tuto" volume="0.7" /> -->
+			<deplacement x="-16.7" y="-2.2" z="23.32"/>
+			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
+		</character>	
+	<guiManager active="true"/>
+	
+	<public>
+		<sound name="Rire +10" duration="5" volume="1"/>
+	</public>
+	
+	<souffleur position="gauche">
+			<talk>
+				<paragraph>Bravissimo ! Un nouveau jour de fête pour une célébrité naissante !</paragraph>
+			</talk>
+	</souffleur>		
+	
+	<wait time ="1.5"/>
+	
+	<fadetoblack time="1" />
+	
+</event>
+
+
+
+</EventList>

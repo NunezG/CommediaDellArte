@@ -1,0 +1,80 @@
+﻿<EventList>
+
+
+<!-- Se cacher -->
+<event id="se_cacher">
+	<guiManager active="false"/>
+		<character name="Arlequin">
+		        <rotation x="0" y="180" z="0"/>	
+				<deplacement x="-7.34" y="6.7" z="34.4"/>
+                <sound name="Se cache" wait="false" volume="1" />			
+				<animation name="se_cacher" volume="1" />
+		</character>	
+	<guiManager active="true"/>
+</event>
+
+
+
+
+<!-- Prendre le drap -->
+<event id="prendre_drap">
+	<guiManager active="false"/>
+		<object name="armoire">
+			<animation name = "prendre_drap" wait = "false"/>
+		</object>	
+		<character name="Arlequin">	
+				<deplacement x="-10" y="6.7" z="34.4"/>
+				<sound name="Prend" wait="false" volume="1"/>
+				<animation name="take"/>
+				<sound name="Drap" volume="1"/>
+				<animation name="prendre_drap"/>
+		</character>
+	<guiManager active="true"/>
+</event>
+
+
+
+<!--Surgir -->
+<event id="surgir">
+
+	<guiManager active="false"/>
+		<character name="Arlequin">	
+			<deplacement x="-8.68" y="6.7" z="34.4" instant="true" />
+			<sound name="15_fait_peur_1" wait="false" volume="1" />	
+			<animation name="surgir"/>
+		</character>
+
+	<character name="Capitaine">	
+		<animation name="idle" wait="false"/>
+	    <sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+	</character>
+		
+	<multiple>
+		<public>
+		<sound name="Boo -1" duration="2" volume="1"/>
+		<subvalue value="10"/>
+	    </public>
+		<character name="Arlequin">	
+			<sound name="14_depit" wait="false" volume="0.7" />
+			<animation name="disappointed"/>
+        </character>
+		<souffleur position="milieu">
+			<talk>
+			    <paragraph>J'appelle pas ça surgir, j'appelle ça sortir avec panache !</paragraph>
+			</talk>
+	</souffleur>		
+    </multiple>	
+
+
+	
+	    <character name="Arlequin">
+		    <deplacement x="-8.68" y="6.7" z="31" />
+			<rotation x="0" y="180" z="0"/>	
+		</character>
+		
+	<guiManager active="true"/>
+</event>
+
+
+
+</EventList>

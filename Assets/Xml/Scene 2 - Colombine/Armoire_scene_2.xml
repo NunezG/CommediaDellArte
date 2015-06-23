@@ -1,0 +1,20 @@
+﻿<EventList>
+
+
+<!-- Se deguiser en Capitain -->
+<event id="se_deguiser">
+
+				
+		<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="-10" y="6.7" z="34.4"/>
+		</character>
+		<fadetoblack time="1" wait="false"/>
+		<wait time="0.5"/>
+	
+</event>
+
+
+
+</EventList>
