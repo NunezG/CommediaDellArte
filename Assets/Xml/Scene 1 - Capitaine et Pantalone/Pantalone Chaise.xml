@@ -77,7 +77,7 @@
 
 <!-- Parler gentiment-->
 <event id="parler_gentiment">
-
+<guiManager active="false"/>
 	<character name="Arlequin">
 		<deplacement x="4" y="6.7" z="31"/>
 		<sound name="3_parle_gentil_2" wait="false" volume="1"/>
@@ -99,7 +99,7 @@
 	<character name="Arlequin">
 		<sound name="14_depit" wait="false" volume="1"/>
 	</character>
-	
+	<guiManager active="true"/>
 </event>
 
 

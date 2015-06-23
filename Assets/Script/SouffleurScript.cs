@@ -303,7 +303,9 @@ public class SouffleurScript : MonoBehaviour {
 					UICursor.color = new Color (1, 1, 1, 0);
 					yield break;
 				}
-				_audioSource.PlayOneShot (_talkSound[Random.Range(0, _talkSound.Count)]);
+                int rand = Random.Range(0, _talkSound.Count);
+                Debug.Log(rand);                  
+				_audioSource.PlayOneShot (_talkSound[rand]);
 				coroutineText = updateParagraph(param);
 				StartCoroutine (coroutineText);
 			}

@@ -8,22 +8,22 @@
 		<deplacement x="-10" y="7" z="30"/>
 	</character>
 	
-	<multiple>	
+	
 		<character name="Arlequin">
 			<sound name="Frappe" volume="1"/>	
 			<sound name="5_touche_mechant" volume="1" />		
 			<animation name="frappe"/>	
 		</character>	
-	</multiple>
+	
 	<multiple>
-	<character name="Capitaine">
-	        <sound name="3_peur_1" volume="1" />	
-			<animation name="peur"/>
-	</character>
-	<public>
-		<sound name="Rire +1" duration="2" volume="1"/>
-		<addvalue value="10"/>
-	</public>
+		<character name="Capitaine">
+				<sound name="3_peur_1" volume="1" />	
+				<animation name="peur"/>
+		</character>
+		<public>
+			<sound name="Rire +1" duration="2" volume="1"/>
+			<addvalue value="10"/>
+		</public>
 	</multiple>
 	
 	<souffleur position="milieu">
@@ -77,22 +77,20 @@
 		<deplacement x="-10" y="7" z="30"/>
 	</character>
 	
-	<multiple>	
 		<character name="Arlequin">
 			<sound name="4_parle_mechant" volume="1"/>		
 			<animation name="angryTalking"/>	
 		</character>			
-	</multiple>
 	
 	<multiple>
-	<character name="Capitaine">
-	        <sound name="3_peur_1" volume="1" />	
-			<animation name="peur"/>		
-	</character>
-	<public>
-		<sound name="Rire +1" duration="2" volume="1"/>	
-		<addvalue value="10"/>
-	</public>
+		<character name="Capitaine">
+				<sound name="3_peur_1" volume="1" />	
+				<animation name="peur"/>		
+		</character>
+		<public>
+			<sound name="Rire +1" duration="2" volume="1"/>	
+			<addvalue value="10"/>
+		</public>
 	</multiple>
 	
 	<souffleur position="milieu">
@@ -106,6 +104,7 @@
 <!-- Parler gentiment -->
 <event id="parler_gentiment">
 	<guiManager active="false"/>
+	
 		<character name="Arlequin">
 			<deplacement x="-10" y="7" z="30"/>
 		</character>

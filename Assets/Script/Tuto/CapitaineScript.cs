@@ -59,7 +59,7 @@ public class CapitaineScript : MonoBehaviour {
 
         this.GetComponent<CharacterController>().moveSpeed = 25;
 
-        GameObject.FindObjectOfType<CoffreScript>().GetComponent<RadialMenuScript>().buttonList[2].GetComponent<RadialMenuScript>().buttonList[2].setActive(true);
+       // GameObject.FindObjectOfType<CoffreScript>().GetComponent<RadialMenuScript>().buttonList[2].GetComponent<RadialMenuScript>().buttonList[2].setActive(true);
 
         yield return StartCoroutine(XmlManager.launchEventCoroutine("fuite", "capitaine_tuto"));
 
