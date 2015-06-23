@@ -25,6 +25,7 @@ public class PlayMovie : MonoBehaviour {
 	void Update(){
 		if(Input.GetButtonDown("Fire1") && !tooLate){
 			StopCoroutine(coroutine);
+			GetComponent<AudioSource>().Stop();
 			LoadingScreen.instance.loadLevel(scene);
 		}
 	}
@@ -33,6 +34,7 @@ public class PlayMovie : MonoBehaviour {
     {
         yield return new WaitForSeconds(duration);
 			tooLate = true;
+		GetComponent<AudioSource>().Stop();
         LoadingScreen.instance.loadLevel(scene);
     }
 }

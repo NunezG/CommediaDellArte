@@ -64,11 +64,10 @@ public class endScene : MonoBehaviour {
         yield return new WaitForSeconds(25);
 
         ThemePlayerScript.instance.addMusic("Commedia dell'Arte Theme Principal", -1);
-
-
+		
         cursor.SetActive(true);
         credit.SetActive(true);
         credit.GetComponent<CreditScript>().appear();
-        //LoadingScreen.instance.loadLevel(_scene);
+        LoadingScreen.instance.loadLevel("Menu");
     }
 }

@@ -153,8 +153,10 @@ public class MenuPanel : MonoBehaviour {
 
     public void credits()
     {
-        menuCanvas.gameObject.SetActive(false);
-        creditCanvas.SetActive(true);
-        creditCanvas.GetComponent<CreditScript>().appear();
+		if (!done) {
+			menuCanvas.gameObject.SetActive (false);
+			creditCanvas.SetActive (true);
+			creditCanvas.GetComponent<CreditScript> ().appear ();
+		}
     }
 }
