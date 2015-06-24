@@ -141,7 +141,6 @@
 			<deplacement x="-16.7" y="-2.2" z="23.32"/>
 			<deplacement x="-16.7" y="-2.2" z="-10.5" wait ="false"/>
 		</character>	
-	<guiManager active="true"/>
 	
 	<public>
 		<sound name="Rire +10" duration="5" volume="1"/>
@@ -153,10 +152,10 @@
 			</talk>
 	</souffleur>		
 	
-	<wait time ="1.5"/>
+	<wait time ="1"/>
 	
 	<fadetoblack time="1" />
-	
+	 <guiManager active="true"/>
 </event>
 
 
