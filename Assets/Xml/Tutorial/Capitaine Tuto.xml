@@ -155,7 +155,7 @@
 	<wait time ="1"/>
 	
 	<fadetoblack time="1" />
-	 <guiManager active="true"/>
+	<!-- <guiManager active="true"/>-->
 </event>
 
 

@@ -112,7 +112,7 @@ public class SouffleurScript : MonoBehaviour {
 	}
 
 	public void disappear(bool reactiveGUI ){
-		guimanager.active = reactiveGUI;
+		//guimanager.active = reactiveGUI;
 		animator.SetBool ("show", false);
         UIText.text = "";
 	}

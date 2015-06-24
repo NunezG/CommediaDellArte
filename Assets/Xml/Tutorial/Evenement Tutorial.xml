@@ -12,6 +12,8 @@
 		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
 	</character>
 	
+	<wait time="0.2"/>
+	
 	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30"/>
 		<sound name="1_entree" wait="false" volume="0.7" />
@@ -88,12 +90,12 @@
 		
 	<character name="Capitaine">
 		<deplacement x="-16" y="7" z="30"/>
-		<sound name="1_entree" wait="false" volume="0.7" />
+		<sound name="1_entree" wait="false" volume="0.5" />
 	</character>
-	
+	<wait time="0.5"/>
 	<multiple>
 		<character name="Capitaine">
-			<sound name="2_ignore" wait="false" volume="0.7" />		    
+			<sound name="2_ignore" wait="false" volume="0.5" />		    
 			<animation name="moquerie"/>
 		</character>
 		<souffleur position="gauche">
