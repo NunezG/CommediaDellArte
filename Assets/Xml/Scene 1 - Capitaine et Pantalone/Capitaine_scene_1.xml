@@ -1,0 +1,280 @@
+﻿<EventList>
+
+
+<!-- Parler gentiment-->
+<event id="parler_gentiment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="3_parle_gentil_2" wait="false" volume="1"/>
+		<animation name="niceTalking"/>
+	</character>
+	
+	<character name="Capitaine">	
+		<animation name="idle" wait="false"/>
+	    <sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+	</character>
+	
+	<wait time ="1"/>
+	
+	<public>
+	    <sound name="Boo -1" duration="3" volume="1"/>
+		<subvalue value ="20"/>
+	</public>
+	
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler Mechamment-->
+<event id="parler_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="4_parle_mechant" wait="false" volume="0.7"/>
+		<animation name="angryTalking"/>
+	</character>
+	
+	<multiple>
+		<character name="Capitaine">	
+				 <sound name="3_peur_1" wait="false" volume="0.7"/>	
+				<animation name="peur"/>
+		</character>		
+		<public>
+			<sound name="Rire +1" duration="3" volume="1"/>
+			<addValue value ="10"/>
+		</public>
+	</multiple>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler Moqueur-->
+<event id="parler_moqueur">
+<guiManager active="false"/>
+
+	<character name="Arlequin">	
+		<deplacement x="-8" y="6.7" z="31"/>=
+		<sound name="6_se_moque_1" wait="false" volume="0.7"/>
+		<animation name="moquer"/>
+	</character>
+	
+	<multiple>
+	<character name="Capitaine">
+        <sound name="3_peur_1" wait="false" volume="0.7"/>	
+		<animation name="se_vexe"/>
+	</character>
+	
+	<public>
+		<sound name="Rire +5" duration="3" volume="1"/>
+		<addvalue value ="15"/>
+	</public>
+    </multiple>
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler Moqueur fort-->
+<event id="parler_moqueur_2">
+<guiManager active="false"/>
+
+	<character name="Arlequin">	
+		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="7_se_moque_2" wait="false" volume="0.7"/>
+		<animation name="moquer_fort"/>
+	</character>
+	
+	<multiple>
+	<character name="Capitaine">
+        <sound name="4_peur_2" wait="false" volume="0.7"/>	
+		<animation name="se_vexe"/>
+	</character>
+	
+	<public>
+		<sound name="Rire +5" duration="5" volume="1"/>
+		<addvalue value ="15"/>
+	</public>
+    </multiple>
+	<guiManager active="true"/>
+</event>
+
+
+
+<!-- Toucher gentiment-->
+<event id="toucher_gentiment">
+	<guiManager active="false"/>
+
+	 <character name="Arlequin">
+		    <deplacement x="-8" y="6.7" z="31"/>
+	</character>
+
+	
+	<multiple>
+	    <character name="Arlequin">
+			<sound name="Toucher gentilment" wait="false" volume="1"/>
+		    <animation name="poke"/>
+	    </character>
+	    <character name="Capitaine">
+		    <sound name="17_se_fait_toucher_1" wait="false" volume="0.7"/>	
+		    <animation name="se_vexe"/>
+	    </character>
+	</multiple>	
+	
+	<public>
+	    <sound name="Rire +5" duration="5" volume="1"/>
+		<addvalue value ="15"/>
+	</public>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Toucher gentiment 2-->
+<event id="toucher_gentiment_2">
+	<guiManager active="false"/>
+
+	
+	 <character name="Arlequin">
+		    <deplacement x="-8" y="6.7" z="31"/>
+	</character>
+	
+	<multiple>
+	    <character name="Arlequin">
+			<sound name="Toucher gentilment 2" wait="false" volume="1"/>
+		    <animation name="poke_fort"/>
+	    </character>
+	
+	    <character name="Capitaine">	
+		    <sound name="8_se_fait_toucher_2" wait="false" volume="0.7"/>
+	      	<animation name="se_vexe"/>
+	    </character>
+	</multiple>
+	
+	<public>
+	    <sound name="Rire +5" duration="5" volume="1"/>
+		<addvalue value ="15"/>
+	</public>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Toucher mechamment-->
+<event id="toucher_mechamment">
+<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-8" y="6.7" z="31"/>
+		<sound name="Frappe"/>
+		<sound name="5_touche_mechant" wait="false" volume="1" />	
+		<animation name="frappe"/>
+	</character>
+	
+	<multiple>
+		<character name="Capitaine">
+				<sound name="3_peur_1" wait="false" volume="0.7"/>	
+				<animation name="peur"/>
+		</character>
+		
+		<public>
+			<sound name="Rire +1" duration="3" volume="1"/>
+			<addvalue value ="10"/>
+		</public>
+    </multiple>
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Faire peur au capitaine-->
+<event id="faire_peur">
+	<guiManager active="false"/>
+
+	
+	 <character name="Arlequin">
+			    <deplacement x="15.75" y="6.7" z="31"/>
+				<rotation x="0" y="180" z="0"/>
+	</character>
+	<multiple>	
+		<character name="Arlequin">
+		    	<animation name="faire_peur" wait="false"/>
+				<sound name="17_fait_peur_3" wait="false" volume="0.7"/>	
+	    </character>
+		<character name="Capitaine">
+		    <sound name="4_peur_2" wait="false" volume="1"/>	
+			<animation name="peur" />			
+	    </character>
+	</multiple>
+	
+	<public>
+	    <sound name="Rire +10" duration="5" volume="1"/>
+		<addvalue value ="25"/>
+	</public>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- range le drap si le capitaine reste-->
+<event id="faire_peur_suite">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">	
+			<deplacement x="-10" y="6.7" z="34.4"/>
+			<animation name="enlever_drap"/>
+			<sound name="Drap" volume="1"/>
+            <rotation x="0" y="180" z="0"/>
+	</character>
+	
+	<guiManager active="true"/>
+	
+</event>
+
+<!-- old version
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="-8" y="6.7" z="31"/>
+	</character>	
+	<character name="Arlequin">	
+		<sound name="15_fait_peur_1" wait="false" volume="0.7"/>
+		<animation name="faire_peur"/>		
+	</character>
+	
+	<character name="Capitaine">	
+			<animation name="idle" wait="false"/>
+	    	<sound name="18_aucune_reaction" wait="false" volume="0.7"/>
+	</character>
+	
+	<public>
+	    <sound name="Boo -5" duration="5" volume="1"/>
+		<subvalue value ="20"/>
+	</public>
+
+	<character name="Arlequin">	
+			<deplacement x="-10" y="6.7" z="34.4"/>
+			<rotation x="0" y="180" z="0"/>
+			<animation name="enlever_drap"/>
+			<sound name="Drap"/>
+			<rotation x="0" y="180" z="0"/>
+	</character>
+
+	<guiManager active="true"/>-->
+
+
+<!-- Fuite du capitaine a la fin de la scene -->
+
+<event id="fuite">
+	<guiManager active="false"/>
+		<character name="Capitaine">
+			<!--<sound name="4_peur_2" wait="false" volume="1"/>-->
+			<!--<animation name="peur"/>-->
+			<!--<sound name="11_fuit" wait="false" volume="0.7"/>-->	
+			<deplacement x="-16" y="9.3" z="30"/>
+			<deplacement x="-16" y="-2.2" z="0" />
+		</character>	
+		
+	<fadetoblack time="2" wait = "false"/>
+	<wait time="0.7"/>
+	
+	<guiManager active="true"/>
+</event>
+
+</EventList>

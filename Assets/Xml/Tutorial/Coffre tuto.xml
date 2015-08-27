@@ -1,0 +1,269 @@
+﻿<EventList>
+
+<!-- Toucher tres mechamment -->
+<event id="toucher_tres_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="13" y="7" z="30"/>
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<sound name="Frappe" wait="false" volume="1"/>
+            <sound name="5_touche_mechant" wait="false" volume="1" />
+			<animation name="frappe"/>				
+		</character>	
+		
+		<object name="coffre">
+			<animation name = "frappe" wait = "false"/>
+		</object>
+		
+	</multiple>
+		
+	<public>
+		<sound name="Rire +10" duration="3" volume="1"/>
+		<addvalue value="20"/>
+	</public>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+
+
+<!-- Toucher mechamment -->
+<event id="toucher_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="13" y="7" z="30"/>
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+			<sound name="Frappe" wait="false" volume="1"/>
+            <sound name="5_touche_mechant" wait="false" volume="1" />		
+			<animation name="frappe"/>				
+		</character>	
+	</multiple>
+	
+	<public>
+		<sound name="Rire +1" duration="2" volume="1"/>
+		<addvalue value="10"/>
+	</public>
+	
+	<souffleur position="milieu">
+		<talk>
+			<paragraph>Mais que fais-tu ? Ce coffre ne t'as rien fait !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Toucher gentiment -->
+<event id="toucher_gentiment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="13" y="7" z="30"/>
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+		    <sound name="Toucher gentilment" wait="false" volume="1"/>	
+			<animation name="poke"/>		
+		</character>	
+	</multiple>
+	
+	<public>
+		<sound name="Boo -1" duration="3" volume="1"/>
+	</public>
+	
+	
+	<souffleur position="milieu">
+		<talk>
+			<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Parler mechamment -->
+<event id="parler_mechamment">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+		<deplacement x="13" y="7" z="30"/>
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<multiple>	
+		<character name="Arlequin">
+		    <sound name="4_parle_mechant" wait="false" volume="0.7"/>	
+			<animation name="angryTalking"/>		
+		</character>	
+	</multiple>
+	
+	<public>
+		<sound name="Boo -1" duration="3" volume="1"/>
+	</public>
+	
+	
+	<souffleur position="milieu">
+		<talk>
+			<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>		
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Parler gentiment -->
+<event id="parler_gentiment">
+	<guiManager active="false"/>
+		<character name="Arlequin">
+			<deplacement x="13" y="7" z="30"/>
+			<rotation x="0" y="180" z="0"/>		
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+			    <sound name="2_parle_gentil_1" wait="false" volume="0.7"/>	
+				<animation name="niceTalking"/>		
+			</character>	
+		</multiple>
+		
+	<public>
+		<sound name="Boo -1" duration="3" volume="1"/>
+	</public>
+	
+	
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+			</talk>
+		</souffleur>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>		
+		</character>	
+	<guiManager active="true"/>
+</event>
+
+<!-- Prendre balles -->
+<event id="prendre_balles">
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="13" y="7" z="30"/>
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+				<sound name="Prend" wait="false" volume="1"/>
+				<animation name="take"/>			
+			</character>	
+		</multiple>
+		
+		<character name="Arlequin">
+			<deplacement x="-1.5" y="7" z="30"/>		
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+			    <sound name="Jongle-Arlequin.ogg" wait="false" volume="1"/>	
+				<animation name="juggling"/>		
+			</character>	
+		</multiple>
+		
+		<souffleur position="milieu">
+			<feedback type="bad" time="1"/>
+		</souffleur>
+		
+	<public>
+		<sound name="Boo -1" duration="5" volume="1"/>
+	</public>
+	
+		<character name="Arlequin">
+			<deplacement x="13" y="7" z="30"/>
+		</character>
+		
+		<character name="Arlequin">
+			<sound name="Prend" wait="false" volume="1"/>
+				<animation name="take"/>			
+		</character>		
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Prendre oeufs -->
+<event id="prendre_oeufs">
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+				<deplacement x="13" y="7" z="30"/>
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+			   <sound name="Prend" wait="false" volume="1"/>	
+				<animation name="take"/>			
+			</character>	
+		</multiple>
+		
+		<character name="Arlequin">
+			<deplacement x="-1.5" y="7" z="30"/>		
+		</character>
+		
+		<multiple>	
+			<character name="Arlequin">
+			    <sound name="Jongle-Arlequin.ogg" wait="false" volume="1"/>	
+				<animation name="eggJuggling" wait="false"/>		
+			</character>
+		</multiple>
+		
+		<wait time="3.4"/>
+		
+		<multiple>	
+			<character name="Arlequin">
+			    <sound name="14_depit" wait="false" volume="1"/>	
+				<sound name="oeufs" wait="false" volume="1"/>	
+				<animation name="brokenEggs" wait="false"/>	
+			</character>
+		</multiple>
+		
+		<wait time="0.5"/>
+		
+		<public>
+			<sound name="Rire +10" duration="5" volume="1"/>
+			<addvalue value="35"/>
+		</public>
+	
+	
+	<guiManager active="true"/>
+</event>
+
+</EventList>

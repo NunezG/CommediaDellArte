@@ -1,0 +1,316 @@
+﻿<EventList>
+
+<!-- Introduction avec le souffleur -->
+<event id="Introduction">
+
+    <musique name="Commedia Theme Redux" disappearTime="1" waitTime="0" appearTime="5" repeat="1" reset="true"/>
+	<musique name="Theme Tuto" disappearTime="1" waitTime="50"  appearTime="1" repeat="-1"/>
+	
+	<guiManager active="false"/>
+	
+	<character name="Arlequin">
+		<deplacement x="-16.7" y="-2.2" z="0" instant="true"/>
+	</character>
+	
+	<wait time="0.2"/>
+	
+	<character name="Arlequin">
+		<deplacement x="-16" y="7" z="30"/>
+		<sound name="1_entree" wait="false" volume="0.7" />
+	</character>
+	
+	<wait time="1"/>
+	
+	<camera>
+			<deplacement x="-0.6" y="20" z="15.5" wait="false"/>	
+	</camera>
+		
+	<souffleur position="milieu">
+		<sound name="1_salut" wait ="false"/>
+		<talk>
+			<paragraph>Bienvenue cher comédien ! Comme tu es nouveau dans la troupe, je vais te guider. Alors écoute-moi bien !</paragraph>
+			<paragraph>Ton rôle est celui d’&#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personnage bien célèbre venu d’Italie. Tu représentes le peuple et ce dernier t’adore pour tes manières railleuses, ta spiritualité et ta ruse.</paragraph>
+			<paragraph>Tu es encore débutant dans ce rôle essentiel mais je suis sûr que tu feras bien mieux que celui qui t’a précédé. Suis mes conseils, tu deviendras la coqueluche du peuple !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<camera>
+			<reset wait="false"/>	
+	</camera>
+	
+	<multiple>
+		<camera>
+			<deplacement x="0" y="6" z="0" wait="false"/>	
+		</camera>
+		<public><addvalue value="20"/></public>
+		<souffleur position="gauche">
+		<talk>
+			<paragraph>Allez, tu dois maintenant distraire ces braves gens afin de réunir un maximum de public. Nous sommes des &#60;b&#62;&#60;color=#0054ff&#62;comédiens itinérants&#60;/color&#62;&#60;/b&#62; : nous devons jouer chaque soir pour gagner notre pain.</paragraph>
+			<paragraph>Si l’on se débrouille bien, il n’est pas exclu qu’on nous donne &#60;b&#62;&#60;color=#0054ff&#62;à manger, à boire,&#60;/color&#62;&#60;/b&#62; voire même &#60;b&#62;&#60;color=#0054ff&#62;un logis pour le soir&#60;/color&#62;&#60;/b&#62; ! (Ce sera toujours mieux que d’être obligé de dormir &#60;b&#62;&#60;color=#0054ff&#62;le ventre vide&#60;/color&#62;&#60;/b&#62; dans notre roulotte, non ?)</paragraph>
+		</talk>
+	</souffleur>
+	</multiple>
+	
+	<camera>
+			<reset wait="false"/>	
+	</camera>
+	<wait time="0.5"/>
+
+	
+	<multiple>
+		<souffleur position="droite">
+			<talk>
+				<paragraph>Tu vois ce coffre posé à droite ? &#60;b&#62;&#60;color=#0054ff&#62;Fouille-le&#60;/color&#62;&#60;/b&#62; pour voir si un &#60;b&#62;&#60;color=#0054ff&#62;accessoire&#60;/color&#62;&#60;/b&#62; peut t’aider à capter l’attention des passants.</paragraph>
+			</talk>
+		</souffleur>		
+		<camera>
+				<deplacement x="17" y="10" z="16" wait="false"/>	
+		</camera>
+	</multiple>
+	
+	<camera>
+			<reset wait="false"/>	
+	</camera>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Arrivée du capitaine -->
+<event id="Tutorial_2">
+	<guiManager active="false"/>
+	
+	<character name="Capitaine">
+		<deplacement x="-16.7" y="-2.2" z="-10.5" instant="true"/>
+		<deplacement x="-16.7" y="-2.2" z="23.32" />
+	</character>
+	
+	<camera>
+		<deplacement x="-9.89" y="13.57" z="4.27" wait="false"/>	
+	</camera>
+		
+	<character name="Capitaine">
+		<deplacement x="-16" y="7" z="30"/>
+		<sound name="1_entree" wait="false" volume="0.5" />
+	</character>
+	<wait time="0.5"/>
+	<multiple>
+		<character name="Capitaine">
+			<sound name="2_ignore" wait="false" volume="0.5" />		    
+			<animation name="moquerie"/>
+		</character>
+		<souffleur position="gauche">
+			<talk>
+				<paragraph>Ce personnage est le &#60;b&#62;&#60;color=#0054ff&#62;Capitano&#60;/color&#62;&#60;/b&#62;. C’est un soldat. Il semble intimidant à première vue, mais en vérité &#60;b&#62;&#60;color=#0054ff&#62;c’est un poltron qui a peur de son ombre&#60;/color&#62;&#60;/b&#62;.</paragraph>
+				<paragraph>Donner une bonne leçon à ce fanfaron t’attirera les faveurs de notre premier public !</paragraph>
+				<paragraph>Mais j’ai confiance en toi, petit ! Si tu accomplis &#60;b&#62;&#60;color=#0054ff&#62;plusieurs actions pour l’effrayer&#60;/color&#62;&#60;/b&#62;, il finira par s’en aller pleurer dans les jupons de sa mère ! A toi de jouer !</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>	
+	
+	<camera>
+			<reset wait="false"/>	
+	</camera>
+	
+	<character name="Capitaine">
+		<interaction value="true"/>
+	</character>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Introduction de la 3eme partie avec colombine et pantalone-->
+<!--<event id="Tutorial_3">
+	<guiManager active="false"/>
+	
+	<object name="coffre">
+		<interaction value = "false"/>
+	</object>
+	
+	<fadetoblack time = "1" wait ="false"/>
+	<wait time="0.5"/>
+	<multiple>	
+		<character name="Pantalone">
+			<deplacement x="-16" y="7" z="30" instant="true"/>
+		</character>
+		<character name="Arlequin">
+			<deplacement x="-8" y="7" z="30" instant="true"/>
+		</character>
+		<character name="Colombine">
+			<deplacement x="16" y="7" z="30" instant="true"/>
+		</character>
+	</multiple>
+	<wait time = "1.5"/>
+	<souffleur position="milieu">
+		<talk>
+			<paragraph>Bravo, tes frasques ont réussi à nous attirer plus de public ! Il faut maintenant le garder ! Pour cela, tu vas devoir être attentif à &#60;b&#62;&#60;color=#0054ff&#62;ses demandes&#60;/color&#62;&#60;/b&#62; pour adapter les &#60;b&#62;&#60;color=#0054ff&#62;actions&#60;/color&#62;&#60;/b&#62; de la pièce avec l’&#60;b&#62;&#60;color=#0054ff&#62;intention&#60;/color&#62;&#60;/b&#62; qui le satisfera.</paragraph>
+		</talk>
+	</souffleur>
+	
+	<multiple>	
+		<camera>
+			<deplacement x="-15" y="12" z="11" wait="false"/>	
+		</camera>
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+
+	
+	<multiple>	
+		<camera>
+			<deplacement x="17" y="10" z="16" wait="false"/>	
+		</camera>
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>À l’opposé se présente &#60;b&#62;&#60;color=#0054ff&#62;Colombina&#60;/color&#62;&#60;/b&#62;, servante hardie et insolente à l’esprit vif.</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<multiple>	
+		<camera>
+				<reset wait="false"/>	
+		</camera>
+		<souffleur position="milieu">
+				<talk>
+					<paragraph>Maintenant à toi de te débrouiller. Je t’indiquerai seulement les effets de tes &#60;b&#62;&#60;color=#0054ff&#62;actions&#60;/color&#62;&#60;/b&#62; et de tes &#60;b&#62;&#60;color=#0054ff&#62;intentions de jeu&#60;/color&#62;&#60;/b&#62; sur le public. Vas-y je te regarde !</paragraph>
+				</talk>
+		</souffleur>
+	</multiple>	
+	
+	<multiple>
+		<character name="Pantalone">
+			<animation name="asking"/>
+		</character>
+		<character name="Pantalone">
+			<bubble name="Capitaine_love_Colombine" time="3"/>
+		</character>
+	</multiple>
+	
+	<guiManager active="true"/>
+</event>-->
+
+<!-- Explication de la cloche -->
+<!--<event id="Tutorial_4">
+	<guiManager active="false"/>
+
+	<wait time="3"/>
+	
+	<public>
+		<subvalue value="100"/>
+	</public>
+
+	<souffleur position="milieu">
+		<talk>
+			<paragraph>Catastrophe ! La taverne vient d’ouvrir ! On va perdre notre public, palsambleu !</paragraph>
+		</talk>
+	</souffleur>
+	
+	<multiple>
+		<camera>
+			<deplacement x="20" y="23" z = "27" wait = "false"/>
+		</camera>
+		<souffleur position="milieu">
+			<talk>
+				<paragraph>Vite, il faut faire appel à notre botte secrète : un lazzi. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
+				<paragraph>Utilise-le si tu es &#60;b&#62;&#60;color=#0054ff&#62;en difficulté&#60;/color&#62;&#60;/b&#62;, mais rappelle toi : tu ne peux en user &#60;b&#62;&#60;color=#0054ff&#62;qu’une fois&#60;/color&#62;&#60;/b&#62; et cela aura un &#60;b&#62;&#60;color=#0054ff&#62;impact&#60;/color&#62;&#60;/b&#62; sur le &#60;b&#62;&#60;color=#0054ff&#62;partage de nos gains. Tire vite&#60;/color&#62;&#60;/b&#62; sur &#60;b&#62;&#60;color=#0054ff&#62;cette clochette&#60;/color&#62;&#60;/b&#62; pour appeler un lazzi !”</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<object	name="cloche">
+		<interaction  value="true"/>
+	</object>
+
+	<camera>
+		<reset wait="false"/>	
+	</camera>
+	
+	<guiManager active="true"/>
+</event>-->
+
+<!-- Fin du tuto avec pierrot -->
+<!--<event id="Tutorial_5">
+	<guiManager active="false"/>
+
+	<character name="Pierrot">
+		<deplacement x="-1.5" y="9.3" z="30"/>
+	</character>
+	
+	<camera>
+		<deplacement x="0" y="13" z="5" wait="false"/>
+	</camera>
+	
+	<multiple>
+		<character name="Pierrot">
+			<animation name="juggling" />
+		</character>
+		<wait time ="0.01"/>
+		<character name="Pierrot">
+			<sound name="Jongle-Arlequin.ogg" wait = "false" volume="1"/>
+		</character>	
+		<public>
+		
+		
+		
+		
+			<addvalue value="75"/>
+		</public>
+	</multiple>
+	
+	<character name="Arlequin">
+		<deplacement x="-8" y="7" z="30"/>
+		<animation name="angryTalking" />
+	</character>
+	
+	<character name="Pantalone">
+		<animation name="dispute"/>
+	</character>
+	
+	<character name="Pierrot">
+		<deplacement x="11" y="10" z="30"/>
+	</character>
+	
+	<character name="Pierrot">
+		<animation name="range" wait="false"/>
+		<sound name="Pliage Colombine 1" wait="false"/>
+	</character>
+	
+	<wait time="0.7"/>
+	
+	<character name="Colombine">
+		<deplacement x="0" y="100" z="0" instant="true"/>
+	</character>
+	
+	<wait time="4.7"/>
+	
+	<character name="Pierrot">
+			<deplacement x="50" y="10" z="30" wait = "false"/>
+	</character>
+	
+	<camera>
+		<reset wait="false"/>	
+	</camera>
+	
+	<wait time = "2"/>
+
+	<fadetoblack time="1"/>
+	
+	<object name="cloche">
+		<interaction value="false"/>
+	</object>
+	<object name="coffre">
+		<interaction value="false"/>
+	</object>
+	<character name="Pantalone">
+			<deplacement x="50" y="10" z="30" instant = "true"/>
+	</character>
+	
+	<guiManager active="true"/>
+</event>-->
+
+
+
+</EventList>

@@ -1,0 +1,111 @@
+﻿<EventList>
+
+<!-- Introduction de la scene 1 -->
+<event id="Introduction">
+	<guiManager active="false"/>
+	
+    <musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1" repeat="1" reset="true"/>
+	<musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1" repeat="1"/>
+	<musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3" repeat="-1"/>
+
+			
+	<!-- Placement des objets-->
+	<multiple>
+		<object name="armoire">
+			<deplacement x="-12.29" y="10.61" z="33.55" />
+		</object>
+		<object name="vase_1">
+			<deplacement x="5" y="6.44" z="36.06" />
+		</object>
+		<object name="vase_2">
+			<deplacement x="-16.8" y="7.07" z="26.95" />
+		</object>
+		<object name="table_0">
+			<deplacement x="5.1" y="2.77" z="36.11" />
+		</object>
+		<object name="table_1">
+			<deplacement x="-16.8" y="3.6" z="27" />
+		</object>
+
+		<!-- Placement des personnages -->
+		<character name="Arlequin">
+				<deplacement x="-10" y="6.7" z="31" instant = "true"/>
+				<rotation x="0" y="180" z="0"/>	
+		</character>
+		<character name="Capitaine">
+				<deplacement x="-1.31" y="7.45" z="31" instant = "true"/>
+		</character>
+		<character name="Pantalone">
+				<deplacement x="11" y="9.78" z="31" instant = "true"/>
+		</character>	
+	</multiple>
+	
+	<camera>
+		<deplacement x="9.3" y="13.6" z="9.1" wait = "false"/>
+	</camera>
+	
+	<character name="Capitaine">
+			<animation name="se_vante" wait="false"/>
+			<sound name="2_ignore" wait="false" volume="0.7" />
+	</character>
+	 
+	<wait time = "2.5"/>
+	<character name="Pantalone">
+	        <sound name="7_ennui" wait="false" volume="0.7" />
+			<animation  name="ennui"/>
+	</character>
+	
+	<camera>
+		<reset wait = "false"/>
+	</camera>
+	
+	<wait time="1.5"/>
+	
+	<!-- bulle pantalone-->
+	
+	<character name="Pantalone">
+	        <sound name="8_demande" wait="false" volume="0.5" />
+			<animation  name="ordre"/>
+	</character>
+	
+	<wait time="1"/>
+
+	<souffleur position="milieu">
+			<talk>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=#0054ff&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=#0054ff&#62;chasse ce gêneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
+				<paragraph>Si tu oublies ton objectif, &#60;b&#62;&#60;color=#0054ff&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			</talk>
+	</souffleur>
+	
+	<multiple>
+		<camera>
+			<deplacement x="20" y="23" z = "27" wait = "false"/>
+		</camera>
+		<souffleur position="droite">
+			<talk>
+				<paragraph>N'oublie pas, tu peux à tout moment faire appel à un &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; en sonnant &#60;b&#62;&#60;color=#0054ff&#62;cette cloche&#60;/color&#62;&#60;/b&#62;. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
+			</talk>
+		</souffleur>
+	</multiple>
+	
+	<multiple>
+	    <camera>
+		    <reset wait="false"/>	
+	    </camera>
+	    <souffleur position="millieu">
+	        <talk>
+	             <paragraph>(Enfin, je t'en conjure, essaie de nous attirer du public et ne perds pas ton temps à &#60;b&#62;&#60;color=#0054ff&#62;cliquer sur les passants&#60;/color&#62;&#60;/b&#62; en arrière plan, cela ne t'avancera à rien !)</paragraph>
+				
+	        </talk>
+	    </souffleur>
+	</multiple>
+	
+	<character name="Capitaine">
+			<animation name="postIntro" wait="false"/>
+	</character>
+	 
+	
+	<guiManager active="true"/>
+</event>
+
+</EventList>

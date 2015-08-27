@@ -1,0 +1,281 @@
+﻿<EventList>
+
+
+<!-- Faire peur -->
+<event id="faire_peur">
+	<guiManager active="false"/>
+
+	
+	    <character name="Arlequin">
+			    <deplacement x="15.75" y="6.7" z="31"/>
+				<rotation x="0" y="180" z="0"/>
+		</character>
+	<multiple>	
+		<character name="Arlequin">
+		    	<animation name="faire_peur" wait="false"/>
+				<sound name="17_fait_peur_3" wait="false" volume="1"/>	
+	    </character>
+		<character name="Capitaine">
+		    <sound name="4_peur_2" wait="false" volume="1"/>	
+			<animation name="peur" />			
+	    </character>
+	</multiple>
+	
+	<public>
+	    <sound name="Rire +10" duration="5" volume="1"/>
+		<addvalue value ="25"/>
+	</public>
+	
+	<character name="Arlequin">	
+			<deplacement x="-10" y="6.7" z="34.4"/>
+			<animation name="enlever_drap"/>
+			<sound name="Drap" volume="1"/>
+            <rotation x="0" y="180" z="0"/>
+	</character>
+	
+<guiManager active="true"/>
+</event>	
+	
+<!-- Question -->
+<event id="question">
+	<guiManager active="false"/>
+	
+	<character name="Arlequin">
+	    <deplacement x="4" y="6.7" z="31"/>
+	</character>
+
+	<multiple>
+	    <character name="Arlequin">
+		    <sound name="8_poser_question" wait="false" volume="1"/>
+		    <animation name="question"/>
+    	</character>
+	
+	    <character name="Pantalone">
+	        <sound name="2_interloque" wait="false" volume="0.7"/>
+        </character>
+	</multiple>
+	
+	<wait time="1"/>
+	
+	<character name="Pantalone">
+	        <sound name="8_demande" wait="false" volume="0.5" />
+			<animation  name="ordre"/>
+	</character>
+	
+	<wait time="1"/>
+	
+	<souffleur position="milieu">
+			<talk>
+			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=#0054ff&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=#0054ff&#62;chasse ce gêneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
+				<paragraph>Si tu oublies ton objectif, &#60;b&#62;&#60;color=#0054ff&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			</talk>
+	</souffleur>
+	
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Parler gentiment-->
+<event id="parler_gentiment">
+<guiManager active="false"/>
+	<character name="Arlequin">
+		<deplacement x="4" y="6.7" z="31"/>
+		<sound name="3_parle_gentil_2" wait="false" volume="1"/>
+		<animation name="niceTalking"/>
+	</character>
+	
+	
+	<multiple>
+		<character name="Arlequin">
+			<animation name="disappointed"/>
+		</character>
+		
+		<character name="Pantalone">
+		    <sound name="1_gronde" wait="false" volume="0.7"/>
+			<animation name="gronde"/>
+		</character>
+	</multiple>
+	
+	<character name="Arlequin">
+		<sound name="14_depit" wait="false" volume="1"/>
+	</character>
+	<guiManager active="true"/>
+</event>
+
+
+<!-- Pousser gentiment-->
+<event id="pousser_gentiment">
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="4" y="6.7" z="31"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+			    <sound name="Pousse Gentilment" wait="false" volume="0.7"/>
+				<animation name="pousser_gentil"/>
+			</character>
+			<character name="Pantalone">
+			    <sound name="3_chaise_desequilibre" wait="false" volume="0.7"/>
+				<animation name="pousser_gentil"/>
+			</character>
+		</multiple>
+		<multiple>
+	        <character name="Capitaine">
+			     <animation name="peur"/>
+	            <sound name="5_inquiet_pantalone_1" volume="1" />			
+	        </character>
+		    <public>
+			    <sound name="Rire +5" duration="3" volume="1"/>
+			   <addvalue value ="15"/>
+		    </public>
+        </multiple>
+		
+		<character name="Arlequin">
+		</character>
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- Pousser Mechamment-->
+<event id="pousser_mechamment">
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="4" y="6.7" z="31"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+				<animation name="pousser_mechant"/>
+				<sound name="Pousse Méchamment" wait="false" volume="1"/>
+				<sound name="11_pousse_mechant" wait="false" volume="0.7"/>
+			</character>
+			<character name="Pantalone">
+				<animation name="pousser_mechant"/>
+				<sound name="4_chaise_tombe" wait="false" volume="1"/>
+			</character>
+		</multiple>
+		
+		<public>
+			<sound name="Rire +1" duration="3" volume="1"/>
+			<addvalue value ="10"/>
+		</public>
+	
+	<guiManager active="true"/>	
+</event>
+
+<!-- Soulever gentiment-->
+<event id="soulever_gentiment">
+	<guiManager active="false"/>
+	
+		<character name="Arlequin">
+			<deplacement x="15.75" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
+		</character>
+		
+		<multiple>
+			<character name="Arlequin">
+			    <sound name="9_souleve_rate" wait="false" volume="0.7"/>
+				<animation name="soulever_rate"/>
+			</character>
+			<character name="Pantalone">
+				<animation name="soulever_rate"/>
+			</character>
+		</multiple>
+	
+		<public>
+			<sound name="Boo -1" duration="3" volume="1"/>
+			<subvalue value ="20"/>
+		</public>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
+
+	<guiManager active="true"/>
+</event>
+
+<!-- Soulever Mechamment-->
+<event id="soulever_mechamment">
+	<guiManager active="false"/>
+
+		<character name="Arlequin">
+			<deplacement x="15.75" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
+		</character>
+		
+		<multiple>
+		
+			<character name="Arlequin">
+			    <sound name="Se cache" wait="false" volume="1"/>
+				<sound name="10_souleve_reussi" wait="false" volume="0.7"/>
+			    <animation name="soulever_reussi"/> 
+			</character>
+			
+			<character name="Pantalone">
+			    <sound name="6_souleve" wait="false" volume="0.7"/>
+			    <animation name="soulever_reussi"/>
+			</character>
+		</multiple>
+		
+		<multiple>
+	        <character name="Capitaine">
+			     <animation name="peur"/>
+	            <sound name="6_inquiet_pantalone_2" volume="1" wait="true"/>			
+	        </character>
+		    <public>
+			    <sound name="Rire +5" duration="3" volume="1"/>
+			   <addvalue value ="15"/>
+		    </public>
+        </multiple>
+		
+		<character name="Arlequin">
+			<rotation x="0" y="180" z="0"/>
+		</character>
+
+	
+	<guiManager active="true"/>
+</event>
+
+<!-- S'asseoir -->
+<event id="assis">
+	<guiManager active="false"/>
+
+	    <character name="Arlequin">
+			<deplacement x="6.75" y="6.7" z="31"/>
+		</character>
+		
+		<camera>
+			<deplacement x="9.1" y="11.5" z="10.2" wait="false"/>
+		</camera>
+		
+		<wait time="2"/>
+		<musique name="Berceuse" disappearTime="0" waitTime="0" appearTime="0.1" reset="true"/>
+		
+		<character name="Arlequin">
+	        <rotation x="0" y="180" z="0"/>
+			<sound name="Prend" wait="false" volume="0.7"/>
+			<animation name="assis"/>
+		</character>
+		
+		<camera>
+			<reset wait ="false"/>
+		</camera>
+		
+		<character name="Arlequin">
+		    <deplacement x="4" y="6.7" z="31"/>
+			<rotation x="0" y="180" z="0"/>
+		</character>
+		
+		<wait time="2"/>
+		
+		<musique name="Thème du Capitan" disappearTime="1" waitTime="0" appearTime="0.1" repeat="1" reset="true" />
+	    <musique name="Variation Capitan" disappearTime="2" waitTime="77" appearTime="0.1" repeat="1"/>
+	    <musique name="Theme Tuto" disappearTime="1" waitTime="87" appearTime="3" repeat="-1"/>	
+		
+		<guiManager active="true"/>	
+</event>
+
+</EventList>

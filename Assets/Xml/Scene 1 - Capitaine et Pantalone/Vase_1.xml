@@ -1,0 +1,84 @@
+﻿<EventList>
+
+
+<!-- Toucher gentiment -->
+<event id="toucher_gentiment">
+
+	<guiManager active="false"/>
+		<character name="Arlequin">	
+			<deplacement x="0" y="7" z="34.25"/>		
+		</character>
+		
+		<character name="Arlequin">	
+		    <sound name="Toucher gentilment" wait="false" volume="1"/>
+			<animation name="poke" wait="false"/>
+		</character>
+		
+		<wait time ="0.5"/>
+
+		<object name="vase_1">
+			<sound name="Vase" wait="false" volume="0.5"/>		
+			<animation name = "briser"/>
+		</object>	
+		
+		<public>
+		    <sound name="Rire +5" duration="3" volume="1"/>
+			<addvalue value ="15"/>
+		</public>
+		
+		<wait time="1"/>
+		
+		<character name="Pantalone">
+		        <sound name="1_gronde" wait="false" volume="0.7"/>
+				<animation name="gronde"/>
+		</character>	
+		
+	<guiManager active="true"/>
+</event>
+
+<!-- Briser sur la le capitaine-->
+<event id="briser">
+	<guiManager active="false"/>
+
+	<character name="Arlequin">
+			<deplacement x="0" y="7" z="34.25"/>
+			<rotation x="0" y="180" z="0"/>
+			<sound name="Prend" wait="false" volume="1"/>
+			<animation name="take" wait="false"/>		
+	</character>
+	
+	<wait time="0.15"/>
+		
+	<object name="vase_1">
+			<rotation x="0" y="180" z="0"/>
+			<deplacement x="-100" y="0" z="0" />
+	</object>
+	
+	<wait time="0.4"/>
+	
+	<character name="Arlequin">
+		<rotation x="0" y="180" z="0"/>
+		<deplacement x="-13" y="6.7" z="31"/>
+		<animation name="casse_vase" wait ="false"/>
+	</character>
+	
+	<wait time="1"/>
+	
+	<multiple>
+	<character name="Capitaine">
+			<sound name="3_peur_1" wait="false" volume="0.7"/>	
+			<animation name="peur" />
+	</character>
+	
+	<public>
+	    <sound name="Rire +5" duration="3" volume="1"/>
+		<addvalue value ="10"/>
+	</public>
+    </multiple>
+		<guiManager active="true"/>
+
+</event>
+
+
+
+</EventList>
