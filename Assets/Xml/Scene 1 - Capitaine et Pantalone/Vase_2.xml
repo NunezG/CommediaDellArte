@@ -65,7 +65,7 @@
 	</character>
 	
 	<wait time="1"/>
-	
+	<multiple>
 	<character name="Capitaine">
 			<sound name="3_peur_1" wait="false" volume="0.7"/>	
 			<animation name="peur" />
@@ -75,7 +75,7 @@
 	    <sound name="Rire +5" duration="3" volume="1"/>
 		<addvalue value ="10"/>
 	</public>
-	
+	</multiple>
 	<guiManager active="true"/>
 </event>
 

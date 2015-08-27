@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ba6b7fa04d3eb184aa57604c0ec0e108
-timeCreated: 1434920582
+timeCreated: 1435075779
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,7 @@ TextureImporter:
     21300004: "Cr\xE9dits_2"
     21300006: "Cr\xE9dits_3"
     21300008: "Cr\xE9dits_4"
+    21300010: "Cr\xE9dits_5"
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,50 +58,60 @@ TextureImporter:
     - name: "Cr\xE9dits_0"
       rect:
         serializedVersion: 2
-        x: 308
-        y: 797
-        width: 1368
-        height: 283
+        x: 260
+        y: 805
+        width: 1355
+        height: 275
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: "Cr\xE9dits_1"
       rect:
         serializedVersion: 2
-        x: 313
-        y: 568
-        width: 1368
-        height: 222
+        x: 0
+        y: 536
+        width: 909
+        height: 239
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: "Cr\xE9dits_2"
       rect:
         serializedVersion: 2
-        x: 312
-        y: 391
-        width: 1370
-        height: 186
+        x: 1094
+        y: 382
+        width: 824
+        height: 278
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: "Cr\xE9dits_3"
       rect:
         serializedVersion: 2
-        x: 296
-        y: 219
-        width: 1390
-        height: 180
+        x: 0
+        y: 243
+        width: 841
+        height: 257
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: "Cr\xE9dits_4"
       rect:
         serializedVersion: 2
-        x: 296
-        y: 20
-        width: 1403
-        height: 203
+        x: 1047
+        y: 83
+        width: 873
+        height: 267
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "Cr\xE9dits_5"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 841
+        height: 224
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -27,10 +27,10 @@ public class PausePanel : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.Space))
         {
             Pause();
-        }
+        }*/
     }
 
 	public void setGoal(string goal)
@@ -54,16 +54,16 @@ public class PausePanel : MonoBehaviour
 
         if (canvas.enabled)
         {
-            gui.active = false;
+            //gui.active = false;
             //setGoal(goalList[0]);
         }
         else
         {
-            gui.active = true;
+            //gui.active = true;
         }
     
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-        Camera.main.GetComponent<AudioListener>().enabled = !Camera.main.GetComponent<AudioListener>().enabled;
+       // Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+       // Camera.main.GetComponent<AudioListener>().enabled = !Camera.main.GetComponent<AudioListener>().enabled;
 
         pause = !pause;
     }
