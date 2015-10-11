@@ -72,7 +72,7 @@
 	</character>
 	
 	<public>
-	    <sound name="Rire +5" duration="3" volume="1"/>
+	    <sound name="Rire +5" duration="4" volume="1"/>
 		<addvalue value ="10"/>
 	</public>
 	</multiple>
