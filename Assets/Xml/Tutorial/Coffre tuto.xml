@@ -60,7 +60,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Mais que fais-tu ? Ce coffre ne t'as rien fait !</paragraph>
+			<paragraph>What are you doing ? This trunk has done nothing !</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -95,7 +95,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+			<paragraph>What are you doing ? This trunk is not a comedian !</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -130,7 +130,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+			<paragraph>What are you doing ? This trunk is not a comedian !</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -163,7 +163,7 @@
 	
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>Mais que fais-tu ? Ce coffre n'est pas un comedien !</paragraph>
+				<paragraph>What are you doing ? This trunk is not a comedian !</paragraph>
 			</talk>
 		</souffleur>
 		

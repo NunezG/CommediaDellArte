@@ -72,8 +72,8 @@
 
 	<souffleur position="milieu">
 			<talk>
-			    <paragraph>Voila que le Capitano dérange encore ton maître, l'avare &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sois &#60;b&#62;&#60;color=#0054ff&#62;créatif&#60;/color&#62;&#60;/b&#62; et &#60;b&#62;&#60;color=#0054ff&#62;chasse ce gêneur&#60;/color&#62;&#60;/b&#62; !</paragraph>
-				<paragraph>Si tu oublies ton objectif, &#60;b&#62;&#60;color=#0054ff&#62;redemande-le&#60;/color&#62;&#60;/b&#62; à Pantalone.</paragraph>
+			    <paragraph>Behold ! The Capitano's still annoying your master, the greedy Pantalone. Be creative and kick out that persona non grata !</paragraph>
+				<paragraph>If you forget your goal, ask it again to Pantalone.</paragraph>
 			</talk>
 	</souffleur>
 	
@@ -83,7 +83,7 @@
 		</camera>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>N'oublie pas, tu peux à tout moment faire appel à un &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; en sonnant &#60;b&#62;&#60;color=#0054ff&#62;cette cloche&#60;/color&#62;&#60;/b&#62;. Il s’agit d’un numéro acrobatique exécuté par un comédien appelé en renfort. Le public en raffole !</paragraph>
+				<paragraph>Remember, you can call anytime a lazzi by ringing this bell. It's a acrobatic solo act performed by a summoned actor. The audience loves it !</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -94,7 +94,7 @@
 	    </camera>
 	    <souffleur position="millieu">
 	        <talk>
-	             <paragraph>(Enfin, je t'en conjure, essaie de nous attirer du public et ne perds pas ton temps à &#60;b&#62;&#60;color=#0054ff&#62;cliquer sur les passants&#60;/color&#62;&#60;/b&#62; en arrière plan, cela ne t'avancera à rien !)</paragraph>
+	             <paragraph>(Finally, I implore you, focus on gathering some audience and don't lose your time to click on those bystanders in the background, it will not help you ! Trust me.)</paragraph>
 				
 	        </talk>
 	    </souffleur>
