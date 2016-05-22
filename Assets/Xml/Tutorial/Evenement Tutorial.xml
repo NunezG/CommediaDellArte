@@ -29,8 +29,8 @@
 		<sound name="1_salut" wait ="false"/>
 		<talk>
 			<paragraph>Welcome, dear actor ! As you are new to our company, I am going to guide you. So listen to me carefully !</paragraph>
-			<paragraph>Your role is &#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, a famous character from Italy. You represent the people and they like you for your mocking maneers, your intelligence and your trickery.</paragraph>
-			<paragraph>You are still a beginner in that essential role, but I'm quite sure you'll do much better than your predecessor. Follow my advice and you'll be the people's favorite !</paragraph>
+			<paragraph>Your role is &#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, a famous character from Italy. You represent the people and they like you for your mocking manners, your intelligence and your trickery.</paragraph>
+			<paragraph>You are still a beginner in this essential role, but I'm quite sure you'll do much better than your predecessor. Follow my advice and you'll be the people's favorite !</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -45,8 +45,8 @@
 		<public><addvalue value="20"/></public>
 		<souffleur position="gauche">
 		<talk>
-			<paragraph>Come on, now you have to entertain those brave people to gather maximum audience. We are &#60;b&#62;&#60;color=#0054ff&#62;touring actors&#60;/color&#62;&#60;/b&#62; : we have to play each day to earn our living.</paragraph>
-			<paragraph>If we do well, it is possible to be given &#60;b&#62;&#60;color=#0054ff&#62;food, drinks&#60;/color&#62;&#60;/b&#62; and even &#60;b&#62;&#60;color=#0054ff&#62;a place to sleep for the night&#60;/color&#62;&#60;/b&#62; ! (It's still better than being obliged to &#60;b&#62;&#60;color=#0054ff&#62;sleep hungry&#60;/color&#62;&#60;/b&#62; in a caravan, isn't it ?)</paragraph>
+			<paragraph>Come on, now you have to entertain those good people to gather maximum audience. We are &#60;b&#62;&#60;color=#0054ff&#62;touring actors&#60;/color&#62;&#60;/b&#62; : we have to play each day to earn our living.</paragraph>
+			<paragraph>If we do well, it is possible to be given &#60;b&#62;&#60;color=#0054ff&#62;food, drinks&#60;/color&#62;&#60;/b&#62; and even &#60;b&#62;&#60;color=#0054ff&#62;a place to sleep for the night&#60;/color&#62;&#60;/b&#62; ! (It's still better than being forced to &#60;b&#62;&#60;color=#0054ff&#62;sleep hungry&#60;/color&#62;&#60;/b&#62; in a caravan, isn't it ?)</paragraph>
 		</talk>
 	</souffleur>
 	</multiple>
@@ -60,7 +60,7 @@
 	<multiple>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>You see that trunk over there ? &#60;b&#62;&#60;color=#0054ff&#62;Seach inside&#60;/color&#62;&#60;/b&#62; to see if a &#60;b&#62;&#60;color=#0054ff&#62;prop&#60;/color&#62;&#60;/b&#62; cannot help you to catch the eye of the passersby.</paragraph>
+				<paragraph>You see that trunk on the right ? &#60;b&#62;&#60;color=#0054ff&#62;Search inside&#60;/color&#62;&#60;/b&#62; to see if a &#60;b&#62;&#60;color=#0054ff&#62;prop&#60;/color&#62;&#60;/b&#62; cannot help you to catch the eye of the passersby.</paragraph>
 			</talk>
 		</souffleur>		
 		<camera>
@@ -100,8 +100,8 @@
 		</character>
 		<souffleur position="gauche">
 			<talk>
-				<paragraph>This character is the &#60;b&#62;&#60;color=#0054ff&#62;Capitano&#60;/color&#62;&#60;/b&#62;. It's a soldier. He seems intimidating at first sight, but in reality &#60;b&#62;&#60;color=#0054ff&#62;it's a coward who's affraid of his own shadow&#60;/color&#62;&#60;/b&#62;.</paragraph>
-				<paragraph>Giving a good lesson to this swaggerer will attract to you the favors of our first audience !</paragraph>
+				<paragraph>This character is the &#60;b&#62;&#60;color=#0054ff&#62;Capitano&#60;/color&#62;&#60;/b&#62;. It's a soldier. He seems intimidating at first, but in reality &#60;b&#62;&#60;color=#0054ff&#62;it's a coward who's affraid of his own shadow&#60;/color&#62;&#60;/b&#62;.</paragraph>
+				<paragraph>Giving a good lesson to this swaggerer will attract you the favors of our first audience !</paragraph>
 				<paragraph>But I have faith in you, kiddo ! If you accompish &#60;b&#62;&#60;color=#0054ff&#62;several actions to scare him off&#60;/color&#62;&#60;/b&#62;, he will go cry into his mother's skirt ! It's up to you now ! </paragraph>
 			</talk>
 		</souffleur>
