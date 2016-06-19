@@ -16,7 +16,7 @@
 	
 	<character name="Arlequin">
 		<deplacement x="-16" y="7" z="30"/>
-		<sound name="1_entree" wait="false" volume="0.7" />
+		<sound name="1_entree" wait="false" volume="0.5" />
 	</character>
 	
 	<wait time="1"/>
