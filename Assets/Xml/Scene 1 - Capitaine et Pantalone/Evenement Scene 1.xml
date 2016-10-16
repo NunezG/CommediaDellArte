@@ -72,7 +72,7 @@
 
 	<souffleur position="milieu">
 			<talk>
-			    <paragraph>Behold ! The Capitano's still disturbing your master, the greedy &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Be &#60;b&#62;&#60;color=#0054ff&#62;creative&#60;/color&#62;&#60;/b&#62; and &#60;b&#62;&#60;color=#0054ff&#62;kick out that persona non grata&#60;/color&#62;&#60;/b&#62; !</paragraph>
+			    <paragraph>Behold! The Capitano's still disturbing your master, the greedy &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Be &#60;b&#62;&#60;color=#0054ff&#62;creative&#60;/color&#62;&#60;/b&#62; and &#60;b&#62;&#60;color=#0054ff&#62;kick out that persona non grata&#60;/color&#62;&#60;/b&#62;!</paragraph>
 				<paragraph>If you forget your goal, &#60;b&#62;&#60;color=#0054ff&#62;ask it again&#60;/color&#62;&#60;/b&#62; to Pantalone.</paragraph>
 			</talk>
 	</souffleur>
@@ -83,7 +83,7 @@
 		</camera>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>Remember, you can call anytime a &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; by ringing &#60;b&#62;&#60;color=#0054ff&#62;this bell&#60;/color&#62;&#60;/b&#62;. It's a acrobatic solo act performed by a summoned actor. The audience loves it !</paragraph>
+				<paragraph>Remember, you can call anytime a &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; by ringing &#60;b&#62;&#60;color=#0054ff&#62;this bell&#60;/color&#62;&#60;/b&#62;. It's a acrobatic solo act performed by a summoned actor. The audience loves it!</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -94,7 +94,7 @@
 	    </camera>
 	    <souffleur position="millieu">
 	        <talk>
-	             <paragraph>(Finally, I implore you, focus on gathering some audience and don't lose your time &#60;b&#62;&#60;color=#0054ff&#62;clicking on those bystanders&#60;/color&#62;&#60;/b&#62; in the background, it will not help you ! Trust me.)</paragraph>
+	             <paragraph>(Finally, I implore you, focus on gathering some audience and don't lose your time &#60;b&#62;&#60;color=#0054ff&#62;clicking on those bystanders&#60;/color&#62;&#60;/b&#62; in the background, it will not help you! Trust me.)</paragraph>
 				
 	        </talk>
 	    </souffleur>
