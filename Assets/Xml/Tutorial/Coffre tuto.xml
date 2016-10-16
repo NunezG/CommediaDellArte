@@ -60,7 +60,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Ma cosa fai ? Il baule non ti ha fatto niente !</paragraph>
+			<paragraph>Ma cosa fai? Il baule non ti ha fatto niente!</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -95,7 +95,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Ma cosa fai ? Questo baule non è un attore !</paragraph>
+			<paragraph>Ma cosa fai? Questo baule non è un attore!</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -130,7 +130,7 @@
 	
 	<souffleur position="milieu">
 		<talk>
-			<paragraph>Ma cosa fai ? Questo baule non è un attore !</paragraph>
+			<paragraph>Ma cosa fai? Questo baule non è un attore!</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -163,7 +163,7 @@
 	
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>Ma cosa fai ? Questo baule non è un attore !</paragraph>
+				<paragraph>Ma cosa fai? Questo baule non è un attore!</paragraph>
 			</talk>
 		</souffleur>
 		

@@ -28,9 +28,9 @@
 	<souffleur position="milieu">
 		<sound name="1_salut" wait ="false"/>
 		<talk>
-			<paragraph>Benvenuto, caro attore! Visto che sei nuovo compagnia, ti aiuterò a fare i primi passi. Quindi, ascolta attentamente !</paragraph>
+			<paragraph>Benvenuto, caro attore! Visto che sei nuovo compagnia, ti aiuterò a fare i primi passi. Quindi, ascolta attentamente!</paragraph>
 			<paragraph>Il tuo ruolo è quello di &#60;b&#62;&#60;color=#0054ff&#62;Arlecchino&#60;/color&#62;&#60;/b&#62;, un personaggio importante qui in Italia. Rappresenti il popolo e quest'ultimo ti adora per i tuoi modi sbeffeggianti, la tua intelligenza e l'astuzia.</paragraph>
-			<paragraph>Sei ancora nuovo a questo ruolo essenziale ma sono sicuro che farai meglio di quello che ti ha preceduto. Segui i miei consigli e sarai il beniamino del pubblico !</paragraph>
+			<paragraph>Sei ancora nuovo a questo ruolo essenziale ma sono sicuro che farai meglio di quello che ti ha preceduto. Segui i miei consigli e sarai il beniamino del pubblico!</paragraph>
 		</talk>
 	</souffleur>
 	
@@ -45,8 +45,8 @@
 		<public><addvalue value="20"/></public>
 		<souffleur position="gauche">
 		<talk>
-			<paragraph>Dai, adesso devi intrattenere questa brava gente per radunarne il più possibile. Siamo &#60;b&#62;&#60;color=#0054ff&#62;attori itineranti&#60;/color&#62;&#60;/b&#62;: dobbiamo recitare tutte le sere per guadagnarci da vivere..</paragraph>
-			<paragraph>Se ce la caviamo bene, non è escluso che ci diano &#60;b&#62;&#60;color=#0054ff&#62;da mangere, da bere&#60;/color&#62;&#60;/b&#62; e addirittura &#60;b&#62;&#60;color=#0054ff&#62;un posto per dormire&#60;/color&#62;&#60;/b&#62; ! (Sempre meglio di andare a &#60;b&#62;&#60;color=#0054ff&#62;dormire a pancia vuota&#60;/color&#62;&#60;/b&#62; nella nostra carrozza, no ?)</paragraph>
+			<paragraph>Dai, adesso devi intrattenere questa brava gente per radunarne il più possibile. Siamo &#60;b&#62;&#60;color=#0054ff&#62;attori itineranti&#60;/color&#62;&#60;/b&#62;: dobbiamo recitare tutte le sere per guadagnarci da vivere.</paragraph>
+			<paragraph>Se ce la caviamo bene, non è escluso che ci diano &#60;b&#62;&#60;color=#0054ff&#62;da mangere, da bere&#60;/color&#62;&#60;/b&#62; e addirittura &#60;b&#62;&#60;color=#0054ff&#62;un posto per dormire&#60;/color&#62;&#60;/b&#62;! (Sempre meglio di andare a &#60;b&#62;&#60;color=#0054ff&#62;dormire a pancia vuota&#60;/color&#62;&#60;/b&#62; nella nostra carrozza, no?)</paragraph>
 		</talk>
 	</souffleur>
 	</multiple>
@@ -60,7 +60,7 @@
 	<multiple>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>Vedi quel baule sulla destra ? &#60;b&#62;&#60;color=#0054ff&#62;Guardaci dentro&#60;/color&#62;&#60;/b&#62; per vedere se qualche &#60;b&#62;&#60;color=#0054ff&#62;accessorio&#60;/color&#62;&#60;/b&#62; possa aiutarti a catturare l'attenzione del pubblico.</paragraph>
+				<paragraph>Vedi quel baule sulla destra? &#60;b&#62;&#60;color=#0054ff&#62;Guardaci dentro&#60;/color&#62;&#60;/b&#62; per vedere se qualche &#60;b&#62;&#60;color=#0054ff&#62;accessorio&#60;/color&#62;&#60;/b&#62; possa aiutarti a catturare l'attenzione del pubblico.</paragraph>
 			</talk>
 		</souffleur>		
 		<camera>
@@ -102,7 +102,7 @@
 			<talk>
 				<paragraph>Questo personaggio è il &#60;b&#62;&#60;color=#0054ff&#62;Capitano&#60;/color&#62;&#60;/b&#62;. È un soldato. Sembra minaccioso a prima vista, ma in realtà &#60;b&#62;&#60;color=#0054ff&#62;è un codardo che ha paura della sua stessa ombra&#60;/color&#62;&#60;/b&#62;.</paragraph>
 				<paragraph>Dare una bella lezione a questo fanfarone t'attirerà il favore dei nostri primi spettatori!</paragraph>
-				<paragraph>Ma ho fiducia in te, ragazzo ! Se riuscirai a &#60;b&#62;&#60;color=#0054ff&#62;spaventarlo per bene tramite le tue azioni&#60;/color&#62;&#60;/b&#62;, finirà per correre a piangere dalla mamma ! Ora, in scena !</paragraph>
+				<paragraph>Ma ho fiducia in te, ragazzo! Se riuscirai a &#60;b&#62;&#60;color=#0054ff&#62;spaventarlo per bene tramite le tue azioni&#60;/color&#62;&#60;/b&#62;, finirà per correre a piangere dalla mamma! Ora, in scena!</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>	
@@ -152,7 +152,7 @@
 		</camera>
 		<souffleur position="milieu">
 			<talk>
-				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage... </paragraph>
+				<paragraph>Dans cette nouvelle situation nous avons &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Il incarne tous les défauts du vieux privilégié : avarice, crédulité, libertinage..... </paragraph>
 			</talk>
 		</souffleur>
 	</multiple>

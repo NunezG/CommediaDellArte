@@ -72,7 +72,7 @@
 
 	<souffleur position="milieu">
 			<talk>
-			    <paragraph>Ecco il Capitano che disturba di nuovo il tuo padrone, l'avaro &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sii &#60;b&#62;&#60;color=#0054ff&#62;creativo&#60;/color&#62;&#60;/b&#62; e &#60;b&#62;&#60;color=#0054ff&#62;caccia questo rompiscatole&#60;/color&#62;&#60;/b&#62; !</paragraph>
+			    <paragraph>Ecco il Capitano che disturba di nuovo il tuo padrone, l'avaro &#60;b&#62;&#60;color=#0054ff&#62;Pantalone&#60;/color&#62;&#60;/b&#62;. Sii &#60;b&#62;&#60;color=#0054ff&#62;creativo&#60;/color&#62;&#60;/b&#62; e &#60;b&#62;&#60;color=#0054ff&#62;caccia questo rompiscatole&#60;/color&#62;&#60;/b&#62;!</paragraph>
 				<paragraph>Se ti dimentichi il tuo obiettivo, &#60;b&#62;&#60;color=#0054ff&#62;ridomandalo&#60;/color&#62;&#60;/b&#62; a Pantalone.</paragraph>
 			</talk>
 	</souffleur>
@@ -83,7 +83,7 @@
 		</camera>
 		<souffleur position="droite">
 			<talk>
-				<paragraph>Ricordati, puoi in ogni momento chiamare un &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; suonando &#60;b&#62;&#60;color=#0054ff&#62;questa campana&#60;/color&#62;&#60;/b&#62;. Si tratta di un numero acrobatico eseguito da un attore chiamato come rinforzo. Il pubblico ne va matto !</paragraph>
+				<paragraph>Ricordati, puoi in ogni momento chiamare un &#60;b&#62;&#60;color=#0054ff&#62;lazzi&#60;/color&#62;&#60;/b&#62; suonando &#60;b&#62;&#60;color=#0054ff&#62;questa campana&#60;/color&#62;&#60;/b&#62;. Si tratta di un numero acrobatico eseguito da un attore chiamato come rinforzo. Il pubblico ne va matto!</paragraph>
 			</talk>
 		</souffleur>
 	</multiple>
@@ -94,7 +94,7 @@
 	    </camera>
 	    <souffleur position="millieu">
 	        <talk>
-	             <paragraph>(Infine, ti supplico, cerca di attirarci del pubblico e non perdere tempo a &#60;b&#62;&#60;color=#0054ff&#62;cliccare i passanti&#60;/color&#62;&#60;/b&#62; sullo sfondo, non ti aiuterà per niente !)</paragraph>
+	             <paragraph>(Infine, ti supplico, cerca di attirarci del pubblico e non perdere tempo a &#60;b&#62;&#60;color=#0054ff&#62;cliccare i passanti&#60;/color&#62;&#60;/b&#62; sullo sfondo, non ti aiuterà per niente!)</paragraph>
 				
 	        </talk>
 	    </souffleur>
